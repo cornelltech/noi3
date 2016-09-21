@@ -1,0 +1,46 @@
+/* Contextual Messages (Toast) */
+.toast {
+  padding: 15px 30px;
+
+  &__heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__text { margin: 0; }
+
+  &__close { 
+    float: right;
+    border-radius: 50%;
+    padding: 3px;
+    cursor: pointer;
+
+    &:hover { color: $white; }
+  }
+
+}
+
+.toast--green {
+  background-color: rgba($green, .2);
+  color: $green;
+  .toast__close:hover { background-color: $green; }
+}
+
+.toast--yellow {
+  background-color: rgba($yellow, .2);
+  color: $yellow;
+  .toast__close:hover { background-color: $yellow; }
+}
+
+.toast--red {
+  background-color: rgba($red, .2);
+  color: $red;
+  .toast__close:hover { background-color: $red; }
+}
+
+.toast--gray {
+  background-color: rgba($black, .2);
+  color: rgba($black, .8);
+  .toast__close:hover { background-color: rgba(black, .8); }
+}

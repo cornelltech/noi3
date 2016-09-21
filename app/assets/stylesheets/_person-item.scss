@@ -1,0 +1,75 @@
+/* Item for the Search Innovators List */
+// .person-item
+// .person-item__picture
+// .person-item__name
+// .person-item__job
+// .person-item__org
+// .person-item__tags
+// .person-item__controls
+
+
+.person-item {
+  display: flex;
+
+  &__picture {
+    @extend .u-circle;
+    height: 100px;
+
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+  }
+
+  &__credentials { 
+    flex: 1;
+  }
+  
+  &__tags { 
+    padding: 0;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(black, .6);
+    margin: 0;
+  }
+
+  &__job {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &__org {
+    font-size: .8rem;
+    margin: 0;
+  }
+
+  &__tags {
+   flex: 1; 
+
+  }
+
+  &__tag {
+    list-style-type: none;
+  }
+
+  &__projects {
+    list-style-type: none;
+    color: $main-color;
+    font-weight: 800;
+  }
+
+  &__controls {
+    margin-top: 15px;
+  }
+
+  &__pm {
+    color: $accent-color;
+  }
+}

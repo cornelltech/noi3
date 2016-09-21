@@ -1,0 +1,38 @@
+/* Post Item */
+.post-item {
+  > * { max-width: 800px; }
+  display: flex;
+
+  &__author-picture {
+    @extend .u-circle;
+    width: 72px;
+    height: 72px;
+    box-shadow: 2px 2px 4px rgba(black, .1);
+  }
+
+  &__content {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  &__author-name {
+    margin: 0;
+  }
+  
+  &__title {
+    font-size: 1.1rem;
+    margin: 0 0 6px 0;
+    text-transform: none;
+  }
+  
+  &__text {
+
+  }
+  
+  &__controls {
+
+  }
+}
+
+
+

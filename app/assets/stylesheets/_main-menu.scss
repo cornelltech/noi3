@@ -1,0 +1,52 @@
+/* Main Menu */
+.main-menu {
+  &__item {
+    
+  }
+}
+
+.main-menu {
+  background-color: darken($main-color, 4);
+  position: relative;
+  z-index: 10;
+
+  &__item {
+    display: block;
+    padding: 15px 15px 10px;
+    color: rgba($white, .6);
+    position: relative;
+
+  
+    &:after {
+      width: 0;
+      @extend .u-transition;
+      content: attr(title);
+      position: absolute;
+      left: 100%;
+      background-color: $accent-color;
+      padding: 12px 0 10px;
+      top: 0;
+      overflow: hidden;
+      display: block;
+      font-size: 1.35rem;
+      white-space: nowrap;
+    }    
+
+    &:hover:after {
+      @extend .u-transition;
+      width: auto;
+      
+      padding: 12px 15px 10px;
+    }
+
+    // &:hover { background-color: rgba(black, .2); }
+
+    &--active,
+    &--active:hover { 
+      background-color: $accent-color; 
+      color: $white;
+    }
+  }
+
+  i {font-size: 1.4rem;}
+}
