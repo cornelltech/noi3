@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922195415) do
+ActiveRecord::Schema.define(version: 20160922193805) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20160922195415) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-09-22 19:47:11'
+    t.datetime "date",            default: '2016-09-22 20:32:32'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "conference_code", default: ""
   end
 
   create_table "events_users", id: false, force: :cascade do |t|
