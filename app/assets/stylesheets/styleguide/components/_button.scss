@@ -1,0 +1,80 @@
+.button {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: rgba($black, .1);
+    cursor: pointer;
+    padding: 15px 20px;
+    text-decoration: none;
+
+    @extend .u-transition;
+
+    &:hover {
+        text-decoration: none;
+        @extend .u-transition;
+        background-color: rgba($black, .2);
+    }
+
+    i {
+        margin-left: 15px;
+        vertical-align: middle;
+        float: right;
+    }
+}
+
+.button--icon-only i {
+    margin-left: 0;
+    float: none;
+}
+
+
+.button--purple,
+.button--teal,
+.button--orange,
+.button--blue,
+.button--black,
+.button--naked {
+    color: $white;
+    &:hover { color: $white; }
+}
+
+
+.button--purple {
+    background-color: $purple;
+    &:hover { background-color: darken($purple, 6); }
+}
+
+.button--teal {
+    background-color: $teal;
+    &:hover { background-color: darken($teal, 4); }
+}
+
+.button--orange {
+    background-color: $orange;
+    &:hover { background-color: darken($orange, 4); }
+}
+
+.button--blue {
+    background-color: $blue;
+    &:hover { background-color: darken($blue, 4); }
+}
+
+.button--black {
+    background-color: rgba($black, .8);
+    &:hover { background-color: rgba($black, .9); }
+}
+
+.button--naked {
+    background-color: transparent;
+    @include breakpoint($large) { margin-left: -10px; }
+
+    &:hover {
+        background-color: rgba($black, .2);
+        @extend .u-transition;
+    }
+}
+
+.button--disabled{
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -1,0 +1,80 @@
+@import "styleguide/styleguide";
+
+$main-color: #008ab3;
+$accent-color: #ff9600;
+$yellow: #ff9600;
+
+
+
+
+@import "custom";
+@import "top-bar";
+@import "main-menu";
+@import "panels";
+@import "question-panel";
+@import "profile-panel";
+@import "list";
+@import "post";
+@import "person-item";
+@import "category-filters";
+@import "toast";
+@import "controls";
+@import "active-filters";
+
+
+// Styleguide Updates
+
+.form--negative,
+.search--negative {
+  textarea {
+    border-radius: 0;
+  }
+
+  input[type='text']:focus,
+  textarea:focus,
+  .select:focus,
+  .search-trigger:focus {
+    outline: 1px solid rgba($white, .3);
+    background-color: rgba($white, .1) !important;
+  }
+  .search-trigger { background-color: rgba($white, .1) !important; }
+
+  .select--negative {
+    background-color: rgba($white, .1);
+    &:before { color: $white;}
+  }
+}
+
+.button {
+  &--full {
+    display: block;
+    width: 100%;
+    font-weight: 600;
+  }
+
+  &--main-color {
+    background-color: $main-color;
+  }
+
+  &--alpha {
+    background-color: rgba(black, 0);
+    &:hover {
+      background-color: rgba(black, .2);
+    }
+  }
+
+  &--small { padding: 6px 8px; }
+}
+
+.form {
+  .select--inline {
+    display: inline-block;
+    padding-right: 60px;
+    margin-left: 20px;
+  }
+
+  .select[disabled] {
+    pointer-events: none;
+    opacity: .4;
+  }
+}

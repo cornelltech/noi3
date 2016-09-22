@@ -1,0 +1,66 @@
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+body {
+  letter-spacing: .5px;
+  color: rgba(black, .8);
+  // font-family: 'proxima-nova-soft', sans-serif;
+  font-weight: 400;
+  background-color: #FFF;
+  padding: 0;
+  margin: 0;
+}
+
+// Base Structure
+
+.top-bar {
+  height: 60px;
+}
+
+.app-wrapper {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.main-content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex: 1;
+
+  &__container { 
+    min-width: 750px;
+    display: block;
+  }
+}
+
+.filter-section {
+  padding: 30px;
+
+  .highlighted-or {
+    font-weight: 800;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  .select-innovation-area {
+    width: 32.5%;
+  }
+}
+
+.find-innovator {
+  .search__field {
+    @include placeholder {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: rgba(black, .8)
+    }
+  }
+
+  
+}
+
+
+

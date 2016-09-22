@@ -1,0 +1,32 @@
+.category-filters {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: stretch;
+
+
+  &__item {
+    padding: 0;
+    width: 25%;
+    list-style: none;
+    font-size: .7rem;
+    margin: 0;
+    background-color: $main-color;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: 600;
+
+    &:nth-of-type(1) { background-color: darken($main-color, 2); }
+    &:nth-of-type(3) { background-color: darken($main-color, 2); }
+    &:nth-of-type(6) { background-color: darken($main-color, 2); }
+    &:nth-of-type(8) { background-color: darken($main-color, 2); }
+
+    &:hover,
+    &--active { background-color: $accent-color; } // NOTE: Active State for the category filter
+  }
+
+}
+

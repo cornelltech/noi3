@@ -1,0 +1,104 @@
+
+<div class="profile-panel panel panel--1 js-active">
+  <i class="profile-panel__action-button material-icons">edit</i>
+  <%= image_tag('users/128.jpg', :alt => "User", :class => "profile-panel__picture") %>
+  <hgroup class="profile-panel__titles">
+    <h2 class="profile-panel__name">Random Happy Dude</h2>
+    <h3 class="profile-panel__job">Director and Founder</h3>
+    <h4 class="profile-panel__org">UK Government</h4>  
+  </hgroup>
+  <section class="profile-panel__credentials">
+    <div class="row">
+      <div class="medium-6 small-12 column">
+        <p class="profile-panel__domains">Domains of Expertise Paruptiae latius peditatest aut maiorro eossi ini dolorrumqui deliqui demperum aspid magnatiunt</p>    
+      </div>
+      <div class="medium-6 small-12 column">
+        <p class="profile-panel__location">London, UK</p>
+        <ul class="profile-panel__lang">
+          <li class="">English</li>
+          <li class="">Spanish</li>
+          <li class="">French</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div class="profile-panel__projects-button">Projects <i class="material-icons js-open-panel-2">arrow_forward</i></div>
+  <div class="profile-panel__events-button">Events <i class="material-icons js-open-panel-2">arrow_forward</i></div>
+  <section class="profile-panel__expertise-panel">
+    <h5 class="profile-panel__expertise-panel-title">Expertise <i class="material-icons js-open-panel-2">arrow_forward</i></h5>
+  </section>
+</div>
+
+<!-- 
+{% block content %} -->
+<div class="main-content">
+  <div class="toast toast--yellow"> <!-- {# toast--green, toast--red, toast--gray #} -->
+    <i class="material-icons toast__close">close</i>
+    <h4 class="toast__heading">Titles don’t say enough</h4>
+    <p class="toast__text">Find experts to contact based on their innovation experience</p>
+  </div>
+
+  <section class="filter-section">
+    <form action="" class="form">
+      <div class="search search--fixed js-target-search find-innovator" action="">
+        <input class="search__field" type="text" placeholder="Find an Innovator">
+        <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
+      </div>
+      <p><em class="highlighted-or">OR</em> Find someone with experience in 
+      <span class="select select--inline select-innovation-area">
+        <select name="" id="">
+          <option value="">Pick an Innovation Area</option>
+          
+          <% @categories.each do | category | %>
+            <option value=""> <%= category %> </option>
+          <% end %>
+
+        </select>
+      </span>
+      <span class="select select--inline select-innovation-area" disabled>
+        <select name="" id="">
+          <option value="">Pick an Innovation Area</option>
+          <option value="">Open Data</option>
+          <option value="">Crowdsourcing</option>
+        </select>
+      </span>
+    </form>
+
+    </p>
+  </section>
+  <section class="active-filters">
+    <span class="filter-by">Filter by</span>
+    <span class="active-filters__item">Location</span>
+    <span class="active-filters__item">Field of Work</span>
+    <span class="active-filters__item">Language</span>
+  </section>
+
+  <ul class="main-content__container list">
+    <% 10.times do %>
+    <li class="list__item person-item">
+      <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
+      <div class="person-item__content">
+        <hgroup class="person-item__credentials">
+          <h2 class="person-item__name">Random Happy Dude</h2>
+          <h3 class="person-item__job">Director and Founder</h3>
+          <h4 class="person-item__org">UK Government</h4>
+        </hgroup>
+        <div class="person-item__controls">
+          <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
+        </div>
+      </div>
+      <div class="person-item__content">
+        <ul class="person-item__tags">
+          <li class="person-item__tag">Crowdsourcing</li>
+          <li class="person-item__tag">Open Data</li>
+        </ul>
+        <div class="person-item__controls">
+          <a href="#" class="person-item__projects controls__button">3 Projects</a>
+        </div>
+      </div>
+      
+    </li>
+    <% end %>
+  </ul>
+</div>
+<!-- {% endblock %} -->

@@ -1,0 +1,87 @@
+/* ======================= */
+/* PANELS */
+/* ======================= */
+
+.u-base-panel {
+  color: $white;
+
+  &__heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    padding-top: 30px;
+  }
+
+  &__content {
+    padding-left: 40px;
+    padding-right: 40px;
+    &:not(:last-child) { margin-bottom: 30px; }
+  }
+
+  &__action-button {} // Top right icon
+
+  &__action {
+    background-color: lighten($black, 10);
+    box-shadow: -2px -2px 4px rgba($black, .4);
+
+    &__title {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 8px;
+      margin: 0;      
+    }
+
+    &__content {
+      max-height: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+      @extend .u-transition;
+
+      > :last-child {padding-bottom: 40px;}
+
+      &.js-active {
+        max-height: 900px;
+        @extend .u-transition;
+      }
+    }
+
+    &__button {}
+    &__button--active   {}
+  }
+
+  &__large-icon {}
+  &__small-text {}
+
+}
+
+
+
+
+
+.panel {
+  width: 440px;
+  margin-left: -440px;
+  position: relative;
+  @extend .u-transition;
+
+  &--1 {
+    background-color: #222;
+    z-index: 9;
+    width: 480px;
+    margin-left: -480px;
+
+  }
+  &--2 {
+    background-color: #292929;
+    z-index: 8;
+  }
+  &--3 {
+    background-color: #333;
+    z-index: 7;
+  }
+
+  &.js-active { 
+    margin-left: 0; 
+    box-shadow: 2px 2px 6px rgba(black, .4);
+  }
+}
