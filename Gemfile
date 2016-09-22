@@ -51,3 +51,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
+gem 'faker', '~> 1.6', '>= 1.6.6'
