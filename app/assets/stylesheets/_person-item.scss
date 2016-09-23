@@ -14,7 +14,6 @@
   &__picture {
     @extend .u-circle;
     height: 100px;
-
   }
 
   &__content {
@@ -29,7 +28,7 @@
   }
   
   &__tags { 
-    padding: 0;
+    
   }
 
   &__name {
@@ -52,11 +51,10 @@
 
   &__tags {
    flex: 1; 
-
   }
 
   &__tag {
-    list-style-type: none;
+    
   }
 
   &__projects {

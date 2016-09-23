@@ -95,7 +95,7 @@ form,
     &--negative {
         input { color: $white; }
 
-        input[type='text'], input[type='email'], input[type='submit'], textarea {
+        input[type='text'], input[type='email'], input[type='password'] input[type='submit'], textarea {
             background-color: $white-10;
             @include placeholder {
                 color: $white;
