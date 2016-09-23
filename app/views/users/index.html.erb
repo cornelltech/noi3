@@ -1,5 +1,12 @@
-<%= render 'profile', {user: @users.first} %>
-<%= render 'projects', {user: @users.first} %>
+<!-- USER PROFILE -->
+<div class="profile-panel panel panel--1 js-active">
+  <%= render 'profile', { user: @users.first }%>
+</div>
+
+<!-- PROJECTS PANEL -->
+<div class="project-panel panel panel--2">
+  <%= render 'projects', { user: @users.first }%>
+</div>
 
 <div class="main-content">
   <div class="toast toast--yellow"> 
