@@ -4,7 +4,7 @@
   <hgroup class="profile-panel__titles">
     <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
     <h3 class="profile-panel__job"><%= user.position %></h3>
-    <h4 class="profile-panel__org"><%= user.organization %></h4>  
+    <h4 class="profile-panel__org">UK Government</h4>  
   </hgroup>
   <section class="profile-panel__credentials">
     <div class="row">
@@ -21,9 +21,38 @@
       </div>
     </div>
   </section>
-  <div class="profile-panel__projects-button">Projects <i class="material-icons js-open-panel-2">arrow_forward</i></div>
-  <div class="profile-panel__events-button">Events <i class="material-icons js-open-panel-2">arrow_forward</i></div>
+  <div class="profile-panel__projects-button">
+    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+    <a href="partial-projects.html">Projects <i class="material-icons js-open-panel-2">arrow_forward</i></a>
+  </div>
+  <div class="profile-panel__events-button">
+    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+    <a href="partial-events.html">Events <i class="material-icons js-open-panel-2">arrow_forward</i></a>
+  </div>
+  <!-- {# IF EXPERTISE #} -->
+  <% if user.categories %>
   <section class="profile-panel__expertise-panel">
-    <h5 class="profile-panel__expertise-panel-title">Expertise <i class="material-icons js-open-panel-2">arrow_forward</i></h5>
+    <h5 class="profile-panel__expertise-panel-title">
+      <a href="partial-expertise.html">Expertise <i class="material-icons js-open-panel-2">arrow_forward</i></a>
+    </h5>
+    <div class="profile-panel__content">
+      <ul class="category-tags category-tags--negative">
+        <% user.categories.each do | category | %>
+        <li class="category-tag">
+          <span class="category-tag__main"><%= category.name.titleize %></span>
+          <span class="category-tag__sub">Implementation</span>
+        </li>
+        <li class="category-tag__skills">View Skills (10)</li>
+        <% end %>
+      </ul>
+    </div>
   </section>
+  <!-- {# ELSE #} -->
+  <% else %>
+  <div class="profile-panel__add-item">
+    <i class="big-icon material-icons">add</i>
+    <h4>Add Expertise</h4>
+  </div>
+  <!-- {# ENDIF #} -->
+  <% end %>
 </div>
