@@ -1,0 +1,49 @@
+/* Category Tags */
+.category-tags { 
+  padding: 0; 
+  text-align: left;
+}
+
+.category-tag {
+  font-size: .8rem;
+  margin-bottom: 4px;
+  list-style-type: none;
+
+  &__main,
+  &__sub {
+    display: inline-block;
+    padding: 1px 5px;
+  }
+  
+  &__main {
+    background-color: rgba(black, .7);
+    color: white;
+    font-weight: 600;
+  }
+
+  &__sub {
+    background-color: rgba(black, .1);
+    color: rgba(black, .5);
+  }
+
+  &__skills {
+    list-style: none;
+    margin-bottom: 20px;
+    font-size: .9rem;
+  }
+}
+
+
+
+.category-tags--negative {
+  .category-tag__main {
+    background-color: rgba(white, .7);
+    color: rgba(black, .7);
+  } 
+
+  .category-tag__sub {
+    background-color: rgba(white, .2);
+    color: rgba(white, .9);
+  } 
+}
+

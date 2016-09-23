@@ -15,10 +15,22 @@
   &__content {
     padding-left: 40px;
     padding-right: 40px;
-    &:not(:last-child) { margin-bottom: 30px; }
+    // &:not(:last-child) { margin-bottom: 30px; }
   }
 
-  &__action-button {} // Top right icon
+  &__action-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 10px 12px;
+    opacity: .5;
+
+    &:hover {
+      background-color: $accent-color;
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
 
   &__action {
     background-color: lighten($black, 10);
@@ -55,21 +67,18 @@
 }
 
 
-
-
+// Panel structure and behavior related styles
 
 .panel {
-  width: 440px;
-  margin-left: -440px;
+  width: 400px;
+  margin-left: -400px;
   position: relative;
+  overflow-y: scroll;
   @extend .u-transition;
 
   &--1 {
     background-color: #222;
     z-index: 9;
-    width: 480px;
-    margin-left: -480px;
-
   }
   &--2 {
     background-color: #292929;

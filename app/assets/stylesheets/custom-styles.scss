@@ -3,9 +3,7 @@
 $main-color: #008ab3;
 $accent-color: #ff9600;
 $yellow: #ff9600;
-
-
-
+$green: #4b7e4b;
 
 @import "custom";
 @import "top-bar";
@@ -13,6 +11,10 @@ $yellow: #ff9600;
 @import "panels";
 @import "question-panel";
 @import "profile-panel";
+@import "signup-panel";
+@import "project-panel";
+@import "expertise-panel";
+@import "event-panel";
 @import "list";
 @import "post";
 @import "person-item";
@@ -20,30 +22,49 @@ $yellow: #ff9600;
 @import "toast";
 @import "controls";
 @import "active-filters";
+@import "tags";
+@import "filters";
 
 
 // Styleguide Updates
 
+
 .form--negative,
 .search--negative {
-  textarea {
-    border-radius: 0;
+  .select {
+    background-color: rgba($white, .1);
+    &:before { color: $white;}  
   }
 
-  input[type='text']:focus,
+  textarea { border-radius: 0; }
+
+  input:focus,
   textarea:focus,
   .select:focus,
   .search-trigger:focus {
     outline: 1px solid rgba($white, .3);
     background-color: rgba($white, .1) !important;
   }
-  .search-trigger { background-color: rgba($white, .1) !important; }
 
-  .select--negative {
-    background-color: rgba($white, .1);
-    &:before { color: $white;}
+  .button:hover {
+    background-color: $accent-color;
   }
 }
+
+.form--negative {
+  input { color: $white; }
+
+  input[type='password'] {
+    background-color: $white-10;
+    @include placeholder { color: $white; }
+    &:focus {
+        background-color: $white-20;
+        @extend .u-transition;
+    }
+  }
+}
+
+
 
 .button {
   &--full {
@@ -66,6 +87,8 @@ $yellow: #ff9600;
   &--small { padding: 6px 8px; }
 }
 
+
+
 .form {
   .select--inline {
     display: inline-block;
@@ -77,4 +100,8 @@ $yellow: #ff9600;
     pointer-events: none;
     opacity: .4;
   }
+}
+
+.select:before {
+  pointer-events: none;
 }

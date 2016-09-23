@@ -1,6 +1,6 @@
 /* Top Bar */
 .top-bar {
-  padding: 0 0 0 76px;
+  padding: 0 0 0 52px;
   box-shadow: 2px 2px 5px rgba($black, .2);
   margin: 0;
   background-color: $main-color;
@@ -14,16 +14,18 @@
   &__logo { 
     width: 50px; 
     overflow: hidden;
-    @include breakpoint(1015px) { width: 440px; }
+    @include breakpoint(1015px) { 
+      width: 400px; 
+    }
     @extend .u-transition;
     margin: 0;
-    padding: 10px 0 8px 10px;
+    padding: 12px 0 8px 10px;
     font-size: 1.4rem;
     line-height: 1;
     text-align: left;
 
     img { 
-      height: 36px; 
+      height: 34px; 
       max-width: none;
     }
   }
@@ -40,7 +42,7 @@
 }
 
 
-
+.search--negative .search-trigger { background-color: rgba($white, .1) !important; }
 
 
 /* User Menu */

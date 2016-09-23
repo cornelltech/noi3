@@ -22,6 +22,7 @@ body {
 .app-wrapper {
   display: flex;
   height: calc(100vh - 60px);
+  overflow: hidden;
 }
 
 .main-content {
@@ -33,33 +34,6 @@ body {
     min-width: 750px;
     display: block;
   }
-}
-
-.filter-section {
-  padding: 30px;
-
-  .highlighted-or {
-    font-weight: 800;
-    margin-right: 10px;
-    display: inline-block;
-  }
-
-  .select-innovation-area {
-    width: 32.5%;
-  }
-}
-
-.find-innovator {
-  .search__field {
-    @include placeholder {
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .6px;
-      color: rgba(black, .8)
-    }
-  }
-
-  
 }
 
 

@@ -12,8 +12,9 @@
   </head>
 
   <body>
-  <header class="top-bar">
+    <header class="top-bar">
       <h1 class="top-bar__logo"><%= image_tag("noi-logo-white.svg", :alt => "Network of Innovators") %></h1>
+      
       <form class="top-bar__search search search--negative search--fixed js-target-search" action="">
           <input class="search__field" type="text">
           <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
@@ -22,7 +23,7 @@
         <!-- {# use "user-menu__item--highlighted" class when we have notifications for the user #} -->
         <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span> 
         <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span>
-        <span class="user-menu__item user-menu__item--settings"><img src="/assets/images/users/128.jpg" alt=""></span>
+        <span class="user-menu__item user-menu__item--settings"><img src="images/users/128.jpg" alt=""></span>
       </div>
     </header>
     
@@ -32,18 +33,15 @@
         <a href="./search.html" class="main-menu__item" title="Find Innovators"><i class="material-icons">search</i></a>
         <a href="" class="main-menu__item" title="Discuss"><i class="material-icons">forum</i></a>
         <a href="" class="main-menu__item" title="Match Me"><i class="material-icons">people</i></a>
-        <a href="" class="main-menu__item js-open-panel" title="Open Panel"><i class="material-icons">arrow_forward</i></a>
+        <a href="all-pages.html" class="main-menu__item" title="All Pages"><i class="material-icons">help</i></a>
       </nav>
 
       <%= yield %>
 
     </main>
-
     <div id="overlay" class="js-overlay"></div>
     <script src="./vendor/jquery-2.1.4.min.js"></script>
     <script src="./scripts.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
-
-
   </body>
 </html>
