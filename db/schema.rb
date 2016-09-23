@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921174057) do
+ActiveRecord::Schema.define(version: 20160922193805) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_projects", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "project_id",  null: false
+  end
+
+  create_table "categories_users", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "user_id",     null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "conference_code", default: ""
+    t.string   "name",            default: ""
+    t.string   "logo_path",       default: ""
+    t.datetime "date",            default: '2016-09-22 20:32:32'
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+  end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id",  null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title",       default: ""
+    t.string   "description", default: ""
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -25,6 +63,14 @@ ActiveRecord::Schema.define(version: 20160921174057) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "picture_path",           default: ""
+    t.string   "first_name",             default: ""
+    t.string   "last_name",              default: ""
+    t.string   "position",               default: ""
+    t.string   "organization",           default: ""
+    t.string   "organization_type",      default: ""
+    t.string   "country",                default: ""
+    t.string   "city",                   default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

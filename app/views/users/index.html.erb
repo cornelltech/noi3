@@ -1,33 +1,4 @@
-
-<div class="profile-panel panel panel--1 js-active">
-  <i class="profile-panel__action-button material-icons">edit</i>
-  <%= image_tag('users/128.jpg', :alt => "User", :class => "profile-panel__picture") %>
-  <hgroup class="profile-panel__titles">
-    <h2 class="profile-panel__name">Random Happy Dude</h2>
-    <h3 class="profile-panel__job">Director and Founder</h3>
-    <h4 class="profile-panel__org">UK Government</h4>  
-  </hgroup>
-  <section class="profile-panel__credentials">
-    <div class="row">
-      <div class="medium-6 small-12 column">
-        <p class="profile-panel__domains">Domains of Expertise Paruptiae latius peditatest aut maiorro eossi ini dolorrumqui deliqui demperum aspid magnatiunt</p>    
-      </div>
-      <div class="medium-6 small-12 column">
-        <p class="profile-panel__location">London, UK</p>
-        <ul class="profile-panel__lang">
-          <li class="">English</li>
-          <li class="">Spanish</li>
-          <li class="">French</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-  <div class="profile-panel__projects-button">Projects <i class="material-icons js-open-panel-2">arrow_forward</i></div>
-  <div class="profile-panel__events-button">Events <i class="material-icons js-open-panel-2">arrow_forward</i></div>
-  <section class="profile-panel__expertise-panel">
-    <h5 class="profile-panel__expertise-panel-title">Expertise <i class="material-icons js-open-panel-2">arrow_forward</i></h5>
-  </section>
-</div>
+<%= render 'profile', { user: @users.first}%>
 
 <!-- 
 {% block content %} -->
@@ -74,14 +45,19 @@
   </section>
 
   <ul class="main-content__container list">
-    <% 10.times do %>
+    <% @users.each do | user | %>
     <li class="list__item person-item">
-      <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
+      <%= image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
+
+      <!-- TEMP LINK -->
+ 
       <div class="person-item__content">
         <hgroup class="person-item__credentials">
-          <h2 class="person-item__name">Random Happy Dude</h2>
-          <h3 class="person-item__job">Director and Founder</h3>
-          <h4 class="person-item__org">UK Government</h4>
+          <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
+            <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
+          <% end %>
+          <h3 class="person-item__job"><%= user.position %></h3>
+          <h4 class="person-item__org"><%= user.organization%></h4>
         </hgroup>
         <div class="person-item__controls">
           <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
@@ -89,11 +65,12 @@
       </div>
       <div class="person-item__content">
         <ul class="person-item__tags">
-          <li class="person-item__tag">Crowdsourcing</li>
-          <li class="person-item__tag">Open Data</li>
+          <% user.categories.each do |category| %>
+          <li class="person-item__tag"><%= category.name %></li>
+          <% end %>
         </ul>
         <div class="person-item__controls">
-          <a href="#" class="person-item__projects controls__button">3 Projects</a>
+          <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
         </div>
       </div>
       
@@ -101,4 +78,4 @@
     <% end %>
   </ul>
 </div>
-<!-- {% endblock %} -->
+<!-- {% endblock %}
