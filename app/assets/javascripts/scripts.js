@@ -5,13 +5,16 @@ $('.js-open-panel').click(function (e) {
     $('.panel--1').toggleClass('js-active');
 });
 
-$('body').on('click', '.js-open-panel-2', function (e) {
-    e.preventDefault();
+$('.js-open-panel-2').click(function (e) {
     $('.panel--2').toggleClass('js-active');
 });
 
 $('.js-open-panel-3').click(function (e) {
     $('.panel--3').toggleClass('js-active');
+});
+
+$('.js-open-panel-4').click(function (e) {
+    $('.panel--4').toggleClass('js-active');
 });
 
 $('.js-close-panel-1').click(function () {
