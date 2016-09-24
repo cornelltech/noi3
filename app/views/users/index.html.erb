@@ -1,12 +1,11 @@
 <!-- USER PROFILE -->
-<div class="profile-panel panel panel--1 js-active">
-  <%= render 'profile', { user: @users.first }%>
-</div>
-
+<%= render 'profile', { user: @users.first }%>
 <!-- PROJECTS PANEL -->
-<div class="project-panel panel panel--2">
-  <%= render 'projects', { user: @users.first }%>
-</div>
+<%= render 'projects', { user: @users.first }%>
+<!-- EVENTS PANEL -->
+<%= render 'events', { user: @users.first }%>
+<%= render 'expertise', { user: @users.first }%>
+
 
 <div class="main-content">
   <div class="toast toast--yellow"> 
@@ -56,10 +55,9 @@
     <li class="list__item person-item">
       <%= image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
       <div class="person-item__content">
-        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
-        <hgroup class="person-item__credentials">
+        <hgroup class="person-item__credentials" data-user="<%=user.id%>">
           <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
-        <% end %>
+
           <h3 class="person-item__job"><%= user.position %></h3>
           <h4 class="person-item__org"><%= user.organization%></h4>
         </hgroup>
