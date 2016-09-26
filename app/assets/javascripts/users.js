@@ -52,7 +52,7 @@ function renderUserProfile(user) {
   $('.profile-panel__name').html(user.first_name + ' ' + user.last_name);
   $('.profile-panel__job').html(user.position);
   $('.profile-panel__org').html(user.organization);
-  $('.profile-panel__location').html(user.city + ' ' + user.country);
+  $('.profile-panel__location').html(user.city + ', ' + user.country);
 
 }
 
