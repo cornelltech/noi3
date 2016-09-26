@@ -1,0 +1,19 @@
+<div class="event-panel panel panel--3 " data-id="event-panel">
+  <i class="event-panel__action-button material-icons">close</i>
+  <h2 class="event-panel__content event-panel__heading">Events</h2>
+
+  <div class="events-container">
+    <% user.events.each do | event |  %>
+    <div class="event-panel__item">
+      <a href="#" target="_blank">
+        <%= image_tag('events/' + event.logo_path, :alt => event.name) %>
+      </a>
+    </div>
+    <% end %>
+  </div>
+  <div class="event-panel__add-item">
+    <i class="big-icon material-icons">add</i>
+    <h4>Add Event</h4>
+  </div>
+  
+</div>
