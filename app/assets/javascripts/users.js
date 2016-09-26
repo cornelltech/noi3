@@ -40,7 +40,7 @@ $(document).ready(function(){
       renderUserProfile(user);
       renderUserProjects(data.projects);
       renderUserEvents(data.events);
-      renderUserExpertise(data.categories);
+      renderUserExpertisePanel(data.categories);
     }).fail(function(err) {
       console.log(err);
     });
@@ -69,18 +69,18 @@ function renderUserEvents(events) {
 }
 
 
-function renderUserExpertise(categories) {
-  $('.category-tags').html('');
+function renderUserExpertisePanel(categories) {
+  $('.profile-panel__content .category-tags').html('');
   var categoriesHtml = '';
   if (categories) {
     categories.forEach(function(category) {
       categoriesHtml += '<li class="category-tag">';
-      categoriesHtml += '<span class="category-tag__main">' + category.name + '</span> ';
+      categoriesHtml += '<span class="category-tag__main">' + toTitleCase(category.name) + '</span> ';
       categoriesHtml += '<span class="category-tag__sub">Implementation</span></li>';
       categoriesHtml += '<li class="category-tag__skills">View Skills (10)</li>';
     });
   }
-  $('.category-tags').html(categoriesHtml);
+  $('.profile-panel__content .category-tags').html(categoriesHtml += '<li class="category-tag__skills">View Skills (10)</li>');
 }
 
 
@@ -107,8 +107,12 @@ function projectView(project) {
 }
 
 
-// UI 
-
+// helpers
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt){
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
 
 
 
