@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require users
+//= require sessions
 //= require_tree .
