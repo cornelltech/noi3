@@ -25,6 +25,17 @@
         <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span>
         <span class="user-menu__item user-menu__item--settings"><img src="images/users/128.jpg" alt=""></span>
       </div>
+
+      <!-- Auth header -->
+      <% if user_signed_in? %>
+        Logged in as <strong> <%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> |
+        <%= link_to "Login", new_user_session_path %>
+      <% end %>
+
     </header>
     
     <main class="app-wrapper">
@@ -35,7 +46,10 @@
         <a href="" class="main-menu__item" title="Match Me"><i class="material-icons">people</i></a>
         <a href="all-pages.html" class="main-menu__item" title="All Pages"><i class="material-icons">help</i></a>
       </nav>
-
+      
+      <%= render 'devise/sessions/new' %>
+      <%= render 'devise/registrations/new' %>
+      
       <%= yield %>
 
     </main>

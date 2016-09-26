@@ -1,0 +1,42 @@
+<div class="signin-panel panel panel--2 js-active">  
+  <h2 class="signup-panel__heading signup-panel__content">Sign In</h2>
+  <p class="signup-panel__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque voluptatum, excepturi assumenda accusantium?</p>
+
+
+<!-- raw FORM with generated auth token -->
+<form class="new_user form form--negative signup-panel__content signup-panel__form" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+<div class='form form--negative signup-panel__content signup-panel__form'>
+  <input autofocus="autofocus" placeholder="Email" type="email" value="" name="user[email]" id="user_email" />
+  <input autocomplete="off" placeholder="Password" type="password" name="user[password]" id="user_password" />
+  <button name="button" type="submit" class="button button--full button--main-color js-open-panel-2">Log in</button>
+  <div class="field">
+    <input name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
+    <label for="user_remember_me">Remember me</label>
+  </div>
+</div>
+</form>
+
+<!-- Rails helper form -->
+<!--   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class='form form--negative signup-panel__content signup-panel__form'>
+      <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+      <%= f.button "Log in", id: 'login_submit', type: '', class: 'button button--full button--main-color js-open-panel-2' %>
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+    </div>
+  <% end %> -->
+
+  <div class="signup-panel__action signup-panel__content">
+    <h4 class="signup-panel__action__title js-open-action-panel">How it works</h4>
+    <div class="signup-panel__action__content js-panel-action">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sed, sunt quisquam, sit aspernatur quam dolor? Nostrum ea recusandae dignissimos aperiam, dolore inventore magnam dolor, natus omnis debitis voluptatem nemo!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sed, sunt quisquam, sit aspernatur quam dolor? Nostrum ea recusandae dignissimos aperiam, dolore inventore magnam dolor, natus omnis debitis voluptatem nemo!</p>
+    </div>
+    
+  </div>
+</div>
