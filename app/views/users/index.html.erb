@@ -1,8 +1,6 @@
-<!-- USER PROFILE -->
+<!-- TODO: Default to current user if current_user, else default to first user -->
 <%= render 'profile', { user: @users.first }%>
-<!-- PROJECTS PANEL -->
 <%= render 'projects', { user: @users.first }%>
-<!-- EVENTS PANEL -->
 <%= render 'events', { user: @users.first }%>
 <%= render 'expertise', { user: @users.first }%>
 
