@@ -65,25 +65,25 @@ $('.js-open-action-panel').click(function () {
 
 
     // Smooth Scrolling Function
-    $('a[href*=#]:not([href=#])').click(function () {
-        var $targ = $(this.hash),
-            host1 = this.hostname,
-            host2 = location.hostname,
-            path1 = this.pathname.replace(/^\//, ''),
-            path2 = location.pathname.replace(/^\//, '');
+    // $('a[href*=#]:not([href=#])').click(function () {
+    //     var $targ = $(this.hash),
+    //         host1 = this.hostname,
+    //         host2 = location.hostname,
+    //         path1 = this.pathname.replace(/^\//, ''),
+    //         path2 = location.pathname.replace(/^\//, '');
 
-        if (!$targ.length) {
-            $targ = $('[name=' + this.hash.slice(1) + ']');
-        }
+    //     if (!$targ.length) {
+    //         $targ = $('[name=' + this.hash.slice(1) + ']');
+    //     }
 
-        if ($targ.length && (host1 === host2 || path1 === path2)) {
-            $('html, body').animate({ scrollTop: $targ.offset().top }, 1000);
+    //     if ($targ.length && (host1 === host2 || path1 === path2)) {
+    //         $('html, body').animate({ scrollTop: $targ.offset().top }, 1000);
 
-            return false;
-        }
+    //         return false;
+    //     }
 
-        return true;
-    });
+    //     return true;
+    // });
 
     // Modal Click Behavior
     $('.js-open-modal').click(function () {
@@ -177,14 +177,14 @@ $('.js-open-action-panel').click(function () {
     //     } else if (this.id=="company__location--input") {
     //         var searchString = $(this).val();
     //         companyList.search(searchString, ["company__location"]);
-    //     } 
+    //     }
     // });
 
 
     // $(".js-open-table-search").on("click", function(e) {
     //    $($(this).attr('data-target')).focus();
-    // }); 
-    
+    // });
+
     // // Xs and ESC TO CLOSE OUT FORM
     // var searchButtons = $('.table-sortable__search').find("button[type='submit']");
 
@@ -205,10 +205,10 @@ $('.js-open-action-panel').click(function () {
 
     // // SORT ICON
     // var sortClickButtons = $(".table-sortable__control > i:contains('keyboard_arrow_down')");
-    
+
     // sortClickButtons.on("click", function() {
     //     $(this).text() == "keyboard_arrow_down" ? $(this).text("keyboard_arrow_up") : $(this).text("keyboard_arrow_down")
-        
+
     // });
 
 }); // doc.ready
