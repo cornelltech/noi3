@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922193805) do
+ActiveRecord::Schema.define(version: 20160927194322) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160922193805) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-09-22 20:32:32'
+    t.datetime "date",            default: '2016-09-27 18:13:27'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -42,12 +42,40 @@ ActiveRecord::Schema.define(version: 20160922193805) do
     t.integer "user_id",  null: false
   end
 
+  create_table "industries", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "title",       default: ""
     t.string   "description", default: ""
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "user_id"
+  end
+
+  create_table "projects_users", id: false, force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "user_id",    null: false
+  end
+
+  create_table "skill_areas", force: :cascade do |t|
+    t.string   "name",       default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string   "short_name",    default: ""
+    t.string   "description",   default: ""
+    t.integer  "category_id"
+    t.integer  "skill_area_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["category_id"], name: "index_skills_on_category_id"
+    t.index ["skill_area_id"], name: "index_skills_on_skill_area_id"
   end
 
   create_table "users", force: :cascade do |t|
