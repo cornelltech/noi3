@@ -1,2 +1,0 @@
-class TeachableController < ApplicationController
-end
