@@ -9,7 +9,13 @@
   <section class="profile-panel__credentials">
     <div class="row">
       <div class="medium-6 small-12 column">
-        <p class="profile-panel__domains">Domains of Expertise Paruptiae latius peditatest aut maiorro eossi ini dolorrumqui deliqui demperum aspid magnatiunt</p>    
+        <p class="profile-panel__domains">Domains of Expertise: 
+
+        <%= user.industries.map {| industry | industry.name }.join(', ') %> 
+
+          
+
+        </p>    
       </div>
       <div class="medium-6 small-12 column">
         <p class="profile-panel__location"><%= user.city %>, <%= user.country %></p>
@@ -37,15 +43,21 @@
     </h5>
     <div class="profile-panel__content">
       <ul class="category-tags category-tags--negative">
-        <% user.categories.each do | category | %>
+
+        <% @expertise.each do |e|  %>
         <li class="category-tag">
-          <span class="category-tag__main"><%= category.name.titleize %></span>
-          <span class="category-tag__sub">Implementation</span>
-        </li>
-        <li class="category-tag__skills">View Skills (10)</li>
-        <% end %>
+          <span class="category-tag__main"><%= e[:category].titleize %></span>
+          <% e[:skill_area].each do |skill_area| %>
+          <span class="category-tag__sub"><%= skill_area.titleize %></span>
+          <% end %>
+          </li>
+        <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
+        <% end %>          
+
       </ul>
     </div>
+
+
   </section>
   <!-- {# ELSE #} -->
   <% else %>

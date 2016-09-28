@@ -8,7 +8,8 @@ var User = function(params) {
     this.organization = params.organization,
     this.organization_type = params.organization_type,
     this.city =  params.city,
-    this.country =  params.country;
+    this.country =  params.country
+    this.expertise =  params.expertise;
 };
 
 var Project = function(params) {
@@ -40,7 +41,8 @@ $(document).ready(function(){
       renderUserProfile(user);
       renderUserProjects(data.projects);
       renderUserEvents(data.events);
-      renderUserExpertisePanel(data.categories);
+      renderUserExpertisePanel(data.expertise);
+      renderDomains(data.industries)
     }).fail(function(err) {
       console.log(err);
     });
@@ -56,6 +58,13 @@ function renderUserProfile(user) {
 
 }
 
+function renderDomains(industries) {
+  industriesArr = [];
+  industries.forEach(function(industry) { industriesArr.push(industry.name ); });
+// debugger
+  $('.profile-panel__domains').html("Domains of Expertise: " +industriesArr.join(', '));
+}
+
 function renderUserEvents(events) {
   $('.events-container').html('');
   var eventsHtml = '';
@@ -69,19 +78,23 @@ function renderUserEvents(events) {
 }
 
 
-function renderUserExpertisePanel(categories) {
+function renderUserExpertisePanel(expertise) {
   $('.profile-panel__content .category-tags').html('');
-  var categoriesHtml = '';
-  if (categories) {
-    categories.forEach(function(category) {
-      categoriesHtml += '<li class="category-tag">';
-      categoriesHtml += '<span class="category-tag__main">' + toTitleCase(category.name) + '</span> ';
-      categoriesHtml += '<span class="category-tag__sub">Implementation</span></li>';
-      categoriesHtml += '<li class="category-tag__skills">View Skills (10)</li>';
+  var expertiseHtml = '';
+  if (expertise) {
+    expertise.forEach(function(e) {
+  // debugger
+      expertiseHtml += '<li class="category-tag">';
+      expertiseHtml += '<span class="category-tag__main">' + toTitleCase(e.category) + '</span> ';
+        e.skill_area.forEach(function(sa) {
+          expertiseHtml += '<span class="category-tag__sub">' + toTitleCase(sa) + '</span> ';
+        });
+      expertiseHtml += '</li><li class="category-tag__skills">View Skills (' + e.skills.length + ')</li>';
     });
   }
-  $('.profile-panel__content .category-tags').html(categoriesHtml += '<li class="category-tag__skills">View Skills (10)</li>');
+  $('.profile-panel__content .category-tags').html(expertiseHtml);
 }
+
 
 
 function renderUserProjects(projects) {
