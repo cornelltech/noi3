@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928153106) do
+ActiveRecord::Schema.define(version: 20160928160000) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160928153106) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-09-28 15:48:59'
+    t.datetime "date",            default: '2016-09-28 16:03:52'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20160928153106) do
   create_table "industries_users", id: false, force: :cascade do |t|
     t.integer "industry_id", null: false
     t.integer "user_id",     null: false
+  end
+
+  create_table "learnables", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_learnables_on_skill_id"
+    t.index ["user_id"], name: "index_learnables_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|

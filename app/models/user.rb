@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :industries
 
   has_many :teachables
+  has_many :learnables
 
 end
 
