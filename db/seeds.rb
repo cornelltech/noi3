@@ -70,3 +70,6 @@ User.all.each do |user|
   end
 end
 
+Teachable.create(user_id: 1, skill_id:1)
+Teachable.create(user_id: 1, skill_id:2)
+
