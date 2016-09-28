@@ -10,6 +10,7 @@ var User = function(params) {
     this.city =  params.city,
     this.country =  params.country
     this.expertise =  params.expertise;
+    this.main_expertise = params.main_expertise;
 };
 
 var Project = function(params) {
@@ -42,7 +43,8 @@ $(document).ready(function(){
       renderUserProjects(data.projects);
       renderUserEvents(data.events);
       renderUserExpertisePanel(data.expertise);
-      renderDomains(data.industries)
+      renderDomains(data.industries);
+      renderMainExpertise(data.main_expertise);
     }).fail(function(err) {
       console.log(err);
     });
@@ -86,7 +88,7 @@ function renderUserExpertisePanel(expertise) {
   // debugger
       expertiseHtml += '<li class="category-tag">';
       expertiseHtml += '<span class="category-tag__main">' + toTitleCase(e.category) + '</span> ';
-        e.skill_area.forEach(function(sa) {
+        e.skill_areas.forEach(function(sa) {
           expertiseHtml += '<span class="category-tag__sub">' + toTitleCase(sa) + '</span> ';
         });
       expertiseHtml += '</li><li class="category-tag__skills">View Skills (' + e.skills.length + ')</li>';
@@ -95,6 +97,28 @@ function renderUserExpertisePanel(expertise) {
   $('.profile-panel__content .category-tags').html(expertiseHtml);
 }
 
+
+function renderMainExpertise(expertise) {
+  expertiseMainHtml = '';
+  if (expertise) {
+    expertise.forEach(function(e) {
+      expertiseMainHtml += '<div class="expertise-panel__item">';
+      expertiseMainHtml +=  '<h3 class="expertise-panel__main-category">' + e.category + '</h3>';
+      expertiseMainHtml +=  '<section class="expertise-panel__question-group">';
+      e.skill_areas.forEach(function(sa) {
+        expertiseMainHtml += '<h4 class="expertise-panel__sub-category">'+ toTitleCase(sa.area_name) +'</h4>';
+        sa.area_skills.forEach(function(skill) {
+          expertiseMainHtml += '<p class="expertise-panel__question">' + skill + '</p>';  
+        });
+      expertiseMainHtml  += '</section>'
+      });  
+
+      expertiseMainHtml += '</div>';
+    });
+  }
+  $('.expertise-container').html(expertiseMainHtml);
+
+}
 
 
 function renderUserProjects(projects) {

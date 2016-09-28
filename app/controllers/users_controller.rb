@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @expertise = User.first.format_expertise
+    @main_expertise = User.first.format_main_expertise
     @categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prized-challenged", "design thinking", "citizen science"]
   end
 
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     @expertise = @user.format_expertise
     respond_to do |format|
       format.html 
-      format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :projects => @user.projects, :events => @user.events, :categories => @user.categories}}
+      format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @user.projects, :events => @user.events, :categories => @user.categories}}
     end
   end
 

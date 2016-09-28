@@ -68,7 +68,7 @@
           <% user.format_expertise.each do |e| %>
             <li class="category-tag">
               <span class="category-tag__main"><%= e[:category].titleize %></span>
-              <% e[:skill_area].each do |skill_area| %>
+              <% e[:skill_areas].each do |skill_area| %>
               <span class="category-tag__sub"><%= skill_area.titleize %></span>
               <% end %>
               </li>
