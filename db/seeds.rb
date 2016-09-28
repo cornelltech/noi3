@@ -37,17 +37,22 @@ Event.create(conference_code: "IODC", name: "3rd International Annual Open Data 
 
 User.all.each { | user | user.events<< Event.first }
 
+# Add industries to users
 industries = 
 ['Accounting','Agriculture','Animal Rights','Architecture & Planning','Arts & Culture','Aviation & Aerospace','Biotechnology','Business Licensing & Regulation','Chemicals','Children\'s Rights','Civic & Social Organization','Civil Rights & Civil Liberties','Computer Software','Construction & Civil Engineering','Consumer Protection/Debt','Consumer Services','Cyber Security','Design','Disability Rights','Economic Development','Education','Electricity','Employment & Labor','Energy','Environmental Services','Events Services','Executive Office','Facilities Services','Financial Services','Food and Drug','Foreign Affairs','Fund-Raising','Government Efficiency, Transparency & Accountability','Government Relations','Graphic Design','Health Care','Higher Education','Hospitality','Housing, Real Estate & Land Use','Human Resources','Human Rights','Immigration & Citizenship Services','Import & Export','Industrial Automation','Information Services & Technology','Insurance','Intellectual Property and Cyber Rights','International Affairs','International Aid & Development','International Trade','Internet','Judiciary','Juvenile Issues','Law Enforcement','Law & Legal Services','Legislative Policy','Logistics and Supply Chain','Management Consulting','Maritime','Market Research','Media & Communications','Medical Practice','Municipal','Museums and Institutions','National Security & Military','Nonprofit Organization Management','Philanthropy','Political Campaigns/Election','Political Organization','Public Benefits/Social Security','Public Policy','Public Relations','Public Safety & Emergencies','Racial Justice','Regulatory Affairs','Reproductive Rights','Research','Sanitation','Science & Innovation','Social Services','Space','Sports','Tax & Revenue','Telecommunications','Think Tanks','Trade & Investment','Transportation / Trucking / Railroad','Utilities & Water Resources','Women\'s Rights','Other']
 
 industries.each { | industry |  Industry.create(name:industry) }
 
-User.all.each {|user| user.industries << Industry.all.sample }
+3.times do
+  User.all.each {|user| user.industries << Industry.all.sample }
+end
 
+# Create Skill Areas
 areas = ['strategy', 'design', 'engagement', 'implementation', 'readiness', 'impact']
 
 areas.each {|skill| SkillArea.create(name: skill)}
 
+# Create Skills
 Skill.create(short_name: 'open_data-strategy', description: 'identify what data will help my organization achieve its core mission' , category_id: 1, skill_area_id:1)
 Skill.create(short_name: 'open_data-strategy', description: 'use the right infrastructure for making data available' , category_id: 1, skill_area_id:2)
 Skill.create(short_name: 'crowdsourcing-implementation', description: ' target the right audience to attract the desired crowd and participation' , category_id: 2, skill_area_id: 3)
@@ -57,5 +62,11 @@ Skill.create(short_name: 'citizen-science-strategy', description: 'identify a co
 Skill.create(short_name: 'open_data-readiness', description: 'get organizational approval for opening data' , category_id: 1, skill_area_id:5)
 Skill.create(short_name: 'open_data-impact', description: 'express the value proposition of the open data datasets, including what problems can be solved with this data' , category_id: 1, skill_area_id:6)
 
-# User.all.each {|user| user.skills << Skill.all.random }
+# Create Teachable and Learnable relationships
+User.all.each do |user|
+  2.times do 
+    Learnable.create(user_id: user.id, skill_id: rand(1..Skill.all.count))
+    Teachable.create(user_id: user.id, skill_id: rand(1..Skill.all.count))
+  end
+end
 
