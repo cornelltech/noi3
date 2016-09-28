@@ -108,7 +108,7 @@ function renderMainExpertise(expertise) {
       e.skill_areas.forEach(function(sa) {
         expertiseMainHtml += '<h4 class="expertise-panel__sub-category">'+ toTitleCase(sa.area_name) +'</h4>';
         sa.area_skills.forEach(function(skill) {
-          expertiseMainHtml += '<p class="expertise-panel__question">' + skill + '</p>';  
+          expertiseMainHtml += '<p class="expertise-panel__question">' + capitalizeFirstLetter(skill) + '</p>';  
         });
       expertiseMainHtml  += '</section>'
       });  
@@ -151,6 +151,10 @@ function toTitleCase(str) {
   });
 }
 
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 
