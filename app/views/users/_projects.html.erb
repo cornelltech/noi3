@@ -13,6 +13,17 @@
         <span class="category-tag__sub">Implemenation</span>
       </li>
     </ul>
+
+    <!-- ADD INDUSTRY TAGS TO PROJECTS -->
+    <ul class="person-item__tags category-tags category-tags--negative">
+    <% project.industries.each do | industry| %>
+      <li class="person-item__tag category-tag">
+        <span class="category-tag__main"><%= industry.name %></span>
+      </li>
+    <% end %>
+    </ul>
+
+
     <p><%= project.description %></p>
   </div>
   <% end %>

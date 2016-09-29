@@ -47,6 +47,11 @@ industries.each { | industry |  Industry.create(name:industry) }
   User.all.each {|user| user.industries << Industry.all.sample }
 end
 
+3.times do
+  Project.all.each {|project| project.industries << Industry.all.sample }
+end
+
+
 # Create Skill Areas
 areas = ['strategy', 'design', 'engagement', 'implementation', 'readiness', 'impact']
 

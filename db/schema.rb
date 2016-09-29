@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928160000) do
+ActiveRecord::Schema.define(version: 20160929164755) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160928160000) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-09-28 16:03:52'
+    t.datetime "date",            default: '2016-09-29 16:50:36'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -46,6 +46,11 @@ ActiveRecord::Schema.define(version: 20160928160000) do
     t.string   "name",       default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "industries_projects", id: false, force: :cascade do |t|
+    t.integer "industry_id", null: false
+    t.integer "project_id",  null: false
   end
 
   create_table "industries_users", id: false, force: :cascade do |t|
