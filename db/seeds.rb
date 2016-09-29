@@ -19,6 +19,7 @@ end
   Project.create!(
       title: Faker::Commerce.product_name,
       description: Faker::Lorem.paragraph,
+      url: Faker::Internet.url('example.com'),
       user_id: rand(1..20)
     )
 end
@@ -34,6 +35,7 @@ categories.each do | category |
     cat.skill_areas << SkillArea.create(name: skill_area, long_name: cat.name.parameterize + '-' + skill_area, category_id: cat.id)
     end
 end
+
 3.times do
   User.all.each {|user| user.categories << Category.find(rand(1..8)) }
 end
@@ -56,7 +58,7 @@ end
   Project.all.each {|project| project.industries << Industry.all.sample }
 end
 
-2.times do
+5.times do
   Project.all.each { |project| project.skill_areas << SkillArea.find(rand(1..SkillArea.all.count)) }
 end
 

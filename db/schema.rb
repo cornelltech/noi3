@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160929194335) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-09-29 19:59:15'
+    t.datetime "date",            default: '2016-09-29 21:08:02'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160929194335) do
   create_table "projects", force: :cascade do |t|
     t.string   "title",       default: ""
     t.string   "description", default: ""
+    t.string   "url"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "user_id"
