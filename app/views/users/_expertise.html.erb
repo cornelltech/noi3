@@ -2,21 +2,21 @@
   <i class="expertise-panel__action-button material-icons">close</i>
   <h2 class="expertise-panel__content expertise-panel__heading">Expertise</h2>
   
-  <% 2.times do %>
+  <div class="expertise-container">
+  <% @main_expertise.each do | expertise | %>
   <div class="expertise-panel__item">    
-    <h3 class="expertise-panel__main-category">Open Data</h3>
-    <section class="expertise-panel__question-group">
-      <h4 class="expertise-panel__sub-category">Design</h4>
-      <p class="expertise-panel__question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ea repellendus mollitia ipsa dignissimos placeat.</p>
-      <p class="expertise-panel__question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ea repellendus mollitia ipsa dignissimos placeat.</p>
-    </section>
-    <section class="expertise-panel__question-group">
-      <h4 class="expertise-panel__sub-category">Implementation</h4>
-      <p class="expertise-panel__question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ea repellendus mollitia ipsa dignissimos placeat.</p>
-      <p class="expertise-panel__question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio ea repellendus mollitia ipsa dignissimos placeat.</p>
-    </section>
+    <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
+      <% expertise[:skill_areas].each do |sa| %>
+        <section class="expertise-panel__question-group">
+          <h4 class="expertise-panel__sub-category"><%= sa[:area_name].titleize %> </h4>
+          <% sa[:area_skills].each do |skill| %>
+          <p class="expertise-panel__question"><%= skill.capitalize %></p>
+          <% end %>
+        </section>
+      <% end %>
   </div>
   <% end %>
+  </div>
   
   <div class="expertise-panel__add-item">
     <i class="big-icon material-icons">add</i>

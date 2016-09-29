@@ -8,7 +8,9 @@ var User = function(params) {
     this.organization = params.organization,
     this.organization_type = params.organization_type,
     this.city =  params.city,
-    this.country =  params.country;
+    this.country =  params.country
+    this.expertise =  params.expertise;
+    this.main_expertise = params.main_expertise;
 };
 
 var Project = function(params) {
@@ -40,7 +42,9 @@ $(document).ready(function(){
       renderUserProfile(user);
       renderUserProjects(data.projects);
       renderUserEvents(data.events);
-      renderUserExpertisePanel(data.categories);
+      renderUserExpertisePanel(data.expertise);
+      renderDomains(data.industries);
+      renderMainExpertise(data.main_expertise);
     }).fail(function(err) {
       console.log(err);
     });
@@ -56,6 +60,13 @@ function renderUserProfile(user) {
 
 }
 
+function renderDomains(industries) {
+  industriesArr = [];
+  industries.forEach(function(industry) { industriesArr.push(industry.name ); });
+// debugger
+  $('.profile-panel__domains').html("Domains of Expertise: " +industriesArr.join(', '));
+}
+
 function renderUserEvents(events) {
   $('.events-container').html('');
   var eventsHtml = '';
@@ -69,18 +80,44 @@ function renderUserEvents(events) {
 }
 
 
-function renderUserExpertisePanel(categories) {
+function renderUserExpertisePanel(expertise) {
   $('.profile-panel__content .category-tags').html('');
-  var categoriesHtml = '';
-  if (categories) {
-    categories.forEach(function(category) {
-      categoriesHtml += '<li class="category-tag">';
-      categoriesHtml += '<span class="category-tag__main">' + toTitleCase(category.name) + '</span> ';
-      categoriesHtml += '<span class="category-tag__sub">Implementation</span></li>';
-      categoriesHtml += '<li class="category-tag__skills">View Skills (10)</li>';
+  var expertiseHtml = '';
+  if (expertise) {
+    expertise.forEach(function(e) {
+  // debugger
+      expertiseHtml += '<li class="category-tag">';
+      expertiseHtml += '<span class="category-tag__main">' + toTitleCase(e.category) + '</span> ';
+        e.skill_areas.forEach(function(sa) {
+          expertiseHtml += '<span class="category-tag__sub">' + toTitleCase(sa) + '</span> ';
+        });
+      expertiseHtml += '</li><li class="category-tag__skills">View Skills (' + e.skills.length + ')</li>';
     });
   }
-  $('.profile-panel__content .category-tags').html(categoriesHtml += '<li class="category-tag__skills">View Skills (10)</li>');
+  $('.profile-panel__content .category-tags').html(expertiseHtml);
+}
+
+
+function renderMainExpertise(expertise) {
+  expertiseMainHtml = '';
+  if (expertise) {
+    expertise.forEach(function(e) {
+      expertiseMainHtml += '<div class="expertise-panel__item">';
+      expertiseMainHtml +=  '<h3 class="expertise-panel__main-category">' + e.category + '</h3>';
+      expertiseMainHtml +=  '<section class="expertise-panel__question-group">';
+      e.skill_areas.forEach(function(sa) {
+        expertiseMainHtml += '<h4 class="expertise-panel__sub-category">'+ toTitleCase(sa.area_name) +'</h4>';
+        sa.area_skills.forEach(function(skill) {
+          expertiseMainHtml += '<p class="expertise-panel__question">' + capitalizeFirstLetter(skill) + '</p>';  
+        });
+      expertiseMainHtml  += '</section>'
+      });  
+
+      expertiseMainHtml += '</div>';
+    });
+  }
+  $('.expertise-container').html(expertiseMainHtml);
+
 }
 
 
@@ -98,11 +135,17 @@ function renderUserProjects(projects) {
 
 function projectView(project) {
   var projectHtml = '<div class="project-panel__item">';
-  projectHtml += '<h3 class="project-panel__title">' + project.title + '</h3>';
-  projectHtml += '<a class="project-panel__url" href="#" target="_blank">data.la.gov</a>';
+  projectHtml += '<h3 class="project-panel__title">' + project.project.title + '</h3>';
+  projectHtml += '<a class="project-panel__url" href="#" target="_blank">' + project.project.url+ '</a>';
   projectHtml += '<ul class="person-item__tags category-tags category-tags--negative">';
-  projectHtml += '<li class="person-item__tag category-tag"><span class="category-tag__main">Open Data</span><span class="category-tag__sub">Implemenation</span></li>';
-  projectHtml += '</ul><p>'+ project.description + '</p></div>';
+  project.tags.forEach(function(p) {
+  projectHtml += '<li class="person-item__tag category-tag"><span class="category-tag__main"> '+ toTitleCase(p.category) +'</span>';
+    p.skill_areas.forEach(function(sa){
+      projectHtml += '<span class="category-tag__sub"> ' + toTitleCase(sa) + '</span>';
+    });
+  });
+  projectHtml += '</li><span class="industry-tag">' + project.industries + '</span>'
+  projectHtml += '</ul><p>'+ project.project.description + '</p></div>';
   return projectHtml;
 }
 
@@ -114,6 +157,10 @@ function toTitleCase(str) {
   });
 }
 
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 
