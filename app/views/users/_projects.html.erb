@@ -19,10 +19,9 @@
         </li>
       <% end %>
 
-    <!-- ADD INDUSTRY TAGS TO PROJECTS  -->
-    <ul class="person-item__tags category-tags category-tags--negative">
-      <li class="person-item__tag category-tag"><span class="category-tag__sub"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span></li>
-    </ul>
+    <!-- ADD INDUSTRY TAGS TO PROJECTS / NEEDS STYLING -->
+ 
+    <span class="industry-tag"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
 
 
     <p><%= project.description %></p>

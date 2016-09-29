@@ -10,9 +10,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @expertise = @user.format_expertise
+
+    @projects = []
+
+    @user.projects.each do | project |
+      project_with_tags = {project: project,tags:'', industries:''}
+      project_with_tags[:tags] = project.format_categories
+      project_with_tags[:industries] = project.industries.map {| industry | industry.name }.sort.join(', ')
+      @projects.push(project_with_tags)
+    end
+
     respond_to do |format|
       format.html 
-      format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @user.projects, :events => @user.events, :categories => @user.categories}}
+      format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
     end
   end
 

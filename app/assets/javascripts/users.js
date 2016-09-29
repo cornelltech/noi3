@@ -135,11 +135,17 @@ function renderUserProjects(projects) {
 
 function projectView(project) {
   var projectHtml = '<div class="project-panel__item">';
-  projectHtml += '<h3 class="project-panel__title">' + project.title + '</h3>';
-  projectHtml += '<a class="project-panel__url" href="#" target="_blank">data.la.gov</a>';
+  projectHtml += '<h3 class="project-panel__title">' + project.project.title + '</h3>';
+  projectHtml += '<a class="project-panel__url" href="#" target="_blank">' + project.project.url+ '</a>';
   projectHtml += '<ul class="person-item__tags category-tags category-tags--negative">';
-  projectHtml += '<li class="person-item__tag category-tag"><span class="category-tag__main">Open Data</span><span class="category-tag__sub">Implemenation</span></li>';
-  projectHtml += '</ul><p>'+ project.description + '</p></div>';
+  project.tags.forEach(function(p) {
+  projectHtml += '<li class="person-item__tag category-tag"><span class="category-tag__main"> '+ toTitleCase(p.category) +'</span>';
+    p.skill_areas.forEach(function(sa){
+      projectHtml += '<span class="category-tag__sub"> ' + toTitleCase(sa) + '</span>';
+    });
+  });
+  projectHtml += '</li><span class="industry-tag">' + project.industries + '</span>'
+  projectHtml += '</ul><p>'+ project.project.description + '</p></div>';
   return projectHtml;
 }
 
