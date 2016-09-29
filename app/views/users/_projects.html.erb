@@ -12,15 +12,17 @@
         <span class="category-tag__main">Open Data</span>
         <span class="category-tag__sub">Implemenation</span>
       </li>
+      <% project.skill_areas.each do |sa| %>
+        <li class="person-item__tag category-tag">
+        <span class="category-tag__main"><%= sa.category.name.titleize %></span>
+        <span class="category-tag__sub"><%= sa.name.titleize %></span>
+      </li>
+    <% end %>
     </ul>
 
     <!-- ADD INDUSTRY TAGS TO PROJECTS -->
     <ul class="person-item__tags category-tags category-tags--negative">
-    <% project.industries.each do | industry| %>
-      <li class="person-item__tag category-tag">
-        <span class="category-tag__main"><%= industry.name %></span>
-      </li>
-    <% end %>
+      <li class="person-item__tag category-tag"><span class="category-tag__sub"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span></li>
     </ul>
 
 
