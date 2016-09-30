@@ -1,4 +1,6 @@
 require 'faker'
+require 'csv'
+
 
 20.times do
   User.create!(
@@ -15,6 +17,17 @@ require 'faker'
     )
 end
 
+# GENERATE CATEGORIES/SKILL AREAS/SKILLS via CSV Questionnaire
+csv_file_path = 'db/test-questionnaire-noi.csv'
+
+CSV.foreach(csv_file_path, :headers => true) do |row|
+  category = Category.where(name:row[0].downcase).first_or_create
+  skill_area = SkillArea.where(name: row[1].downcase, long_name: row[0].parameterize + '-' + row[1].parameterize, category_id: category.id).first_or_create
+  skill = Skill.where(short_name:skill_area.long_name, description: row[2], category_id: category.id, skill_area_id: skill_area.id).first_or_create
+end
+
+# OTHER SEED DATA
+
 50.times do 
   Project.create!(
       title: Faker::Commerce.product_name,
@@ -24,17 +37,17 @@ end
     )
 end
 
-categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prizes", "design thinking", "citizen science"]
+# categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prizes", "design thinking", "citizen science"]
 
-# Create Skill Areas
-areas = ['strategy', 'design', 'engagement', 'implementation', 'readiness', 'impact']
+# # Create Skill Areas
+# areas = ['strategy', 'design', 'engagement', 'implementation', 'readiness', 'impact']
 
-categories.each do | category |
-  cat = Category.create(name: category)
-  areas.each do | skill_area | 
-    cat.skill_areas << SkillArea.create(name: skill_area, long_name: cat.name.parameterize + '-' + skill_area, category_id: cat.id)
-    end
-end
+# categories.each do | category |
+#   cat = Category.create(name: category)
+#   areas.each do | skill_area | 
+#     cat.skill_areas << SkillArea.create(name: skill_area, long_name: cat.name.parameterize + '-' + skill_area, category_id: cat.id)
+#     end
+# end
 
 3.times do
   User.all.each {|user| user.categories << Category.find(rand(1..8)) }
@@ -63,24 +76,9 @@ end
 end
 
 
-# # Create Skill Areas
-# areas = ['strategy', 'design', 'engagement', 'implementation', 'readiness', 'impact']
+# SkillArea.all.each { |sa| sa.skills << Skill.create!(short_name: sa.long_name, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac ex leo. Quisque ut tortor aliquet, rutrum turpis eu, vestibulum erat. Donec fringilla in ex non vulputate' , category_id: sa.category.id, skill_area_id: sa.id)}
 
-# areas.each {|skill| SkillArea.create(name: skill)}
-
-# Create Skills
-# Skill.create(short_name: 'open_data-strategy', description: 'identify what data will help my organization achieve its core mission' , category_id: 1, skill_area_id:1)
-# Skill.create(short_name: 'open_data-strategy', description: 'use the right infrastructure for making data available' , category_id: 1, skill_area_id:2)
-# Skill.create(short_name: 'crowdsourcing-implementation', description: ' target the right audience to attract the desired crowd and participation' , category_id: 2, skill_area_id: 3)
-# Skill.create(short_name: 'crowdsourcing-implementation', description: ' choose a platform to do the crowdsourcing project' , category_id: 2, skill_area_id: 4)
-# Skill.create(short_name: 'prizes-implementation', description: ' choose from the tools available to run a prize-backed challenge', category_id: 6, skill_area_id:4)
-# Skill.create(short_name: 'citizen-science-strategy', description: 'identify a compelling goal for a citizen science project', category_id:8, skill_area_id:1)
-# Skill.create(short_name: 'open_data-readiness', description: 'get organizational approval for opening data' , category_id: 1, skill_area_id:5)
-# Skill.create(short_name: 'open_data-impact', description: 'express the value proposition of the open data datasets, including what problems can be solved with this data' , category_id: 1, skill_area_id:6)
-
-SkillArea.all.each { |sa| sa.skills << Skill.create!(short_name: sa.long_name, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac ex leo. Quisque ut tortor aliquet, rutrum turpis eu, vestibulum erat. Donec fringilla in ex non vulputate' , category_id: sa.category.id, skill_area_id: sa.id)}
-
-# Create Teachable and Learnable relationships
+# # Create Teachable and Learnable relationships
 User.all.each do |user|
   2.times do 
     Learnable.create(user_id: user.id, skill_id: rand(1..Skill.all.count))
@@ -88,6 +86,9 @@ User.all.each do |user|
   end
 end
 
-Teachable.create(user_id: 1, skill_id:1)
-Teachable.create(user_id: 1, skill_id:2)
+# Teachable.create(user_id: 1, skill_id:1)
+# Teachable.create(user_id: 1, skill_id:2)
+
+
+
 
