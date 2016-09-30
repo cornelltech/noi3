@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   resources :users, :path => 'search'
+  resources :surveys
   root 'pages#index'
 
   namespace :api do

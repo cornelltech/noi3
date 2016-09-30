@@ -127,6 +127,13 @@ ActiveRecord::Schema.define(version: 20161003001237) do
     t.index ["skill_area_id"], name: "index_skills_on_skill_area_id"
   end
 
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_surveys_on_skill_id"
+  end
+
   create_table "teachables", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
