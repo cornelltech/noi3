@@ -1,0 +1,190 @@
+category,skill_area,skill
+OPEN DATA,Strategy,identify what data will help my organization achieve its core mission
+OPEN DATA,Strategy,craft a clear policy explaining what data to open and how
+OPEN DATA,Strategy,identify and combine other sources of open data to achieve a goal
+OPEN DATA,Design,use the right infrastructure for making data available
+OPEN DATA,Design,what formats to publish data in
+OPEN DATA,Design,determine how often datasets should be released and updated
+OPEN DATA,Design,design a data collaborative
+OPEN DATA,Engagement,create incentives for users or the public to make productive use of the data
+OPEN DATA,Engagement,do public consultation on an open data policy
+OPEN DATA,Implementation,make data machine-readable
+OPEN DATA,Implementation,scrape data from my domain
+OPEN DATA,Implementation,managing an open data project
+OPEN DATA,Readiness,get organizational approval for opening data
+OPEN DATA,Readiness,distinguish between potentially sensitive data and non-sensitive data
+OPEN DATA,Readiness,license my data
+OPEN DATA,Readiness,ensure continued data quality and integrity
+OPEN DATA,Impact," express the value proposition of the open data datasets,including what problems can be solved with this data"
+OPEN DATA,Impact,monitor how my data is being used
+OPEN DATA,Impact,measure the economic and/or social impact of opening up data
+CITIZEN SCIENCE,Strategy,identify a compelling goal for a citizen science project
+CITIZEN SCIENCE,Strategy,articulate intended outcomes of a project
+CITIZEN SCIENCE,Strategy,define the success of a project
+CITIZEN SCIENCE,Strategy,identify funding opportunities for a project
+CITIZEN SCIENCE,Strategy,decide the types of tasks to be considered when developing a citizen science project
+CITIZEN SCIENCE,Strategy,articulate how the tasks will advance a research field
+CITIZEN SCIENCE,Strategy,
+CITIZEN SCIENCE,Design,identify and define the tasks for participants to do
+CITIZEN SCIENCE,Design,define and validate a protocol for an experiment and required data collection
+CITIZEN SCIENCE,Design,define a project in terms of time required and geographic range
+CITIZEN SCIENCE,Design,design/adapt protocols to assure high quality data
+CITIZEN SCIENCE,Design," identify and decide on the optimal platform for sharing data submitted by participants,in a way that helps them interpret the data"
+CITIZEN SCIENCE,Design," identify and decide on the optimal platform for sharing data submitted by participants,with other researchers or data hubs"
+CITIZEN SCIENCE,Engagement,prepare individuals to participate in a project
+CITIZEN SCIENCE,Engagement,scale up participation
+CITIZEN SCIENCE,Engagement,identify collaborators around the project
+CITIZEN SCIENCE,Engagement,define and develop gamification in projects
+CITIZEN SCIENCE,Engagement," identify what people are competing to do (e.g. quantity,frequency,quality of participation)"
+CITIZEN SCIENCE,Engagement," identify,choose and recruit participants capable of contributing high quality data"
+CITIZEN SCIENCE,Engagement,engage with and/or create a community for participants
+CITIZEN SCIENCE,Engagement,retain participants
+CITIZEN SCIENCE,Engagement,prepare people within my institution to make use of citizen scientists’ input
+CITIZEN SCIENCE,Implementation,develop an FAQ for participants to reference throughout the process
+CITIZEN SCIENCE,Implementation,evaluate and implement the appropriate use of technology for collecting and reporting data given the task I am asking people to do
+CITIZEN SCIENCE,Implementation,archive data
+CITIZEN SCIENCE,Implementation,attribute contributions to the relevant parties
+CITIZEN SCIENCE,Implementation,address variations and skew in participation
+CITIZEN SCIENCE,Implementation,draft a data policy
+CITIZEN SCIENCE,Implementation,
+CITIZEN SCIENCE,Implementation,
+CITIZEN SCIENCE,Readiness,identify and mitigate privacy concerns relating to data collected
+CITIZEN SCIENCE,Readiness,ensure COPPA compliance in projects featuring minors
+CITIZEN SCIENCE,Readiness,draft a privacy policy
+CITIZEN SCIENCE,Readiness,identify considerations related to participants sharing their locations
+CITIZEN SCIENCE,Readiness,ask people to license their contributions
+CITIZEN SCIENCE,Readiness,license data that is going to be published
+CITIZEN SCIENCE,Readiness,draft other liability policies and educate potential participants about privacy issues
+CITIZEN SCIENCE,Readiness,assess data quality
+CITIZEN SCIENCE,Readiness,identify funding opportunities to sustain a project
+CITIZEN SCIENCE,Impact,measure and evaluate the success of a project
+CITIZEN SCIENCE,Impact,interpret data being collected before the project has been completed
+CITIZEN SCIENCE,Impact,interpret data collected when the project has been completed
+CITIZEN SCIENCE,Impact,identify the societal relevance of your project
+CITIZEN SCIENCE,Impact," translate the outcomes of the project into desired changes: (government,institutional,societal)"
+CITIZEN SCIENCE,Impact,communicate results and milestones to participants
+CITIZEN SCIENCE,Impact,identify avenues for publishing results
+CITIZEN SCIENCE,Impact,determine when to publish results
+CITIZEN SCIENCE,Impact,ensure sustainability of project management
+CROWDSOURCING,Strategy,decide when to use crowdsourcing rather than other options like the conventional top-down process of decision-making
+CROWDSOURCING,Strategy,identify the gaps in expertise that can be minimised through the participation of the crowd
+CROWDSOURCING,Strategy,define the scope of the crowds participation
+CROWDSOURCING,Strategy,create a plan for running the crowdsourcing project with defined milestones
+CROWDSOURCING,Strategy,design a crowdsourcing strategy for it to also meet your user needs
+CROWDSOURCING,Design,identify the characteristics of the right audience
+CROWDSOURCING,Design," ask the crowd to perform a specific task (e.g. design a product,tag photos,classify information,analyze information)"
+CROWDSOURCING,Design," ask the crowd to collect and share data (e.g. report a water leak,a case of corruption,quality of the air at their city)"
+CROWDSOURCING,Design," ask the crowd for their opinion (e.g. vote on a design contest,opine on a policy recommendation)"
+CROWDSOURCING,Design," ask the crowd for new ideas (e.g. solve a public problem,a scientific problem,generate ideas to reduce unnecessary government spending)"
+CROWDSOURCING,Design," ask the crowd for funds (e.g. donate money to help film a documentary,open a fair trade restaurant)"
+CROWDSOURCING,Engagement,target the right audience to attract the desired crowd and participation
+CROWDSOURCING,Engagement,decide whether to use financial or non-financial incentives
+CROWDSOURCING,Engagement,determine whether the use of a competition is optimal
+CROWDSOURCING,Engagement,maximise altruistic or community building incentives
+CROWDSOURCING,Engagement,design recreational incentives (i.e. gamification)
+CROWDSOURCING,Engagement,identify which particular incentive is working and why
+CROWDSOURCING,Engagement,create incentives for high quality contributions from the crowd
+CROWDSOURCING,Engagement,develop a communication strategy to target the right audience
+CROWDSOURCING,Implementation,choose a platform to do the crowdsourcing project
+CROWDSOURCING,Implementation,access outside contractors to support the design and implementation of the desired crowdsourcing platform
+CROWDSOURCING,Implementation,obtain feedback from the crowd and use it to iterate your project
+CROWDSOURCING,Implementation,implement the wisdom of the crowd
+CROWDSOURCING,Readiness,tackle the possible credibility/authenticity issues involved in the input I received from the crowd
+CROWDSOURCING,Readiness,ensure a high quality and accurate participation from the crowd
+CROWDSOURCING,Readiness,determine ownership and copyright of crowd contributions
+CROWDSOURCING,Readiness,navigate governmental endorsement and privacy concerns
+CROWDSOURCING,Readiness,assess the potential costs involved in the crowd participation
+CROWDSOURCING,Impact,assess the effectiveness of using crowdsourcing
+CROWDSOURCING,Impact," use the crowd to evaluate the crowd contributions (through voting,rating or peer-review)"
+COMMUNITY ENGAGEMENT,Strategy,"Clearly identify the rationale,purpose and objectives for community engagement."
+COMMUNITY ENGAGEMENT,Strategy,Find and interpret relevant legislative and/or policy requirements driving the need for engagement.
+COMMUNITY ENGAGEMENT,Design,Develop an action/project plan with timeline to implement the engagement.
+COMMUNITY ENGAGEMENT,Engagement,"Identify who needs to be involved,including all stakeholders affected,impacted or interested in the engagement."
+COMMUNITY ENGAGEMENT,Engagement,"Identify and communicate incentives to participate,including anticipated outcomes."
+COMMUNITY ENGAGEMENT,Engagement,Use multiple dialog methods to engage stakeholders.
+COMMUNITY ENGAGEMENT,Engagement,Ensure accessibility of the engagement activity
+COMMUNITY ENGAGEMENT,Engagement,"Use social media,digital and online tools to engage stakeholders as a group"
+COMMUNITY ENGAGEMENT,Engagement,"Use social media,digital and online tools to conduct surveys"
+COMMUNITY ENGAGEMENT,Engagement,Use digital and online tools to amplify engagement efforts and increase reach.
+COMMUNITY ENGAGEMENT,Engagement,Use digital and online tools to provide feedback to stakeholders.
+COMMUNITY ENGAGEMENT,Engagement,Develop briefing materials and information to inform engagement.
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver face-to-face deliberation.
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver a deliberative poll.
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver a citizen jury.
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver a participatory budgeting process.
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver a charrette or scenario-planning exercise.
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver an e-deliberation process like a 21st century town meeting
+COMMUNITY ENGAGEMENT,Implementation,Plan and deliver open space technology.
+COMMUNITY ENGAGEMENT,Readiness,Increase organisational awareness of the value of community engagement.
+COMMUNITY ENGAGEMENT,Impact,Capture and utilise relevant data related to all aspects of engagement.
+COMMUNITY ENGAGEMENT,Impact,Clearly and regularly report outcomes to participants and stakeholders.
+COMMUNITY ENGAGEMENT,Impact,Ensure that the learnings from a community engagement exercise get used to support continuous improvement within my organisation.
+PRIZES,Strategy,decide when to use a prize-backed challenge rather than other options like conventional crowdsourcing
+PRIZES,Strategy,determine whether a prize or a grand challenge is optimal
+PRIZES,Strategy,create a plan for running the prize with defined milestones
+PRIZES,Design,define and express the problem addressed by the prize.
+PRIZES,Design,do rapid research to test the assumptions behind my problem definition
+PRIZES,Design,decide whether to use financial or non-financial incentives
+PRIZES,Design,set the value of a prize
+PRIZES,Design,identify would-be participating innovators
+PRIZES,Engagement,develop a communication strategy to get the word out
+PRIZES,Engagement,access outside contractors to support the design and implementation of the prizes
+PRIZES,Engagement,select judges
+PRIZES,Implementation,decide how long the prize should run
+PRIZES,Implementation,choose from the tools available to run a prize-backed challenge
+PRIZES,Implementation,fund a prize-backed challenge
+PRIZES,Readiness,assess the the potential costs of [participation?]
+PRIZES,Impact,develop metrics to use to measure progress
+PRIZES,Impact,translate winning entries into well-developed solutions
+LAB DESIGN,Strategy,articulate the value proposition of my Lab and the need for experimentation
+LAB DESIGN,Strategy,develop a plan for my Lab 
+LAB DESIGN,Strategy," clearly articulate the problems that my Lab is supposed to solve,and the assumptions it is going to test "
+LAB DESIGN,Strategy,define the service lines for my Lab
+LAB DESIGN,Strategy,articulate a clear theory of change for my Lab
+LAB DESIGN,Design,define the roles and Terms of Reference staff need for the success of my Lab
+LAB DESIGN,Design,effectively argue for the most effective reporting lines and organisational placement for my Lab
+LAB DESIGN,Engagement,define an engagement model for my Lab vis a vis other parts of my organisation
+LAB DESIGN,Engagement,define a handover protocol between my Lab and other parts of the organisation
+LAB DESIGN,Engagement,train others in Lab methodologies and tools
+LAB DESIGN,Engagement,effectively recruit a group of early champions to support the Lab
+LAB DESIGN,Implementation,select and implement the methodologies that my Lab will promote
+LAB DESIGN,Implementation,manage a Lab project using an agile development approach
+LAB DESIGN,Implementation," track,evidence and iterate our programmes to ensure relevance and generate timely results"
+LAB DESIGN,Implementation," manage resources,including people,time and budget to ensure value for money"
+LAB DESIGN,Readiness,cost the services for my Lab and define a business model that guarantees long term sustainability
+LAB DESIGN,Impact,define metrics for my Lab to demonstrate its impact
+LAB DESIGN,Impact," capture,articulate and share the narrative around the impact and outcomes of lab programmes,i.e. through case studies"
+LAB DESIGN,Impact,develop a portfolio of demonstration projects that can demonstrate tangible results even in the face of skepticism
+LAB DESIGN,Impact," research,pilot and test new programmes based on the insights and knowhow gathered from previous ones"
+RCTs,Strategy,Identifying an empirically testable question.
+RCTs,Design,Identifying an evaluation model that allows for causal inference as to whether the test worked
+RCTs,Design,Identifying data to evaluate using the evaluation model
+RCTs,Design,Writing a credible plan for analysing the data in advance of launching
+RCTs,Design,Embedding evaluation within the program without undue disruption
+RCTs,Engagement,
+RCTs,Implementation,Using randomization to create a robust control group for comparison
+RCTs,Implementation,Choosing which group gets which version of the intervention
+RCTs,Implementation,Translating the technical aspects of the evaluation into practical instructions for those involved in implementation
+RCTs,Implementation,Cleaning the data that comes in
+RCTs,Implementation,Determining the right method for analysing the results
+RCTs,Implementation,Analyzing the results and performing robustness checks
+RCTs,Readiness,Ensuring that evaluation is statistically significant
+RCTs,Readiness,Working with small sample sizes and imperfect conditions
+RCTs,Readiness,Monitoring data quality throughout the trial
+RCTs,Readiness,Documenting and accounting for any contamination that happens in the implementation
+RCTs,Readiness,Handling data safely and securely
+RCTs,Impact,Interpreting the results and reporting the findings in an accessible and accurate manner
+RCTs,Impact,Making key concepts such as statistical significance and Type I and II errors understandable to non-statisticians
+RCTs,Impact,Helping the organisation use the results to make strategic decisions about  work and invest in future
+DATA SCIENCE,Strategy,craft an information governance policy.
+DATA SCIENCE,Design,formulate and test a hypothesis using data.
+DATA SCIENCE,Design,design an experiment to test a data-driven hypothesis.
+DATA SCIENCE,Engagement,create incentives for people to provide data.
+DATA SCIENCE,Implementation," make sure that data is accurate,timely,and clean. (Data processing and conditioning)"
+DATA SCIENCE,Implementation,use new methods (e.g. crowdsourcing) for collecting data from new sources.
+DATA SCIENCE,Implementation,store data securely.
+DATA SCIENCE,Implementation," transmit data securely so that when data is shared,the quality and integrity of the data is maintained."
+DATA SCIENCE,Implementation,spot patterns and predict trends from existing data (predictive analytics).
+DATA SCIENCE,Readiness,share data appropriately within my institution and with third parties in a way that does not violate privacy and confidentiality. (Information Governance)
+DATA SCIENCE,Impact,plot and visualize data in order to derive and communicate insight.
+DATA SCIENCE,Impact,interpret and communicate what data says.
