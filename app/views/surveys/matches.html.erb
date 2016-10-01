@@ -1,0 +1,73 @@
+<%= render 'users/profile', {user: @user}%>
+
+<div class="main-content match-me">
+  <div class="main-content__container">
+
+    <h3 class="match-me__intro">Your matches are people who have experience in what you want to learn <br> and have something to learn from you.</h3>
+    <div class="steps">
+      <span class="steps__item steps--done"></span>
+      <span class="steps__item steps--done steps--current"></span>
+      <span class="steps__item"></span>
+      <span class="steps__item"></span>
+    </div>
+    
+    <h2 class="match-me__question">Marc, meet your matches!</h2>
+    
+    <section class="active-filters">
+      <span class="filter-by">Filter by</span>
+      <span class="active-filters__item">Location</span>
+      <span class="active-filters__item">Field of Work</span>
+      <span class="active-filters__item">Language</span>
+    </section>
+
+    <ul class="list">
+      <% 10.times do %>
+      <li class="list__item person-item">
+        <img src="images/users/128.jpg" alt="" class="person-item__picture">
+        <div class="person-item__content">
+          <hgroup class="person-item__credentials person-item--no-flex">
+            <h2 class="person-item__name">Selma Baran</h2>
+            <h3 class="person-item__job">CEO | Innovacorp</h3>
+            <h4 class="person-item__org">London, UK</h4>
+          </hgroup>
+          <ul class="person-item__tags category-tags person-item--no-flex">
+            <li class="person-item__tag category-tag">
+              <span class="category-tag__main">Crowdsourcing</span>
+              <span class="category-tag__sub">Design</span>
+            </li>
+            <li class="person-item__tag category-tag">
+              <span class="category-tag__main">Open Data</span>
+              <span class="category-tag__sub">Design</span>
+              <span class="category-tag__sub">Implementation</span>
+            </li>
+          </ul>
+          <div class="person-item__controls">
+            <a href="#" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
+            <a href="#" class="person-item__projects controls__button">3 Projects</a>
+          </div>
+        </div>
+        <div class="person-item__content">
+          <ul class="user-skill-list">
+            <h6>Selma Baran can advice you on 9 skills</h6>
+            <h5>OPEN DATA <span class="user-skill-list__view-all">View All</span></h5>
+            <li class="user-skill-list__item">Measuring the economic and/or social impact of opening up data</li>
+            <li class="user-skill-list__item">Expressing the value proposition of the open data datasets, including what problems can be solved with this data</li>
+            <li class="user-skill-list__item">Expressing the value proposition of the open data datasets, including what problems can be solved with this data</li>
+          </ul>
+          <ul class="user-skill-list">
+            <h6>You can advise Selma on 5 skills</h6>
+            <h5>CROWDSOURCING <span class="user-skill-list__view-all">View All</span></h5>
+            <li class="user-skill-list__item">Measuring the economic and/or social impact of opening up data</li>
+            <li class="user-skill-list__item">Expressing the value proposition of the open data datasets, including what problems can be solved with this data</li>
+            <li class="user-skill-list__item">Expressing the value proposition of the open data datasets, including what problems can be solved with this data</li>
+          </ul>
+          
+        </div>
+        
+      </li>
+      <% end %>
+    </ul>
+  
+
+  </div> 
+</div>

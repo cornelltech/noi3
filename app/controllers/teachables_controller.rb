@@ -8,6 +8,7 @@ class TeachablesController < ApplicationController
     skill_ids = params[:skill_ids]
     user = User.find(params[:teachable][:user_id])
     skill_ids.each { | skill | Teachable.create(user_id: user.id, skill_id: skill)}
+    
   end
 
   private

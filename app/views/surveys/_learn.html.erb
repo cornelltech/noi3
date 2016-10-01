@@ -18,8 +18,9 @@
             <li class="questionnaire__item questionnaire__item--submit list__item">
               <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
               <%= f.hidden_field :user_id, value: 1 %>
-              <%= f.submit %>
-              <a href="match-me-3.html" class="button button--main-color">Next</a>  
+              <%= f.submit 'Save'%>
+              <!-- <a href="match-me-3.html" class="button button--main-color">Next</a>   -->
+              <%= link_to 'Next', fetch_teaching_menu_path, class: 'button button--main-color', :remote => true %>
             </li>
           </ul>
     <% end %>
