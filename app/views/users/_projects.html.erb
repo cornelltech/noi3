@@ -1,8 +1,8 @@
-<div class="project-panel panel panel--2" data-id="project-panel">
+<!-- New Template -->
+<div class="project-panel panel panel--2">
   <i class="project-panel__action-button material-icons">close</i>
   <h2 class="project-panel__content project-panel__heading">Projects</h2>
   
-  <div class="projects-container">
   <% user.projects.each do | project | %>
   <div class="project-panel__item">    
     <h3 class="project-panel__title"><%= project.title %></h3>
@@ -11,25 +11,24 @@
 
     <!-- ADD CATEGORY TAGS TO PROJECTS -->
       <%project.format_categories.each do |cat|%>
-        <li class="person-item__tag category-tag">
-          <span class="category-tag__main"><%= cat[:category].titleize %></span>
-            <% cat[:skill_areas].each do |sa| %>
-              <span class="category-tag__sub"><%= sa.titleize %></span>
-            <% end %>
-        </li>
+      <li class="person-item__tag category-tag">
+        <span class="category-tag__main"><%= cat[:category].titleize %></span>
+        <% cat[:skill_areas].each do |sa| %>
+          <span class="category-tag__sub"><%= sa.titleize %></span>
+        <% end %>
+      </li>
       <% end %>
 
-    <!-- ADD INDUSTRY TAGS TO PROJECTS / NEEDS STYLING -->
- 
-    <span class="industry-tag"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
-
-
+    <!-- ADD INDUSTRY TAGS TO PROJECTS-->
+      <span class="industry-tag"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
+    </ul>
     <p><%= project.description %></p>
   </div>
   <% end %>
-  </div>
+
   <div class="project-panel__add-item">
     <i class="big-icon material-icons">add</i>
     <h4>Add Project</h4>
   </div>
+  
 </div>
