@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :teachables
   has_many :learnables
 
+  attr_accessor :can_teach
+  attr_accessor :can_learn
+  
   def country
     if self.country_code
       country = ISO3166::Country[country_code]
@@ -22,6 +25,7 @@ class User < ApplicationRecord
     end
   end
 
+  
   def format_expertise
     expertise = []
     self.teachables.each do |skillset| 
@@ -61,6 +65,8 @@ class User < ApplicationRecord
     # return avatar url of avatar on NOI
     "http://localhost:3000/assets/users/128.jpg"
   end
+
+
 
 end
 

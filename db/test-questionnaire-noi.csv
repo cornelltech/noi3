@@ -24,7 +24,6 @@ CITIZEN SCIENCE,Strategy,define the success of a project
 CITIZEN SCIENCE,Strategy,identify funding opportunities for a project
 CITIZEN SCIENCE,Strategy,decide the types of tasks to be considered when developing a citizen science project
 CITIZEN SCIENCE,Strategy,articulate how the tasks will advance a research field
-CITIZEN SCIENCE,Strategy,
 CITIZEN SCIENCE,Design,identify and define the tasks for participants to do
 CITIZEN SCIENCE,Design,define and validate a protocol for an experiment and required data collection
 CITIZEN SCIENCE,Design,define a project in terms of time required and geographic range
@@ -46,8 +45,6 @@ CITIZEN SCIENCE,Implementation,archive data
 CITIZEN SCIENCE,Implementation,attribute contributions to the relevant parties
 CITIZEN SCIENCE,Implementation,address variations and skew in participation
 CITIZEN SCIENCE,Implementation,draft a data policy
-CITIZEN SCIENCE,Implementation,
-CITIZEN SCIENCE,Implementation,
 CITIZEN SCIENCE,Readiness,identify and mitigate privacy concerns relating to data collected
 CITIZEN SCIENCE,Readiness,ensure COPPA compliance in projects featuring minors
 CITIZEN SCIENCE,Readiness,draft a privacy policy
@@ -161,7 +158,6 @@ RCTs,Design,Identifying an evaluation model that allows for causal inference as 
 RCTs,Design,Identifying data to evaluate using the evaluation model
 RCTs,Design,Writing a credible plan for analysing the data in advance of launching
 RCTs,Design,Embedding evaluation within the program without undue disruption
-RCTs,Engagement,
 RCTs,Implementation,Using randomization to create a robust control group for comparison
 RCTs,Implementation,Choosing which group gets which version of the intervention
 RCTs,Implementation,Translating the technical aspects of the evaluation into practical instructions for those involved in implementation
