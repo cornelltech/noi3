@@ -1,34 +1,38 @@
-/* Item for the Search Innovators List */
-// .person-item
-// .person-item__picture
-// .person-item__name
-// .person-item__job
-// .person-item__org
-// .person-item__tags
-// .person-item__controls
-
-
 .person-item {
-  display: flex;
+  @include breakpoint($large) { display: flex; }
+  @include breakpoint($small-only) { position: relative;}
 
   &__picture {
     @extend .u-circle;
-    height: 100px;
+    @include breakpoint($medium) {
+      width: 100px;
+      height: 100px;
+    }
+    
+    width: 40px;
+    height: 40px;
+    float: left;
   }
 
   &__content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding-left: 40px;
+    @include breakpoint($small-only) {padding-left: 60px;}
+    @include breakpoint($large) { 
+      flex: 1;
+      display: flex; 
+      flex-direction: column;
+      padding-left: 40px;
+      align-items: flex-start;
+    }
   }
 
   &__credentials { 
-    flex: 1;
+    @include breakpoint($large) { flex: 1; }
   }
   
-  &__tags { 
-    
+  &__credentials,
+  &__tags,
+  &__controls { 
+   @include breakpoint($medium) { padding-left: 140px; } 
   }
 
   &__name {
@@ -50,7 +54,7 @@
   }
 
   &__tags {
-   flex: 1; 
+   @include breakpoint($medium) { flex: 1; }
   }
 
   &__tag {
@@ -69,5 +73,10 @@
 
   &__pm {
     color: $accent-color;
+  }
+
+  &--no-flex {
+    flex: 0;
+    margin-bottom: 20px;
   }
 }

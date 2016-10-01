@@ -9,12 +9,18 @@
   background-color: darken($main-color, 4);
   position: relative;
   z-index: 10;
+  @include breakpoint($small-only) { display: flex; }
 
   &__item {
-    display: block;
+    display: inline-block;
     padding: 15px 15px 10px;
     color: rgba($white, .6);
     position: relative;
+    @include breakpoint($small-only) { 
+      flex: 1; 
+      text-align: center;
+    }
+    @include breakpoint($medium) { display: block; }
 
   
     &:after {
@@ -30,6 +36,7 @@
       display: block;
       font-size: 1.35rem;
       white-space: nowrap;
+      @include breakpoint($small-only) { display: none; }
     }    
 
     &:hover:after {

@@ -1,0 +1,24 @@
+.steps {
+  text-align: center;
+  
+  &__item {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+    background-color: rgba(black, .2);
+    @extend .u-circle;
+  }
+
+  &--done {
+    background-color: rgba(black, .5);
+  }
+
+  // &__item:hover {
+  //   background-color: $accent-color;
+  // }
+
+  &--current {
+    // background-color: $main-color;
+  }
+}

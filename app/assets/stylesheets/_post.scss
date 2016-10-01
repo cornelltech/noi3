@@ -1,12 +1,18 @@
 /* Post Item */
 .post-item {
-  > * { max-width: 800px; }
   display: flex;
+
+  > * { max-width: 800px; }
 
   &__author-picture {
     @extend .u-circle;
     width: 72px;
     height: 72px;
+
+    @include breakpoint($small-only) {
+      width: 40px;
+      height: 40px;
+    }
     box-shadow: 2px 2px 4px rgba(black, .1);
   }
 

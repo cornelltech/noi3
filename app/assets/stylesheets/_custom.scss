@@ -6,7 +6,6 @@ a {
 body {
   letter-spacing: .5px;
   color: rgba(black, .8);
-  // font-family: 'proxima-nova-soft', sans-serif;
   font-weight: 400;
   background-color: #FFF;
   padding: 0;
@@ -20,19 +19,25 @@ body {
 }
 
 .app-wrapper {
-  display: flex;
+  @include breakpoint($medium) {
+    display: flex;
+  }
   height: calc(100vh - 60px);
   overflow: hidden;
+  
 }
 
 .main-content {
-  overflow-y: scroll;
   overflow-x: hidden;
   flex: 1;
 
   &__container { 
-    min-width: 750px;
+    @include breakpoint($small-only) { height: calc(100vh - 157px); }
+    @include breakpoint($medium) { min-width: 650px; }
+    @include breakpoint($large) { min-width: 750px; }
+    
     display: block;
+    overflow-y: scroll;
   }
 }
 
