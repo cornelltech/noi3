@@ -1,10 +1,31 @@
 .filter-section {
   padding: 30px;
 
+  @include breakpoint($small-only) {
+    padding: 0 10px;
+    text-align: center;
+  }
+
   .highlighted-or {
     font-weight: 800;
     margin-right: 10px;
     display: inline-block;
+  }
+
+  .select-innovation-area {
+    @include breakpoint($small-only) {
+      display: block;
+      width: 100%;
+    }
+
+    @include breakpoint($medium) {
+      display: inline-block;
+      padding-right: 60px;
+      margin-left: 20px;
+    }
+  }
+  .select--inline {
+    
   }
 }
 

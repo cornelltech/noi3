@@ -1,11 +1,11 @@
 /* Top Bar */
 .top-bar {
-  padding: 0 0 0 52px;
   box-shadow: 2px 2px 5px rgba($black, .2);
   margin: 0;
   background-color: $main-color;
   position: relative;
   z-index: 11;
+  @include breakpoint($large) { padding: 0 0 0 52px; }
 
   display: flex;
 
@@ -35,7 +35,7 @@
   }
   
   &__search {
-    padding: 10px 35px;
+    padding: 10px 5px;
     @extend .u-transition;
     @include breakpoint(1015px) { padding: 10px 75px; }
   }
@@ -47,7 +47,8 @@
 
 /* User Menu */
 .user-menu {
-  padding-right: 20px;
+  padding-right: 10px;
+  @include breakpoint($large) { padding-right: 20px; }
 
   &__item {
     display: inline-block;
@@ -56,16 +57,21 @@
     text-align: center;
     vertical-align: top;
     padding: 5px 5px 0;
-
     margin: 10px 0;
   }
 
   &__item--messages { margin-right: -4px; }
 
   &__item--messages,
-  &__item--notifications { opacity: .5; }
+  &__item--notifications { 
+    @include breakpoint($small-only) {display: none;}
+    opacity: .5; 
+  }
 
-  &__item--highlighted { opacity: 1; }
+  &__item--highlighted { 
+    opacity: 1; 
+    @include breakpoint($small-only) {display: inline-block;}
+  }
 
   &__item--settings {
     @extend .u-circle;

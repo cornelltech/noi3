@@ -1,0 +1,42 @@
+.user-skill-list {
+  padding: 0;
+  margin-bottom: 25px;
+
+  &__item {
+    list-style: none;
+    padding: 5px 0;
+    font-size: .9rem;
+    border-bottom: 1px solid rgba(black, .1);
+    
+  }
+
+  &__view-all {
+    text-transform: none;
+    font-weight: 600;
+    font-style: italic;
+    font-size: .8rem;
+    float: right;
+    opacity: .6;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  h5, h6 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  h5 {
+    color: $main-color;
+    margin-top: 10px;
+  }
+
+  h6 {  
+    text-transform: none;
+    font-weight: bold;
+    color: $accent-color;
+  }
+}
