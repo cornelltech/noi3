@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   resources :users, :path => 'search'
-  resources :surveys
+  resources :surveys, :path => 'match-me'
+  resources :teachables
+  resources :learnables
+  get "/fetch_learning" => 'surveys#fetch_learning', as: 'fetch_learning'
+  get "/fetch_teaching_menu" => 'surveys#fetch_teaching_menu', as: 'fetch_teaching_menu'
   root 'pages#index'
 
   namespace :api do

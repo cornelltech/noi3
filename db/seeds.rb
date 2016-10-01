@@ -99,3 +99,6 @@ end
 # Teachable.create(user_id: 1, skill_id:2)
 
 User.create!(email: 'admin@example.com', password: 'password', username: 'adminuname', password_confirmation: 'password', :admin => true)
+
+Category.all.each { | category | Survey.create(category_id: category.id)}
+
