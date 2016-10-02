@@ -1,26 +1,27 @@
 <div class="main-content">
   <ul class="category-filters">
     <% @categories.each do | category | %>
-    <li class="category-filters__item"><%= category.name %></li>
+    <li class="category-filters__item"><a href="<%= root_path(:category => category['slug']) %>"><%= category['name'] %></a></li>
     <% end %>
   </ul>
   <ul class="main-content__container list">
-    <% 20.times do %>
-    <li class="list__item post-item">
-      <%=image_tag('users/128.jpg', :alt => "", :class => "post-item__author-picture" ) %>
-      <div class="post-item__content">
-        <p class="post-item__author-name"><strong>Sarah Stoker</strong> asked:</p>
-        <h3 class="post-item__title">How do I create an open data portal?</h3>
-        <p>Ovitatur, nos re, quis dolorit alibus, nobissit que re, con nobitassin perempore comnitiae posaniate ne non et ape nos nistor aut aute omnimusdae apit, nobit quamet audigenis doluptatur, ommolorerit ut quat tisita quasperferum dolumquam reruptibus exeriomagn...</p>
-        <div class="post-item__controls">
-          <div class="controls">
-            <a href="#" class="controls__icon-button"><i class="material-icons">reply</i></a>
-            <a href="#" class="button button--small button--alpha controls__button">3 Answers</a>
-            <a href="#" class="button button--small button--alpha controls__show-more-button">Show More</a>
+    <% for topic in @topics %>
+      <%# move me into a partial %>
+      <li class="list__item post-item">
+        <%=image_tag("http://discourse-dev.networkofinnovators.org/#{topic['details']['created_by']['avatar_template'].gsub('{size}', '45')}", :alt => "", :class => "post-item__author-picture") %>
+        <div class="post-item__content">
+          <p class="post-item__author-name"><strong><%= topic['post_stream']['posts'].first['name'] %></strong> asked:</p>
+          <h3 class="post-item__title"><%= topic['title']%></h3>
+          <p><%= truncate(strip_tags(topic['post_stream']['posts'].first['cooked']), length: 200, omission: '...') %></p>
+          <div class="post-item__controls">
+            <div class="controls">
+              <a href='<%= "http://discourse-dev.networkofinnovators.org/t/#{topic['slug']}/#{topic['id']}/#{topic['posts_count']}" %>' class="controls__icon-button"><i class="material-icons">reply</i></a>
+              <a href='<%= "http://discourse-dev.networkofinnovators.org/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__button"><%= topic['posts_count'] - 1 %> Answers</a>
+              <a href='<%= "http://discourse-dev.networkofinnovators.org/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__show-more-button">Show More</a>
+            </div>
           </div>
         </div>
-      </div>
-    </li>
+      </li>          
     <% end %>
   </ul>
 </div>

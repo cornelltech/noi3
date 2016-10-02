@@ -10,7 +10,7 @@
         <section class="expertise-panel__question-group">
           <h4 class="expertise-panel__sub-category"><%= sa[:area_name].titleize %> </h4>
           <% sa[:area_skills].each do |skill| %>
-          <p class="expertise-panel__question"><%= skill.capitalize %></p>
+          <p class="expertise-panel__question"><%= skill.capitalize if skill %></p>
           <% end %>
         </section>
       <% end %>

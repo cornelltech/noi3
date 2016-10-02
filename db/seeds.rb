@@ -89,6 +89,4 @@ end
 # Teachable.create(user_id: 1, skill_id:1)
 # Teachable.create(user_id: 1, skill_id:2)
 
-
-
-
+User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', :admin => true)

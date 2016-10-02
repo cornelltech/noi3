@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     @users = User.all
     @expertise = User.first.format_expertise
     @main_expertise = User.first.format_main_expertise
-    @categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prized-challenged", "design thinking", "citizen science"]
+    @categories = $discourse_client.categories.map { |cat| cat['name'] } 
+    # @categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prized-challenged", "design thinking", "citizen science"]
   end
 
   def show
