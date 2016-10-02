@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  use_doorkeeper
   # devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -12,4 +11,6 @@ Rails.application.routes.draw do
   	end
 	end
 	
+  get 'discourse/sso' => 'discourse_sso#sso'
+
 end

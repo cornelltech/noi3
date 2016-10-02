@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# Running locally
+* make sure discourse is running
+* modify config/discourse.yml sso_redirect_url and sso_redirect_url to your local values
+* create api key on local discourse and modify config/discourse.yml with that value and the value of your discourse admin username

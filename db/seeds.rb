@@ -8,7 +8,8 @@ require 'csv'
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: 'password',
-    picture_path: '128.jpg',
+    username: Faker::Internet.user_name,
+    picture_path: '/assets/users/128.jpg',
     position: Faker::Company.profession,
     organization: Faker::Company.name,
     organization_type: Faker::Commerce.department,
@@ -89,4 +90,4 @@ end
 # Teachable.create(user_id: 1, skill_id:1)
 # Teachable.create(user_id: 1, skill_id:2)
 
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', :admin => true)
+User.create!(email: 'admin@example.com', password: 'password', username: 'adminuname', password_confirmation: 'password', :admin => true)

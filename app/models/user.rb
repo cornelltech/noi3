@@ -47,6 +47,11 @@ class User < ApplicationRecord
     expertise
   end
 
+  def avatar_url
+    # FIXME
+    # return avatar url of avatar on NOI
+    "http://localhost:3000/assets/users/128.jpg"
+  end
 
 end
 

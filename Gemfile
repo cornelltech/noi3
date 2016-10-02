@@ -64,5 +64,4 @@ gem 'cancan' # or cancancan
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 # gem 'draper'
 gem 'pundit'
-gem 'doorkeeper'
 gem 'discourse_api'
