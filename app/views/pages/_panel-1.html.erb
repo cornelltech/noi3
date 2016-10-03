@@ -2,19 +2,17 @@
 
   <h2 class="question-panel__heading question-panel__content">Ask a question</h2>
   <p class="question-panel__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque voluptatum, excepturi assumenda accusantium dolore quas aut fugit quibusdam odit sunt adipisci hic beatae distinctio? Tenetur, harum? Nihil commodi, culpa soluta.</p>
-  <form action="" class="form form--negative question-panel__content question-panel__form">
-  <% if user_signed_in? %>
-    <input type="text" placeholder="Question Title">
-    <textarea name="" id=""  placeholder="Describe your problem"></textarea>
-    <div class="select select--negative">
-      <select name="" id="">
-        <option value="">Choose a Category</option>
-        <option value="">category</option>
-        <option value="">category</option>
-        <option value="">category</option>
-      </select>
-    </div>
-    <button class="button button--full button--main-color js-open-panel-2" type="submit">Send</button>
+  <% if user_signed_in? %>    
+    <%= form_tag add_topic_path, method: 'put', class: "form form--negative question-panel__content question-panel__form" do %>
+      <%= text_field_tag "topic-title", nil, placeholder: "Question Title" %>
+      <%= text_area_tag "topic-text", nil, placeholder: "Describe your problem" %>
+      <div class="select select--negative">
+        <%= select_tag "topic-category", 
+          options_for_select((['Choose a Category'] << @categories.map { |cat| cat['slug'] }).flatten) %>
+      </div>
+      <%= button_tag "Send", type: 'submit', class: "button button--full button--main-color" %> 
+
+    <% end %>
   <% else %>
     <%= link_to new_user_registration_path do %>
       <button class="button button--full button--main-color " type="submit">Sign Up</button>

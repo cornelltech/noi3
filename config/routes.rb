@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   put 'add_event' => 'users#add_event'
   delete 'remove_event' => 'users#remove_event'
   
+  put 'add_topic' => 'pages#add_topic'
 end

@@ -17,6 +17,22 @@ class PagesController < ApplicationController
 	    }
   end
 
+  def add_topic
+    begin
+      $discourse_client.create_topic(
+        category: params['topic_category'],
+        skip_validations: true,
+        auto_track: false,
+        title: params['topic-title'],
+        raw: params['topic-text']
+      )
+      redirect_to root_path, notice: "Successfully created topic"
+    rescue Exception => e
+      puts e.message
+      flash[:alert] = @project.errors.full_messages
+      render root_path
+    end    
+  end
 
 
 end
