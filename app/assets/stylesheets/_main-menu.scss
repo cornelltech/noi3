@@ -46,7 +46,10 @@
       padding: 12px 15px 10px;
     }
 
-    // &:hover { background-color: rgba(black, .2); }
+    &:hover { 
+      background-color: rgba(black, .1); 
+      color: white;
+    }
 
     &--active,
     &--active:hover { 
