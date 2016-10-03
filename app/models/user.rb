@@ -66,7 +66,14 @@ class User < ApplicationRecord
     "http://localhost:3000/assets/users/128.jpg"
   end
 
-
+  def set_discourse_sso
+    $discourse_client.sync_sso({ :sso_secret => DISCOURSE_CONFIG[:sso_secret],
+      :name => "#{self.first_name} #{self.last_name}",
+      :username => self.username, 
+      :email => self.email, 
+      :external_id => self.id,
+      :avatar_url => self.avatar_url})
+  end
 
 end
 
