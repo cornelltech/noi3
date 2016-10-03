@@ -15,7 +15,7 @@
     <% end %>
   <% else %>
     <%= link_to fetch_sign_up_path, :remote => true do %>
-      <button class="button button--full button--main-color" type="submit">Sign Up</button>
+      <p class="question-panel__content"><button class="button button--full button--main-color" type="submit">Sign Up</button></p>
     <% end %>
     
     <%= render "devise/shared/links" %>
