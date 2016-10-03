@@ -1,32 +1,27 @@
 $(document).ready(function () {
 
 $('.js-open-panel').click(function (e) {
-    e.preventDefault();
+    $('.panel').not('.panel--1').removeClass('js-active');
     $('.panel--1').toggleClass('js-active');
 });
 
 $('.js-open-panel-2').click(function (e) {
+    $('.panel').not('.panel--2').removeClass('js-active');
     $('.panel--2').toggleClass('js-active');
 });
 
 $('.js-open-panel-3').click(function (e) {
+    $('.panel').not('.panel--3').removeClass('js-active');
     $('.panel--3').toggleClass('js-active');
 });
 
 $('.js-open-panel-4').click(function (e) {
+    $('.panel').not('.panel--4').removeClass('js-active');
     $('.panel--4').toggleClass('js-active');
 });
 
-$('.js-close-panel-1').click(function () {
-    $('.panel--1').removeClass('js-active');
-});
-
-$('.js-close-panel-2').click(function () {
-    $('.panel--2').removeClass('js-active');
-});
-
-$('.js-close-panel-3').click(function () {
-    $('.panel--3').removeClass('js-active');
+$('.js-close-panel').click(function () {
+    $('.panel').removeClass('js-active');
 });
 
 $('.js-open-action-panel').click(function () {

@@ -1,9 +1,9 @@
 <div class="project-panel panel panel--2">
-  <i class="project-panel__action-button material-icons">close</i>
+  <i class="project-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="project-panel__content project-panel__heading">Projects</h2>
   <div class='projects-container'>
   <% user.projects.each do | project | %>
-  <div class="project-panel__item">    
+  <div class="project-panel__item">
     <h3 class="project-panel__title"><%= project.title %></h3>
     <a class="project-panel__url" href="#" target="_blank"><%= project.url %></a>
     <ul class="person-item__tags category-tags category-tags--negative">
@@ -38,5 +38,5 @@
   <% end %>
 
   <%= render 'projects/new'%>
-  
+
 </div>
