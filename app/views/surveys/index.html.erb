@@ -1,2 +1,9 @@
-<%= render 'users/profile', {user: @user}%>
+<% if user_signed_in? %>
+<%= render 'users/profile', { user: current_user }%>
+<%= render 'users/projects', { user: current_user  }%>
+<%= render 'users/events', { user: current_user }%>
+<%= render 'users/expertise', { user: current_user  }%>
+<% else %>
+<%= render 'devise/registrations/new' %>
+<% end %>
 <%= render 'match-me', {user: @user}%>
