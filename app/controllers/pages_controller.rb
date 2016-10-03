@@ -17,8 +17,6 @@ class PagesController < ApplicationController
 	    }
   end
 
-
-
   def add_topic
     begin
       $discourse_client.create_topic(
@@ -36,8 +34,17 @@ class PagesController < ApplicationController
     end    
   end
 
+  # render devise views in panel
   def fetch_sign_up
-    # renders sign up page in place with fetch_sign_up.js.erb
+  end
+
+  def fetch_log_in
+  end
+
+  def fetch_forgot_password
+  end
+
+  def fetch_edit_account
   end
 
 

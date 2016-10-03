@@ -32,5 +32,9 @@ Rails.application.routes.draw do
   
   put 'add_topic' => 'pages#add_topic'
 
+  # ajax devise views
   get 'fetch_sign_up' => 'pages#fetch_sign_up', as: 'fetch_sign_up'
+  get 'fetch_log_in' => 'pages#fetch_log_in', as: 'fetch_log_in'
+  get 'fetch_forgot_password' => 'pages#fetch_forgot_password', as: 'fetch_forgot_password'
+  get 'fetch_edit_account' => 'pages#fetch_edit_account', as: 'fetch_edit_account'
 end

@@ -29,12 +29,12 @@
       <span class="user-menu__item user-menu__item--settings"><img src="images/users/128.jpg" alt=""></span>
     </div>
 <!-- TEMP - for testing -->
-    Hi <strong> <%= current_user.first_name %></strong>.
-    <%= link_to 'Edit Account', edit_user_registration_path(current_user) %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      Hi <strong> <%= current_user.first_name %></strong>.
+      <%= link_to "Edit Account", fetch_edit_account_path, :remote => true %>  |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> |
-    <%= link_to "Login", new_user_session_path %>
+      <%= link_to "Sign up", fetch_sign_up_path, :remote => true %> |
+      <%= link_to "Login", fetch_log_in_path, :remote => true %> 
     <% end %>
 
   </header>
