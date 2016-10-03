@@ -1,0 +1,49 @@
+/* Question Panel */
+.signup-panel {
+  @extend .u-base-panel;
+
+  &__heading { @extend .u-base-panel__heading; }
+  &__content { @extend .u-base-panel__content; }
+  
+  &__action { 
+    @extend .u-base-panel__action; 
+    position: absolute;
+    bottom: 0;
+  }
+  &__action__title { @extend .u-base-panel__action__title; }
+  &__action__content { @extend .u-base-panel__action__content; }
+  
+
+  &__form {
+    input,
+    textarea,
+    .select { margin-bottom: 25px; }
+
+    textarea { 
+      height: 240px; 
+      min-height: 240px; 
+      max-height: 320px; 
+    }
+  }
+
+  &__error {}
+  &--success {}
+  &--success__heading {}
+  &--success__icon {}
+}
+
+.signup-panel--success {
+  text-align: center;
+  padding-top: 60px;
+
+  .big-icon {
+    @extend .u-circle;
+    background-color: $green;
+  }
+
+  .signup-panel__heading {
+    font-size: 2rem;
+    text-transform: none;
+
+  }
+}

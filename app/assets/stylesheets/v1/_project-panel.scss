@@ -1,0 +1,59 @@
+/* Profile Panel */
+.project-panel {
+  @extend .u-base-panel;
+  text-align: left;
+  overflow-y: scroll;
+
+  &__heading { @extend .u-base-panel__heading; }
+  &__content { @extend .u-base-panel__content; }
+  &__action__content { @extend .u-base-panel__action__content; }
+  &__action-button { @extend .u-base-panel__action-button; }
+
+  &__item {
+    @extend .u-base-panel__content;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(white, .1);
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    text-transform: none;
+    margin-bottom: 0;
+  }
+
+  &__url { font-style: italic; }
+
+  &__add-item {
+    @extend .u-base-panel__content;
+    text-align: center;
+    background-color: rgba(white, .05);
+    padding-top: 60px;
+    padding-bottom: 60px;
+    cursor: pointer;
+
+    .big-icon {
+      background-color: white;
+      color: black;
+    }
+
+    h4 {
+      font-size:  1rem;
+      font-weight: 800;
+    }
+
+    > * {
+      opacity: .1;
+    }
+
+    &:hover > * {
+      opacity: .5;
+    }
+  }
+}
+
+.big-icon.big-icon {
+  font-size: 5rem;
+  padding: 15px;
+  @extend .u-circle;
+  
+}

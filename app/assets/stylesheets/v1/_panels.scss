@@ -97,7 +97,10 @@
     background-color: #333;
     @include breakpoint($large) { z-index: 48; }
   }
-
+  &--4 {
+    background-color: #333;
+    @include breakpoint($large) { z-index: 48; }
+  }
   &.js-active { 
     margin-left: 0; 
     box-shadow: 2px 2px 6px rgba(black, .4);

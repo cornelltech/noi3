@@ -1,0 +1,81 @@
+/* Top Bar */
+.top-bar {
+  box-shadow: 2px 2px 5px rgba($black, .2);
+  margin: 0;
+  background-color: $main-color;
+  position: relative;
+  z-index: 11;
+  @include breakpoint($large) { padding: 0 0 0 52px; }
+
+  display: flex;
+
+  &__search { flex: 1; }
+
+  &__logo { 
+    width: 50px; 
+    overflow: hidden;
+    @include breakpoint(1015px) { 
+      width: 400px; 
+    }
+    @extend .u-transition;
+    margin: 0;
+    padding: 12px 0 8px 10px;
+    font-size: 1.4rem;
+    line-height: 1;
+    text-align: left;
+
+    img { 
+      height: 34px; 
+      max-width: none;
+    }
+  }
+
+  &__user-menu {
+
+  }
+  
+  &__search {
+    padding: 10px 5px;
+    @extend .u-transition;
+    @include breakpoint(1015px) { padding: 10px 75px; }
+  }
+}
+
+
+.search--negative .search-trigger { background-color: rgba($white, .1) !important; }
+
+
+/* User Menu */
+.user-menu {
+  padding-right: 10px;
+  @include breakpoint($large) { padding-right: 20px; }
+
+  &__item {
+    display: inline-block;
+    width: 40px;
+    color: $white;
+    text-align: center;
+    vertical-align: top;
+    padding: 5px 5px 0;
+    margin: 10px 0;
+  }
+
+  &__item--messages { margin-right: -4px; }
+
+  &__item--messages,
+  &__item--notifications { 
+    @include breakpoint($small-only) {display: none;}
+    opacity: .5; 
+  }
+
+  &__item--highlighted { 
+    opacity: 1; 
+    @include breakpoint($small-only) {display: inline-block;}
+  }
+
+  &__item--settings {
+    @extend .u-circle;
+    padding: 0;
+  }
+
+}
