@@ -33,7 +33,6 @@ Category.all.each { | category | Survey.create(category_id: category.id)}
     )
 end
 
-<<<<<<< e77af2ee583d3e78aec83629cb45a1cd95ef1cf1
 # GENERATE CATEGORIES/SKILL AREAS/SKILLS via CSV Questionnaire
 csv_file_path = 'db/test-questionnaire-noi.csv'
 
@@ -53,8 +52,6 @@ end
 
 # OTHER SEED DATA
 
-=======
->>>>>>> Add match me questionnaire in progress
 50.times do 
   Project.create!(
       title: Faker::Commerce.product_name,
@@ -99,12 +96,10 @@ User.all.each do |user|
   end
 end
 
-<<<<<<< e77af2ee583d3e78aec83629cb45a1cd95ef1cf1
 # Teachable.create(user_id: 1, skill_id:1)
 # Teachable.create(user_id: 1, skill_id:2)
 
 User.create!(email: 'admin@example.com', password: 'password', username: 'adminuname', password_confirmation: 'password', :admin => true)
-=======
->>>>>>> Add match me questionnaire in progress
+
 
 
