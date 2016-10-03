@@ -4,8 +4,8 @@
   <title>Noi3</title>
   <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <script src="https://use.typekit.net/ioh1apd.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,22 +53,12 @@
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    
+
     <%= yield %>
 
   </main>
   <div id="overlay" class="js-overlay"></div>
-  <!--  <script src="./vendor/jquery-2.1.4.min.js"></script> -->
-  <!-- <script src="./scripts.js"></script> -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
-
-  <script>
-  $(function() {
-    console.log('sup');
-    $('.signin-panel').removeClass('js-active');
-    $('.signup-panel').removeClass('js-active');
-  })
-</script>
 
 </body>
 </html>
