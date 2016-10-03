@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161003001237) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-10-03 00:17:56'
+    t.datetime "date",            default: '2016-10-03 01:31:49'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -125,6 +125,13 @@ ActiveRecord::Schema.define(version: 20161003001237) do
     t.datetime "updated_at",                 null: false
     t.index ["category_id"], name: "index_skills_on_category_id"
     t.index ["skill_area_id"], name: "index_skills_on_skill_area_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_surveys_on_category_id"
   end
 
   create_table "teachables", force: :cascade do |t|

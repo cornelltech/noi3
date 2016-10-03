@@ -1,0 +1,26 @@
+    <h2 class="match-me__category-title"><%=survey.category.name%></h2>
+    <h2 class="match-me__question">I would like to learn</h2>
+
+    <%= form_for Learnable.new do |f| %>
+          <ul class="list">
+
+          <% @skill_areas.each do |skill_area| %> 
+            <h5 class="questionnaire__title"> <%= skill_area.name %> <span class="questionnaire__check-all button button--alpha button--small">Check All</span></h5>
+            <% skill_area.skills.each do | skill | %>
+              <li class="questionnaire__item list__item">
+                <input name="skill_ids[]" class="questionnaire__item__checkbox" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>">
+                <label class="questionnaire__item__label" for="checkbox-<%=skill.id%>" ><%= skill.description.capitalize %></label>
+              </li>
+            <% end %>
+          <% end %>
+
+
+            <li class="questionnaire__item questionnaire__item--submit list__item">
+              <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
+              <%= f.hidden_field :user_id, value: 1 %>
+              <%= f.submit 'Save', class: 'button button--main-color'%>
+              <!-- <a href="match-me-3.html" class="button button--main-color">Next</a>   -->
+              <%= link_to 'Next', fetch_teaching_menu_path, class: 'button button--main-color', :remote => true %>
+            </li>
+          </ul>
+    <% end %>

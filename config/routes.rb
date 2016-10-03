@@ -3,6 +3,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   resources :users, :path => 'search'
+  resources :surveys, :path => 'match-me'
+  resources :teachables
+  resources :learnables
+  root 'pages#index'
+  get "/matches" => 'surveys#get_matches'
+
+  # ajax via rails
+  get "/fetch_learning" => 'surveys#fetch_learning', as: 'fetch_learning'
+  get "/fetch_teaching_menu" => 'surveys#fetch_teaching_menu', as: 'fetch_teaching_menu'
+  
   root 'pages#index'
 
   namespace :api do
@@ -13,4 +23,5 @@ Rails.application.routes.draw do
 	
   get 'discourse/sso' => 'discourse_sso#sso'
 
+  get "/fetch_teaching" => 'surveys#fetch_teaching', as: 'fetch_teaching'
 end
