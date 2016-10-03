@@ -9,11 +9,26 @@
         <%= image_tag('events/' + event.logo_path, :alt => event.name) %>
       </a>
     </div>
+    <% if current_user.id == user.id %>
+      <%= link_to "Remove Conference", {controller: 'users', action: "remove_event", event_id: event.id }, method: :delete %>
+    <%end%>
     <% end %>
   </div>
+
   <div class="event-panel__add-item">
     <i class="big-icon material-icons">add</i>
     <h4>Add Event</h4>
   </div>
+  <%= form_for User.new, :url => { :action => "add_event" }, :html => { :method => "put" } do |f| %>
+
+
+  <%= f.label 'Add an Event' %><br>
+  <%# select_tag 'user[events]',
+      options_from_collection_for_select(Event.all, "id", "name", User.new.events), { :multiple => true, :size =>3}
+  %>
+    <%= f.collection_select :event_ids, Event.order(:name),:id,:name, include_blank: true %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Add Event", class: "button" %>
+<% end %>
   
 </div>
