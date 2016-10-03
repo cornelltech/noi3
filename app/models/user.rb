@@ -8,10 +8,19 @@ class User < ApplicationRecord
   has_and_belongs_to_many :events
   has_and_belongs_to_many :categories #todo: unlink from user
   has_and_belongs_to_many :industries
+  has_and_belongs_to_many :languages
 
   has_many :teachables
   has_many :learnables
 
+  def country
+    if self.country_code
+      country = ISO3166::Country[country_code]
+      country.translations[I18n.locale.to_s] || country.name
+    else 
+      ''
+    end
+  end
 
   def format_expertise
     expertise = []
