@@ -25,11 +25,17 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.assign_attributes(project_params)
     if @project.save
-      redirect_to root_path, notice: "Successfully edited account"
+      redirect_to root_path, notice: "Successfully edited project"
     else
       flash[:alert] = @project.errors.full_messages
       render :edit
     end
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to root_path
   end
 
   def project_params

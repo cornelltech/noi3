@@ -1,0 +1,24 @@
+Edit Project
+
+<%= form_for(@project) do |f| %>
+  <%= f.label :title%>
+  <%= f.text_field :title %>
+  <%= f.label :url %>
+  <%= f.text_field :url, placeholder: 'URL' %>
+  <%= f.label :description %>
+  <%= f.text_area :description, placeholder: 'Description', size: '60x12' %>
+
+  <%= f.label 'Fields of Work' %><br>
+  <%= select_tag 'project[industry_ids][]',
+      options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries), { :multiple => true, :size =>5}
+  %>
+  <%= f.label 'Languages' %><br>
+  <%= select_tag 'project[language_ids][]',
+      options_from_collection_for_select(Language.all,"id","name", Project.new.languages), { :multiple => true, :size =>5}
+  %>
+  <%= select_tag 'project[skill_area_ids][]',
+      options_from_collection_for_select(SkillArea.all,"id","long_name", Project.new.skill_areas), { :multiple => true, :size =>5}
+  %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit "Update" %>
+<% end %>

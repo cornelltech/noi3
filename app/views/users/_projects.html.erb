@@ -22,6 +22,10 @@
       <span class="industry-tag"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
     </ul>
     <p><%= project.description %></p>
+    <% if current_user.id == user.id %>
+      <%= link_to "Edit", edit_project_path(project) %>
+      <%= link_to "Delete", {controller: 'projects', action: "destroy", id: project.id }, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%end%>
   </div>
   <% end %>
 
