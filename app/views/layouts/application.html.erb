@@ -41,10 +41,10 @@
 
   <main class="app-wrapper">
     <nav class="main-menu">
-      <a href="./" class="main-menu__item main-menu__item--active" title="Ask a Question"><i class="material-icons">chat</i></a>
-      <a href="./search.html" class="main-menu__item" title="Find Innovators"><i class="material-icons">search</i></a>
+      <a href="<%= root_path %>" class="main-menu__item <%= current_class?('/') %>" title="Ask a Question"><i class="material-icons">chat</i></a>
+      <a href="<%= users_path %>" class="main-menu__item <%= current_class?('/search') %>" title="Find Innovators"><i class="material-icons">search</i></a>
       <a href="<%= DISCOURSE_CONFIG[:url] %>" class="main-menu__item" title="Discuss"><i class="material-icons">forum</i></a>
-      <a href="/match-me" class="main-menu__item" title="Match Me"><i class="material-icons">people</i></a>
+      <a href="/match-me" class="main-menu__item <%= current_class?('/surveys') %>" title="Match Me"><i class="material-icons">people</i></a>
       <a href="all-pages.html" class="main-menu__item" title="All Pages"><i class="material-icons">help</i></a>
     </nav>
 
@@ -58,8 +58,8 @@
 
   </main>
   <div id="overlay" class="js-overlay"></div>
-  <script src="./vendor/jquery-2.1.4.min.js"></script>
-  <script src="./scripts.js"></script>
+  <!--  <script src="./vendor/jquery-2.1.4.min.js"></script> -->
+  <!-- <script src="./scripts.js"></script> -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
 
   <script>
