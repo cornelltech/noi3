@@ -1,11 +1,18 @@
 <div class="main-content">
-  <ul class="category-filters">
-    <% @categories.each do | category | %>
-    <li class="category-filters__item"><a href="<%= root_path(:category => category['slug']) %>"><%= category['name'] %></a></li>
-    <% end %>
-  </ul>
-  <ul class="main-content__container list">
-    <% for topic in @topics %>
+  <div class="select category-filters-mobile">
+    <select name="" id="">
+      <% @categories.each do | category | %>
+      <option><%= category['name'] %></option>
+      <% end %>
+      </select>
+    </div>
+    <ul class="category-filters">
+      <% @categories.each do | category | %>
+      <li class="category-filters__item"><a href="<%= root_path(:category => category['slug']) %>"><%= category['name'] %></a></li>
+      <% end %>
+    </ul>
+    <ul class="main-content__container list">
+      <% for topic in @topics %>
       <%# move me into a partial %>
       <li class="list__item post-item">
         <%=image_tag("#{DISCOURSE_CONFIG[:url]}/#{topic['details']['created_by']['avatar_template'].gsub('{size}', '45')}", :alt => "", :class => "post-item__author-picture") %>
@@ -22,6 +29,6 @@
           </div>
         </div>
       </li>
-    <% end %>
-  </ul>
-</div>
+      <% end %>
+    </ul>
+  </div>
