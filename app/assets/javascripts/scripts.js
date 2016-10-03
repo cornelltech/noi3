@@ -61,7 +61,6 @@ $(document).ready(function () {
 
 
 
-
     // Smooth Scrolling Function
     // $('a[href*=#]:not([href=#])').click(function () {
     //     var $targ = $(this.hash),
