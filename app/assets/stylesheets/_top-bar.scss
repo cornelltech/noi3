@@ -49,6 +49,17 @@
 .user-menu {
   padding-right: 10px;
   @include breakpoint($large) { padding-right: 20px; }
+  
+  .button {
+    color: white;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
 
   &__item {
     display: inline-block;

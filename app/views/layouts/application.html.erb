@@ -33,8 +33,9 @@
       <%= link_to "Edit Account", fetch_edit_account_path, :remote => true %>  |
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to "Sign up", fetch_sign_up_path, :remote => true %> |
-      <%= link_to "Login", fetch_log_in_path, :remote => true %> 
+    <div class="top-bar__user-menu user-menu">
+      <span class="button"><%= link_to "Sign up", fetch_sign_up_path, :remote => true %></span><span class="button"><%= link_to "Login", fetch_log_in_path, :remote => true %></span>
+    </div>
     <% end %>
 
   </header>
@@ -45,7 +46,7 @@
       <a href="<%= users_path %>" class="main-menu__item <%= current_class?('/search') %>" title="Find Innovators"><i class="material-icons">search</i></a>
       <a href="<%= DISCOURSE_CONFIG[:url] %>" class="main-menu__item" title="Discuss"><i class="material-icons">forum</i></a>
       <a href="/match-me" class="main-menu__item <%= current_class?('/surveys') %>" title="Match Me"><i class="material-icons">people</i></a>
-      <a href="all-pages.html" class="main-menu__item" title="All Pages"><i class="material-icons">help</i></a>
+      
     </nav>
 
     <%# render 'devise/sessions/new' %>

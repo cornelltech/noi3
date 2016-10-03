@@ -39,8 +39,15 @@
     &__title {
       font-size: 1rem;
       font-weight: 600;
-      padding: 8px;
+      padding: 8px 0;
       margin: 0;
+
+      &:after {
+        @extend .u-material-icons;
+        content: 'close';
+        float: right;
+        opacity: 0;
+      }
     }
 
     &__content {
@@ -75,6 +82,22 @@
   position: absolute;
   overflow-y: scroll;
   @extend .u-transition;
+
+  .form__extra-links { 
+    font-size: .8rem;
+    text-align: center; 
+    padding-top: 10px;
+    
+    a, span { 
+      opacity: .4;
+    }
+
+    a:hover {
+      opacity: 1;
+      text-decoration: none;
+
+    } 
+  }
 
   @include breakpoint($medium) {
     position: relative;
