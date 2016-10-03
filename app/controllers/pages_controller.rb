@@ -17,6 +17,8 @@ class PagesController < ApplicationController
 	    }
   end
 
+
+
   def add_topic
     begin
       $discourse_client.create_topic(
@@ -32,6 +34,10 @@ class PagesController < ApplicationController
       flash[:alert] = @project.errors.full_messages
       render root_path
     end    
+  end
+
+  def fetch_sign_up
+    # renders sign up page in place with fetch_sign_up.js.erb
   end
 
 

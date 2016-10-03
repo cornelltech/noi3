@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   delete 'remove_event' => 'users#remove_event'
   
   put 'add_topic' => 'pages#add_topic'
+
+  get 'fetch_sign_up' => 'pages#fetch_sign_up', as: 'fetch_sign_up'
 end
