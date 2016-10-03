@@ -28,6 +28,10 @@ $(document).ready(function () {
         $('.js-panel-action').toggleClass('js-active');
     });
 
+    $('.js-open-this').click(function () {
+        $(this).toggleClass('js-active');
+    });
+
 
 
 

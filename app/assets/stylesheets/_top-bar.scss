@@ -102,7 +102,7 @@
     background-color: $main-color !important;
     display: none;
 
-    &.js-active {
+    .js-active & {
       display: block;
     } 
 
@@ -114,7 +114,7 @@
       width: 140px;
 
       &:hover {
-        background-color: rgba(black, .1);
+        background-color: $accent-color;
       }
     }
   }
