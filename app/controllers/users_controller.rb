@@ -36,10 +36,10 @@ class UsersController < ApplicationController
       @projects.push(project_with_tags)
     end
 
-    respond_to do |format|
-      format.html 
-      format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
-    end
+    # respond_to do |format|
+    #   format.html 
+    #   format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
+    # end
   end
 
   def fetch_user 

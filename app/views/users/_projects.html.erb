@@ -1,4 +1,4 @@
-<div class="project-panel panel panel--2">
+<!-- <div class="project-panel panel panel--2"> -->
   <i class="project-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="project-panel__content project-panel__heading">Projects</h2>
   <div class='projects-container'>
@@ -28,15 +28,15 @@
     <%end%>
   </div>
   <% end %>
-  </div>
+  <!-- </div> -->
 
-  <% if user.id == current_user.id %>
+  <% if user == current_user %>
     <div class="project-panel__add-item">
       <i class="big-icon material-icons">add</i>
       <h4>Add Project</h4>
     </div>
-  <% end %>
 
   <%= render 'projects/new'%>
+  <% end %>
 
 </div>
