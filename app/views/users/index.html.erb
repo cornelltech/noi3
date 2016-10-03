@@ -1,8 +1,8 @@
-<!-- TODO: Default to current user if current_user, else default to first user -->
-<%= render 'profile', { user: @users.first }%>
-<%= render 'projects', { user: @users.first }%>
-<%= render 'events', { user: @users.first }%>
-<%= render 'expertise', { user: @users.first }%>
+<!-- TODO: Default to current user if current_user, else default to sign on screen-->
+<%= render 'profile', { user: current_user }%>
+<%= render 'projects', { user: current_user }%>
+<%= render 'events', { user: current_user}%>
+<%= render 'expertise', { user: current_user }%>
 
 
 <div class="main-content">
