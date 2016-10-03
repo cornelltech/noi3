@@ -1,4 +1,4 @@
-<div class="expertise-panel panel panel--4">
+<!-- <div class="expertise-panel panel panel--4"> -->
   <i class="expertise-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="expertise-panel__content expertise-panel__heading">Expertise</h2>
 
@@ -17,12 +17,13 @@
   </div>
   <% end %>
   </div>
-
+<% if user == current_user %>
   <%= link_to (url_for(fetch_teaching_menu_path)), :remote => true do %>
     <div class="expertise-panel__add-item">
       <i class="big-icon material-icons">add</i>
       <h4>Add Expertise</h4>
     </div>
   <% end %>
+<% end %>
 
-</div>
+<!-- </div> -->
