@@ -19,6 +19,10 @@ module ApplicationHelper
     skillsets
   end
 
-
+	def current_class?(test_path)
+		puts request.path
+		return 'main-menu__item--active' if request.path == test_path
+		''
+	end
 
 end
