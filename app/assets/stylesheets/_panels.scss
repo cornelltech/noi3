@@ -100,7 +100,7 @@
 
   &--4 {
     background-color: #333;
-    @include breakpoint($large) { z-index: 48; }
+    @include breakpoint($large) { z-index: 47; }
   }
 
   &.js-active {

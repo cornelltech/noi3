@@ -1,10 +1,10 @@
 <div class="expertise-panel panel panel--4">
-  <i class="expertise-panel__action-button material-icons">close</i>
+  <i class="expertise-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="expertise-panel__content expertise-panel__heading">Expertise</h2>
-  
+
   <div class="expertise-container">
   <% @main_expertise.each do | expertise | %>
-  <div class="expertise-panel__item">    
+  <div class="expertise-panel__item">
     <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
       <% expertise[:skill_areas].each do |sa| %>
         <section class="expertise-panel__question-group">
@@ -17,10 +17,10 @@
   </div>
   <% end %>
   </div>
-  
+
   <div class="expertise-panel__add-item">
     <i class="big-icon material-icons">add</i>
     <h4>Add Expertise</h4>
   </div>
-  
+
 </div>
