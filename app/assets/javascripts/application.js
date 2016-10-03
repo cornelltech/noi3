@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require users
 //= require sessions
 //= require_tree .
+
+$(function(){ $(document).foundation(); });

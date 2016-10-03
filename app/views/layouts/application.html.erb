@@ -9,6 +9,8 @@
   <script src="https://use.typekit.net/ioh1apd.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body>
@@ -34,7 +36,7 @@
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "Sign up", fetch_sign_up_path, :remote => true %> |
-      <%= link_to "Login", fetch_log_in_path, :remote => true %> 
+      <%= link_to "Login", fetch_log_in_path, :remote => true %>
     <% end %>
 
   </header>
