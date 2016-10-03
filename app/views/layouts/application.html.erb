@@ -19,17 +19,18 @@
       <input class="search__field" type="text">
       <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
     </form>
+    <!-- Auth header -->
+    <% if user_signed_in? %>
+
     <div class="top-bar__user-menu user-menu">
       <!-- {# use "user-menu__item--highlighted" class when we have notifications for the user #} -->
       <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span>
       <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span>
       <span class="user-menu__item user-menu__item--settings"><img src="images/users/128.jpg" alt=""></span>
     </div>
-
-    <!-- Auth header -->
-    <% if user_signed_in? %>
-    Logged in as <strong> <%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path(current_user) %> |
+<!-- TEMP - for testing -->
+    Hi <strong> <%= current_user.first_name %></strong>.
+    <%= link_to 'Edit Account', edit_user_registration_path(current_user) %> |
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
     <%= link_to "Sign up", new_user_registration_path %> |
@@ -49,7 +50,10 @@
 
     <%# render 'devise/sessions/new' %>
     <%# render 'devise/registrations/new' %>
-
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    
     <%= yield %>
 
   </main>

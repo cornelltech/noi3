@@ -8,6 +8,22 @@ class UsersController < ApplicationController
     # @categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prized-challenged", "design thinking", "citizen science"]
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to root_path, notice: "Successfully edited account"
+    else
+      flash[:alert] = @user.errors.full_messages
+      render :edit
+    end
+  end
+
+
   def show
     @user = User.find(params[:id])
     @expertise = @user.format_expertise
@@ -39,7 +55,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :email, :password, :points)
+    params.require(:user).permit(:username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :industry_ids => [], :language_ids => [])
   end
 
 end
