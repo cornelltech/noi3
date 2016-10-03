@@ -102,4 +102,4 @@ end
 User.create!(email: 'admin@example.com', password: 'password', username: 'adminuname', password_confirmation: 'password', :admin => true)
 
 
-
+User.create(email: 'test@example.com', password: 'password', username: 'testusername')

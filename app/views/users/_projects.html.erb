@@ -25,9 +25,13 @@
   </div>
   <% end %>
 
-  <div class="project-panel__add-item">
-    <i class="big-icon material-icons">add</i>
-    <h4>Add Project</h4>
-  </div>
+  <% if user.id == current_user.id %>
+    <div class="project-panel__add-item">
+      <i class="big-icon material-icons">add</i>
+      <h4>Add Project</h4>
+    </div>
+  <% end %>
+
+  <%= render 'projects/new'%>
   
 </div>

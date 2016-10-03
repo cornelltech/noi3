@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   get 'discourse/sso' => 'discourse_sso#sso'
 
   get "/fetch_teaching" => 'surveys#fetch_teaching', as: 'fetch_teaching'
+
+  resources :projects
+  
 end
