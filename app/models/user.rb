@@ -16,6 +16,9 @@ class User < ApplicationRecord
   attr_accessor :can_teach
   attr_accessor :can_learn
   
+  # after_create :create_discourse_user
+  # after_update :update_discourse_sso
+
   def country
     if self.country_code
       country = ISO3166::Country[country_code]
@@ -66,15 +69,26 @@ class User < ApplicationRecord
     "http://localhost:3000/assets/users/128.jpg"
   end
 
-  def set_discourse_sso
-    $discourse_client.sync_sso({ :sso_secret => DISCOURSE_CONFIG[:sso_secret],
-      :name => "#{self.first_name} #{self.last_name}",
-      :username => self.username, 
-      :email => self.email, 
-      :external_id => self.id,
-      :avatar_url => self.avatar_url})
+
+  def create_discourse_user
+    $discourse_client.create_user(
+      name: "#{self.first_name} #{self.last_name}",
+      email: self.email,
+      username: self.username,
+      external_id: self.id,
+      avatar_url: self.avatar_url,
+      password: SecureRandom.hex)
   end
 
-end
+  # def update_discourse_sso
+  #   $discourse_client.sync_sso(
+  #     :sso_secret => DISCOURSE_CONFIG[:sso_secret],
+  #     :name => "#{self.first_name} #{self.last_name}",
+  #     :username => self.username, 
+  #     :email => self.email, 
+  #     :external_id => self.id,
+  #     :avatar_url => self.avatar_url)
+  # end
 
+end
 
