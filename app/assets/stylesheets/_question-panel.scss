@@ -10,7 +10,11 @@
     position: absolute;
     bottom: 0;
   }
-  &__action__title { @extend .u-base-panel__action__title; }
+  
+  &__action__title { 
+    @extend .u-base-panel__action__title; 
+  }
+
   &__action__content { @extend .u-base-panel__action__content; }
   
 

@@ -17,8 +17,9 @@
     <button class="button button--full button--main-color js-open-panel-2" type="submit">Send</button>
   <% else %>
     <%= link_to new_user_registration_path do %>
-      <button class="button button--full button--main-color " type="submit">Sign Up</button>
+      <button class="button button--full button--main-color" type="submit">Sign Up</button>
     <% end %>
+    
     <%= render "devise/shared/links" %>
   </form>
 
