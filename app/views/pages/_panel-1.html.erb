@@ -14,8 +14,8 @@
 
     <% end %>
   <% else %>
-    <%= link_to new_user_registration_path do %>
-      <button class="button button--full button--main-color " type="submit">Sign Up</button>
+    <%= link_to fetch_sign_up_path, :remote => true do %>
+      <button class="button button--full button--main-color" type="submit">Sign Up</button>
     <% end %>
     <%= render "devise/shared/links" %>
   </form>

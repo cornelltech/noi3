@@ -34,5 +34,18 @@ class PagesController < ApplicationController
     end    
   end
 
+  # render devise views in panel
+  def fetch_sign_up
+  end
+
+  def fetch_log_in
+  end
+
+  def fetch_forgot_password
+  end
+
+  def fetch_edit_account
+  end
+
 
 end
