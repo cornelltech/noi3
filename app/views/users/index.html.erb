@@ -1,8 +1,12 @@
 <!-- TODO: Default to current user if current_user, else default to sign on screen-->
-<%= render 'profile', { user: current_user || @users.first }%>
-<%= render 'projects', { user: current_user || @users.first }%>
-<%= render 'events', { user: current_user || @users.first}%>
-<%= render 'expertise', { user: current_user  || @users.first}%>
+<% if user_signed_in? %>
+  <%= render 'profile', { user: current_user  }%>
+  <%= render 'projects', { user: current_user  }%>
+  <%= render 'events', { user: current_user }%>
+  <%= render 'expertise', { user: current_user  }%>
+<% else %>
+<%= render 'devise/registrations/new' %>
+<% end %>
 
 
 <div class="main-content">
@@ -51,7 +55,9 @@
   <ul class="main-content__container list">
     <% @users.each do | user | %>
     <li class="list__item person-item">
-      <%= image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
+      <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
+      <!-- PLACEHOLDER IMAGE -->
+      <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
       <div class="person-item__content">
         <hgroup class="person-item__credentials" data-user="<%=user.id%>">
           <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>

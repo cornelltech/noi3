@@ -3,6 +3,7 @@
   <h2 class="question-panel__heading question-panel__content">Ask a question</h2>
   <p class="question-panel__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque voluptatum, excepturi assumenda accusantium dolore quas aut fugit quibusdam odit sunt adipisci hic beatae distinctio? Tenetur, harum? Nihil commodi, culpa soluta.</p>
   <form action="" class="form form--negative question-panel__content question-panel__form">
+  <% if user_signed_in? %>
     <input type="text" placeholder="Question Title">
     <textarea name="" id=""  placeholder="Describe your problem"></textarea>
     <div class="select select--negative">
@@ -14,7 +15,15 @@
       </select>
     </div>
     <button class="button button--full button--main-color js-open-panel-2" type="submit">Send</button>
+  <% else %>
+    <%= link_to new_user_registration_path do %>
+      <button class="button button--full button--main-color " type="submit">Sign Up</button>
+    <% end %>
+    <%= render "devise/shared/links" %>
   </form>
+
+
+  <% end %>
   <div class="question-panel__action question-panel__content">
     <h4 class="question-panel__action__title js-open-action-panel">How it works</h4>
     <div class="question-panel__action__content js-panel-action">

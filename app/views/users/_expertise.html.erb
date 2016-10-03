@@ -17,10 +17,12 @@
   </div>
   <% end %>
   </div>
-
-  <div class="expertise-panel__add-item">
-    <i class="big-icon material-icons">add</i>
-    <h4>Add Expertise</h4>
-  </div>
-
+  
+  <%= link_to (url_for(fetch_teaching_menu_path)), :remote => true do %>
+    <div class="expertise-panel__add-item">
+      <i class="big-icon material-icons">add</i>
+      <h4>Add Expertise</h4>
+    </div>
+  <% end %>
+  
 </div>

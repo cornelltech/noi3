@@ -23,7 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def show
     @user = User.find(params[:id])
     @expertise = @user.format_expertise
@@ -50,12 +49,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_event
+    user = current_user
+    event_id = params["user"]["event_ids"]
+    event = Event.find(event_id)
+    if !user.events.include?(event)
+      user.events << Event.find(event_id)
+    else 
+      flash[:alert] = "Already attending"
+    end
+  end
+
+  def remove_event
+    user = current_user
+    event = Event.find(params["event_id"])
+    user.events.delete(event)
+  end
+
 
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :industry_ids => [], :language_ids => [])
+    params.require(:user).permit(:username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :industry_ids => [], :language_ids => [], :event_ids => [])
   end
 
 end

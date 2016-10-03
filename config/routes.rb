@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   get "/fetch_teaching" => 'surveys#fetch_teaching', as: 'fetch_teaching'
 
   resources :projects
+
+  put 'add_event' => 'users#add_event'
+  delete 'remove_event' => 'users#remove_event'
   
 end
