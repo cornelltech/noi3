@@ -91,7 +91,12 @@ button {
 }
 
 .form--negative {
-  input { color: $white; }
+  input,
+  select,
+  label,
+  textarea { color: $white; }
+
+  label {font-size: 1rem;}
 
   input[type='password'] {
     background-color: $white-10;
@@ -130,6 +135,7 @@ button {
 
 
 .form {
+  
   .select[disabled] {
     pointer-events: none;
     opacity: .4;
@@ -139,4 +145,5 @@ button {
 .select:before {
   pointer-events: none;
 }
+
 

@@ -31,12 +31,7 @@
   <!-- </div> -->
 
   <% if user == current_user %>
-    <div class="project-panel__add-item">
-      <i class="big-icon material-icons">add</i>
-      <h4>Add Project</h4>
-    </div>
-
-  <%= render 'projects/new'%>
+    <%= render 'projects/new'%>
   <% end %>
 
 </div>
