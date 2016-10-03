@@ -14,7 +14,7 @@ require 'csv'
     organization: Faker::Company.name,
     organization_type: Faker::Commerce.department,
     city: Faker::Address.city,
-    country: Faker::Address.country
+    country_code: Faker::Address.country_code
     )
 end
 
@@ -25,6 +25,14 @@ CSV.foreach(csv_file_path, :headers => true) do |row|
   category = Category.where(name:row[0].downcase).first_or_create
   skill_area = SkillArea.where(name: row[1].downcase, long_name: row[0].parameterize + '-' + row[1].parameterize, category_id: category.id).first_or_create
   skill = Skill.where(short_name:skill_area.long_name, description: row[2], category_id: category.id, skill_area_id: skill_area.id).first_or_create
+end
+
+# GENERATE LANGUAGES FROM http://data.okfn.org/data/core/language-codes/r/language-codes.csv
+
+languages_file_path = 'db/language-codes.csv'
+
+CSV.foreach(languages_file_path, :headers => true) do |row|
+  Language.create(abbreviation: row[0], name: row[1])
 end
 
 # OTHER SEED DATA

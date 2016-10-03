@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002143421) do
+ActiveRecord::Schema.define(version: 20161003001237) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161002143421) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-10-02 21:19:30'
+    t.datetime "date",            default: '2016-10-03 00:17:56'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 20161002143421) do
 
   create_table "industries_users", id: false, force: :cascade do |t|
     t.integer "industry_id", null: false
+    t.integer "user_id",     null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "abbreviation"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "languages_users", id: false, force: :cascade do |t|
+    t.integer "language_id", null: false
     t.integer "user_id",     null: false
   end
 
@@ -143,10 +155,10 @@ ActiveRecord::Schema.define(version: 20161002143421) do
     t.string   "position",               default: ""
     t.string   "organization",           default: ""
     t.string   "organization_type",      default: ""
-    t.string   "country",                default: ""
     t.string   "city",                   default: ""
     t.boolean  "admin",                  default: false, null: false
     t.string   "username"
+    t.string   "country_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
