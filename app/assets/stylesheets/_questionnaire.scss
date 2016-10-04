@@ -5,8 +5,8 @@
 
   &__title {
     color: rgba(black, .5);
-    padding: 10px;
-    font-size: 1.1rem;
+    padding: 10px 15px;
+    font-size: 1.3rem;
     margin: 0;
     vertical-align: baseline;
 
@@ -16,7 +16,7 @@
     }
 
     @include breakpoint($large) {
-      padding: 20px 60px 10px 120px;
+      padding: 20px 60px 10px 130px;
     }
   }
 
@@ -60,6 +60,7 @@
 
   &__item__label {
     display: block;
+    width: 100%;
     padding: 10px;
     
     
@@ -75,9 +76,9 @@
       @extend .u-material-icons;
       position: absolute;
       left: 30px;
-      top: 17px;
+      top: 20px;
       color: $green;
-      display: none;
+      opacity: .2;
     }
   }
 
@@ -85,7 +86,7 @@
     background-color: rgba($green, .2);
     color: $green;
     
-    &:before { display: block !important; }
+    &:before { opacity: 1; }
   }
   
 }

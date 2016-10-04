@@ -21,7 +21,10 @@
     box-shadow: 2px 2px 4px rgba(black, .2);
 
     &:hover,
-    &--active { background-color: $accent-color; } // NOTE: Active State for the category filter
+    &--active { 
+      background-color: $accent-color; 
+      color: white;
+    } // NOTE: Active State for the category filter
   }
 
 }
