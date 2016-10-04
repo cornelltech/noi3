@@ -27,6 +27,7 @@
     font-weight: 300;
     vertical-align: baseline;
     @include breakpoint($small-only) { margin-top: -4px; }
+    display: none !important;
   }
 
   &__item {
