@@ -1,5 +1,19 @@
-<%= render 'users/profile', {user: @user}%>
-
+<% if user_signed_in? %>
+  <div class="profile-panel panel panel--1">
+      <%= render 'users/profile', { user: current_user  }%>
+  </div>
+  <div class="project-panel panel panel--2">
+      <%= render 'users/projects', { user: current_user  }%>
+  </div>
+  <div class="event-panel panel panel--3">
+      <%= render 'users/events', { user: current_user }%>
+  </div>
+  <div class="expertise-panel panel panel--4">
+      <%= render 'users/expertise', { user: current_user }%>
+  </div>
+<% else %>
+  <%= render 'devise/registrations/new' %>
+<% end %>
 
 
 <div class="main-content match-me">

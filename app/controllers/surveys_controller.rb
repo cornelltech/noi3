@@ -1,9 +1,8 @@
 class SurveysController < ApplicationController
 
   def index
+    @users = User.all
     @surveys = Survey.all
-    @user = User.all.first
-    @expertise = User.all.first.format_expertise
     @categories = Category.all
   end
 
@@ -13,8 +12,8 @@ class SurveysController < ApplicationController
 
 
   def fetch_learning
-    @user = User.all.first
-    @expertise = User.all.first.format_expertise
+    @user = current_user
+    @expertise = current_user.format_expertise
     @survey = Survey.find(params[:survey_id])
     @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
     respond_to do |format|
@@ -27,8 +26,8 @@ class SurveysController < ApplicationController
   end
 
   def fetch_teaching
-    @user = User.all.first
-    @expertise = User.all.first.format_expertise
+    @user = current_user
+    @expertise = current_user.format_expertise
     @survey = Survey.find(params[:survey_id])
     @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
     respond_to do |format|
@@ -38,12 +37,10 @@ class SurveysController < ApplicationController
 
   def get_matches
     users = User.all
+    @user = current_user
 
-    @user = User.all.first
-    @expertise = User.all.first.format_expertise
     @categories = Category.all
     @skills = Skill.all
-
 
     # Temporary matching solution. 
     user_teachables = @user.teachables.pluck(:skill_id)
