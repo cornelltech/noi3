@@ -23,7 +23,7 @@
       <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
       <%= f.button "Log in", id: 'login_submit', type: '', class: 'button button--full button--main-color js-open-panel-2' %>
     <% if devise_mapping.rememberable? -%>
-      <div class="field">
+      <div class="checkbox">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
