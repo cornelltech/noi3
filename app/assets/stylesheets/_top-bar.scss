@@ -99,7 +99,7 @@
     right: -20px;
     top: 50px;
     text-align: right;
-    background-color: $main-color !important;
+    background-color: darken($main-color, 3) !important;
     display: none;
 
     .js-active & {

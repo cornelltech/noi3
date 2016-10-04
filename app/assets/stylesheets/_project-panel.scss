@@ -23,6 +23,14 @@
 
   &__url { font-style: italic; }
 
+  &__tags {
+    margin: 0;
+  }
+
+
+  
+
+
   &__add-item {
     @extend .u-base-panel__content;
     text-align: center;
