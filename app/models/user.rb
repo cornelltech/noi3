@@ -71,7 +71,11 @@ class User < ApplicationRecord
 
 
   def create_discourse_user
-    $discourse_client.create_user(
+    discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
+    
+    discourse_client.create_user(
       name: "#{self.first_name} #{self.last_name}",
       email: self.email,
       username: self.username,

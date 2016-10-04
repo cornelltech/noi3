@@ -20,7 +20,11 @@ class PagesController < ApplicationController
 
   def add_topic
     begin
-      $discourse_client.create_topic(
+      discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+      discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+      discourse_client.api_username = current_user.username
+
+      discourse_client.create_topic(
         category: params['topic_category'],
         skip_validations: true,
         auto_track: false,
