@@ -1,20 +1,24 @@
 class PagesController < ApplicationController
   def index
+    discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
+
     flash[:notice] = "Welcome to NOI"
   	category = params['category']
     # @categories = Category.all
     # get categories from discourse API
-    @categories = $discourse_client.categories
+    @categories = discourse_client.categories
     topics = []
     # get list of latest topics from discourse API
     unless category.nil?
-     topics = $discourse_client.category_latest_topics(:category_slug => category)
+     topics = discourse_client.category_latest_topics(:category_slug => category)
     else
-	    topics = $discourse_client.latest_topics
+	    topics = discourse_client.latest_topics
 	  end
 	  @topics = topics.map{ |topic| 
 	    	# then get each topic in that list in more detail
-	    	$discourse_client.topic(topic['id'])
+	    	discourse_client.topic(topic['id'])
 	    }
   end
 
@@ -25,7 +29,7 @@ class PagesController < ApplicationController
       discourse_client.api_username = current_user.username
 
       discourse_client.create_topic(
-        category: params['topic_category'],
+        category: params['topic-category'],
         skip_validations: true,
         auto_track: false,
         title: params['topic-title'],
