@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'fetch_log_in' => 'pages#fetch_log_in', as: 'fetch_log_in'
   get 'fetch_forgot_password' => 'pages#fetch_forgot_password', as: 'fetch_forgot_password'
   get 'fetch_edit_account' => 'pages#fetch_edit_account', as: 'fetch_edit_account'
+  get 'fetch_edit_user' => 'pages#fetch_edit_user', as: 'fetch_edit_user'
 
   get '/welcome' => 'welcome#index', as: 'welcome'
 end
