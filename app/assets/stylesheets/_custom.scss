@@ -168,4 +168,34 @@ button {
   pointer-events: none;
 }
 
+.signup-wall { display: none; }
+
+.signup-wall--active {
+  position: relative;
+  overflow: hidden;
+
+  .signup-wall {
+    background-color: rgba(white, .9);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 80px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+
+    p {
+      text-align: center;
+      width: 100%;
+      font-size: 1.6rem;
+      color: rgba(black, .3);
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+  }  
+}
+
+
 
