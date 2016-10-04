@@ -66,7 +66,7 @@
             <h6><%= match.first_name%> <%= match.last_name %> can advise you on <%= match.can_teach.count %> skills</h6>
 
             <% format_skills(match.can_teach).each do |skillset| %>
-              <h5><%=skillset[:category]%> <span class="user-skill-list__view-all">View All</span></h5>
+              <h5><%=skillset[:category]%> <!-- <span class="user-skill-list__view-all">View All</span> --></h5>
               <%skillset[:skills].each do |skill| %>
                 <li class="user-skill-list__item"><%=skill.capitalize%></li>
               <%end%>
@@ -76,7 +76,7 @@
           <ul class="user-skill-list">
             <h6>You can advise <%= match.first_name %> on <%= match.can_learn.length%> skills</h6>
             <% format_skills(match.can_learn).each do |skillset| %>
-              <h5><%=skillset[:category]%> <span class="user-skill-list__view-all">View All</span></h5>
+              <h5><%=skillset[:category]%> <!-- <span class="user-skill-list__view-all">View All</span> --></h5>
               <%skillset[:skills].each do |skill| %>
                 <li class="user-skill-list__item"><%=skill.capitalize%></li>
               <%end%>
