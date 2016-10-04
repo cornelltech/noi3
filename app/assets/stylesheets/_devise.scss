@@ -1,0 +1,53 @@
+.login-wrapper {
+    flex-grow: 1;
+    margin: auto;
+    height: 100%;
+    background-color: lighten($black, 10);
+    .login-title {
+        color: $white;
+    }
+
+    .login-form {
+        color: $white;
+        width: 80%;
+        margin: 0 auto;
+        padding: 10%;
+    }
+
+    .login-links {
+        color: $white;
+    }
+
+    .field > * {
+        color: $white;
+    }
+
+    .field > input {
+        background-color: lighten($black, 20);
+        &::-webkit-input-placeholder {
+            color: $white;
+        }
+        &::-moz-placeholder {
+            color: $white;
+        }
+        &:-ms-input-placeholder {
+            color: $white;
+        }
+        &:-moz-placeholder {
+            color: $white;
+        }
+    }
+
+    .button {
+        &--main-color {
+            background-color: #008ab3;
+            color: $white;
+        }
+    }
+
+    .checkbox {
+        &--white > * {
+            color: $white;
+        }
+    }
+}

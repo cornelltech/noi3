@@ -14,7 +14,7 @@ a {
 }
 
 body {
-  font-size: 16px; 
+  font-size: 16px;
   font-family: $main-font;
   letter-spacing: .5px;
   color: rgba(black, .8);
@@ -29,20 +29,20 @@ input,
 select,
 textarea,
 button {
-  font-size: 16px; 
+  font-size: 16px;
   font-family: $main-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @include placeholder { 
-    font-size: 16px; 
+  @include placeholder {
+    font-size: 16px;
     font-family: $main-font;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-[type='text'], 
+[type='text'],
 [type='password'],
 [type='date'],
 [type='datetime'],
@@ -66,21 +66,22 @@ button {
 .app-wrapper {
   @include breakpoint($medium) {
     display: flex;
+    // flex-flow: row wrap;
   }
   height: calc(100vh - 60px);
   overflow: hidden;
-  
+
 }
 
 .main-content {
   overflow-x: hidden;
   flex: 1;
 
-  &__container { 
+  &__container {
     @include breakpoint($small-only) { height: calc(100vh - 157px); }
     @include breakpoint($medium) { min-width: 650px; }
     @include breakpoint($large) { min-width: 750px; }
-    
+
     display: block;
     overflow-y: scroll;
   }
@@ -156,7 +157,7 @@ button {
 
 
 .form {
-  
+
   .select[disabled] {
     pointer-events: none;
     opacity: .4;
