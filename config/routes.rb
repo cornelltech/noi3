@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/fetch_user' => "users#fetch_user", as: "fetch_user"
   get "/fetch_learning" => 'surveys#fetch_learning', as: 'fetch_learning'
   get "/fetch_teaching_menu" => 'surveys#fetch_teaching_menu', as: 'fetch_teaching_menu'
-  
+
   root 'pages#index'
 
   namespace :api do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     	get '/me' => 'credentials#me'
   	end
 	end
-	
+
   get 'discourse/sso' => 'discourse_sso#sso'
 
   get "/fetch_teaching" => 'surveys#fetch_teaching', as: 'fetch_teaching'
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   put 'add_event' => 'users#add_event'
   delete 'remove_event' => 'users#remove_event'
-  
+
   put 'add_topic' => 'pages#add_topic'
 
   # ajax devise views
@@ -38,4 +38,6 @@ Rails.application.routes.draw do
   get 'fetch_log_in' => 'pages#fetch_log_in', as: 'fetch_log_in'
   get 'fetch_forgot_password' => 'pages#fetch_forgot_password', as: 'fetch_forgot_password'
   get 'fetch_edit_account' => 'pages#fetch_edit_account', as: 'fetch_edit_account'
+
+  get '/welcome' => 'welcome#index', as: 'welcome'
 end
