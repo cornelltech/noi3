@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @expertise = @user.format_expertise
-
+    @events = Event.all
     @projects = []
 
     @user.projects.each do | project |
@@ -36,10 +36,10 @@ class UsersController < ApplicationController
       @projects.push(project_with_tags)
     end
 
-    respond_to do |format|
-      format.html 
-      format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
-    end
+    # respond_to do |format|
+    #   format.html 
+    #   format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
+    # end
   end
 
   def fetch_user 
@@ -51,12 +51,13 @@ class UsersController < ApplicationController
 
   def add_event
     user = current_user
-    event_id = params["user"]["event_ids"]
-    event = Event.find(event_id)
-    if !user.events.include?(event)
-      user.events << Event.find(event_id)
-    else 
-      flash[:alert] = "Already attending"
+    # byebug
+    event_ids = params['event_ids']
+    event_ids.each do | event_id |
+      event = Event.find(event_id)
+      if !user.events.include?(event)
+        user.events << Event.find(event)
+      end
     end
   end
 

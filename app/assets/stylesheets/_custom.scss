@@ -1,9 +1,21 @@
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $main-font;
+}
+
 a {
   color: currentColor;
   text-decoration: none;
+
+  &:visited {
+    color: $accent-color;
+  }
 }
 
 body {
+  font-size: 16px; 
+  font-family: $main-font;
   letter-spacing: .5px;
   color: rgba(black, .8);
   font-weight: 400;
@@ -29,6 +41,21 @@ button {
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+[type='text'], 
+[type='password'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='month'],
+[type='week'],
+[type='email'],
+[type='number'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='url'],
+[type='color'] { height: auto; }
 
 // Base Structure
 
@@ -85,7 +112,12 @@ button {
 }
 
 .form--negative {
-  input { color: $white; }
+  input,
+  select,
+  label,
+  textarea { color: $white; }
+
+  label {font-size: 1rem;}
 
   input[type='password'] {
     background-color: $white-10;
@@ -124,6 +156,7 @@ button {
 
 
 .form {
+  
   .select[disabled] {
     pointer-events: none;
     opacity: .4;
@@ -133,4 +166,5 @@ button {
 .select:before {
   pointer-events: none;
 }
+
 

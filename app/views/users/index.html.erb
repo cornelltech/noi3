@@ -1,13 +1,26 @@
 <!-- TODO: Default to current user if current_user, else default to sign on screen-->
+<%# if user_signed_in? %>
+  <%# render 'profile', { user: current_user  }%>
+  <%# render 'projects', { user: current_user  }%>
+  <%# render 'events', { user: current_user }%>
+  <%# render 'expertise', { user: current_user  }%>
+
 <% if user_signed_in? %>
-  <%= render 'profile', { user: current_user  }%>
-  <%= render 'projects', { user: current_user  }%>
-  <%= render 'events', { user: current_user }%>
-  <%= render 'expertise', { user: current_user  }%>
+  <div class="profile-panel panel panel--1">
+      <%= render 'profile', { user: current_user  }%>
+  </div>
+  <div class="project-panel panel panel--2">
+      <%= render 'projects', { user: current_user  }%>
+  </div>
+  <div class="event-panel panel panel--3">
+      <%= render 'events', { user: current_user }%>
+  </div>
+  <div class="expertise-panel panel panel--4">
+      <%= render 'expertise', { user: current_user  }%>
+  </div>
 <% else %>
 <%= render 'devise/registrations/new' %>
 <% end %>
-
 
 <div class="main-content">
   <div class="toast toast--yellow"> 
@@ -59,12 +72,14 @@
       <!-- PLACEHOLDER IMAGE -->
       <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
       <div class="person-item__content">
+        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
         <hgroup class="person-item__credentials" data-user="<%=user.id%>">
           <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
 
           <h3 class="person-item__job"><%= user.position %></h3>
           <h4 class="person-item__org"><%= user.organization%></h4>
         </hgroup>
+        <% end %>
         <div class="person-item__controls">
           <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
         </div>

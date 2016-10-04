@@ -8,7 +8,7 @@
 .main-menu {
   background-color: darken($main-color, 4);
   position: relative;
-  z-index: 10;
+  z-index: 100;
   @include breakpoint($small-only) { display: flex; }
 
   &__item {
@@ -22,11 +22,16 @@
     }
     @include breakpoint($medium) { display: block; }
 
+    &:visited {
+      color: rgba($white, .6);
+    }
+
   
     &:after {
-      width: 0;
+      max-width: 0;
       @extend .u-transition;
       content: attr(title);
+      color: rgba($white, .6);
       position: absolute;
       left: 100%;
       background-color: $accent-color;
@@ -35,14 +40,15 @@
       overflow: hidden;
       display: block;
       font-size: 1.35rem;
+      width: auto;
       white-space: nowrap;
       @include breakpoint($small-only) { display: none; }
+
     }    
 
     &:hover:after {
       @extend .u-transition;
-      width: auto;
-      
+      max-width: 400px;
       padding: 12px 15px 10px;
     }
 

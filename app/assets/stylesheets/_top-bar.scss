@@ -85,8 +85,51 @@
   }
 
   &__item--settings {
-    @extend .u-circle;
-    padding: 0;
+    position: relative;
+
+    img {
+      @extend .u-circle;
+      padding: 0;
+    }
   }
 
+  &__dropdown {
+    position: absolute;
+    padding: 0;
+    right: -20px;
+    top: 50px;
+    text-align: right;
+    background-color: darken($main-color, 3) !important;
+    display: none;
+
+    .js-active & {
+      display: block;
+    } 
+
+
+    li {
+      margin: 0;
+      list-style: none;
+      padding: 8px 15px;
+      width: 140px;
+
+      &:hover {
+        background-color: $accent-color;
+      }
+    }
+  }
+
+}
+
+.search {
+  .search__field {
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 transparent;
+    margin-right: -1px;
+  }
+
+  .search-trigger {
+    border: 1px solid transparent;
+    margin-right: 0;
+  }
 }

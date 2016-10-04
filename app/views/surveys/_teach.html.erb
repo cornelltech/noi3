@@ -17,7 +17,7 @@
 
         <li class="questionnaire__item questionnaire__item--submit list__item">
           <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
-          <%= f.hidden_field :user_id, value: 1 %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.submit 'Save', class: 'button button--main-color' %>
           <%= link_to 'Next', matches_path, class: 'button button--main-color'%>
         </li>

@@ -15,7 +15,7 @@
 
 <body>
   <header class="top-bar">
-    <h1 class="top-bar__logo"><%= image_tag("noi-logo-white.svg", :alt => "Network of Innovators") %></h1>
+    <h1 class="top-bar__logo"><a href="<%= root_path %>"><%= image_tag("noi-logo-white.svg", :alt => "Network of Innovators") %></a></h1>
 
     <form class="top-bar__search search search--negative search--fixed js-target-search" action="">
       <input class="search__field" type="text">
@@ -26,17 +26,23 @@
 
     <div class="top-bar__user-menu user-menu">
       <!-- {# use "user-menu__item--highlighted" class when we have notifications for the user #} -->
-      <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span>
-      <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span>
-      <span class="user-menu__item user-menu__item--settings"><img src="images/users/128.jpg" alt=""></span>
+      <!-- <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span> -->
+      <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
+      <div class="user-menu__item user-menu__item--settings js-open-this">
+        <img src="<%= current_user.avatar_url %>" alt="">
+        <ul class="user-menu__dropdown">
+          <li><%= link_to "Edit Account", fetch_edit_account_path, :remote => true %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
     </div>
 <!-- TEMP - for testing -->
-      Hi <strong> <%= current_user.first_name %></strong>.
-      <%= link_to "Edit Account", fetch_edit_account_path, :remote => true %>  |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      
+      
     <% else %>
     <div class="top-bar__user-menu user-menu">
-      <span class="button"><%= link_to "Sign up", fetch_sign_up_path, :remote => true %></span><span class="button"><%= link_to "Login", fetch_log_in_path, :remote => true %></span>
+      <%= link_to "Sign up", fetch_sign_up_path, :remote => true, class: 'button' %>
+      <%= link_to "Login", fetch_log_in_path, :remote => true, class: 'button' %>
     </div>
     <% end %>
 
@@ -56,6 +62,15 @@
 <!--     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %> -->
+
+     <% unless flash.empty? %>
+        <script type="text/javascript">
+            <% flash.each do |f| %>
+            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+             toastr['<%= type %>']('<%= f[1] %>');
+            <% end %>
+        </script>
+     <% end %>
 
     <%= yield %>
 

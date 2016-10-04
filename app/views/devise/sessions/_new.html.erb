@@ -23,7 +23,7 @@
       <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
       <%= f.button "Log in", id: 'login_submit', type: '', class: 'button button--full button--main-color js-open-panel-2' %>
     <% if devise_mapping.rememberable? -%>
-      <div class="field">
+      <div class="checkbox">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
@@ -31,14 +31,4 @@
     </div>
     <%= render "devise/shared/links" %>
   <% end %>
-
-
-  <div class="signup-panel__action signup-panel__content">
-    <h4 class="signup-panel__action__title js-open-action-panel">How it works</h4>
-    <div class="signup-panel__action__content js-panel-action">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sed, sunt quisquam, sit aspernatur quam dolor? Nostrum ea recusandae dignissimos aperiam, dolore inventore magnam dolor, natus omnis debitis voluptatem nemo!</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum sed, sunt quisquam, sit aspernatur quam dolor? Nostrum ea recusandae dignissimos aperiam, dolore inventore magnam dolor, natus omnis debitis voluptatem nemo!</p>
-    </div>
-
-  </div>
 </div>

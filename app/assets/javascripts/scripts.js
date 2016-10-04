@@ -1,34 +1,36 @@
 $(document).ready(function () {
 
-$('.js-open-panel').click(function (e) {
-    $('.panel').not('.panel--1').removeClass('js-active');
-    $('.panel--1').toggleClass('js-active');
-});
+    $('body').on('click', '.js-open-panel', function (e) {
+        $('.panel').not('.panel--1').removeClass('js-active');
+        $('.panel--1').toggleClass('js-active');
+    });
 
-$('.js-open-panel-2').click(function (e) {
-    $('.panel').not('.panel--2').removeClass('js-active');
-    $('.panel--2').toggleClass('js-active');
-});
+    $('body').on('click', '.js-open-panel-2', function(e) {
+        $('.panel').not('.panel--2').removeClass('js-active');
+        $('.panel--2').toggleClass('js-active');
+    });
 
-$('.js-open-panel-3').click(function (e) {
-    $('.panel').not('.panel--3').removeClass('js-active');
-    $('.panel--3').toggleClass('js-active');
-});
+    $('body').on('click', '.js-open-panel-3', function(e) {
+        $('.panel').not('.panel--3').removeClass('js-active');
+        $('.panel--3').toggleClass('js-active');
+    });
 
-$('.js-open-panel-4').click(function (e) {
-    $('.panel').not('.panel--4').removeClass('js-active');
-    $('.panel--4').toggleClass('js-active');
-});
+    $('body').on('click', '.js-open-panel-4', function(e) {
+        $('.panel').not('.panel--4').removeClass('js-active');
+        $('.panel--4').toggleClass('js-active');
+    });
 
-$('.js-close-panel').click(function () {
-    $('.panel').removeClass('js-active');
-});
+    $('body').on('click', '.js-close-panel', function(e) {
+        $('.panel').removeClass('js-active');
+    });
 
-$('.js-open-action-panel').click(function () {
-    $('.js-panel-action').toggleClass('js-active');
-});
+    $('body').on('click', '.js-open-action-panel', function(e) {
+        $('.js-panel-action').toggleClass('js-active');
+    });
 
-
+    $('.js-open-this').click(function () {
+        $(this).toggleClass('js-active');
+    });
 
 
 

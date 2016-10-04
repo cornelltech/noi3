@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/matches" => 'surveys#get_matches'
 
   # ajax via rails
+  get '/fetch_user' => "users#fetch_user", as: "fetch_user"
   get "/fetch_learning" => 'surveys#fetch_learning', as: 'fetch_learning'
   get "/fetch_teaching_menu" => 'surveys#fetch_teaching_menu', as: 'fetch_teaching_menu'
 
