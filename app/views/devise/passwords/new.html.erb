@@ -1,0 +1,19 @@
+<div class="login-wrapper">
+  <div class="login-form">
+    <h4>Forgot your password?</h4>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+        <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
+    </div>
+    <%= f.submit "Send reset instructions", class: 'button button--full button--main-color' %>
+    <% end %>
+
+    <div class="login-links">
+      <a href="/users/sign_up">Sign Up</a><br>
+      <a href="/users/sign_in">Login</a>
+  </div>
+</div>
+</div>
