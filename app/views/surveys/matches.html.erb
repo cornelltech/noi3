@@ -22,9 +22,9 @@
     <h3 class="match-me__intro">Your matches are people who have experience in what you want to learn <br> and have something to learn from you.</h3>
     <div class="steps">
       <span class="steps__item steps--done"></span>
+      <span class="steps__item steps--done"></span>
+      <span class="steps__item steps--done"></span>
       <span class="steps__item steps--done steps--current"></span>
-      <span class="steps__item"></span>
-      <span class="steps__item"></span>
     </div>
     
     <h2 class="match-me__question"><%=@user.first_name%>, meet your matches!</h2>
@@ -41,11 +41,13 @@
       <li class="list__item person-item">
         <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
         <div class="person-item__content">
-          <hgroup class="person-item__credentials person-item--no-flex">
-            <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%></h2>
-            <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
-            <h4 class="person-item__org"><%= match.city%>, <%= match.country%></h4>
-          </hgroup>
+        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+            <hgroup class="person-item__credentials person-item--no-flex">
+              <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%></h2>
+              <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
+              <h4 class="person-item__org"><%= match.city%>, <%= match.country%></h4>
+            </hgroup>
+          <% end %>
           <ul class="person-item__tags category-tags person-item--no-flex">
             <% match.format_expertise.each do |e| %>
               <li class="person-item__tag category-tag">
@@ -58,7 +60,9 @@
           </ul>
           <div class="person-item__controls">
             <a href="#" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
-            <a href="#" class="person-item__projects controls__button"><%= match.projects.count%> Projects</a>
+            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>  
+              <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
+            <% end %>
           </div>
         </div>
         <div class="person-item__content">
@@ -66,7 +70,7 @@
             <h6><%= match.first_name%> <%= match.last_name %> can advise you on <%= match.can_teach.count %> skills</h6>
 
             <% format_skills(match.can_teach).each do |skillset| %>
-              <h5><%=skillset[:category]%> <span class="user-skill-list__view-all">View All</span></h5>
+              <h5><%=skillset[:category]%> <!-- <span class="user-skill-list__view-all">View All</span> --></h5>
               <%skillset[:skills].each do |skill| %>
                 <li class="user-skill-list__item"><%=skill.capitalize%></li>
               <%end%>
@@ -76,7 +80,7 @@
           <ul class="user-skill-list">
             <h6>You can advise <%= match.first_name %> on <%= match.can_learn.length%> skills</h6>
             <% format_skills(match.can_learn).each do |skillset| %>
-              <h5><%=skillset[:category]%> <span class="user-skill-list__view-all">View All</span></h5>
+              <h5><%=skillset[:category]%> <!-- <span class="user-skill-list__view-all">View All</span> --></h5>
               <%skillset[:skills].each do |skill| %>
                 <li class="user-skill-list__item"><%=skill.capitalize%></li>
               <%end%>

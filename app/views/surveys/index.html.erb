@@ -11,8 +11,12 @@
   <div class="expertise-panel panel panel--4">
       <%= render 'users/expertise', { user: current_user }%>
   </div>
+
+
   <%= render 'match-me', { user: current_user }%>
+
+  
 <% else %>
   <%= render 'devise/registrations/new' %>
-  <%= render 'match-me', { user: @users.first}%>
+  <%= render 'match-me', { user: @users.first}%> <!-- TEMPORARY -->
 <% end %>
