@@ -16,5 +16,23 @@
 //= require users
 //= require sessions
 //= require_tree .
+//= require toastr
 
-$(function(){ $(document).foundation(); });
+$(function(){ 
+  $(document).foundation(); 
+
+  toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "positionClass": "toast-bottom-full-width",
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "300000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+          };
+});
