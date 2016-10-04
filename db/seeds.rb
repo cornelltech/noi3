@@ -65,7 +65,7 @@ end
   User.all.each {|user| user.categories << Category.find(rand(1..8)) }
 end
 
-Event.create(conference_code: "IODC", name: "3rd International Annual Open Data Conference 2015 ", logo_path: "logo-iodc-web.png")
+Event.create(conference_code: "IODC", name: "IODC 2016", logo_path: "logo-iodc-web.png")
 Event.create(conference_code: "ODRS", name: "Open Data Research Symposium ", logo_path: "2016-odrs.png")
 
 User.all.each { | user | user.events<< Event.first }

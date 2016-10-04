@@ -2,11 +2,16 @@
   <i class="event-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="event-panel__content event-panel__heading">Events</h2>
 
+
   <div class="events-container">
+    <div class="event-panel__item">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas omnis, fugit ea alias saepe ipsam maiores ad suscipit id consectetur aut unde, cupiditate ullam sequi beatae est eum facere fuga.</p>
+    </div>
+    
     <% user.events.each do | event |  %>
     <div class="event-panel__item">
       <a href="#" target="_blank">
-        <%= image_tag('events/' + event.logo_path, :alt => event.name) %>
+        <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => event.name.parameterize) %>
       </a>
     </div>
     <% if user == current_user %>
@@ -16,26 +21,27 @@
   </div>
 
   <% if user == current_user %>
-  <div class="event-panel__add-item">
-    <i class="big-icon material-icons">add</i>
-    <h4>Add Event</h4>
-  </div>
-  <%= form_for User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put" } do |f| %>
+  
+  <%= form_for User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' } do |f| %>
 
 
-  <%= f.label 'Add an Event' %><br>
-      <% Event.all.each do | event | %>
-        <li class="questionnaire__item list__item">
-        <div class="checkbox">
-          <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.id%>" value="<%=event.id%>">
-          <label class="event-label" for="checkbox-<%=event.id%>" ><%= event.name %></label>
-        </div>
-        </li>
-      <% end %>
-
-<%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Save", class: "button" %>
-<% end %>
+  
+  <% Event.all.each do | event | %>
+    <div class="event-panel__item list__item">
+      <label class="event-label" for="checkbox-<%=event.id%>" >
+        <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.id%>" value="<%=event.id%>">
+        <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo ' + event.name.parameterize) %>
+        
+      </label>
+    </div>
+  <% end %>
+  <li class="event-panel__item list__item event-panel__item--submit">
+  <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Save", class: "button" %>
+  <% end %>
+  </li>
 <% end %>
 
 <!-- </div> -->
+
+

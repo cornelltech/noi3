@@ -16,30 +16,51 @@
     border-bottom: 1px solid rgba(white, .05);
   }
 
-  &__add-item {
-    @extend .u-base-panel__content;
-    text-align: center;
-    background-color: rgba(white, .05);
-    padding-top: 60px;
-    padding-bottom: 60px;
-    cursor: pointer;
-
-    .big-icon {
-      background-color: white;
-      color: black;
-    }
-
-    h4 {
-      font-size:  1rem;
-      font-weight: 800;
-    }
-
-    > * {
-      opacity: .1;
-    }
-
-    &:hover > * {
-      opacity: .5;
-    }
+  &__item--submit .button {
+    display: block;
+    width: 100%;
+    background-color: $main-color;
   }
+
+  .event-label {
+    text-align: center;
+    
+  }
+
+  .event-logo {
+    max-width: 250px;
+    max-height: 120px;
+    opacity: .3;
+  }
+  
+  input[type='checkbox']:checked ~ .event-logo {
+    opacity: 1;
+  }
+
+  // &__add-item {
+  //   @extend .u-base-panel__content;
+  //   text-align: center;
+  //   background-color: rgba(white, .05);
+  //   padding-top: 60px;
+  //   padding-bottom: 60px;
+  //   cursor: pointer;
+
+  //   .big-icon {
+  //     background-color: white;
+  //     color: black;
+  //   }
+
+  //   h4 {
+  //     font-size:  1rem;
+  //     font-weight: 800;
+  //   }
+
+  //   > * {
+  //     opacity: .1;
+  //   }
+
+  //   &:hover > * {
+  //     opacity: .5;
+  //   }
+  // }
 }
