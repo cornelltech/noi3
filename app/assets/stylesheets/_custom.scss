@@ -1,3 +1,5 @@
+
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $main-font;
 }
@@ -5,6 +7,10 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: currentColor;
   text-decoration: none;
+
+  &:visited {
+    color: $accent-color;
+  }
 }
 
 body {
