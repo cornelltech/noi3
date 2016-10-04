@@ -107,6 +107,7 @@
 
   &--1 {
     background-color: #222;
+    box-shadow: 2px 2px 5px rgba(black, .3);
     z-index: 50;
     @include breakpoint($large) { margin-left: 0; }
   }
