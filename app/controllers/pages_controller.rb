@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-    flash[:notice] = "Welcome to NOI"
+    # flash[:notice] = "Welcome to NOI"
   	category = params['category']
     # @categories = Category.all
     # get categories from discourse API
