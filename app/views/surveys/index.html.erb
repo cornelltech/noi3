@@ -13,5 +13,6 @@
   </div>
   <%= render 'match-me', { user: current_user }%>
 <% else %>
-  <%= render 'match-me', { user: @user }%>
+  <%= render 'devise/registrations/new' %>
+  <%= render 'match-me', { user: @users.first}%>
 <% end %>
