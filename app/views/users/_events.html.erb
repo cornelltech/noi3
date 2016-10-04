@@ -24,12 +24,17 @@
 
 
   <%= f.label 'Add an Event' %><br>
-  <%# select_tag 'user[events]',
-      options_from_collection_for_select(Event.all, "id", "name", User.new.events), { :multiple => true, :size =>3}
-  %>
-    <%= f.collection_select :event_ids, Event.order(:name),:id,:name, include_blank: true %>
+      <% Event.all.each do | event | %>
+        <li class="questionnaire__item list__item">
+        <div class="checkbox">
+          <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.id%>" value="<%=event.id%>">
+          <label class="event-label" for="checkbox-<%=event.id%>" ><%= event.name %></label>
+        </div>
+        </li>
+      <% end %>
+
 <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Add Event", class: "button" %>
+  <%= f.submit "Save", class: "button" %>
 <% end %>
 <% end %>
 
