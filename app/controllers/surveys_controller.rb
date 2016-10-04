@@ -38,12 +38,10 @@ class SurveysController < ApplicationController
 
   def get_matches
     users = User.all
+    @user = current_user
 
-    @user = User.all.first
-    @expertise = User.all.first.format_expertise
     @categories = Category.all
     @skills = Skill.all
-
 
     # Temporary matching solution. 
     user_teachables = @user.teachables.pluck(:skill_id)

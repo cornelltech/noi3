@@ -104,8 +104,8 @@ User.create!(email: 'admin@example.com', password: 'password', username: 'adminu
 
 
 User.create(email: 'test@example.com', password: 'password', username: 'testusername',
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
+  first_name: "TEST",
+  last_name: "USER",
   picture_path: '/assets/users/128.jpg',
   position: Faker::Company.profession,
   organization: Faker::Company.name,
