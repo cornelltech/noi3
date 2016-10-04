@@ -1,9 +1,17 @@
 <% if user_signed_in? %>
-<%= render 'users/profile', { user: current_user }%>
-<%= render 'users/projects', { user: current_user  }%>
-<%= render 'users/events', { user: current_user }%>
-<%= render 'users/expertise', { user: current_user  }%>
+  <div class="profile-panel panel panel--1">
+      <%= render 'users/profile', { user: current_user  }%>
+  </div>
+  <div class="project-panel panel panel--2">
+      <%= render 'users/projects', { user: current_user  }%>
+  </div>
+  <div class="event-panel panel panel--3">
+      <%= render 'users/events', { user: current_user }%>
+  </div>
+  <div class="expertise-panel panel panel--4">
+      <%= render 'users/expertise', { user: current_user }%>
+  </div>
+  <%= render 'match-me', { user: current_user }%>
 <% else %>
-<%= render 'devise/registrations/new' %>
+  <%= render 'match-me', { user: @user }%>
 <% end %>
-<%= render 'match-me', {user: @user}%>
