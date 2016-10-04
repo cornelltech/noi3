@@ -41,8 +41,7 @@
       
     <% else %>
     <div class="top-bar__user-menu user-menu">
-      <%= link_to "Sign up", fetch_sign_up_path, :remote => true, class: 'button' %>
-      <%= link_to "Login", fetch_log_in_path, :remote => true, class: 'button' %>
+      <%= link_to "Sign up", fetch_sign_up_path, :remote => true, class: 'button' %><%= link_to "Login", fetch_log_in_path, :remote => true, class: 'button' %>
     </div>
     <% end %>
 
