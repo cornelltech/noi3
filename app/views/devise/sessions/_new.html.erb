@@ -21,7 +21,7 @@
     <div class='form form--negative signup-panel__content signup-panel__form'>
       <%= f.email_field :email, autofocus: true, placeholder: 'Email' %>
       <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
-      <%= f.button "Log in", id: 'login_submit', type: '', class: 'button button--full button--main-color js-open-panel-2' %>
+      <%= f.button "Log in", id: 'login_submit', type: '', class: 'button button--full button--main-color' %>
     <% if devise_mapping.rememberable? -%>
       <div class="checkbox">
         <%= f.check_box :remember_me %>
