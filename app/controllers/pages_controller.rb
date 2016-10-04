@@ -34,7 +34,7 @@ class PagesController < ApplicationController
       redirect_to root_path, notice: "Successfully created topic"
     rescue Exception => e
       puts e.message
-      flash[:alert] = @project.errors.full_messages
+      flash[:alert] = "Error creating topic"
       render root_path
     end    
   end

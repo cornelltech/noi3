@@ -1,7 +1,7 @@
 development:
   url: "http://discourse.noilocal.com"
   api_key: "7a88fab91476f6cf17f061a26ea27bb390a7e2694f489bdca5793bb1a8a2428d"
-  api_username: "system"
+  api_username: "adminuname"
   sso_secret: "hamburger1"
   sso_redirect_url: "http://discourse.noilocal.com/session/sso_login"
 
