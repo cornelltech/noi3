@@ -22,7 +22,7 @@
 <%= render 'devise/registrations/new' %>
 <% end %>
 
-<div class="main-content">
+<div class="main-content search-page">
   <div class="toast toast--yellow"> 
   <!-- {# toast--green, toast--red, toast--gray #} -->
     <i class="material-icons toast__close">close</i>
@@ -30,77 +30,78 @@
     <p class="toast__text">Find experts to contact based on their innovation experience</p>
   </div>
 
-  <section class="filter-section main-content__container">
-    <form action="" class="form">
-      <div class="search search--fixed js-target-search find-innovator" action="">
-        <input class="search__field" type="text" placeholder="Find an Innovator">
-        <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
-      </div>
-      <p><em class="highlighted-or">OR</em> Find someone with experience in 
-      <span class="select select--inline select-innovation-area">
-        <select name="" id="">
-          <option value="">Pick an Innovation Area</option>
-          
-          <% @categories.each do |category|  %>
-            <option value=""><%= category %></option>
-          <% end %>
-
-        </select>
-      </span>
-      <span class="select select--inline select-innovation-area" disabled>
-        <select name="" id="">
-          <option value="">Pick an Innovation Area</option>
-          <option value="">Open Data</option>
-          <option value="">Crowdsourcing</option>
-        </select>
-      </span>
-    </form>
-
-    </p>
-  </section>
-  <section class="active-filters">
-    <span class="filter-by">Filter by</span>
-    <span class="active-filters__item">Location</span>
-    <span class="active-filters__item">Field of Work</span>
-    <span class="active-filters__item">Language</span>
-  </section>
-
-  <ul class="main-content__container list">
-    <% @users.each do | user | %>
-    <li class="list__item person-item">
-      <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
-      <!-- PLACEHOLDER IMAGE -->
-      <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
-      <div class="person-item__content">
-        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
-        <hgroup class="person-item__credentials" data-user="<%=user.id%>">
-          <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
-
-          <h3 class="person-item__job"><%= user.position %></h3>
-          <h4 class="person-item__org"><%= user.organization%></h4>
-        </hgroup>
-        <% end %>
-        <div class="person-item__controls">
-          <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
+  <article class="main-content__container">
+    <section class="filter-section">
+      <form action="" class="form">
+        <div class="search search--fixed js-target-search find-innovator" action="">
+          <input class="search__field" type="text" placeholder="Find an Innovator">
+          <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
         </div>
-      </div>
-      <div class="person-item__content">
-        <ul class="person-item__tags category-tags">
-          <% user.format_expertise.each do |e| %>
-            <li class="category-tag">
-              <span class="category-tag__main"><%= e[:category].titleize %></span>
-              <% e[:skill_areas].each do |skill_area| %>
-              <span class="category-tag__sub"><%= skill_area.titleize %></span>
-              <% end %>
-              </li>
+        <p><em class="highlighted-or">OR</em> Find someone with experience in 
+        <span class="select select--inline select-innovation-area">
+          <select name="" id="">
+            <option value="">Pick an Innovation Area</option>
+            
+            <% @categories.each do |category|  %>
+              <option value=""><%= category %></option>
+            <% end %>
+
+          </select>
+        </span>
+        <span class="select select--inline select-innovation-area" disabled>
+          <select name="" id="">
+            <option value="">Pick an Innovation Area</option>
+            <option value="">Open Data</option>
+            <option value="">Crowdsourcing</option>
+          </select>
+        </span>
+      </form>
+    <!-- <section class="active-filters">
+      <span class="filter-by">Filter by</span>
+      <span class="active-filters__item">Location</span>
+      <span class="active-filters__item">Field of Work</span>
+      <span class="active-filters__item">Language</span>
+    </section> -->
+    </section>
+    
+    <ul class="list">
+      <% @users.each do | user | %>
+      <li class="list__item person-item">
+        <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
+        <!-- PLACEHOLDER IMAGE -->
+        <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
+        <div class="person-item__content">
+          <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
+          <hgroup class="person-item__credentials" data-user="<%=user.id%>">
+            <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
+
+            <h3 class="person-item__job"><%= user.position %></h3>
+            <h4 class="person-item__org"><%= user.organization%></h4>
+          </hgroup>
           <% end %>
-        </ul>
-        <div class="person-item__controls">
-          <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
+          <div class="person-item__controls">
+            <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
+          </div>
         </div>
-      </div>
-      
-    </li>
-    <% end %>
-  </ul>
+        <div class="person-item__content">
+          <ul class="person-item__tags category-tags">
+            <% user.format_expertise.each do |e| %>
+              <li class="category-tag">
+                <span class="category-tag__main"><%= e[:category].titleize %></span>
+                <% e[:skill_areas].each do |skill_area| %>
+                <span class="category-tag__sub"><%= skill_area.titleize %></span>
+                <% end %>
+                </li>
+            <% end %>
+          </ul>
+          <div class="person-item__controls">
+            <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
+          </div>
+        </div>
+        
+      </li>
+      <% end %>
+    </ul>
+</article>
+  
 </div>
