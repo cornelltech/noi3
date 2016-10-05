@@ -22,7 +22,7 @@
     <div>
     <% if current_user.id == user.id %>
       <span class="button"><%= link_to "Edit", edit_project_path(project) %></span>
-      <span class="button"><%= link_to "Delete", {controller: 'projects', action: "destroy", id: project.id }, method: :delete, data: { confirm: "Are you sure?" } %></span>
+      <span class="button"><%= link_to "Delete", {controller: 'projects', action: "destroy", id: project.id }, method: :delete, remote: true %></span>
     <%end%>
     </div>
     <!-- ADD INDUSTRY TAGS TO PROJECTS-->

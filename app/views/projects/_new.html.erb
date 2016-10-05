@@ -1,7 +1,7 @@
 <div class="panel__content">
   <h2 class="project-panel__content project-panel__heading">New Project</h2>
   <div class="project-panel__item">
-    <%= form_for Project.new, :html => {:class => 'form form--negative'} do |f| %>
+    <%= form_for Project.new, :html => {:class => 'form form--negative'}, remote:true do |f| %>
       <h3 class="project-panel__title"><%= f.text_field :title, placeholder: 'Title' %></h3>
       <%= f.text_field :url, placeholder: 'URL' %>
       <%= f.text_area :description, placeholder: 'Description', size: '60x12' %>

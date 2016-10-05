@@ -73,12 +73,18 @@ class UsersController < ApplicationController
         user.events << Event.find(event)
       end
     end
+    respond_to do |format|
+      format.js {render '/users/update_events.js.erb' }
+    end
   end
 
   def remove_event
     user = current_user
     event = Event.find(params["event_id"])
     user.events.delete(event)
+    respond_to do |format|
+      format.js {render '/users/update_events.js.erb' }
+    end
   end
 
   private

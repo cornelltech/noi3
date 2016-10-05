@@ -15,14 +15,14 @@
       </a>
     </div>
     <% if user == current_user %>
-      <%= link_to "Remove Conference", { controller: 'users', action: "remove_event", event_id: event.id }, method: :delete %>
+      <%= link_to "Remove Conference", { controller: 'users', action: "remove_event", event_id: event.id }, method: :delete, remote: true %>
     <%end%>
     <% end %>
   </div>
 
   <% if user == current_user %>
   
-  <%= form_for User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' } do |f| %>
+  <%= form_for(User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' }, remote:true ) do |f| %>
 
 
   
