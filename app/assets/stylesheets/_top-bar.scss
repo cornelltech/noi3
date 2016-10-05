@@ -6,6 +6,8 @@
   position: relative;
   z-index: 101;
   @include breakpoint($large) { padding: 0 0 0 52px; }
+  @include breakpoint($small-only) { height: 68px; }
+
 
   display: flex;
 

@@ -28,7 +28,7 @@
       <!-- {# use "user-menu__item--highlighted" class when we have notifications for the user #} -->
       <!-- <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span> -->
       <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
-      <div class="user-menu__item user-menu__item--settings js-open-this">
+      <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
         <img src="<%= current_user.avatar_url %>" alt="">
         <ul class="user-menu__dropdown">
           <li><%= link_to "Edit Account", fetch_edit_account_path, :remote => true %></li>
