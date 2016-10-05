@@ -10,6 +10,10 @@
     @extend .u-circle;
     margin: 30px auto 20px;
     display: block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
   }
 
   &__titles {

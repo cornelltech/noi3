@@ -103,9 +103,13 @@
     height: auto;
     width: 60px;
 
-    img {
+    .img {
       @extend .u-circle;
       padding: 0;
+      width: 40px;
+      height: 40px;
+      background-size: cover;
+      background-position: center;
     }
 
     &.js-active {
@@ -117,6 +121,9 @@
     position: absolute;
     display: none;
     padding: 9px;
+    @include breakpoint($small-only) {
+      padding: 10px;
+    }
     right: 100%;
     top: 0;
     margin: 0;
