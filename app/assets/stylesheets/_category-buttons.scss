@@ -14,11 +14,14 @@
     font-size: 1.2rem;
     background-color: $main-color;
     padding: 20px 10px;
-    text-align: center;
     text-transform: uppercase;
     color: $white;
     font-weight: 600;
     box-shadow: 2px 2px 4px rgba(black, .2);
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 
     &:hover,
     &--active { 
