@@ -54,4 +54,5 @@ Rails.application.configure do
 
   # Paperclip development environment config
   Paperclip.options[:command_path] = "/usr/local/bin/"
+  
 end
