@@ -59,7 +59,7 @@
             <%end%>
           </ul>
           <div class="person-item__controls">
-            <a href="#" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
+	        <a href="<%= DISCOURSE_CONFIG[:url] %>/users/<%= match.username %>/activity?pm=1" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
             <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>  
               <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
             <% end %>

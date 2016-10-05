@@ -1,9 +1,9 @@
 development:
-  url: "http://discourse-dev.networkofinnovators.org"
-  api_key: "1aab33514000d1660d4d183d5df90a566a84e553a7aef7046a47bc007a88e37f"
-  api_username: "david"
+  url: "http://discourse.noilocal.com"
+  api_key: "7a88fab91476f6cf17f061a26ea27bb390a7e2694f489bdca5793bb1a8a2428d"
+  api_username: "adminuname"
   sso_secret: "hamburger1"
-  sso_redirect_url: "http://discourse-dev.networkofinnovators.org/session/sso_login"
+  sso_redirect_url: "http://discourse.noilocal.com/session/sso_login"
 
 production:
   url: "http://discourse-dev.networkofinnovators.org"

@@ -1,11 +1,23 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
-    @expertise = User.first.format_expertise
-    @main_expertise = User.first.format_main_expertise
-    @categories = $discourse_client.categories.map { |cat| cat['name'] } 
-    # @categories = ["open data", "crowdsourcing", "data science", "community engagement", "lab design", "prized-challenged", "design thinking", "citizen science"]
+    # discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    # discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
+    @categories = Category.all
+
+    if params['search']
+      @users = User.basic_search(params['search_string'])      
+      # projects = Project.basic_search(params['search_string'])      
+      # @users << projects.map { |project| project.user }      
+    elsif params['category']
+      @users = User.joins(:projects).joins(:categories).basic_search(:categories => { :name => params[:category] })
+    else
+      @users = User.all
+    end
+    # @expertise = User.first.format_expertise
+    # @main_expertise = User.first.format_main_expertise
+
   end
 
   def edit

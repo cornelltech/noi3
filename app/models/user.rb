@@ -16,7 +16,7 @@ class User < ApplicationRecord
   attr_accessor :can_teach
   attr_accessor :can_learn
   
-  # after_create :create_discourse_user
+  after_create :create_discourse_user
   # after_update :update_discourse_sso
 
   def country
@@ -69,26 +69,18 @@ class User < ApplicationRecord
     "http://localhost:3000/assets/users/128.jpg"
   end
 
-
   def create_discourse_user
-    $discourse_client.create_user(
-      name: "#{self.first_name} #{self.last_name}",
-      email: self.email,
-      username: self.username,
-      external_id: self.id,
-      avatar_url: self.avatar_url,
-      password: SecureRandom.hex)
-  end
+    discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
 
-  # def update_discourse_sso
-  #   $discourse_client.sync_sso(
-  #     :sso_secret => DISCOURSE_CONFIG[:sso_secret],
-  #     :name => "#{self.first_name} #{self.last_name}",
-  #     :username => self.username, 
-  #     :email => self.email, 
-  #     :external_id => self.id,
-  #     :avatar_url => self.avatar_url)
-  # end
+    discourse_client.sync_sso(
+      sso_secret: DISCOURSE_CONFIG[:sso_secret],
+      name: "#{self.first_name} #{self.last_name}",
+      username: "#{self.username}",
+      email: "#{self.email}",
+      external_id: "#{self.id}")
+  end
 
 end
 
