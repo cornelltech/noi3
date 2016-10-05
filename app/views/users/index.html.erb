@@ -31,30 +31,20 @@
   </div>
 
   <section class="filter-section main-content__container">
-    <form action="" class="form">
+    <%#= form_tag add_topic_path, method: 'put', class: "form form--negative question-panel__content question-panel__form" do %>    
+    <%#= form_tag users_path, method: "get", class: "form" do %>
+
+    <%= form_tag(users_path, :method => "get", id: "search-form") do %>
       <div class="search search--fixed js-target-search find-innovator" action="">
-        <input class="search__field" type="text" placeholder="Find an Innovator">
-        <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
+        <%= text_field_tag "search_string", nil, placeholder: "Find an Innovator", :class => "search__field" %>
+        <%= submit_tag "search", :name => nil, class: "js-search-submit" %>
       </div>
       <p><em class="highlighted-or">OR</em> Find someone with experience in 
       <span class="select select--inline select-innovation-area">
-        <select name="" id="">
-          <option value="">Pick an Innovation Area</option>
-          
-          <% @categories.each do |category|  %>
-            <option value=""><%= category %></option>
-          <% end %>
-
-        </select>
+        <%= select_tag "category", 
+          options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Pick an Innovation Area' } %>
       </span>
-      <span class="select select--inline select-innovation-area" disabled>
-        <select name="" id="">
-          <option value="">Pick an Innovation Area</option>
-          <option value="">Open Data</option>
-          <option value="">Crowdsourcing</option>
-        </select>
-      </span>
-    </form>
+    <% end %>
 
     </p>
   </section>
@@ -75,13 +65,14 @@
         <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
         <hgroup class="person-item__credentials" data-user="<%=user.id%>">
           <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
-
           <h3 class="person-item__job"><%= user.position %></h3>
           <h4 class="person-item__org"><%= user.organization%></h4>
         </hgroup>
         <% end %>
         <div class="person-item__controls">
-          <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
+          <a href="<%= DISCOURSE_CONFIG[:url] %>/users/<%= user.username %>/activity?pm=1" class="controls__icon-button">
+            <i class="person-item__pm material-icons controls__icon-button">mail_outline</i>
+          </a>
         </div>
       </div>
       <div class="person-item__content">
