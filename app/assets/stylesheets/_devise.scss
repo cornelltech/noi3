@@ -52,3 +52,21 @@
         }
     }
 }
+
+.devise-errors {
+    margin: 0 40px;
+    .error-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: lighten($error-color, 10);
+    }
+    .error-messages {
+        list-style: none;
+        margin-left: 0;
+        font-size: 14px;
+        color: $error-color;
+        li {
+            margin: 15px 0;
+        }
+    }
+}
