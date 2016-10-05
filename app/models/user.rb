@@ -20,7 +20,7 @@ class User < ApplicationRecord
   attr_accessor :can_teach
   attr_accessor :can_learn
   
-  # after_create :create_discourse_user  
+  after_create :create_discourse_user  
 
   def country
     if self.country_code
