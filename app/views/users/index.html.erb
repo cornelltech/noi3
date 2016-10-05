@@ -33,9 +33,9 @@
   <article class="main-content__container">
     <section class="filter-section">
       <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-        <div class="search search--fixed js-target-search find-innovator" action="">
+        <div class="search find-innovator" action="">
           <%= text_field_tag "search_string", nil, placeholder: "Find an Innovator", :class => "search__field" %>
-          <%= submit_tag "search", :name => nil, class: "js-search-submit" %>
+          <%= submit_tag "search", :name => nil %>
         </div>
         <p><em class="highlighted-or">OR</em> Find someone with experience in
         <span class="select select--inline select-innovation-area">

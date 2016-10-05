@@ -64,13 +64,8 @@ button {
 }
 
 .app-wrapper {
-  @include breakpoint($medium) {
-    display: flex;
-    // flex-flow: row wrap;
-  }
-  height: calc(100vh - 60px);
-  overflow: hidden;
-
+  // height: calc(100vh - 60px);
+  @include breakpoint($medium) { display: flex; }
 }
 
 .main-content {
@@ -78,7 +73,7 @@ button {
   flex: 1;
 
   &__container {
-    @include breakpoint($small-only) { height: calc(100vh - 157px); }
+    // @include breakpoint($small-only) { height: calc(100vh - 157px); }
     @include breakpoint($medium) { min-width: 650px; }
     @include breakpoint($large) { min-width: 750px; }
 
@@ -90,8 +85,7 @@ button {
 // Styleguide Updates
 
 
-.form--negative,
-.search--negative {
+.form--negative {
   .select {
     background-color: rgba($white, .1);
     &:before { color: $white;}
@@ -101,8 +95,7 @@ button {
 
   input:focus,
   textarea:focus,
-  .select:focus,
-  .search-trigger:focus {
+  .select:focus {
     outline: 1px solid rgba($white, .3);
     background-color: rgba($white, .1) !important;
   }

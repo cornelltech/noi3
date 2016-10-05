@@ -17,9 +17,9 @@
   <header class="top-bar">
     <h1 class="top-bar__logo"><a href="<%= root_path %>"><%= image_tag("noi-logo-white.svg", :alt => "Network of Innovators") %></a></h1>
 
-    <form class="top-bar__search search search--negative search--fixed js-target-search" action="">
+    <form class="top-bar__search search search--negative" action="">
       <input class="search__field" type="text">
-      <input class="js-search-submit js-trigger-search search-trigger" type="submit" value="search">
+      <input class="js-search-submit" type="submit" value="search">
     </form>
     <!-- Auth header -->
     <% if user_signed_in? %>
