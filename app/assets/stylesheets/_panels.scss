@@ -83,7 +83,7 @@
   overflow-y: scroll;
   @extend .u-transition;
   
-  @include breakpoint($medium) { height: 100vh; }
+  @include breakpoint($medium) { height: calc(100vh - 60px); }
   
 
   .form__extra-links { 
