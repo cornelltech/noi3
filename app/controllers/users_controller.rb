@@ -5,11 +5,14 @@ class UsersController < ApplicationController
     # discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
     @categories = Category.all
+    @industries = Industry.all
+    @languages = Language.all
+    @events = Event.all
 
     if params['search']
-      @users = User.basic_search(params['search_string'])      
-      # projects = Project.basic_search(params['search_string'])      
-      # @users << projects.map { |project| project.user }      
+      @users = User.basic_search(params['search_string'])
+      # projects = Project.basic_search(params['search_string'])
+      # @users << projects.map { |project| project.user }
     elsif params['category']
       @users = User.joins(:projects).joins(:categories).basic_search(:categories => { :name => params[:category] })
     else

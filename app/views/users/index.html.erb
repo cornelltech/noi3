@@ -1,30 +1,30 @@
 <!-- TODO: Default to current user if current_user, else default to sign on screen-->
 <%# if user_signed_in? %>
-  <%# render 'profile', { user: current_user  }%>
-  <%# render 'projects', { user: current_user  }%>
-  <%# render 'events', { user: current_user }%>
-  <%# render 'expertise', { user: current_user  }%>
+<%# render 'profile', { user: current_user  }%>
+<%# render 'projects', { user: current_user  }%>
+<%# render 'events', { user: current_user }%>
+<%# render 'expertise', { user: current_user  }%>
 
 <% if user_signed_in? %>
-  <div class="profile-panel panel panel--1">
-      <%= render 'profile', { user: current_user  }%>
-  </div>
-  <div class="project-panel panel panel--2">
-      <%= render 'projects', { user: current_user  }%>
-  </div>
-  <div class="event-panel panel panel--3">
-      <%= render 'events', { user: current_user }%>
-  </div>
-  <div class="expertise-panel panel panel--4">
-      <%= render 'expertise', { user: current_user  }%>
-  </div>
+<div class="profile-panel panel panel--1">
+  <%= render 'profile', { user: current_user  }%>
+</div>
+<div class="project-panel panel panel--2">
+  <%= render 'projects', { user: current_user  }%>
+</div>
+<div class="event-panel panel panel--3">
+  <%= render 'events', { user: current_user }%>
+</div>
+<div class="expertise-panel panel panel--4">
+  <%= render 'expertise', { user: current_user  }%>
+</div>
 <% else %>
 <%= render 'devise/registrations/new' %>
 <% end %>
 
 <div class="main-content search-page">
   <div class="toast toast--yellow js-active">
-  <!-- {# toast--green, toast--red, toast--gray #} -->
+    <!-- {# toast--green, toast--red, toast--gray #} -->
     <i class="material-icons toast__close">close</i>
     <h4 class="toast__heading">Titles don’t say enough</h4>
     <p class="toast__text">Find experts to contact based on their innovation experience</p>
@@ -33,15 +33,31 @@
   <article class="main-content__container">
     <section class="filter-section">
       <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-        <div class="search find-innovator" action="">
-          <%= text_field_tag "search_string", nil, placeholder: "Find an Innovator", :class => "search__field" %>
-          <%= submit_tag "search", :name => nil %>
-        </div>
-        <p><em class="highlighted-or">OR</em> Find someone with experience in
+      <div class="search find-innovator" action="">
+        <%= text_field_tag "search_string", nil, placeholder: "Find an Innovator", :class => "search__field" %>
+        <%= submit_tag "search", :name => nil %>
+      </div>
+      <p><em class="highlighted-or">OR</em> Find someone with experience in
         <span class="select select--inline select-innovation-area">
           <%= select_tag "category",
           options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Pick an Innovation Area' } %>
         </span>
+
+        <fieldset class="extra-filters">
+          <h5>More Filters</h5>
+          <label class="select select--inline select-industry">
+            <%= select_tag "industry", options_for_select(@industries.map { |e| e['name'] }), { :include_blank => 'Industry' } %>
+          </label>
+          <label class="select select--inline select-country">
+            <%= select_tag "country", options_for_select(ISO3166::Country.all.map { |e| e }), { :include_blank => 'Country' } %>
+          </label>
+          <label class="select select--inline select-language">
+            <%= select_tag "language", options_for_select(@languages.map { |e| e['name'] }), { :include_blank => 'Language' } %>
+          </label>
+          <label class="select select--inline select-event">
+            <%= select_tag "event", options_for_select(@events.map { |e| e['name'] }), { :include_blank => 'Event' } %>
+          </label>
+        </fieldset>
       </form>
       <% end %>
     <!-- <section class="active-filters">
@@ -50,48 +66,48 @@
       <span class="active-filters__item">Field of Work</span>
       <span class="active-filters__item">Language</span>
     </section> -->
-    </section>
+  </section>
 
-    <ul class="list">
-      <% @users.each do | user | %>
-      <li class="list__item person-item">
-        <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
-        <!-- PLACEHOLDER IMAGE -->
-        <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-        <div class="person-item__content">
-          <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
-          <hgroup class="person-item__credentials" data-user="<%=user.id%>">
-            <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
+  <ul class="list">
+    <% @users.each do | user | %>
+    <li class="list__item person-item">
+      <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
+      <!-- PLACEHOLDER IMAGE -->
+      <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+      <div class="person-item__content">
+        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
+        <hgroup class="person-item__credentials" data-user="<%=user.id%>">
+          <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
 
-            <h3 class="person-item__job"><%= user.position %></h3>
-            <h4 class="person-item__org"><%= user.organization%></h4>
-          </hgroup>
-          <% end %>
-          <div class="person-item__controls">
-            <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= user.username %>" class="controls__icon-button">
-              <i class="person-item__pm material-icons">mail_outline</i>
-            </a>
-          </div>
+          <h3 class="person-item__job"><%= user.position %></h3>
+          <h4 class="person-item__org"><%= user.organization%></h4>
+        </hgroup>
+        <% end %>
+        <div class="person-item__controls">
+          <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= user.username %>" class="controls__icon-button">
+            <i class="person-item__pm material-icons">mail_outline</i>
+          </a>
         </div>
-        <div class="person-item__content">
-          <ul class="person-item__tags category-tags">
-            <% user.format_expertise.each do |e| %>
-              <li class="category-tag">
-                <span class="category-tag__main"><%= e[:category].titleize %></span>
-                <% e[:skill_areas].each do |skill_area| %>
-                <span class="category-tag__sub"><%= skill_area.titleize %></span>
-                <% end %>
-                </li>
+      </div>
+      <div class="person-item__content">
+        <ul class="person-item__tags category-tags">
+          <% user.format_expertise.each do |e| %>
+          <li class="category-tag">
+            <span class="category-tag__main"><%= e[:category].titleize %></span>
+            <% e[:skill_areas].each do |skill_area| %>
+            <span class="category-tag__sub"><%= skill_area.titleize %></span>
             <% end %>
-          </ul>
-          <div class="person-item__controls">
-            <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
-          </div>
+          </li>
+          <% end %>
+        </ul>
+        <div class="person-item__controls">
+          <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
         </div>
+      </div>
 
-      </li>
-      <% end %>
-    </ul>
+    </li>
+    <% end %>
+  </ul>
 </article>
 
 </div>
