@@ -69,4 +69,5 @@ gem 'pg'
 gem 'textacular', github: 'GovLab/textacular'
 
 gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk', '~> 2.3'
 
