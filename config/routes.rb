@@ -41,5 +41,9 @@ Rails.application.routes.draw do
   get 'fetch_edit_user' => 'pages#fetch_edit_user', as: 'fetch_edit_user'
   get 'fetch_edit_project' => 'projects#fetch_edit_project', as: 'fetch_edit_project'
 
+  # user ajax views for expertise panels
+  get 'fetch_user_learning_menu' => 'users#fetch_user_learning_menu', as: 'fetch_user_learning_menu'
+  get 'fetch_user_teaching_menu' => 'users#fetch_user_teaching_menu', as: 'fetch_user_teaching_menu'
+
   get '/welcome' => 'welcome#index', as: 'welcome'
 end

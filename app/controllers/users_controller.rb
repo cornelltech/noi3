@@ -63,6 +63,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def fetch_user_learning_menu
+    @surveys = Survey.all
+  end
+
+  def fetch_user_teaching_menu
+    @surveys = Survey.all
+  end
+
   def add_event
     user = current_user
     # byebug
