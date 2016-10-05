@@ -19,20 +19,6 @@ class RegistrationsController < Devise::RegistrationsController
         else
             clean_up_passwords resource
             set_minimum_password_length
-            # flash[:notice] = flash[:notice].to_a.concat resource.errors.full_messages
-            # render :partial => "/pages/fetch_sign_up"
-            # redirect_to :back
-            # redirect_to action: "fetch_sign_up", controller: "pages", format: "js"
-            # render action: "fetch_sign_up", format: "js", layout: false
-            # render :new do |page|
-            #     page.replace_html  'panel--1', :partial => '/devise/registrations/new'
-            # end
-            # render :js => "alert('hello')"
-            # render :js => "alert('#{resource.errors.full_messages}');"
-            # render :js => "$('.devise-errors').html('' + resource.errors.full_messages + ');"
-            # respond_to do | format |
-            #     format.js
-            # end
             respond_to do |format|
                 format.js {
                     render :file => "/pages/fetch_sign_up.js.erb"
