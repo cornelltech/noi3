@@ -13,7 +13,7 @@
   }
 
   &__titles {
-    
+
   }
 
   &__name {
@@ -45,7 +45,7 @@
   &__lang {
     margin-left: 40px;
 
-    &:before {    
+    &:before {
       float: left;
       @extend .u-material-icons;
       font-size: 1.2rem;
@@ -68,15 +68,15 @@
     > li { list-style: none; }
   }
 
-  &__action { 
-    @extend .u-base-panel__action; 
+  &__action {
+    @extend .u-base-panel__action;
     position: absolute;
     bottom: 0;
   }
   &__projects-button,
   &__events-button,
-  &__expertise-panel-title { 
-    @extend .u-base-panel__action__title; 
+  &__expertise-panel-title {
+    @extend .u-base-panel__action__title;
     padding: 8px 0 7px;
     text-transform: uppercase;
     position: relative;
@@ -93,8 +93,8 @@
   }
 
   &__projects-button { background-color: rgba($white, .05); }
-  
-  &__expertise-panel { 
+
+  &__expertise-panel {
     background-color: rgba($white, .05);
     padding-bottom: 40px;
   }
@@ -132,6 +132,27 @@
 
     &:hover > * {
       opacity: .5;
+    }
+  }
+}
+
+.edit-profile {
+  padding: 20px;
+  & input, select {
+    color: $white;
+    background-color: lighten($black, 20);
+  }
+  & label {
+    color: lighten($black, 80);
+  }
+  & select {
+    border: 0;
+    max-width: 90%;
+  }
+
+  .button {
+    &--main-color {
+      background-color: #008ab3;
     }
   }
 }

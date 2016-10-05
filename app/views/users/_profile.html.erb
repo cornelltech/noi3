@@ -1,8 +1,6 @@
 <div class="profile-panel panel panel--1">
   <% if user == current_user %>
-    <%= link_to edit_user_path(current_user) do %>
-      <i class="profile-panel__action-button material-icons">edit</i>
-    <% end %>
+      <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons' %>
   <% end %>
 
   <%= image_tag('users/128.jpg', :alt => "User", :class => "profile-panel__picture") %>
