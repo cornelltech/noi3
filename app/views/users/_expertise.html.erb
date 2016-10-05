@@ -3,27 +3,28 @@
   <h2 class="expertise-panel__content expertise-panel__heading">Expertise</h2>
 
   <div class="expertise-container">
-  <% user.format_main_expertise.each do | expertise | %>
-  <div class="expertise-panel__item">
-    <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
-      <% expertise[:skill_areas].each do |sa| %>
-        <section class="expertise-panel__question-group">
-          <h4 class="expertise-panel__sub-category"><%= sa[:area_name].titleize %> </h4>
-          <% sa[:area_skills].each do |skill| %>
-          <p class="expertise-panel__question"><%= skill.capitalize if skill %></p>
-          <% end %>
-        </section>
-      <% end %>
-  </div>
-  <% end %>
-  </div>
-<% if user == current_user %>
-  <%= link_to (url_for(fetch_teaching_menu_path)), :remote => true do %>
-    <div class="expertise-panel__add-item">
-      <i class="big-icon material-icons">add</i>
-      <h4>Add Expertise</h4>
+    <% user.format_main_expertise.each do | expertise | %>
+    <div class="expertise-panel__item">
+      <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
+        <% expertise[:skill_areas].each do |sa| %>
+          <section class="expertise-panel__question-group">
+            <h4 class="expertise-panel__sub-category"><%= sa[:area_name].titleize %> </h4>
+            <% sa[:area_skills].each do |skill| %>
+            <p class="expertise-panel__question"><%= skill.capitalize if skill %></p>
+            <% end %>
+          </section>
+        <% end %>
     </div>
+    <% end %>
+    <% if user == current_user %>
+    <%= link_to (url_for(fetch_teaching_menu_path)), :remote => true do %>
+    <div class="expertise-panel__item">  
+      <a href="#" class="button button--main-color button--full">I wanna learn</a>
+      <a href="#" class="button button--main-color button--full">I know</a>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
+  
 
 <!-- </div> -->

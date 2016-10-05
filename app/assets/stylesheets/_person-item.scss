@@ -57,6 +57,7 @@
 
   &__tags {
    @include breakpoint($medium) { flex: 1; }
+   margin-left: 0;
   }
 
   &__tag {
