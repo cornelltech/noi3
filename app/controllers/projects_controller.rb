@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     if @project.save
         flash[:notice] = "Project saved"
       respond_to do |format|
-        format.js {render :file => 'projects/update_projects.js.erb' }
+        format.js {render '/projects/update_projects.js.erb' }
       end
       flash[:alert] = "Project Saved"
     else
