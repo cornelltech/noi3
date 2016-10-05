@@ -1,28 +1,29 @@
-<div class="main-content">
-<%= form_for(current_user) do |f| %>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name, value: current_user.first_name %>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name, value: current_user.last_name %>
-  <%= f.label :position %>
-  <%= f.text_field :position, value: current_user.position %>
-  <%= f.label :organization %>
-  <%= f.text_field :organization, value: current_user.organization %>
-  <%= f.label :organization_type %>
-  <%= f.text_field :organization_type, value: current_user.organization_type %>
-  <%= f.label :city %>
-  <%= f.text_field :city, value: current_user.city %>
-  <%= f.label :country_code %>
-  <%= f.country_select :country_code %><br>
-  <%= f.label 'Fields of Work' %><br>
-  <%= select_tag 'user[industry_ids][]',
-      options_from_collection_for_select(Industry.all, "id", "name", current_user.industries), { :multiple => true, :size =>10}
-  %>
-  <%= f.label 'Languages' %><br>
-  <%= select_tag 'user[language_ids][]',
-      options_from_collection_for_select(Language.all,"id","name", current_user.languages), { :multiple => true, :size =>5}
-  %>
-  <%= f.submit "Save changes", class: "button" %>
-<% end %>
+<div class="main-content edit-profile">
+ <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
+ <%= form_for(current_user) do |f| %>
+ <%= f.label :first_name %>
+ <%= f.text_field :first_name, value: current_user.first_name %>
+ <%= f.label :last_name %>
+ <%= f.text_field :last_name, value: current_user.last_name %>
+ <%= f.label :position %>
+ <%= f.text_field :position, value: current_user.position %>
+ <%= f.label :organization %>
+ <%= f.text_field :organization, value: current_user.organization %>
+ <%= f.label :organization_type %>
+ <%= f.text_field :organization_type, value: current_user.organization_type %>
+ <%= f.label :city %>
+ <%= f.text_field :city, value: current_user.city %>
+ <%= f.label :country_code %>
+ <%= f.country_select :country_code %><br>
+ <%= f.label 'Fields of Work' %><br>
+ <%= select_tag 'user[industry_ids][]',
+ options_from_collection_for_select(Industry.all, "id", "name", current_user.industries), { :multiple => true, :size =>10}
+ %>
+ <%= f.label 'Languages' %><br>
+ <%= select_tag 'user[language_ids][]',
+ options_from_collection_for_select(Language.all,"id","name", current_user.languages), { :multiple => true, :size =>5}
+ %>
+ <%= f.submit "Save changes", class: "button button--full button--main-color" %>
+ <% end %>
 </div>
 
