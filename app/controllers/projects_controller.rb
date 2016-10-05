@@ -48,6 +48,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def fetch_edit_project
+    @project = Project.find(params[:id])
+  end
+
+  private
+
   def project_params
     params.require(:project).permit(:title, :description, :url, :user_id, language_ids:[], industry_ids: [], skill_area_ids: [])
   end
