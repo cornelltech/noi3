@@ -1,8 +1,12 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
+ 
+ <!-- NEED TO ADD CLASSES HERE 'form form--negative' -->
+ <!-- NEED TO REPLACE EACH f.label by a :placeholder -->
+
  <%= form_for(current_user) do |f| %>
- <%= f.label :first_name %>
- <%= f.text_field :first_name, value: current_user.first_name %>
+
+ <%= f.text_field :first_name, value: current_user.first_name, :placeholder => 'First Name' %>
  <%= f.label :last_name %>
  <%= f.text_field :last_name, value: current_user.last_name %>
  <%= f.label :position %>
@@ -23,7 +27,11 @@
  <%= select_tag 'user[language_ids][]',
  options_from_collection_for_select(Language.all,"id","name", current_user.languages), { :multiple => true, :size =>5}
  %>
- <%= f.submit "Save changes", class: "button button--full button--main-color" %>
+
+
+ <!-- MAKE SURE THIS BUTTON WORKS -->
+ <%= link_to "Account Settings", fetch_edit_account_path, :remote => true, class: "button button--full button--main-color" %>
+ <%= f.submit "Save", class: "button button--full button--main-color" %>
  <% end %>
 </div>
 
