@@ -16,7 +16,7 @@ class User < ApplicationRecord
   attr_accessor :can_teach
   attr_accessor :can_learn
   
-  after_create :create_discourse_user
+  # after_create :create_discourse_user
   # after_update :update_discourse_sso
 
   def country
