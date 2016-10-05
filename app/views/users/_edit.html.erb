@@ -1,6 +1,7 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
- <%= form_for(current_user) do |f| %>
+ <%= form_for(current_user, :html => {:multipart => true}) do |f| %>
+ <%= f.file_field :avatar %>
  <%= f.label :first_name %>
  <%= f.text_field :first_name, value: current_user.first_name %>
  <%= f.label :last_name %>

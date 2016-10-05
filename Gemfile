@@ -64,5 +64,9 @@ gem 'country_select'
 gem 'foundation-rails'
 gem 'toastr-rails'
 
+
 gem 'pg'
 gem 'textacular', github: 'GovLab/textacular'
+
+gem "paperclip", "~> 5.0.0"
+
