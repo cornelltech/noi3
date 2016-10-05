@@ -17,11 +17,15 @@
     </div>
     <% end %>
     <% if user == current_user %>
-    <%= link_to (url_for(fetch_teaching_menu_path)), :remote => true do %>
+    <%= link_to (url_for(fetch_learning_path)), :remote => true do %>
     <div class="expertise-panel__item">  
-      <a href="#" class="button button--main-color button--full">I wanna learn</a>
-      <a href="#" class="button button--main-color button--full">I know</a>
+      <div class="button button--main-color button--full">I wanna learn</div>
     </div>
+      <% end %>
+    <%= link_to (url_for(fetch_teaching_menu_path)), :remote => true do %>
+      <div class="expertise-panel__item">  
+        <div class="button button--main-color button--full">I know</div>
+      </div>
     <% end %>
   <% end %>
   </div>
