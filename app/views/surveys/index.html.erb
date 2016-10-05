@@ -18,5 +18,10 @@
   
 <% else %>
   <%= render 'devise/registrations/new' %>
-  <%= render 'match-me', { user: @users.first}%> <!-- TEMPORARY -->
+  <div class="main-content signup-wall--active "> 
+    <%= render 'match-me', { user: @users.first}%> <!-- TEMPORARY -->
+    <div class="signup-wall">
+      <p>You need to be signed in <br>to use this feature</p>
+    </div>
+  </div>
 <% end %>
