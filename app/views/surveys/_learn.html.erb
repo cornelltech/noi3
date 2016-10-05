@@ -1,4 +1,3 @@
-<!-- Step 2 -->
 <div class="steps">
   <span class="steps__item steps--done"></span>
   <span class="steps__item steps--done steps--current"></span>
@@ -9,7 +8,7 @@
 <h2 class="match-me__category-title"><%=survey.category.name%></h2>
 <h2 class="match-me__question">I would like to learn</h2>
 
-<%= form_for(Learnable.new, :remote=>true, id:'learnable_form') do |f| %>
+<%= form_for(Learnable.new) do |f| %>
   <ul class="list">
 
   <% @skill_areas.each do |skill_area| %> 

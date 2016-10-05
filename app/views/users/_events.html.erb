@@ -28,8 +28,8 @@
   
   <% Event.all.each do | event | %>
     <div class="event-panel__item list__item">
-      <label class="event-label" for="checkbox-<%=event.id%>" >
-        <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.id%>" value="<%=event.id%>">
+      <label class="event-label" for="checkbox-<%=event.class.name.downcase%>-<%=event.id%>" >
+        <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.class.name.downcase%>-<%=event.id%>" value="<%=event.id%>">
         <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo ' + event.name.parameterize) %>
         
       </label>
