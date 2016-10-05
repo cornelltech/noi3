@@ -1,10 +1,13 @@
-<%= form_for(Project.new, remote:true) do |f| %>
+<div class="main-content edit-profile">
+ <h2 class="signup-panel__heading signup-panel__content">Edit Project</h2>
+
+<%= form_for(@project, remote:true) do |f| %>
   <%= f.label :title%>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, value: @project.title %>
   <%= f.label :url %>
-  <%= f.text_field :url, placeholder: 'URL' %>
+  <%= f.text_field :url, placeholder: 'URL', value: @project.url %>
   <%= f.label :description %>
-  <%= f.text_area :description, placeholder: 'Description', size: '60x12' %>
+  <%= f.text_area :description, value: @project.description, size: '60x12' %>
 
   <%= f.label 'Fields of Work' %><br>
   <%= select_tag 'project[industry_ids][]',
@@ -17,6 +20,7 @@
   <%= select_tag 'project[skill_area_ids][]',
       options_from_collection_for_select(SkillArea.all,"id","long_name", Project.new.skill_areas), { :multiple => true, :size =>5}
   %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :project_id, value: @project.id %>
   <%= f.submit "Update" %>
 <% end %>
+</div>

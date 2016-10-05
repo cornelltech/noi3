@@ -49,6 +49,7 @@ class ProjectsController < ApplicationController
   end
 
   def fetch_edit_project
+    @project = Project.find(params[:id])
   end
 
   private
