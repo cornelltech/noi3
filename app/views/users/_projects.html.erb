@@ -21,7 +21,7 @@
     <span class="industry-tag"><%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
     <div>
     <% if current_user.id == user.id %>
-      <span class="button"><%= link_to "Edit", edit_project_path(project) %></span>
+      <span class="button"><%= link_to "Edit", {controller: 'projects', action: "fetch_edit_project", id: project.id }, remote: true %></span>
       <span class="button"><%= link_to "Delete", {controller: 'projects', action: "destroy", id: project.id }, method: :delete, remote: true %></span>
     <%end%>
     </div>
