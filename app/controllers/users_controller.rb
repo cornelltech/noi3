@@ -22,13 +22,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    session[:return_to] ||= request.referer
   end
 
   def update
     @user = User.find(params[:id])
     @user.assign_attributes(user_params)
     if @user.save
-      redirect_to root_path, notice: "Successfully edited account"
+      # redirect_to :action => :index
+      redirect_to session.delete(:return_to)
     else
       flash[:alert] = @user.errors.full_messages
       render :edit
@@ -49,12 +51,12 @@ class UsersController < ApplicationController
     end
 
     # respond_to do |format|
-    #   format.html 
+    #   format.html
     #   format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
     # end
   end
 
-  def fetch_user 
+  def fetch_user
     @selected = User.find(params[:user_id])
     respond_to do | format |
       format.js
@@ -78,8 +80,6 @@ class UsersController < ApplicationController
     event = Event.find(params["event_id"])
     user.events.delete(event)
   end
-
-
 
   private
 
