@@ -6,7 +6,7 @@
   position: relative;
   z-index: 101;
   @include breakpoint($large) { padding: 0 0 0 52px; }
-  @include breakpoint($small-only) { height: 68px; }
+  // @include breakpoint($small-only) { height: 68px; }
 
 
   display: flex;
@@ -98,26 +98,31 @@
 
   &__item--settings {
     position: relative;
+    margin: 0;
+    padding: 10px;
+    height: auto;
+    width: 60px;
 
     img {
       @extend .u-circle;
       padding: 0;
     }
-  }
 
-  &__dropdown {
-    position: absolute;
-    display: none;  
-
-    @include breakpoint($large) {
-      padding: 0;
-      right: -20px;
-      top: 50px;
-      text-align: right;
+    &.js-active {
       background-color: darken($main-color, 6) !important;
     }
+  }
+  
+  &__dropdown {
+    position: absolute;
+    display: none;
+    padding: 9px;
+    right: 100%;
+    top: 0;
+    margin: 0;
+    text-align: right;
+    background-color: darken($main-color, 6) !important;
     
-
     .js-active & { display: block; } 
 
 
@@ -125,7 +130,6 @@
       margin: 0;
       list-style: none;
       padding: 8px 15px;
-      width: 140px;
 
       &:hover {
         background-color: $accent-color;
