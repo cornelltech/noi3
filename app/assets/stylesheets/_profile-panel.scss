@@ -137,7 +137,10 @@
 }
 
 .edit-profile {
-  padding: 20px;
+  padding: 40px;
+  h2 {
+    padding: 0;
+  }
   & input, select {
     color: $white;
     background-color: lighten($black, 20);
@@ -147,7 +150,6 @@
   }
   & select {
     border: 0;
-    max-width: 90%;
   }
 
   .button {
