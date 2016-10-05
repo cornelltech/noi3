@@ -1,12 +1,54 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  private
+    # override create method
+    def create
+        build_resource(sign_up_params)
 
-  def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
-  end
+        resource.save
+        yield resource if block_given?
+        if resource.persisted?
+            if resource.active_for_authentication?
+                set_flash_message! :notice, :signed_up
+                sign_up(resource_name, resource)
+                respond_with resource, location: after_sign_up_path_for(resource)
+            else
+                set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+                expire_data_after_sign_in!
+                respond_with resource, location: after_inactive_sign_up_path_for(resource)
+            end
+        else
+            clean_up_passwords resource
+            set_minimum_password_length
+            flash[:notice] = flash[:notice].to_a.concat resource.errors.full_messages
+            # render :partial => "/pages/fetch_sign_up"
+            # redirect_to :back
+            # redirect_to action: "fetch_sign_up", controller: "pages", format: "js"
+            # render action: "fetch_sign_up", format: "js", layout: false
+            # render :new do |page|
+            #     page.replace_html  'panel--1', :partial => '/devise/registrations/new'
+            # end
+            # render :js => "alert('hello')"
+            # render :js => "alert('#{resource.errors.full_messages}');"
+            # render :js => "$('.devise-errors').html('' + resource.errors.full_messages + ');"
+            # respond_to do | format |
+            #     format.js
+            # end
+            respond_to do |format|
+                format.js {
+                    render :file => "/pages/fetch_sign_up.js.erb"
+                }
+                # format.html
+            end
+        end
+    end
 
-  def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation, :current_password)
-  end
+    private
+
+    def sign_up_params
+        params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
+    end
+
+    def account_update_params
+        params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation, :current_password)
+    end
 end

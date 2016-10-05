@@ -15,7 +15,7 @@ module DeviseHelper
 
     html = <<-HTML
     <div id="error_explanation">
-      <h2>POTATO #{sentence}</h2>
+      <h2>#{sentence}</h2>
       <ul>#{messages}</ul>
     </div>
     HTML
