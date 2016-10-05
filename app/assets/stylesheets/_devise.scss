@@ -10,9 +10,9 @@
 
     .login-form {
         color: $white;
-        width: 80%;
+        width: calc(100% - 40px);
         margin: 0 auto;
-        padding: 10%;
+        padding: 20px;
     }
 
     .login-links {

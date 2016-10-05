@@ -82,6 +82,9 @@
   position: absolute;
   overflow-y: scroll;
   @extend .u-transition;
+  
+  @include breakpoint($medium) { height: 100vh; }
+  
 
   .form__extra-links { 
     font-size: .8rem;
