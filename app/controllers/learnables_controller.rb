@@ -4,7 +4,6 @@ class LearnablesController < ApplicationController
   end
 
   def create 
-
     @learnable = Learnable.new
     skill_ids = params[:skill_ids]
     user = User.find(params[:learnable][:user_id])
