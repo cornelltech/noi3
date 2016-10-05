@@ -43,20 +43,22 @@
           options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Pick an Innovation Area' } %>
         </span>
 
-        <fieldset class="extra-filters">
-          <h5>More Filters</h5>
-          <label class="select select--inline select-industry">
-            <%= select_tag "industry", options_for_select(@industries.map { |e| e['name'] }), { :include_blank => 'Industry' } %>
-          </label>
-          <label class="select select--inline select-country">
-            <%= select_tag "country", options_for_select(ISO3166::Country.all.map { |e| e }), { :include_blank => 'Country' } %>
-          </label>
-          <label class="select select--inline select-language">
-            <%= select_tag "language", options_for_select(@languages.map { |e| e['name'] }), { :include_blank => 'Language' } %>
-          </label>
-          <label class="select select--inline select-event">
-            <%= select_tag "event", options_for_select(@events.map { |e| e['name'] }), { :include_blank => 'Event' } %>
-          </label>
+        <fieldset class="extra-filters-fieldset">
+          <p><a href="#" class="button" id="more-filters">More Filters <i class="material-icons collapsed-que">add</i></a></p>
+          <div class="extra-filters">
+            <label class="select select--inline select-industry">
+              <%= select_tag "industry", options_for_select(@industries.map { |e| e['name'] }), { :include_blank => 'Industry' } %>
+            </label>
+            <label class="select select--inline select-country">
+              <%= select_tag "country", options_for_select(ISO3166::Country.all.map { |e| e }), { :include_blank => 'Country' } %>
+            </label>
+            <label class="select select--inline select-language">
+              <%= select_tag "language", options_for_select(@languages.map { |e| e['name'] }), { :include_blank => 'Language' } %>
+            </label>
+            <label class="select select--inline select-event">
+              <%= select_tag "event", options_for_select(@events.map { |e| e['name'] }), { :include_blank => 'Event' } %>
+            </label>
+          </div>
         </fieldset>
       </form>
       <% end %>
