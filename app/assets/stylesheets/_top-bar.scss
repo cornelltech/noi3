@@ -4,7 +4,7 @@
   margin: 0;
   background-color: $main-color;
   position: relative;
-  z-index: 11;
+  z-index: 101;
   @include breakpoint($large) { padding: 0 0 0 52px; }
 
   display: flex;
@@ -109,7 +109,7 @@
     right: -20px;
     top: 50px;
     text-align: right;
-    background-color: darken($main-color, 3) !important;
+    background-color: darken($main-color, 6) !important;
     display: none;
 
     .js-active & {

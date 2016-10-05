@@ -1,16 +1,21 @@
 <div class="main-content"> <!-- signup-wall--active -->
-  <div class="select category-filters-mobile">
-    <select name="" id="">
-      <% @categories.each do | category | %>
-      <option><%= category['name'] %></option>
-      <% end %>
-    </select>
+  <div class="category-filters">
+    <div class="select"> <!-- category-filters-mobile -->
+      <select name="" id="">
+        <option value="">Choose a Category</option>
+        <% @categories.each do | category | %>
+        <option><%= category['name'] %></option>
+        <% end %>
+      </select>
+    </div>
   </div>
-  <ul class="category-filters">
+  
+
+  <!-- <ul class="category-filters">
     <% @categories.each do | category | %>
     <li class="category-filters__item"><a href="<%= root_path(:category => category['slug']) %>"><%= category['name'] %></a></li>
     <% end %>
-  </ul>
+  </ul> -->
   <ul class="main-content__container list">
     <% for topic in @topics %>
     <%# move me into a partial %>
