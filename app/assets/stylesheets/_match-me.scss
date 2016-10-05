@@ -1,5 +1,9 @@
 .match-me {
+  @include breakpoint($small-only) { margin: 10px; }
+
   &__intro {
+    margin-bottom: 20px;  
+
     @include breakpoint($large) {
       margin-top: 80px;
       margin-bottom: 50px;
@@ -11,10 +15,16 @@
     font-weight: 300;
   }
 
+  br { 
+    @include breakpoint($small-only) { display: none; }
+  }
+
   &__question-pre {
     font-size: 1.2rem;
     text-align: center;
     text-transform: none;
+
+    
   }
 
   &__question {
