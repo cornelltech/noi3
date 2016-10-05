@@ -64,7 +64,7 @@ button {
 }
 
 .app-wrapper {
-  // height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   @include breakpoint($medium) { display: flex; }
 }
 
@@ -85,7 +85,13 @@ button {
 // Styleguide Updates
 
 
+
+
 .form--negative {
+  input[type="text"] {
+    background-color: rgba(white, .1);
+  }
+
   .select {
     background-color: rgba($white, .1);
     &:before { color: $white;}
@@ -157,8 +163,10 @@ input[type='submit'] {
 
 
 
-.form {
 
+
+.form {
+  .select { display: inline-block; }
   .select[disabled] {
     pointer-events: none;
     opacity: .4;
@@ -167,6 +175,11 @@ input[type='submit'] {
 
 .select:before {
   pointer-events: none;
+}
+
+
+.panel .select {
+  display: block;
 }
 
 .signup-wall { display: none; }

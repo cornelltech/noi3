@@ -64,8 +64,8 @@
 
   .button {
     color: white;
-    padding-top: 22px;
-    padding-bottom: 22px;
+    padding-top: 17px;
+    padding-bottom: 17px;
     background-color: transparent;
 
     &:hover {
@@ -107,16 +107,18 @@
 
   &__dropdown {
     position: absolute;
-    padding: 0;
-    right: -20px;
-    top: 50px;
-    text-align: right;
-    background-color: darken($main-color, 6) !important;
-    display: none;
+    display: none;  
 
-    .js-active & {
-      display: block;
-    } 
+    @include breakpoint($large) {
+      padding: 0;
+      right: -20px;
+      top: 50px;
+      text-align: right;
+      background-color: darken($main-color, 6) !important;
+    }
+    
+
+    .js-active & { display: block; } 
 
 
     li {
