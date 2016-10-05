@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
     if @project.save
       flash[:alert] = "Project Updated"
       respond_to do |format|
-        format.js {render :file => 'projects/update_projects.js.erb' }
+        format.js {render '/projects/update_projects.js.erb' }
       end
     else
       flash[:alert] = @project.errors.full_messages
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     flash[:alert] = "Project Deleted"
     respond_to do |format|
-      format.js {render :file => 'projects/update_projects.js.erb' }
+      format.js {render '/projects/update_projects.js.erb' }
     end
   end
 

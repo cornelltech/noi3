@@ -74,7 +74,7 @@ class UsersController < ApplicationController
       end
     end
     respond_to do |format|
-      format.js {render :file => 'users/update_events.js.erb' }
+      format.js {render '/users/update_events.js.erb' }
     end
   end
 
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
     event = Event.find(params["event_id"])
     user.events.delete(event)
     respond_to do |format|
-      format.js {render :file => 'users/update_events.js.erb' }
+      format.js {render '/users/update_events.js.erb' }
     end
   end
 
