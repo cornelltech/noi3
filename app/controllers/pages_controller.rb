@@ -50,6 +50,7 @@ class PagesController < ApplicationController
   end
 
   def fetch_edit_user
+    session[:return_to] ||= request.referer
   end
 
 end
