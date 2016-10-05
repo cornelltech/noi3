@@ -23,7 +23,7 @@
 <% end %>
 
 <div class="main-content search-page">
-  <div class="toast toast--yellow"> 
+  <div class="toast toast--yellow js-active">
   <!-- {# toast--green, toast--red, toast--gray #} -->
     <i class="material-icons toast__close">close</i>
     <h4 class="toast__heading">Titles don’t say enough</h4>
@@ -37,9 +37,9 @@
           <%= text_field_tag "search_string", nil, placeholder: "Find an Innovator", :class => "search__field" %>
           <%= submit_tag "search", :name => nil, class: "js-search-submit" %>
         </div>
-        <p><em class="highlighted-or">OR</em> Find someone with experience in 
+        <p><em class="highlighted-or">OR</em> Find someone with experience in
         <span class="select select--inline select-innovation-area">
-          <%= select_tag "category", 
+          <%= select_tag "category",
           options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Pick an Innovation Area' } %>
         </span>
       </form>
@@ -51,7 +51,7 @@
       <span class="active-filters__item">Language</span>
     </section> -->
     </section>
-    
+
     <ul class="list">
       <% @users.each do | user | %>
       <li class="list__item person-item">
@@ -88,10 +88,10 @@
             <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
           </div>
         </div>
-        
+
       </li>
       <% end %>
     </ul>
 </article>
-  
+
 </div>

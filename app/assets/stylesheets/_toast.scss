@@ -10,7 +10,7 @@
 
   &__text { margin: 0; }
 
-  &__close { 
+  &__close {
     float: right;
     border-radius: 50%;
     padding: 3px;
@@ -19,6 +19,16 @@
     &:hover { color: $white; }
   }
 
+  &.js-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    position: relative;
+  }
+
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  width: 100%;
+  position: absolute;
 }
 
 .toast--green {

@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('body').on('click', '.toast__close', function (e) {
+        $(this).parent().removeClass('js-active');
+    });
+
     $('body').on('click', '.js-open-panel', function (e) {
         $('.panel').not('.panel--1').removeClass('js-active');
         $('.panel--1').toggleClass('js-active');
