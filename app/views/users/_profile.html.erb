@@ -3,7 +3,10 @@
       <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons' %>
   <% end %>
 
-  <%= image_tag('users/128.jpg', :alt => "User", :class => "profile-panel__picture") %>
+
+  <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "profile-panel__picture") %>
+
+
   <hgroup class="profile-panel__titles">
     <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
     <h3 class="profile-panel__job"><%= user.position %></h3>

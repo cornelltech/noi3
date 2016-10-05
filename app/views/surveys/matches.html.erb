@@ -39,7 +39,7 @@
     <ul class="list">
     <% @matches.each do | match |%>
       <li class="list__item person-item">
-        <%= image_tag('users/128.jpg', :alt => "User", :class => "person-item__picture") %>
+        <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
         <div class="person-item__content">
         <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
             <hgroup class="person-item__credentials person-item--no-flex">
