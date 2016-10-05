@@ -9,14 +9,17 @@ class UsersController < ApplicationController
     @languages = Language.all
     @events = Event.all
 
-    if params['search']
-      @users = User.basic_search(params['search_string'])
+    @users = User.all
+    if params['search_string'] != ""
+      @users = @users.fuzzy_search(params['search_string'])
       # projects = Project.basic_search(params['search_string'])
       # @users << projects.map { |project| project.user }
-    elsif params['category']
-      @users = User.joins(:projects).joins(:categories).basic_search(:categories => { :name => params[:category] })
-    else
-      @users = User.all
+    end
+    if params['category'] != ""
+      @users = @users.joins(:projects).joins(:categories).basic_search(:categories => { :name => params[:category] })
+    end
+    if params['industry'] != ""
+      @users = @users.joins(:projects).joins(:industries).basic_search(:industries => { :name => params[:industry] })
     end
     # @expertise = User.first.format_expertise
     # @main_expertise = User.first.format_main_expertise

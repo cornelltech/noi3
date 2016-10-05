@@ -67,6 +67,8 @@ gem 'toastr-rails'
 
 gem 'pg'
 gem 'textacular', github: 'GovLab/textacular'
+# gem 'textacular', '~> 3.0'
+# gem 'textacular', "~> 3.0", require: 'textacular/rails'
 
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3'
