@@ -9,7 +9,7 @@
       <%= text_area_tag "topic-text", nil, placeholder: "Describe your problem" %>
       <div class="select select--negative">
         <%= select_tag "topic-category", 
-          options_for_select(@categories.map { |cat| cat['slug'] }), { :include_blank => 'Choose a Category' } %>
+          options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Choose a Category' } %>
       </div>
       <%= button_tag "Send", type: 'submit', class: "button button--full button--main-color" %> 
 

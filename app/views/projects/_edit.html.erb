@@ -14,7 +14,7 @@
   <%= f.label 'Fields of Work' %><br>
   <%= select_tag 'project[industry_ids][]',
       options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries), { :multiple => true, :size =>5}
-  %>
+  %>  
   <%= f.label 'Languages' %><br>
   <%= select_tag 'project[language_ids][]',
       options_from_collection_for_select(Language.all,"id","name", Project.new.languages), { :multiple => true, :size =>5}
