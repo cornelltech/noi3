@@ -6,9 +6,28 @@
   &__content { @extend .u-base-panel__content; }
   
   &__action { 
-    @extend .u-base-panel__action; 
-    position: absolute;
-    bottom: 0;
+    @extend .u-base-panel__action;
+
+    &__title:after {
+      @extend .u-material-icons;
+      content: 'keyboard_arrow_down';
+      float: right;
+      @extend .u-transition;
+    }
+
+    &.js-active {
+      .question-panel__action__content {
+        max-height: 900px;
+        @extend .u-transition;
+      }
+
+      .question-panel__action__title:after {
+        // content: 'keyboard_arrow_up';
+        @extend .u-transition;
+        transform: rotate(180deg);
+
+      }
+    }
   }
   
   &__action__title { 

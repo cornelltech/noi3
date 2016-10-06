@@ -2,19 +2,21 @@
   <div class="toast toast--yellow js-active">
   <!-- {# toast--green, toast--red, toast--gray #} -->
     <i class="material-icons toast__close">close</i>
-    <h4 class="toast__heading">Titles don’t say enough</h4>
-    <p class="toast__text">Find experts to contact based on their innovation experience</p>
+    <h4 class="toast__heading">Get real advice and answers</h4>
+    <p class="toast__text">You can pose a question to the entire Network of Innovators community! Make sure you select the proper category for your question so the right people will see it.</p>
   </div>
-  
+ 
   <div class="category-filters">
-    <div class="select"> <!-- category-filters-mobile -->
+    <p>You can filter the conversation by selecting a category:
+    <label class="select"> <!-- category-filters-mobile -->
       <select name="" id="">
         <option value="">Choose a Category</option>
         <% @categories.each do | category | %>
         <option><%= category['name'] %></option>
         <% end %>
       </select>
-    </div>
+    </label>
+    </p>
   </div>
   
 
