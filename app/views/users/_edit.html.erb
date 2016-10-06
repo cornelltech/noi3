@@ -15,10 +15,10 @@
  <%= f.label :organization %>
  <%= f.text_field :organization, value: current_user.organization %>
  <%= f.label :organization_type %>
- <%= f.text_field :organization_type, value: current_user.organization_type %>
+ <%= select_tag 'user[organization_type]', options_for_select([ "Non Profit", "Government", "Private Sector", "Academia", "Other" ], current_user.organization_type) %>
  <%= f.label :city %>
  <%= f.text_field :city, value: current_user.city %>
- <%= f.label 'Country' %>
+ <%= f.label :country %>
  <%= f.country_select :country_code %><br>
  <%= f.label 'Fields of Work' %><br>
  <%= select_tag 'user[industry_ids][]',
