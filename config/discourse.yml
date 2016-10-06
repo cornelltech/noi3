@@ -13,8 +13,8 @@ development:
 #   sso_redirect_url: "http://discourse.noilocal.com/session/sso_login"
 
 production:
-  url: "http://discourse-dev.networkofinnovators.org"
-  api_key: "1aab33514000d1660d4d183d5df90a566a84e553a7aef7046a47bc007a88e37f"
+  url: "http://discuss.networkofinnovators.org"
+  api_key: "c9aecdc5869fe8140b45220758f61af1bae7054f5c6c631a1cd4a776f00912df"
   api_username: "david"
-  sso_secret: "hamburger1"
-  sso_redirect_url: "http://discourse-dev.networkofinnovators.org/session/sso_login"
+  sso_secret: "UW1XPxyM37UMDlnbOB09pz24v5UoOyWp"
+  sso_redirect_url: "http://discuss.networkofinnovators.org/session/sso_login"
