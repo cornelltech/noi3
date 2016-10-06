@@ -36,6 +36,13 @@
       opacity: .5;
       cursor: pointer;
     }
+
+    &__active {
+      opacity: 1;
+      max-width: 250px;
+      max-height: 90px;
+    
+    }
   }
   
   input[type='checkbox']:checked ~ .event-logo {
