@@ -40,7 +40,7 @@
       <p><em class="highlighted-or">OR</em> Find someone with experience in
         <span class="select select--inline select-innovation-area">
           <%= select_tag "category",
-          options_for_select(@categories.map { |cat| cat['name'] }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
+          options_for_select(@categories.map { |cat| cat['name'].titleize.humanize }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
         </span>
 
         <fieldset class="extra-filters-fieldset">
