@@ -34,17 +34,17 @@
     <section class="filter-section">
       <%= form_tag(users_path, :method => "get", id: "search-form") do %>
       <div class="search find-innovator" action="">
-        <%= text_field_tag "search_string", nil, placeholder: "Find an Innovator", :class => "search__field" %>
+        <%= text_field_tag "search_string", @params['search_string'], placeholder: "Find an Innovator", :class => "search__field" %>
         <%= submit_tag "search", :name => nil %>
       </div>
       <p><em class="highlighted-or">OR</em> Find someone with experience in
         <span class="select select--inline select-innovation-area">
           <%= select_tag "category",
-          options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Pick an Innovation Area' } %>
+          options_for_select(@categories.map { |cat| cat['name'] }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
         </span>
 
         <fieldset class="extra-filters-fieldset">
-          <p><a href="#" class="button" id="more-filters">More Filters <i class="material-icons collapsed-que">add</i></a></p>
+          <p><a href="#" class="button" id="more-filters">More Filters <i class="material-icons collapsed-que">add</i></a> <a href="#" class="button" id="reset-filters">Reset All</a></p>
           <div class="extra-filters">
             <label class="select select--inline select-industry">
               <%= select_tag "industry", options_for_select(@industries.map { |e| e['name'] }), { :include_blank => 'Industry' } %>

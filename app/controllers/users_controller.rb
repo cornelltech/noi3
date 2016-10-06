@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @languages = Language.all
     @events = Event.all
 
+    @params = params;
+
     @users = User.all
     if params['search_string'] != ""
       @users = @users.fuzzy_search(params['search_string'])
