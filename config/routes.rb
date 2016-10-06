@@ -47,5 +47,7 @@ Rails.application.routes.draw do
   get 'fetch_learning_survey' => 'users#fetch_learning_survey', as: 'fetch_learning_survey'
   get 'fetch_teaching_survey' => 'users#fetch_teaching_survey', as: 'fetch_teaching_survey'
 
+  get '/sign_up_success' => 'pages#sign_up_success', as: 'sign_up_success'
+
   get '/welcome' => 'welcome#index', as: 'welcome'
 end

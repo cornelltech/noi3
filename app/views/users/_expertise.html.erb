@@ -1,10 +1,27 @@
 <!-- <div class="expertise-panel panel panel--4"> -->
   <i class="expertise-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="expertise-panel__content expertise-panel__heading">Expertise</h2>
+  <% if user == current_user %>
+    <%= link_to (url_for(fetch_user_learning_menu_path)), :remote => true do %>
+    <div class="expertise-panel__item">
+      <div href="#" class="button button--main-color button--full align-center">Add a Skill to Learn</div>
+    </div>
+    <% end %>
+    <%= link_to (url_for(fetch_user_teaching_menu_path)), :remote => true do %>
+      <div class="expertise-panel__item">
+        <div class="button button--main-color button--full align-center">Add Expertise</div>
+      </div>
+    <% end %>
+  <% end %>
+
+
+
+
 
   <div class="expertise-container">
     <% user.format_main_expertise.each do | expertise | %>
     <div class="expertise-panel__item">
+      <a name="<%=expertise[:category]%>"></a>
       <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
         <% expertise[:skill_areas].each do |sa| %>
           <section class="expertise-panel__question-group">
@@ -16,20 +33,7 @@
         <% end %>
     </div>
     <% end %>
-
-    <% if user == current_user %>
-    <%= link_to (url_for(fetch_user_learning_menu_path)), :remote => true do %>
-    <div class="expertise-panel__item">
-      <div href="#" class="button button--main-color button--full">I want to learn a skill</div>
-    </div>
-      <% end %>
-    <%= link_to (url_for(fetch_user_teaching_menu_path)), :remote => true do %>
-      <div class="expertise-panel__item">
-        <div class="button button--main-color button--full">I know a skill</div>
-      </div>
-    <% end %>
-  <% end %>
+    
   </div>
-
 
 <!-- </div> -->
