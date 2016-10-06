@@ -138,6 +138,17 @@
       opacity: .5;
     }
   }
+
+  .panel-nav {
+    cursor: pointer;
+  }
+
+  .category-tag__skills {
+    cursor: pointer;
+    &:hover {
+      color: $accent-color;
+    }
+  }
 }
 
 .edit-profile {
