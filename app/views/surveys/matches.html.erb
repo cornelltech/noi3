@@ -34,13 +34,16 @@
     <% else %>
       <h2 class="match-me__question"><%=@user.first_name%>, meet your matches!</h2>
       <h2 class="match-me__intro">Go ahead! Ask them a question :) </h2>
-      <section class="active-filters">
+      <!-- <section class="active-filters">
         <span class="filter-by">Filter by</span>
         <span class="active-filters__item">Location</span>
         <span class="active-filters__item">Field of Work</span>
         <span class="active-filters__item">Language</span>
-      </section>
+      </section> -->
     <% end %>
+    <p class="align-center"><a href="/matches" class="button">Match Me again</a></p>
+      
+    
 
     <ul class="list">
     <% @matches.each do | match |%>

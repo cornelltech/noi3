@@ -1,6 +1,9 @@
 /* Contextual Messages (Toast) */
 .toast {
   padding: 15px 30px;
+  @include breakpoint($small-only) {
+    padding: 20px;
+  }
 
   &__heading {
     font-size: 1.2rem;

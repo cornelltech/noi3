@@ -14,6 +14,7 @@
     height: 100px;
     background-size: cover;
     background-position: center;
+    background-image: url("../images/avatars/nopic-avatar1.jpg");
   }
 
   &__titles {
@@ -100,7 +101,6 @@
 
   &__expertise-panel {
     background-color: rgba($white, .05);
-    padding-bottom: 40px;
   }
 
   &__action__content { @extend .u-base-panel__action__content; }
@@ -171,5 +171,22 @@
     &--main-color {
       background-color: #008ab3;
     }
+  }
+}
+
+
+// Quick FIXES AND HACKs for this panel
+
+.profile-panel__content .category-tags {
+  padding-bottom: 15px;
+}
+
+.profile-panel__back {
+  &:before {
+    content: attr(title);
+    font-family: $main-font;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 5px;
   }
 }
