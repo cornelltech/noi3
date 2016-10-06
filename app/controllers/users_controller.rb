@@ -5,15 +5,38 @@ class UsersController < ApplicationController
     # discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
     @categories = Category.all
+    @industries = Industry.all
+    @languages = Language.all
+    @events = Event.all
 
-    if params['search']
-      @users = User.basic_search(params['search_string'])      
-      # projects = Project.basic_search(params['search_string'])      
-      # @users << projects.map { |project| project.user }      
-    elsif params['category']
-      @users = User.joins(:projects).joins(:categories).basic_search(:categories => { :name => params[:category] })
-    else
-      @users = User.all
+    @params = params;
+
+    @users = User.all
+    if params['search_string'] != ""
+      @users = @users.fuzzy_search(params['search_string'])
+      # projects = Project.basic_search(params['search_string'])
+      # @users << projects.map { |project| project.user }
+    end
+    if params['category'] && params['category'] != ""
+      @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
+    end
+    if params['industry'] && params['industry'] != ""
+      @users = @users.joins(:projects).joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
+    end
+    if params['country'] && params['country'] != "" && params['country'] != nil
+      @users = @users.basic_search(country_code: ISO3166::Country.find_country_by_name(params[:country]).alpha2)
+      # byebug
+    end
+    if params['language'] && params['language'] != ""
+      @users = @users.joins(:languages).distinct.basic_search(:languages => { :name => params[:language] })
+      # byebug
+    end
+    if params['event'] && params['event'] != ""
+      # puts 'DEBUG-------------'
+      # puts params[:event]
+      # puts @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] })
+      @users = @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] })
+      # byebug
     end
     # @expertise = User.first.format_expertise
     # @main_expertise = User.first.format_main_expertise

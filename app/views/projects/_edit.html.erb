@@ -1,6 +1,8 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Project</h2>
 
+
+
 <%= form_for(@project, remote:true) do |f| %>
   <%= f.label :title%>
   <%= f.text_field :title, value: @project.title %>
@@ -12,13 +14,13 @@
   <%= f.label 'Fields of Work' %><br>
   <%= select_tag 'project[industry_ids][]',
       options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries), { :multiple => true, :size =>5}
-  %>
+  %>  
   <%= f.label 'Languages' %><br>
   <%= select_tag 'project[language_ids][]',
       options_from_collection_for_select(Language.all,"id","name", Project.new.languages), { :multiple => true, :size =>5}
   %>
   <%= select_tag 'project[skill_area_ids][]',
-      options_from_collection_for_select(SkillArea.all,"id","long_name", Project.new.skill_areas), { :multiple => true, :size =>5}
+      options_from_collection_for_select(SkillArea.all,"id",:full_name, Project.new.skill_areas), { :multiple => true, :size =>5}
   %>
   <%= f.hidden_field :project_id, value: @project.id %>
   <%= f.submit "Update" %>

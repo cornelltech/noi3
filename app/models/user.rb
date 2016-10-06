@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 # paperclip
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "avatars/nopic-avatar1.jpg"
 
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   attr_accessor :can_teach
   attr_accessor :can_learn
   
-  # after_create :create_discourse_user  
+  after_create :create_discourse_user if Rails.env.production?
 
   def country
     if self.country_code
@@ -64,12 +64,6 @@ class User < ApplicationRecord
       end
     end
     expertise
-  end
-
-  def avatar_url
-    # FIXME
-    # return avatar url of avatar on NOI
-    "http://localhost:3000/assets/users/128.jpg"
   end
 
   def create_discourse_user

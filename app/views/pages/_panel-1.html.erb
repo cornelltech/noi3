@@ -1,4 +1,5 @@
 <div class="question-panel panel panel--1">
+  
 
   <h2 class="question-panel__heading question-panel__content">Ask a question</h2>
   <p class="question-panel__content">With Network of Innovators, you can get advice and answers to your questions from government and civic innovators worldwide. All you have to do is ask!</p>
@@ -8,7 +9,7 @@
       <%= text_area_tag "topic-text", nil, placeholder: "Provide more details about your question" %>
       <div class="select select--negative">
         <%= select_tag "topic-category", 
-          options_for_select(@categories.map { |cat| cat['slug'] }), { :include_blank => 'Choose a Category' } %>
+          options_for_select(@categories.map { |cat| cat['name'] }), { :include_blank => 'Choose a Category' } %>
       </div>
       <%= button_tag "Post", type: 'submit', class: "button button--full button--main-color" %> 
 

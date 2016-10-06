@@ -1,45 +1,41 @@
 
-  <% if user == current_user %>
-      <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons' %>
-  <% end %>
+<% if user == current_user %>
+<%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons', title: 'Edit Profile' %>
+<% else %>
+<%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__action-button material-icons', title: 'Back to My Profile' %>
+<% end %>
 
-  
-  <div class="profile-panel__picture" style="background-image: url(<%= user.avatar.url %>);">
-    
-  </div>
 
-  <hgroup class="profile-panel__titles">
-    <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
-    <h3 class="profile-panel__job"><%= user.position %></h3>
-    <h4 class="profile-panel__org"><%= user.organization %></h4>
-  </hgroup>
-  <section class="profile-panel__credentials">
-    <div class="row">
-      <div class="medium-6 small-12 column">
-        <p class="profile-panel__domains">Domains of Expertise:
+<div class="profile-panel__picture" style="background-image: url(<%= user.avatar.url %>);">
+
+</div>
+
+<hgroup class="profile-panel__titles">
+  <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
+  <h3 class="profile-panel__job"><%= user.position %></h3>
+  <h4 class="profile-panel__org"><%= user.organization %></h4>
+</hgroup>
+<section class="profile-panel__credentials">
+  <div class="row">
+    <div class="medium-6 small-12 column">
+      <p class="profile-panel__domains">Domains of Expertise:
 
         <%= user.industries.map {| industry | industry.name }.join(', ') %>
 
-        </p>
-      </div>
-      <div class="medium-6 small-12 column">
-        <p class="profile-panel__location"><%= user.city %>, <%= user.country %></p>
-        <ul class="profile-panel__lang">
-          <li class="">English</li>
-          <li class="">Spanish</li>
-          <li class="">French</li>
-        </ul>
-      </div>
+      </p>
     </div>
-  </section>
-  <div class="profile-panel__projects-button">
-    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
-   <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
+    <div class="medium-6 small-12 column">
+      <p class="profile-panel__location"><%= user.city %>, <%= user.country %></p>
+      <ul class="profile-panel__lang">
+        <li class="">English</li>
+        <li class="">Spanish</li>
+        <li class="">French</li>
+      </ul>
+    </div>
   </div>
-  <div class="profile-panel__events-button">
-    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
-    <div class="panel-nav js-open-panel-3">Events <i class="material-icons">arrow_forward</i></div>
-  </div>
+</section>
+
+
   <!-- {# IF EXPERTISE #} -->
   <% if user.categories %>
   <section class="profile-panel__expertise-panel">
@@ -49,28 +45,38 @@
     <div class="profile-panel__content">
       <ul class="category-tags category-tags--negative">
 
-        <% user.format_expertise.each do |e|  %>
-        <li class="category-tag">
-          <span class="category-tag__main"><%= e[:category].titleize %></span>
-          <% e[:skill_areas].each do |skill_area| %>
-          <span class="category-tag__sub"><%= skill_area.titleize %></span>
-          <% end %>
-          </li>
-        <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
+      <% user.format_expertise.each do |e|  %>
+      <li class="category-tag">
+        <span class="category-tag__main"><%= e[:category].titleize %></span>
+        <% e[:skill_areas].each do |skill_area| %>
+        <span class="category-tag__sub"><%= skill_area.titleize %></span>
         <% end %>
+      </li>
+      <li class="category-tag__skills js-open-panel-4">View Skills (<%=e[:skills].length %>)</li>
+      <% end %>
 
-      </ul>
-    </div>
+    </ul>
+  </div>
 
-  </section>
-  <!-- {# ELSE #} -->
-  <% else %>
-  <!-- <div class="profile-panel__add-item">
-    <i class="big-icon material-icons">add</i>
-    <h4>Add Expertise</h4>
-        <%= link_to 'Add Expertise', fetch_teaching_menu_path, class: 'button button--main-color', :remote => true %>
-  </div> -->
-  <!-- {# ENDIF #} -->
-  <% end %>
+</section>
+<!-- {# ELSE #} -->
+<% else %>
+<div class="profile-panel__add-item">
+  <i class="big-icon material-icons">add</i>
+  <h4>Add Expertise</h4>
+  <%= link_to 'Add Expertise', fetch_teaching_menu_path, class: 'button button--main-color', :remote => true %>
+</div>
+<!-- {# ENDIF #} -->
+<% end %>
 
+  <div class="profile-panel__events-button">
+    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+    <div class="panel-nav js-open-panel-3">Events <i class="material-icons">arrow_forward</i></div>
+  </div>
+  
+  <div class="profile-panel__projects-button">
+    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+    <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
+  </div>
+  
 

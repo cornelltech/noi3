@@ -103,11 +103,13 @@
   }
 
   &--2 {
+    z-index: 49;
     background-color: #292929;
     @include breakpoint($large) { z-index: 49; }
   }
 
   &--3 {
+    z-index: 48;
     background-color: #333;
     @include breakpoint($large) { z-index: 48; }
   }

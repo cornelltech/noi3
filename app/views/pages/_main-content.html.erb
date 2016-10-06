@@ -12,7 +12,7 @@
       <select name="" id="">
         <option value="">Choose a Category</option>
         <% @categories.each do | category | %>
-        <option><%= category['name'] %></option>
+        <option><%= category['name'].titleize %></option>
         <% end %>
       </select>
     </label>

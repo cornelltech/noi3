@@ -14,13 +14,14 @@
 </head>
 
 <body>
+  <a name="top"></a>
   <header class="top-bar">
     <h1 class="top-bar__logo"><a href="<%= root_path %>"><%= image_tag("noi-logo-white.svg", :alt => "Network of Innovators") %></a></h1>
 
-    <form class="top-bar__search search search--negative" action="">
-      <input class="search__field" type="text">
-      <input class="js-search-submit" type="submit" value="search">
-    </form>
+    <%= form_tag(users_path, :method => "get", id: "top-search-form", :class => "top-bar__search search search--negative") do %>
+      <%= text_field_tag "search_string", "", :class => "search__field" %>
+      <%= submit_tag "search", :name => nil, :class => "js-search-submit" %>
+    <% end %>
     <!-- Auth header -->
     <% if user_signed_in? %>
 
@@ -29,20 +30,20 @@
       <!-- <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span> -->
       <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
       <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
-        
+
         <div class="img" style="background-image: url(<%= current_user.avatar.url %>);"></div>
 
-      
-      
+
+
         <ul class="user-menu__dropdown">
           <li><%= link_to "Logout", destroy_user_session_path %></li>
         </ul>
       </div>
-    </div>  
-      
+    </div>
+
 <!-- TEMP - for testing -->
-      
-      
+
+
     <% else %>
     <div class="top-bar__user-menu user-menu user-menu--desktop">
       <%= link_to "Sign up", fetch_sign_up_path, :remote => true, class: 'button' %><%= link_to "Login", fetch_log_in_path, :remote => true, class: 'button' %>
@@ -61,7 +62,7 @@
       <a href="<%= users_path %>" class="main-menu__item <%= current_class?('/search') %>" title="Find Innovators"><i class="material-icons">search</i></a>
       <a href="<%= DISCOURSE_CONFIG[:url] %>" class="main-menu__item" title="Discuss"><i class="material-icons">forum</i></a>
       <a href="/match-me" class="main-menu__item <%= current_class?('/matches') %><%= current_class?('/match-me') %>" title="Match Me"><i class="material-icons">people</i></a>
-      
+
     </nav>
 
     <%# render 'devise/sessions/new' %>
@@ -70,14 +71,14 @@
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %> -->
 
-     <% unless flash.empty? %>
+<!--      <% unless flash.empty? %>
         <script type="text/javascript">
             <% flash.each do |f| %>
             <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
              toastr['<%= type %>']('<%= f[1] %>');
             <% end %>
         </script>
-     <% end %>
+     <% end %> -->
 
     <%= yield %>
 

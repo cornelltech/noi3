@@ -1,10 +1,10 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
- 
+
  <!-- NEED TO ADD CLASSES HERE 'form form--negative' -->
  <!-- NEED TO REPLACE EACH f.label by a :placeholder -->
 
- <%= form_for(current_user, :html => {:multipart => true}) do |f| %>
+ <%= form_for(current_user, :html => {:multipart => true, :class => 'form form--negative'}) do |f| %>
  <%= f.file_field :avatar %>
  <%= f.label :first_name %>
  <%= f.text_field :first_name, value: current_user.first_name %>
@@ -15,10 +15,10 @@
  <%= f.label :organization %>
  <%= f.text_field :organization, value: current_user.organization %>
  <%= f.label :organization_type %>
- <%= f.text_field :organization_type, value: current_user.organization_type %>
+ <%= select_tag 'user[organization_type]', options_for_select([ "Non Profit", "Government", "Private Sector", "Academia", "Other" ], current_user.organization_type) %>
  <%= f.label :city %>
  <%= f.text_field :city, value: current_user.city %>
- <%= f.label :country_code %>
+ <%= f.label :country %>
  <%= f.country_select :country_code %><br>
  <%= f.label 'Fields of Work' %><br>
  <%= select_tag 'user[industry_ids][]',
@@ -30,7 +30,6 @@
  %>
 
 
- <!-- MAKE SURE THIS BUTTON WORKS -->
  <%= link_to "Account Settings", fetch_edit_account_path, :remote => true, class: "button button--full button--main-color margin-bottom" %>
  <%= f.submit "Save", class: "button button--full button--main-color" %>
  <% end %>

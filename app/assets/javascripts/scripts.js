@@ -1,5 +1,26 @@
 $(document).ready(function () {
 
+    $('body').on('click', '#survey-save', function (e) {
+        $(window).scrollTop(0);
+    });
+
+    $('body').on('change', '.filter-section select', function (e) {
+        $('#search-form').submit();
+    });
+
+    $('body').on('click', '.filter-section #reset-filters', function (e) {
+        location = '/search';
+    });
+
+    $('body').on('click', '#more-filters', function (e) {
+        $('.extra-filters').toggle('js-active');
+        if ( $('.collapsed-que').text() == 'add' ) {
+            $('.collapsed-que').text('remove');
+        } else {
+            $('.collapsed-que').text('add');
+        }
+    });
+
     $('body').on('click', '.toast__close', function (e) {
         $(this).parent().removeClass('js-active');
     });
