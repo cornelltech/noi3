@@ -18,10 +18,10 @@ class UsersController < ApplicationController
       # @users << projects.map { |project| project.user }
     end
     if params['category'] != ""
-      @users = @users.joins(:projects).joins(:categories).basic_search(:categories => { :name => params[:category] })
+      @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
     end
     if params['industry'] != ""
-      @users = @users.joins(:projects).joins(:industries).basic_search(:industries => { :name => params[:industry] })
+      @users = @users.joins(:projects).joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
     end
     # @expertise = User.first.format_expertise
     # @main_expertise = User.first.format_main_expertise
