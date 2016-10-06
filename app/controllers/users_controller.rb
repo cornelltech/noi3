@@ -17,21 +17,26 @@ class UsersController < ApplicationController
       # projects = Project.basic_search(params['search_string'])
       # @users << projects.map { |project| project.user }
     end
-    if params['category'] != ""
+    if params['category'] && params['category'] != ""
       @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
     end
-    if params['industry'] != ""
+    if params['industry'] && params['industry'] != ""
       @users = @users.joins(:projects).joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
     end
-    if params['country'] != "" && params['country'] != nil
+    if params['country'] && params['country'] != "" && params['country'] != nil
       @users = @users.basic_search(country_code: ISO3166::Country.find_country_by_name(params[:country]).alpha2)
       # byebug
     end
-    if params['language'] != ""
-      @users = @users.joins(:projects).joins(:languages).distinct.basic_search(:languages => { :name => params[:languages] })
+    if params['language'] && params['language'] != ""
+      @users = @users.joins(:languages).distinct.basic_search(:languages => { :name => params[:language] })
+      # byebug
     end
-    if params['event'] != ""
-      @users = @users.joins(:projects).joins(:events).distinct.basic_search(:events => { :name => params[:events] })
+    if params['event'] && params['event'] != ""
+      # puts 'DEBUG-------------'
+      # puts params[:event]
+      # puts @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] })
+      @users = @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] })
+      # byebug
     end
     # @expertise = User.first.format_expertise
     # @main_expertise = User.first.format_main_expertise
