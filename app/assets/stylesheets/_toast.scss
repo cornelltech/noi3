@@ -38,7 +38,7 @@
 }
 
 .toast--yellow {
-  background-color: rgba($yellow, .2);
+  background-color: lighten($yellow, 40);
   color: $yellow;
   .toast__close:hover { background-color: $yellow; }
 }
