@@ -4,8 +4,8 @@
 
 
     <h2 class="match-me__category-title"><%=survey.category.name%></h2>
-    <h2 class="match-me__question">I would like to learn how to:</h2>
-    <p>Choose from the following skills</p>
+    <h2 class="match-me__question">I want to learn about:</h2>
+    <p class="match-me__intro"><em>Choose from the following skills</em></p>
 
     <%= form_for Learnable.new, remote: true do |f| %>
     <ul class="list">

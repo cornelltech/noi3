@@ -6,7 +6,9 @@
 </div>
 
 <h2 class="match-me__category-title"><%=survey.category.name%></h2>
-<h2 class="match-me__question">I would like to learn about:</h2>
+<h2 class="match-me__question">I want to learn about:</h2>
+<p class="match-me__intro"><em>Choose from the following skills</em></p>
+
 
 <%= form_for(Learnable.new, class:"match-me-survey", remote:true) do |f| %>
   <ul class="list">
