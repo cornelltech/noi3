@@ -23,6 +23,16 @@ class UsersController < ApplicationController
     if params['industry'] != ""
       @users = @users.joins(:projects).joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
     end
+    if params['country'] != "" && params['country'] != nil
+      @users = @users.basic_search(country_code: ISO3166::Country.find_country_by_name(params[:country]).alpha2)
+      # byebug
+    end
+    if params['language'] != ""
+      @users = @users.joins(:projects).joins(:languages).distinct.basic_search(:languages => { :name => params[:languages] })
+    end
+    if params['event'] != ""
+      @users = @users.joins(:projects).joins(:events).distinct.basic_search(:events => { :name => params[:events] })
+    end
     # @expertise = User.first.format_expertise
     # @main_expertise = User.first.format_main_expertise
 
