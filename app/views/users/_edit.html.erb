@@ -1,6 +1,6 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
- 
+
  <!-- NEED TO ADD CLASSES HERE 'form form--negative' -->
  <!-- NEED TO REPLACE EACH f.label by a :placeholder -->
 
@@ -18,7 +18,7 @@
  <%= f.text_field :organization_type, value: current_user.organization_type %>
  <%= f.label :city %>
  <%= f.text_field :city, value: current_user.city %>
- <%= f.label :country_code %>
+ <%= f.label 'Country' %>
  <%= f.country_select :country_code %><br>
  <%= f.label 'Fields of Work' %><br>
  <%= select_tag 'user[industry_ids][]',
