@@ -2,16 +2,16 @@ class PagesController < ApplicationController
   protect_from_forgery except: :fetch_sign_up
 
   def index
-    @params = params
-    discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
-    discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
-    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
+    @params = params    
+    # discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    # discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
 
     flash[:notice] = "Welcome to NOI"
     category = params['category']
     # @categories = Category.all
     # get categories from discourse API
-    @categories = discourse_client.categories
+    @categories = Category.all
     topics = []
     # get list of latest topics from discourse API
     unless category.nil? || category == ""
