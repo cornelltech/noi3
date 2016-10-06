@@ -25,7 +25,7 @@ class User < ApplicationRecord
   def country
     if self.country_code
       country = ISO3166::Country[country_code]
-      country.translations[I18n.locale.to_s] || country.name
+      (country.translations[I18n.locale.to_s] || country.name) ? country : ''
     else 
       ''
     end
