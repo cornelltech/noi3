@@ -10,9 +10,9 @@
     
   <% user.events.each do | event |  %>
   <div class="event-panel__item list__item event-label">
-      <a href="#" target="_blank">
+      <!-- <a href="#" target="_blank"> -->
         <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo__active ' + event.name.parameterize) %>
-      </a>
+      <!-- </a> -->
     </div>
     <% if user == current_user %>
       <%= link_to "Remove Conference", { controller: 'users', action: "remove_event", event_id: event.id }, method: :delete, remote: true %>
