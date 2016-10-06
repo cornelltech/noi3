@@ -23,9 +23,12 @@ class User < ApplicationRecord
   after_create :create_discourse_user if Rails.env.production?
 
   def country
+    country = nil
     if self.country_code
       country = ISO3166::Country[country_code]
-      (country.translations[I18n.locale.to_s] || country.name) ? country : ''
+    end
+    if country 
+      country.translations[I18n.locale.to_s] || country.name
     else 
       ''
     end
