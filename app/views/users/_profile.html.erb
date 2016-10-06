@@ -2,12 +2,12 @@
 <% if user == current_user %>
 <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons', title: 'Edit Profile' %>
 <% else %>
-<%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__action-button material-icons', title: 'Back to My Profile' %>
+<%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'Back to My Profile' %>
 <% end %>
 
 
-<div class="profile-panel__picture" style="background-image: url(<%= user.avatar.url %>);">
-
+<div class="profile-panel__picture" style="background-image: url(<%= user.avatar.url %>);"> 
+  
 </div>
 
 <hgroup class="profile-panel__titles">
@@ -45,20 +45,19 @@
     <div class="profile-panel__content">
       <ul class="category-tags category-tags--negative">
 
-      <% user.format_expertise.each do |e|  %>
-      <li class="category-tag">
-        <span class="category-tag__main"><%= e[:category].titleize %></span>
-        <% e[:skill_areas].each do |skill_area| %>
-        <span class="category-tag__sub"><%= skill_area.titleize %></span>
+        <% user.format_expertise.each do |e|  %>
+        <li class="category-tag">
+          <span class="category-tag__main"><%= e[:category].titleize %></span>
+          <% e[:skill_areas].each do |skill_area| %>
+          <span class="category-tag__sub"><%= skill_area.titleize %></span>
+          <% end %>
+        </li>
+        <li class="category-tag__skills js-open-panel-4">View Skills (<%=e[:skills].length %>)</li>
         <% end %>
-      </li>
-      <li class="category-tag__skills js-open-panel-4">View Skills (<%=e[:skills].length %>)</li>
-      <% end %>
 
-    </ul>
-  </div>
-
-</section>
+      </ul>
+    </div>
+  </section>
 <!-- {# ELSE #} -->
 <% else %>
 <div class="profile-panel__add-item">

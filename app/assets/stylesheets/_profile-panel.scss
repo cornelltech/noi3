@@ -179,3 +179,13 @@
 .profile-panel__content .category-tags {
   padding-bottom: 15px;
 }
+
+.profile-panel__back {
+  &:before {
+    content: attr(title);
+    font-family: $main-font;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 5px;
+  }
+}

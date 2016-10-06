@@ -20,6 +20,8 @@
 
     <%= form_tag(users_path, :method => "get", id: "top-search-form", :class => "top-bar__search search search--negative") do %>
       <%= text_field_tag "search_string", "", :class => "search__field" %>
+      <!-- ADD PLACEHOLDER "Search for a name, organization, or keyword" -->
+      
       <%= submit_tag "search", :name => nil, :class => "js-search-submit" %>
     <% end %>
     <!-- Auth header -->
