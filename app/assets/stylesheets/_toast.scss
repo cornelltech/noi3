@@ -54,3 +54,25 @@
   color: rgba($black, .8);
   .toast__close:hover { background-color: rgba(black, .8); }
 }
+
+
+.panel-message {
+  padding: 10px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+
+  &.js-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+  }
+}
+
+.panel-message--green {
+  background-color: $green !important;
+  color: white;
+}
+
+// <h2 class="panel-message panel-message--green js-active">Success</h2>
