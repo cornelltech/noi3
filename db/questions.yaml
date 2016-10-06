@@ -1,0 +1,546 @@
+- name: Open Data
+  id: opendata
+  icon: opendata.svg
+  icon-color: "#E86B5F"
+  description: >
+   When institutions open their data for research, analysis and reuse, it can be a powerful tool for improvement. Open data can provide the raw material to convene informed conversations about what’s broken and the empirical foundation for developing solutions.
+  topics:
+
+    - topic: Open Data Policy
+      description: creating an open data plan and strategy to achieve key goals
+      questions:
+        - question: Identifying what data will help my organization achieve its core mission
+          label: core mission
+        - question: Distinguishing between potentially sensitive data and non-sensitive data
+          label: sensitive vs non-sensitive
+        - question: Crafting a clear policy explaining what data to open and how
+          label: crafting an open data policy
+        - question: Doing public consultation on an open data policy
+          label: getting public input
+        - question: Getting organizational approval for opening data
+          label: getting org approval
+
+    - topic: Implementing an open data program
+      description: operationalizing an open data program in practice
+      questions:
+        - question: Scraping data from my domain
+          label: scraping open data
+        - question: Making data machine-readable
+          label: making machine-readable
+        - question: Determining what formats to publish data in
+          label: open data formats
+        - question: Determining how to license my data
+          label: open data license
+        - question: Deciding data standards to publish data in
+          label: open data standards
+        - question: Using the right infrastructure for making data available
+          label: infrastructure
+        - question: Managing an open data project
+          label: managing open data
+        - question: Determining how often datasets should be released and updated
+          label: frequency of release
+        - question: Ensuring continued data quality and integrity
+          label: data quality and integrity
+
+    - topic: Accelerating use
+      description: responding to what users need and want
+      questions:
+        - question: Creating incentives for users or the public to make productive use of the data
+          label: open-data-incentives
+        - question: Identifying and combining other sources of open data to achieve a goal
+          label: mashing-up open data
+        - question: Designing a data collaborative
+          label: data collaborative
+        - question: Expressing the value proposition of the open data datasets, including what problems can be solved with this data
+          label: value proposition
+
+    - topic: Measuring Impact
+      description: assessing effectiveness
+      questions:
+        - question: Monitoring how my data is being used
+          label: measuring open data use
+        - question: Measuring the economic and/or social impact of opening up data
+          label: measuring open data impact
+
+- name: Prizes
+  id: prizes
+  icon: prizes.svg
+  icon-color: "#44A9A2"
+  description: >
+   Prize-Backed Challenges offer an incentive to encourage, recognise and reward innovation. When successfully executed, prize-backed challenges and competitions can also drive the adoption of innovations across an institution.
+  topics:
+
+    - topic: Scoping the Problem
+      description: defining the problem
+      questions:
+        - question: Defining and expressing the problem addressed by the prize.
+          label: problem definition
+        - question: Doing rapid research to test the assumptions behind my problem definition
+          label: research
+        - question: Developing metrics to measure progress
+          label: progress metrics
+
+    - topic: Designing for a Successful Prize
+      description: Deciding if a prize is the right tool
+      questions:
+        - question: Deciding when to use a prize-backed challenge rather than other options like conventional crowdsourcing
+          label: when-to-use-a-prize
+        - question: Determining whether a prize or a grand challenge is optimal
+          label: grand challenge
+        - question: Deciding whether to use financial or non-financial incentives
+          label: prizes-incentives
+        - question: Setting the value of a prize
+          label: prize amount
+
+    - topic: Identifying the Right Audience
+      description: targeting the right participants
+      questions:
+        - question: Identifying would-be participating innovators
+          label: audience
+        - question: Assessing the potential costs involved for them in participating
+          label: costs
+
+    - topic: Mechanics
+      description: running a prize-backed challenge
+      questions:
+        - question: Funding a prize-backed challenge
+          label: funding
+        - question: Creating a plan for running the prize with defined milestones
+          label: mechanics
+        - question: Accessing outside contractors to support the design and implementation of the prizes
+          label: partnerships
+        - question: Deciding how long the prize should run
+          label: timing
+        - question: Developing a communication strategy to get the word out
+          label: communication
+        - question: Choosing from the tools available to run a prize-backed challenge
+          label: platforms
+
+    - topic: Judging
+      description: judging a prize
+      questions:
+        - question: Designing assessment criteria
+          label: judging criteria
+        - question: Selecting judges
+          label: choosing judges
+
+    - topic: Legal Concerns
+      description: overcoming legal concerns
+      questions:
+        - question: Determining ownership and copyright
+          label: ownership and copyright
+        - question: Navigating governmental endorsement and privacy concerns
+          label: legal and privacy concerns
+
+    - topic: Implementation
+      description: what to do after a challenge
+      questions:
+        - question: Translating winning entries into well-developed solutions
+          label: after the challenge
+
+- name: Agile
+  id: agile
+  icon: agile.svg
+  description: Coming soon
+
+- name: Citizen Science
+  id: citizenscience
+  icon: citizenscience.svg
+  description: >
+   Citizen science refers to scientific or research tasks that are undertaken collaboratively by volunteer members of the general public, scientists or researchers. Citizen science can provide an innovative method to help do better research and accomplish difficult objectives more effectively and efficiently.
+  topics:
+    - topic: Tasks and Goals
+      description: defining the goals of a citizen science initiative and the tasks to be completed in order to achieve them
+      questions:
+        - question: Defining the intended participants
+          label: defining intended participants
+        - question: Identifying a compelling goal for a citizen science project
+          label: compelling goal
+        - question: Identifying and define the tasks for participants to do
+          label: define tasks        
+        - question: Articulating intended outcomes of a project
+          label: intended outcomes
+        - question: Defining and measuring the success of a project
+          label: define success        
+        - question: Defining and validating a protocol for an experiment and required data collection
+          label: validate protocol
+        - question: Defining a project in terms of time required and geographic range
+          label: time and geographic range
+        - question: Identifying funding opportunities for a project
+          label: funding opportunities
+
+    - topic: Incentives and Motivation
+      description: developing incentives to motivate participation
+      questions:        
+        - question: Defining and developing gamification in projects
+          label: develop gamification
+
+    - topic: Training
+      description: giving participants the skills and information needed to participate well
+      questions:
+        - question: Giving participants the skills and information needed to participate well
+          label: prepare participants 
+        - question: Developing a FAQ for the project
+          label: develop faq
+        - question: Preparing people within my institution to make use of citizen scientists’ input
+          label: prepare within institution
+        - question: Designing/adapting protocols to assure high quality data.
+          label: protocols high quality data        
+
+    - topic: Platforms and Tools
+      description: deciding upon and using citizen science platforms and tools
+      questions:
+        - question: Deciding upon and using citizen science platforms and tools
+          label: deciding on tools
+        - question: Interpreting the data being collected and translating into desired outcomes
+          label: interpret data after
+        - question: Visualizing and archiving data
+          label: archive data
+    
+    - topic: Legal Questions
+      description: legal concerns and barriers related to citizen science initiatives
+      questions:        
+        - question: Ensuring COPPA compliance in projects featuring minors
+          label: coppa compliance        
+        - question: Drafting a data policy
+          label: draft data policy
+        - question: Drafting a privacy policy
+          label: draft privacy policy
+
+    - topic: Communicating Results and Sustaining Projects
+      description: communicating project results to participants and the public, and ensuring that projects continue after initial the engagement
+      questions:
+        - question: Communicating results and milestones to participants and to project owners
+          label: results and milestones
+
+- name: Nudges
+  id: nudges
+  icon: nudges.svg
+  description: Coming soon
+
+- name: Partnerships
+  id: partnerships
+  icon: partnerships.svg
+  description: Coming soon
+
+- name: Data Science
+  id: datascience
+  icon: datascience.svg
+  icon-color: "#FF8E00"
+  description: >
+   Data Science is an interdisciplinary field about processes and systems to extract knowledge or insights from large volumes of data.
+  topics:
+    - topic: Data Collection
+      description: data collection
+      questions:
+        - question: Creating incentives for people to provide data.
+          label: create incentives
+        - question: Using new methods (e.g. crowdsourcing) for collecting data from new sources.
+          label: new methods
+        - question: Making sure that data is accurate, timely, and clean. (Data processing and conditioning) 
+          label: data processing
+    - topic: Data Governance
+      description: data governance
+      questions:
+        - question: Storing data securely.
+          label: store securely
+        - question: Transmitting data securely so that when data is shared, the quality and integrity of the data is maintained. 
+          label: transmit securely
+        - question: Sharing data appropriately within my institution and with third parties in a way that does not violate privacy and confidentiality.    (Information Governance) 
+          label: share privately
+        - question: Crafting an information governance policy.
+          label: craft policy
+    - topic: Drawing Insights from Data
+      description: drawing insights from data
+      questions:
+        - question: Spotting patterns and predicting trends from existing data (predictive analytics).
+          label: predictive analytics
+        - question: Formulating and test a hypothesis using data.
+          label: hypothesis
+        - question: Designing an experiment to test a data-driven hypothesis. 
+          label: design experiment
+        - question: Plotting and visualizing data in order to derive and communicate insight.  
+          label: visualization
+        - question: Interpreting and communicating what data says. 
+          label: interpretation
+
+
+
+- name: Community Engagement
+  id: communityengagement
+  icon: communityengagement.png
+  icon-color: "#A3ABD1"
+  description: >
+   Engagement can build trust and increase the legitimacy of decision-making. But knowing when and how to engage members of a community and under what conditions is hard.
+  topics:
+    - topic:  Identifying goals and participants
+      description: What you can share about setting the stage for a community engagement program.
+      questions:
+        - question: Clearly identifying the rationale, purpose and objectives for community engagement.
+          label: core mission
+        - question: Finding and interpreting relevant legislative and/or policy requirements driving the need for engagement.
+          label: find requirements
+        - question: Identifying who needs to be involved, including all stakeholders affected, impacted or interested in the engagement.
+          label: stakeholder involvement
+
+    - topic: Implementing a community engagement strategy
+      description: What you can share about operationalizing a community engagement program.
+      questions:
+        - question: Identifying and communicating incentives to participate, including anticipated outcomes.
+          label: identify incentives
+        - question: Developing briefing materials and information to inform engagement.
+          label: develop materials
+        - question: Using multiple dialog methods to engage stakeholders.
+          label: multiple dialog
+        - question: Planning and delivering face-to-face deliberation.
+          label: face to face
+        - question: Planning and delivering a deliberative poll.
+          label: deliberative poll
+        - question: Planning and delivering a citizen jury.
+          label: citizen jury
+        - question: Planning and delivering a participatory budgeting process.
+          label: participatory budgeting
+        - question: Planning and delivering a charrette or scenario-planning exercise.
+          label: charette
+        - question: Developing an action/project plan with timeline to implement the engagement.
+          label: action project
+        - question: Ensuring accessibility of the engagement activity.
+          label: accessibility
+
+    - topic: Using online and digital channels to engage stakeholders
+      description: What you can share about effectively using tools to gain input from diverse stakeholders
+      questions:
+        - question: Using social media, digital and online tools to engage stakeholders as a group.
+          label: social media engagement
+        - question: Using social media, digital and online tools to conduct surveys.
+          label: social media surveys
+        - question: Planning and delivering an e-deliberation process like a 21st century town meeting.
+          label: e-deliberation
+        - question: Planning and delivering open space technology.
+          label: open space
+        - question: Using digital and online tools to amplify engagement efforts and increase reach.
+          label: amplify engagement
+        - question: Using digital and online tools to provide feedback to stakeholders.
+          label: online feedback
+
+    - topic: Measuring, evaluating and providing feedback
+      description: What you can share about assessing effectiveness and sharing targeted feedback
+      questions:
+        - question: Capturing and utilising relevant data related to all aspects of engagement.
+          label: capture data
+        - question: Creating tools for providing clear feedback to participants and decision makers.
+          label: provide feedback
+        - question: Clearly and regularly reporting outcomes to participants and stakeholders. 
+          label: report outcome
+
+    - topic: Transforming my organisation
+      description: What you can share about increasing the organizational use of citizen engagement
+      questions:
+        - question: Ensuring that the learnings from a community engagement exercise get used to support continuous improvement within my organisation.
+          label: learnings used
+        - question: Increasing organisational awareness of the value of community engagement.
+          label: organisational awareness
+        - question: Developing and delivering appropriate training for staff across my organisation.
+          label: appropriate training
+
+- name: Lab Design
+  id: lab-design
+  icon: labdesign.svg
+  icon-color: "#50E3C2"
+  description: >
+   Governments are seeking to become more experimental and evidence-based through the creation of internal innovation labs. The growing labs movement is helping to uncover what works in practice.
+  topics:
+    - topic: Lab Creation and Vision
+      description: What you can share about launching a government innovation lab.
+      questions:
+        - question: Articulating the value proposition of my Lab and the need for experimentation
+          label: articulating value proposition
+        - question: Clearly defining the problems that my Lab is supposed to solve, and the assumptions it is going to test
+          label: defining problems and assumptions
+        - question: Identifying the audience to be convinced and how to persuade them to support the Lab 
+          label: pitching the Lab
+        - question: Defining the different products and services my Lab will deliver
+          label: defining products and services
+        - question: Articulating a clear theory of change for my Lab
+          label: theory of change
+
+    - topic: Lab Operations
+      description: What you can share about the organizational mechanics of running a government innovation lab.
+      questions:
+        - question: Defining an engagement model for my Lab vis a vis other parts of my organisation
+          label: engagement model
+        - question: Defining a handover protocol between my Lab and other parts of the organisation
+          label: handover protocol
+        - question: Defining the roles and Terms of Reference staff need for the success of my Lab
+          label: staff roles
+        - question: Costing the services for my Lab and defining a business model that guarantees long term sustainability
+          label: sustainable business model
+        - question: Effectively arguing for the most effective reporting lines and organisational placement for my Lab
+          label: reporting lines and placement
+
+    - topic: Lab Experimentation and Methodology
+      description: What you can share about developing and implementing an experimental methodology for lab work. 
+      questions:
+        - question: Defining metrics for my Lab to demonstrate its impact
+          label: metrics
+        - question: Selecting and implementing the methods that my Lab will promote
+          label: methods
+        - question: Training others in Lab methods and tools
+          label: operations training
+        - question: Managing a Lab project using an agile development approach
+          label: managing projects
+        - question: TrackIng evidence and iterating programs to ensure relevance and generate timely results
+          label: program tracking and result generation
+
+    - topic: Staffing and Resources
+      description: What you can share about managing lab staff and budgets.
+      questions:
+        - question: Effectively recruiting a group of early champions to support the Lab
+          label: recruiting support
+        - question: Managing resources, including people, time and budget to ensure value for investment 
+          label: resource management
+
+    - topic: Capturing, Leveraging and Communicating Results
+      description: What you can share about making use of lab results internally and communicating impacts externally.
+      questions:
+        - question: Developing a portfolio of demonstration projects that can show tangible results even in the face of skepticism
+          label: showing results
+        - question: Researching, piloting and testing new programs based on the insights and knowhow gathered from previous ones
+          label: new program development
+        - question: Capturing, articulating and sharing the narrative around the impact and outcomes of lab programs, i.e. through case studies
+          label: narrative of impact
+
+- name: Crowdsourcing
+  id: crowdsourcing
+  icon: crowdsourcing.svg
+  description: >
+   Crowdsourcing uses communications technologies to enable institutions to leverage the wisdom of the crowd. By enabling institutions to get more distributed and diverse collaboration in ways never before possible, they can improve a project’s efficiency, legitimacy and diversity.
+  topics:
+    - topic: Determining the Crowd
+      description: What can you share about identifying, enrolling, and developing a crowd
+      questions:
+        - question: Identifying the crowd I want to participate (e.g. general public, informed experts, participants with a particular skill)
+          label: identifying crowd
+
+    - topic: Determining the Activity
+      description:  What can you share about the type of activities the crowd could perform
+      questions:
+        - question: Defining the tasks the crowd should perform? (e.g. design a product, tag photos, classify information, analyze information, collect and share data, supply opinions, generate new ideas, contribute funds, provide information or referrals)
+          label: defining the task        
+
+    - topic: Determining a Successful Crowdsourcing Strategy
+      description: What can you share about defining if crowdsourcing is the right process for a given situation
+      questions:
+        - question: Deciding when to use crowdsourcing instead of conventional top-down processes of decision-making
+          label: when to crowdsource        
+        - question: Connecting the efforts of the crowd to enable them to aggregate and build off each other’s work
+          label: connect crowd efforts
+        - question: Determining the institutional resources (e.g. team composition) required to implement a successful crowdsourcing initiative and how to design the team to support
+          label: determine requisite institutional resources
+        - question: Assessing the potential time and resources required from the crowd in order to participate
+          label: assess time and resources required
+        - question: Measuring the effectiveness of using crowdsourcing
+          label: assess effectiveness
+
+    - topic: Providing the Right Incentives
+      description: What can you share about providing the right incentives for participation
+      questions:
+        - question: Deciding whether to use financial or non-financial (e.g. gamification) incentives (or a mix of incentives)
+          label: Financial vs non-financial incentives        
+        - question: Identifying which particular incentive is working and why
+          label: Indentify effective incentives        
+
+    - topic: Implementation and Tools
+      description: What can you share about setting up, running and managing a crowdsourcing effort
+      questions:
+        - question: Creating a plan for running the crowdsourcing project with defined milestones
+          label: defined milestones
+        - question: Designing tutorials that effectively explain the tasks
+          label: designing tutorials
+        - question: Choosing a platform to do the crowdsourcing project
+          label: choosing platform
+        - question: Accessing outside contractors and/or intermediaries to support the design and implementation of the desired crowdsourcing platform 
+          label: accessing outside support
+        - question: Implementing and making use of the contributions of the crowd 
+          label: preparing for output
+
+    - topic: Quality Control Mechanisms
+      description: What can you share about defining the right mechanism of quality control
+      questions:
+        - question: Ensuring high-quality and accurate production of data
+          label: ensuring high-quality participation
+        - question: Leveraging reputation systems and other techniques to enable the crowd to evaluate crowd contributions (through voting, rating or peer-review)
+          label: leverage crowd evaluation
+        - question: Keeping the crowd engaged (by creating a sense of community around it)
+          label: keeping crowd engaged
+
+    - topic: Ethical and Legal Concerns
+      description: What can you share about addressing potential legal and ethical tensions
+      questions:
+        - question: Determining ownership and copyright of crowd contributions
+          label: determining ownership
+        - question: Navigating governmental endorsement and privacy concerns
+          label: governmental endorsement and privacy
+        - question: Navigating potential tensions regarding free speech and public record laws
+          label: free speech and public record tensions
+          
+          
+- name: 'Nudges: RCTs'
+  id: rcts
+  icon: opendata.svg
+  icon-color: "#E86B5F"
+  description: >
+   Randomized Control Trials (RCTs) — comparing the outcomes of an intervention with a particular group against another randomly selected group that does not receive the intervention — are a rigorous and inexpensive way to find what works. Increasingly, public institutions are testing the effectiveness of services, for example, by delivering it two different ways.
+  topics:
+
+    - topic: Setting Up an Evaluation
+      description: How to build quantitative evaluation into a program from the outset and identify the right things to test.
+      questions:
+        - question: Identifying an empirically testable question.
+          label: testable question
+        - question: Identifying an evaluation model that allows for causal inference as to whether the test worked
+          label: evaluation model
+        - question: Identifying data to evaluate using the evaluation model
+          label: testable data
+        - question: Getting organizational approval for conducting an evaluation of this type
+          label: organizational approval
+        - question: Embedding evaluation within the program without undue disruption
+          label: embedding evaluation
+          
+    - topic: Designing and Implementing an Evaluation
+      description: How to design and launch an evaluation. 
+      questions:
+        - question: Using randomization to create a robust control group for comparison
+          label: randomization
+        - question: Ensuring that evaluation is statistically significant
+          label: statistical significance
+        - question: Working with small sample sizes and imperfect conditions
+          label: real world testing
+        - question: Choosing which group gets which version of the intervention
+          label: assignment into groups
+        - question: Translating the technical aspects of the evaluation into practical instructions for those involved in implementation
+          label: implementation instructions
+        - question: Determining the right method for analysing the results
+          label: analysis method
+        - question: Writing a credible plan for analysing the data in advance of launching
+          label: analysis plan
+        - question: Monitoring data quality throughout the trial
+          label: data quality
+        - question: Documenting and accounting for any contamination that happens in the implementation 
+          label: contamination
+        - question: Handling data safely and securely
+          label: safe data handling
+          
+    - topic: Measuring impact
+      description: How to translate the findings from the experiment into better policies and services.
+      questions:
+        - question: Cleaning the data that comes in
+          label: cleaning data
+        - question: Analyzing the results and performing robustness checks
+          label: analyzing results
+        - question: Interpreting the results and reporting the findings in an accessible and accurate manner
+          label: interpreting results
+        - question: Making key concepts such as statistical significance and Type I and II errors understandable to non-statisticians
+          label: nontechnical communications
+        - question: Helping the organisation use the results to make strategic decisions about how to work and invest in future
+          label: strategic decisions
