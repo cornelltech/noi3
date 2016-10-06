@@ -22,6 +22,11 @@ class RegistrationsController < Devise::RegistrationsController
                 expire_data_after_sign_in!
                 # respond_with resource, location: '/search' and return
                 # redirect_to action: "index", controller: "users"
+                respond_to do |format|
+                    format.js {
+                        render :file => "/pages/fetch_sign_up_success.js.erb"
+                    }
+                end
             end
         else
             clean_up_passwords resource
