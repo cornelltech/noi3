@@ -24,19 +24,25 @@
   &__author-name {
     margin: 0;
   }
-  
+
   &__title {
     font-size: 1.1rem;
     margin: 0 0 6px 0;
     text-transform: none;
   }
-  
+
   &__text {
 
   }
-  
+
   &__controls {
 
+  }
+
+  &__category {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    text-transform: uppercase;
   }
 }
 

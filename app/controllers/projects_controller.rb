@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def create 
+  def create
     @project = Project.new
     @project.assign_attributes(project_params)
     if @project.save

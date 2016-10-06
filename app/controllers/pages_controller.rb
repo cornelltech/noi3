@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   protect_from_forgery except: :fetch_sign_up
 
   def index
+    @params = params
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
@@ -13,12 +14,13 @@ class PagesController < ApplicationController
     @categories = discourse_client.categories
     topics = []
     # get list of latest topics from discourse API
-    unless category.nil?
-     topics = discourse_client.category_latest_topics(:category_slug => category)
-   else
-     topics = discourse_client.latest_topics
-   end
-   @topics = topics.map{ |topic|
+    unless category.nil? || category == ""
+
+      topics = discourse_client.category_latest_topics(:category_slug => category.parameterize)
+    else
+      topics = discourse_client.latest_topics
+    end
+    @topics = topics.map{ |topic|
 	    	# then get each topic in that list in more detail
 	    	discourse_client.topic(topic['id'])
 	    }
