@@ -5,11 +5,10 @@
     <h2 class="match-me__category-title"><%=survey.category.name%></h2>
     <h2 class="match-me__question">I have experience & can advise others on</h2>
 
-
     <%= form_for Teachable.new, remote: true do |f| %>
     <ul class="list">
 
-      <% @skill_areas.each do |skill_area| %> 
+      <% @skill_areas.each do |skill_area| %>
       <h5 class="questionnaire__title"> <%= skill_area.name %> <span class="questionnaire__check-all button button--alpha button--small">Check All</span></h5>
       <% skill_area.skills.each do | skill | %>
         <li class="questionnaire__item list__item">
@@ -24,7 +23,7 @@
         <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= f.hidden_field :data_source, value: "user-form" %>
-        <%= f.submit 'Save and Add More Skills', class: 'button button--main-color'%>
+        <%= f.submit 'Save and Add More Skills', class: 'button button--main-color', id: 'survey-save' %>
       </li>
     </ul>
     <% end %>

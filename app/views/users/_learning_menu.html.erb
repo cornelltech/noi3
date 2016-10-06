@@ -8,8 +8,9 @@
 
       <ul class="category-buttons">
         <% @surveys.each do | survey | %>
-          <%= link_to survey.category.name, fetch_learning_survey_path(:survey_id => survey.id), class: 'category-buttons__item', :remote => true %>
+        <%= link_to survey.category.name, fetch_learning_survey_path(:survey_id => survey.id), class: 'category-buttons__item', :remote => true %>
         <% end %>
       </ul>
+    </div>
+    <!-- <span id="survey-partial-loader" style="visibility:hidden">loaded</span> -->
   </div>
-</div>

@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('body').on('click', '#survey-save', function (e) {
+        $(window).scrollTop(0);
+    });
+
     $('body').on('change', '.filter-section select', function (e) {
         $('#search-form').submit();
     });
