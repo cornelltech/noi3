@@ -21,12 +21,11 @@
         <% end %>
       <% end %>
 
-
         <li class="questionnaire__item questionnaire__item--submit list__item">
           <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
           <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.submit 'Save', class: 'button button--main-color' %>
-          <%= link_to 'Next', matches_path, class: 'button button--main-color'%>
+          <%= f.hidden_field :data_source, value: "match-me-form" %>
+          <%= f.submit 'Next', class: 'button button--main-color'%>
         </li>
       </ul>
-<% end %>
+<% end %>>

@@ -20,10 +20,11 @@ class RegistrationsController < Devise::RegistrationsController
             clean_up_passwords resource
             set_minimum_password_length
             respond_to do |format|
+                format.html { redirect_to store_url }
                 format.js {
                     render :file => "/pages/fetch_sign_up.js.erb"
                 }
-                # format.html
+
             end
         end
     end

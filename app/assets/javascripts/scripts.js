@@ -36,7 +36,7 @@ $(document).ready(function () {
         $(this).toggleClass('js-active');
     });
 
-    $('body').on('click','.expertise-panel__add-item', function(e) {
+    $('body').on('click','.expertise-panel__item', function(e) {
         $('.panel--4').removeClass('js-active');
     });
 

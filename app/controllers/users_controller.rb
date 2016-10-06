@@ -63,9 +63,36 @@ class UsersController < ApplicationController
     end
   end
 
+  def fetch_user_learning_menu
+    @surveys = Survey.all
+  end
+
+  def fetch_user_teaching_menu
+    @surveys = Survey.all
+  end
+
+  def fetch_learning_survey
+    @user = current_user
+    @expertise = current_user.format_expertise
+    @survey = Survey.find(params[:survey_id])
+    @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
+    respond_to do |format|
+        format.js
+    end
+  end
+
+  def fetch_teaching_survey
+    @user = current_user
+    @expertise = current_user.format_expertise
+    @survey = Survey.find(params[:survey_id])
+    @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
+    respond_to do |format|
+        format.js
+    end
+  end
+
   def add_event
     user = current_user
-    # byebug
     event_ids = params['event_ids']
     event_ids.each do | event_id |
       event = Event.find(event_id)
