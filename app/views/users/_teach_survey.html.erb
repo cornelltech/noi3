@@ -1,25 +1,32 @@
-<h2 class="match-me__category-title"><%=survey.category.name%></h2>
-<h2 class="match-me__question">I have experience & can advise others on</h2>
+<div class="main-content match-me">
+  <div class="main-content__container">
+    <h3 class="match-me__intro">Your matches are people who have experience in what you want to learn <br> and have something to learn from you.</h3>
 
-<%= form_for Teachable.new, remote: true do |f| %>
-      <ul class="list">
+    <h2 class="match-me__category-title"><%=survey.category.name%></h2>
+    <h2 class="match-me__question">I have experience & can advise others on</h2>
+
+
+    <%= form_for Teachable.new, remote: true do |f| %>
+    <ul class="list">
 
       <% @skill_areas.each do |skill_area| %> 
-        <h5 class="questionnaire__title"> <%= skill_area.name %> <span class="questionnaire__check-all button button--alpha button--small">Check All</span></h5>
-        <% skill_area.skills.each do | skill | %>
-          <li class="questionnaire__item list__item">
-            <input name="skill_ids[]" class="questionnaire__item__checkbox" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>">
-            <label class="questionnaire__item__label" for="checkbox-<%=skill.id%>" ><%= skill.description.capitalize %></label>
-          </li>
-        <% end %>
-      <% end %>
-
-
-        <li class="questionnaire__item questionnaire__item--submit list__item">
-          <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.hidden_field :data_source, value: "user-form" %>
-          <%= f.submit 'Save and Add More Skills', class: 'button button--main-color'%>
+      <h5 class="questionnaire__title"> <%= skill_area.name %> <span class="questionnaire__check-all button button--alpha button--small">Check All</span></h5>
+      <% skill_area.skills.each do | skill | %>
+        <li class="questionnaire__item list__item">
+          <input name="skill_ids[]" class="questionnaire__item__checkbox" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>">
+          <label class="questionnaire__item__label" for="checkbox-<%=skill.id%>" ><%= skill.description.capitalize %></label>
         </li>
-      </ul>
-<% end %>
+      <% end %>
+    <% end %>
+
+
+      <li class="questionnaire__item questionnaire__item--submit list__item">
+        <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :data_source, value: "user-form" %>
+        <%= f.submit 'Save and Add More Skills', class: 'button button--main-color'%>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+</div>
