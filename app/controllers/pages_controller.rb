@@ -3,9 +3,9 @@ class PagesController < ApplicationController
 
   def index
     @params = params    
-    # discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
-    # discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
-    # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
+    discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
 
     flash[:notice] = "Welcome to NOI"
     category = params['category']
