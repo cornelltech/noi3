@@ -10,7 +10,7 @@ class DiscourseSsoController < ApplicationController
     sso.name = "#{current_user.first_name} #{current_user.last_name}"  # this is a custom method on the User class
     sso.username = current_user.username # from devise
     sso.external_id = current_user.id # from devise
-    sso.avatar_url = current_user.avatar_url
+    sso.avatar_url = current_user.avatar.url
     # sso.custom_fields["avatar_url"] = current_user.avatar_url
     sso.sso_secret = DISCOURSE_CONFIG[:sso_secret]
 

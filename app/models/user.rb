@@ -66,12 +66,6 @@ class User < ApplicationRecord
     expertise
   end
 
-  def avatar_url
-    # FIXME
-    # return avatar url of avatar on NOI
-    "http://localhost:3000/assets/users/128.jpg"
-  end
-
   def create_discourse_user
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
