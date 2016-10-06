@@ -1,7 +1,7 @@
 <div class="signup-panel panel panel--1">
   <h2 class="signup-panel__heading signup-panel__content">Edit <%= resource_name.to_s.humanize %> Account</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="form form--negative signup-panel__content signup-panel__form">
