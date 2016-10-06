@@ -13,34 +13,44 @@
   }
 
   input[type='text'] {
-      background-color: rgba($black, .1);
-      padding: 8px 0;
-      text-indent: 8px;
-      flex: 1;
+    background-color: rgba($black, .1);
+    padding: 8px 0;
+    text-indent: 8px;
+    flex: 1;
   }
 
   input[type='text']:focus { background-color: rgba($black, .2); }
 
   input[type='submit'] {
-      @extend .u-material-icons;
-      padding: 8px;
-      background-color: transparent;
-      background-color: rgba($black, .1);
-      margin-left: 1px;
+    @extend .u-material-icons;
+    padding: 8px;
+    background-color: transparent;
+    background-color: rgba($black, .1);
+    margin-left: 1px;
       // line-height: .85; // Alignment Fix
-  }
+    }
 
-  input[type='submit']:hover { 
+    input[type='submit']:hover {
       background-color: rgba($black, .3);
+    }
   }
-}
 
-.search--negative {
-  input { color: $white !important; }
-  input { background-color: rgba($white, .1) !important; }
-  input:hover { background-color: rgba($white, .2) !important; }
-  input:focus { background-color: rgba($white, .3) !important; }
-}
+  .search--negative {
+    input { color: $white !important; }
+    input { background-color: rgba($white, .1) !important; }
+    input:hover { background-color: rgba($white, .2) !important; }
+    input:focus { background-color: rgba($white, .3) !important; }
+  }
+
+  .extra-filters {
+    display: none;
+    &.js-active {
+      display: block;
+    }
+    select {
+      width: 100%;
+    }
+  }
 
 
 // .search {
@@ -76,7 +86,7 @@
 //         line-height: .85; // Alignment Fix
 //     }
 
-//     input[type='submit']:hover { 
+//     input[type='submit']:hover {
 //         background-color: rgba($black, .1);
 //     }
 // }
@@ -91,7 +101,7 @@
 //         width: calc(100% - 45px); // Need to keep both widths in base and .m-active styles for transition to work smoothly
 //     }
 
-//     input[type='submit'] { 
+//     input[type='submit'] {
 //         background-color: rgba($black, .15);
 //     }
 // }

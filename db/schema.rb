@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005181439) do
+ActiveRecord::Schema.define(version: 20161005235455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161005181439) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-10-05 19:13:28'
+    t.datetime "date",            default: '2016-10-05 21:00:21'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end
