@@ -1,6 +1,6 @@
 .login-wrapper {
     flex: 1;
-    
+
     background-color: rgba(black, .9);
     overflow-y: scroll;
     align-self: stretch;
@@ -41,6 +41,26 @@
         }
     }
 
+    .field_with_errors > * {
+        color: $black;
+    }
+
+    .field_with_errors > input {
+        background-color: lighten($error-color, 10);
+        &::-webkit-input-placeholder {
+            color: $black;
+        }
+        &::-moz-placeholder {
+            color: $black;
+        }
+        &:-ms-input-placeholder {
+            color: $black;
+        }
+        &:-moz-placeholder {
+            color: $black;
+        }
+    }
+
     .button {
         &--main-color {
             background-color: #008ab3;
@@ -52,6 +72,10 @@
         &--white > * {
             color: $white;
         }
+    }
+
+    #error_explanation {
+        margin: 0;
     }
 }
 
