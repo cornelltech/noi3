@@ -37,6 +37,12 @@
     &--active { background-color: $accent-color; } // NOTE: Active State for the category filter
   }
 
+  .select {
+    margin-left: 10px;
+    vertical-align: baseline;
+    display: inline-block;
+  }
+
 }
 
 .category-filters-mobile {

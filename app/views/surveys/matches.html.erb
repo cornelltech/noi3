@@ -18,8 +18,9 @@
 
 <div class="main-content match-me">
   <div class="main-content__container">
-
-    <h3 class="match-me__intro">Your matches are people who have experience in what you want to learn <br> and have something to learn from you.</h3>
+    
+    <h2 class="match-me__title">Match Me</h2>
+    <h3 class="match-me__intro">Your matches are people who have experience in what you want to learn and have something to learn from you.</h3>
     <div class="steps">
       <span class="steps__item steps--done"></span>
       <span class="steps__item steps--done"></span>
@@ -27,14 +28,19 @@
       <span class="steps__item steps--done steps--current"></span>
     </div>
     
-    <h2 class="match-me__question"><%=@user.first_name%>, meet your matches!</h2>
-    
-    <section class="active-filters">
-      <span class="filter-by">Filter by</span>
-      <span class="active-filters__item">Location</span>
-      <span class="active-filters__item">Field of Work</span>
-      <span class="active-filters__item">Language</span>
-    </section>
+    <% if @matches == [] %>
+      <h2 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h2>
+      <h3 class="match-me__intro">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h3>
+    <% else %>
+      <h2 class="match-me__question"><%=@user.first_name%>, meet your matches!</h2>
+      <h2 class="match-me__intro">Go ahead! Ask them a question :) </h2>
+      <section class="active-filters">
+        <span class="filter-by">Filter by</span>
+        <span class="active-filters__item">Location</span>
+        <span class="active-filters__item">Field of Work</span>
+        <span class="active-filters__item">Language</span>
+      </section>
+    <% end %>
 
     <ul class="list">
     <% @matches.each do | match |%>
