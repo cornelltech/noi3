@@ -52,12 +52,17 @@
           <span class="category-tag__sub"><%= skill_area.titleize %></span>
           <% end %>
         </li>
-        <li class="category-tag__skills js-open-panel-4">View Skills (<%=e[:skills].length %>)</li>
-        <% end %>
+      </li>
+      <a href="#<%=e[:category]%>" >
+        <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
+        
+      </a>
+      <% end %>
 
-      </ul>
-    </div>
-  </section>
+    </ul>
+  </div>
+</section>
+
 <!-- {# ELSE #} -->
 <% else %>
 <div class="profile-panel__add-item">

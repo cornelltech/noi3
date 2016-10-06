@@ -64,9 +64,11 @@ $(document).ready(function () {
         $('.panel--4').removeClass('js-active');
     });
 
-
-
-
+    $('body').on("click", '.category-tag__skills', function(e) {
+        if (!$('.panel--4').hasClass('js-active'))  {
+            $('.panel--4').addClass('js-active');
+        }
+    }); 
 
 
 

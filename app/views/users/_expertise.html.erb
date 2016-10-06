@@ -14,9 +14,14 @@
     <% end %>
   <% end %>
 
+
+
+
+
   <div class="expertise-container">
     <% user.format_main_expertise.each do | expertise | %>
     <div class="expertise-panel__item">
+      <a name="<%=expertise[:category]%>"></a>
       <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
         <% expertise[:skill_areas].each do |sa| %>
           <section class="expertise-panel__question-group">
