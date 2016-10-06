@@ -13,11 +13,11 @@
 
   &__search { flex: 1; }
 
-  &__logo { 
-    width: 50px; 
+  &__logo {
+    width: 50px;
     overflow: hidden;
-    @include breakpoint(1015px) { 
-      width: 400px; 
+    @include breakpoint(1015px) {
+      width: 400px;
     }
     @extend .u-transition;
     margin: 0;
@@ -26,8 +26,8 @@
     line-height: 1;
     text-align: left;
 
-    img { 
-      height: 34px; 
+    img {
+      height: 34px;
       max-width: none;
     }
   }
@@ -35,7 +35,7 @@
   &__user-menu {
 
   }
-  
+
   &__search {
     padding: 10px 5px;
     @extend .u-transition;
@@ -51,15 +51,15 @@
 .user-menu {
   padding-right: 10px;
   @include breakpoint($large) { padding-right: 20px; }
-  
+
   &--mobile {
     display: block;
-    @include breakpoint($large) { display: none; }  
+    @include breakpoint($large) { display: none; }
   }
 
   &--desktop {
     display: none;
-    @include breakpoint($large) { display: block; }   
+    @include breakpoint($large) { display: block; }
   }
 
   .button {
@@ -86,13 +86,13 @@
   &__item--messages { margin-right: -4px; }
 
   &__item--messages,
-  &__item--notifications { 
+  &__item--notifications {
     @include breakpoint($small-only) {display: none;}
-    opacity: .5; 
+    opacity: .5;
   }
 
-  &__item--highlighted { 
-    opacity: 1; 
+  &__item--highlighted {
+    opacity: 1;
     @include breakpoint($small-only) {display: inline-block;}
   }
 
@@ -117,7 +117,7 @@
       background-color: darken($main-color, 6) !important;
     }
   }
-  
+
   &__dropdown {
     position: absolute;
     display: none;
@@ -130,8 +130,8 @@
     margin: 0;
     text-align: right;
     background-color: darken($main-color, 6) !important;
-    
-    .js-active & { display: block; } 
+
+    .js-active & { display: block; }
 
 
     li {
@@ -152,6 +152,18 @@
     border: 1px solid transparent;
     box-shadow: 0 0 0 transparent;
     margin-right: -1px;
+    &::-webkit-input-placeholder {
+      color: $white;
+    }
+    &::-moz-placeholder {
+      color: $white;
+    }
+    &:-ms-input-placeholder {
+      color: $white;
+    }
+    &:-moz-placeholder {
+      color: $white;
+    }
   }
 
   .search-trigger {
