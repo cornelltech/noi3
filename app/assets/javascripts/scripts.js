@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $('body').on('change', '.category-filters select', function (e) {
+        $('#category-form').submit();
+    });
 
     $('body').on('click', '#survey-save', function (e) {
         $(window).scrollTop(0);
