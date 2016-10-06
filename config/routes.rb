@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   # user ajax views for expertise panels
   get 'fetch_user_learning_menu' => 'users#fetch_user_learning_menu', as: 'fetch_user_learning_menu'
   get 'fetch_user_teaching_menu' => 'users#fetch_user_teaching_menu', as: 'fetch_user_teaching_menu'
+  get 'fetch_learning_survey' => 'users#fetch_learning_survey', as: 'fetch_learning_survey'
+  get 'fetch_teaching_survey' => 'users#fetch_teaching_survey', as: 'fetch_teaching_survey'
 
   get '/welcome' => 'welcome#index', as: 'welcome'
 end

@@ -1,14 +1,7 @@
-<div class="steps">
-  <span class="steps__item steps--done"></span>
-  <span class="steps__item steps--done steps--current"></span>
-  <span class="steps__item"></span>
-  <span class="steps__item"></span>
-</div>
-
 <h2 class="match-me__category-title"><%=survey.category.name%></h2>
 <h2 class="match-me__question">I would like to learn</h2>
 
-<%= form_for(Learnable.new, class:"match-me-survey", remote:true) do |f| %>
+<%= form_for Learnable.new, remote: true do |f| %>
   <ul class="list">
 
   <% @skill_areas.each do |skill_area| %> 
@@ -25,9 +18,10 @@
     <li class="questionnaire__item questionnaire__item--submit list__item">
       <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :data_source, value: "match-me-form" %>
-      <%= f.submit 'Next', class: 'button button--main-color'%>
+      <%= f.hidden_field :data_source, value: "user-form" %>
+      <%= f.submit 'Save and Add More Skills', class: 'button button--main-color'%>
 
+<!--       <%# link_to 'Next', fetch_teaching_menu_path, class: 'button button--main-color', :remote => true %> -->
     </li>
   </ul>
 <% end %>
