@@ -10,6 +10,8 @@
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 </head>
 
@@ -19,10 +21,10 @@
     <h1 class="top-bar__logo"><a href="<%= root_path %>"><%= image_tag("noi-logo-white.svg", :alt => "Network of Innovators") %></a></h1>
 
     <%= form_tag(users_path, :method => "get", id: "top-search-form", :class => "top-bar__search search search--negative") do %>
-      <%= text_field_tag "search_string", "", :class => "search__field", :placeholder => "Search for a name, organization, or keyword" %>
-      <!-- ADD PLACEHOLDER "Search for a name, organization, or keyword" -->
+    <%= text_field_tag "search_string", "", :class => "search__field", :placeholder => "Search for a name, organization, or keyword" %>
+    <!-- ADD PLACEHOLDER "Search for a name, organization, or keyword" -->
 
-      <%= submit_tag "search", :name => nil, :class => "js-search-submit" %>
+    <%= submit_tag "search", :name => nil, :class => "js-search-submit" %>
     <% end %>
     <!-- Auth header -->
     <% if user_signed_in? %>
@@ -43,7 +45,7 @@
       </div>
     </div>
 
-<!-- TEMP - for testing -->
+    <!-- TEMP - for testing -->
 
 
     <% else %>
@@ -71,7 +73,7 @@
     <%# render 'devise/registrations/new' %>
 <!--     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %> -->
+      <% end %> -->
 
 <!--      <% unless flash.empty? %>
         <script type="text/javascript">
@@ -80,22 +82,22 @@
              toastr['<%= type %>']('<%= f[1] %>');
             <% end %>
         </script>
-     <% end %> -->
+        <% end %> -->
 
-    <%= yield %>
+        <%= yield %>
 
-  </main>
-  <div id="overlay" class="js-overlay"></div>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      </main>
+      <div id="overlay" class="js-overlay"></div>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
+      <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-85351950-1', 'auto');
-    ga('send', 'pageview');
+      ga('create', 'UA-85351950-1', 'auto');
+      ga('send', 'pageview');
 
-  </script>
-</body>
-</html>
+    </script>
+  </body>
+  </html>
