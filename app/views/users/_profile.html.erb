@@ -1,7 +1,6 @@
-
 <% if user == current_user %>
 <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons', title: 'Edit Profile' %>
-<% else %>
+<% elsif user != current_user %>
 <%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'Back to My Profile' %>
 <% end %>
 
