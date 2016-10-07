@@ -1,47 +1,49 @@
 <!-- <div class="event-panel panel panel--3"> -->
-  <i class="event-panel__action-button js-close-panel material-icons">close</i>
-  <h2 class="event-panel__content event-panel__heading">Events</h2>
+<i class="event-panel__action-button js-close-panel material-icons">close</i>
+<h2 class="event-panel__content event-panel__heading">Events</h2>
 
 
-  <div class="events-container">
-    <div class="event-panel__item">
-      <p>Going to an event? We partner with event organizers from around the world. Click on one of the available events below to let others know what events you’re attending. You can also search for other Network of Innovators users who are also planning to attend.</p>
-    </div>
-    
+<div class="events-container">
+  <% if user == current_user %>
+  <div class="event-panel__item">
+    <p>Going to an event? We partner with event organizers from around the world. Click on one of the available events below to let others know what events you’re attending. You can also search for other Network of Innovators users who are also planning to attend.</p>
+  </div>
+  <% end %>
+
   <% user.events.each do | event |  %>
   <div class="event-panel__item list__item event-label">
-      <!-- <a href="#" target="_blank"> -->
-        <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo__active ' + event.name.parameterize) %>
-      <!-- </a> -->
-    </div>
-    <% if user == current_user %>
-      <%= link_to "Remove Conference", { controller: 'users', action: "remove_event", event_id: event.id }, method: :delete, remote: true %>
-    <%end%>
-    <% end %>
+    <!-- <a href="#" target="_blank"> -->
+    <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo__active ' + event.name.parameterize) %>
+    <!-- </a> -->
   </div>
-
   <% if user == current_user %>
-  
-  <%= form_for(User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' }, remote:true ) do |f| %>
-
-
-  
-  <% Event.all.each do | event | %>
-    <% if !user.events.include?(event) %>
-      <div class="event-panel__item list__item">
-        <label class="event-label" for="checkbox-<%=event.class.name.downcase%>-<%=event.id%>" >
-          <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.class.name.downcase%>-<%=event.id%>" value="<%=event.id%>">
-          <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo ' + event.name.parameterize) %>
-          
-        </label>
-      </div>
-    <% end %>
+  <%= link_to "Remove Conference", { controller: 'users', action: "remove_event", event_id: event.id }, method: :delete, remote: true %>
+  <%end%>
   <% end %>
-  <li class="event-panel__item list__item event-panel__item--submit">
+</div>
+
+<% if user == current_user %>
+
+<%= form_for(User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' }, remote:true ) do |f| %>
+
+
+
+<% Event.all.each do | event | %>
+<% if !user.events.include?(event) %>
+<div class="event-panel__item list__item">
+  <label class="event-label" for="checkbox-<%=event.class.name.downcase%>-<%=event.id%>" >
+    <input name="event_ids[]" class="event__item__checkbox" type="checkbox" id="checkbox-<%=event.class.name.downcase%>-<%=event.id%>" value="<%=event.id%>">
+    <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo ' + event.name.parameterize) %>
+
+  </label>
+</div>
+<% end %>
+<% end %>
+<li class="event-panel__item list__item event-panel__item--submit">
   <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Save", class: "button" %>
+  <%= f.submit "Save", class: "button" %>
   <% end %>
-  </li>
+</li>
 <% end %>
 
 <!-- </div> -->
