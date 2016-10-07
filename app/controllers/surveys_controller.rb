@@ -51,10 +51,8 @@ class SurveysController < ApplicationController
     user_ids = Teachable.where(skill_id: user_learnables).map { |item| item.user_id }
     user_ids << Learnable.where(skill_id: user_teachables).map { |item| item.user_id }    
     users = User.find(user_ids.flatten.uniq)
-    puts users.count
 
     users.each do | user_match |
-      puts "********** here I am"
       user_match.can_teach  = user_match.teachables.pluck(:skill_id) & user_learnables
       user_match.can_learn = user_match.learnables.pluck(:skill_id) & user_teachables
       if ((user_match.can_teach.count + user_match.can_learn.count) > 0) && (current_user.id != user_match.id)
