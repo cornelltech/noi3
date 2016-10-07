@@ -6,8 +6,7 @@
 <% end %>
 
 
-<div class="profile-panel__picture" style="background-image: url(<% if user.avatar.url %><%= user.avatar.url %><% end %>);">
-
+<div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);">
 </div>
 
 <hgroup class="profile-panel__titles">
