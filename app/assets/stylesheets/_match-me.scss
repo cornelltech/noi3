@@ -1,5 +1,4 @@
 .match-me {
-  @include breakpoint($small-only) { margin: 10px; }
 
   &__title {
     font-size: 1.5rem;
@@ -7,21 +6,16 @@
     text-transform: uppercase;
     font-weight: 600;
   }
+  
   &__intro {
     margin-bottom: 20px;  
-
-    @include breakpoint($large) {
-      margin: 40px 40px 50px;
-    }
-    
     font-size: 1.2rem;
     text-align: center;
     text-transform: none;
     font-weight: 300;
-  }
 
-  br { 
-    // @include breakpoint($small-only) { display: none; }
+    @include breakpoint($small-only) { padding: 0 10px; }
+    @include breakpoint($large) { margin: 40px 40px 50px; }
   }
 
   &__question-pre {
@@ -29,17 +23,15 @@
     text-align: center;
     text-transform: none;
 
-    
+    @include breakpoint($small-only) { padding: 0 10px; }
   }
 
   &__question {
     font-size: 1.4rem;
     text-align: center;
     
-    @include breakpoint($medium) {
-      font-size: 1.8rem;
-    }
-
+    @include breakpoint($small-only) { padding: 0 10px; }    
+    @include breakpoint($medium) { font-size: 1.8rem; }
     @include breakpoint($large) {
       font-size: 2rem;
       margin-bottom: 40px;
@@ -51,7 +43,7 @@
     font-size: 1.8rem;
     text-align: center;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 0;
     color: $main-color;
     padding: 8px;
     background-color: rgba($main-color, .2);

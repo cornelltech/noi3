@@ -8,23 +8,28 @@
   &__item {
     padding: 0;
     width: 100%;
-    // @include breakpoint($small-only) {width: calc(100% - 10px);}
+
     // @include breakpoint($medium) {width: calc(50% - 30px);}
     // @include breakpoint($large) {width: calc(25% - 10px);}
     margin: 10px auto;
     list-style: none;
-    font-size: 1.2rem;
-    background-color: $main-color;
+    font-size: 1rem;
+    border: 1px solid rgba($main-color, .3);
     padding: 20px 10px;
     text-transform: uppercase;
-    color: $white;
+    color: $main-color;
     font-weight: 600;
-    box-shadow: 2px 2px 4px rgba(black, .2);
     justify-content: center;
     display: flex;
-    
+
     text-align: center;
     max-width: 470px;
+
+    @include breakpoint($small-only) {
+      padding: 10px;
+      width: 90%;
+      margin: 5px auto;
+    }
 
     &:hover,
     &--active { 
