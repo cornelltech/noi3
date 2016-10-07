@@ -77,7 +77,7 @@
       <!-- PLACEHOLDER IMAGE -->
       <% if user.avatar? %>
       <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-      <% elsif user.picture_path? && user.picture_path != "https://s3.amazonaws.com/network-of-innovators" %>
+      <% elsif user.picture_path && user.picture_path? && user.picture_path != "" %>
       <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
       <% else %>
       <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
