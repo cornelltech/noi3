@@ -71,6 +71,7 @@
 
   <ul class="list">
     <% @users.each do | user | %>
+    <% if !user.id.nil? %>
     <li class="list__item person-item">
       <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
       <!-- PLACEHOLDER IMAGE -->
@@ -107,6 +108,7 @@
       </div>
 
     </li>
+    <% end %>
     <% end %>
   </ul>
 </article>
