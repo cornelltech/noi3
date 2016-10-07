@@ -18,10 +18,11 @@ class UsersController < ApplicationController
       # @users << projects.map { |project| project.user }
     end
     if params['category'] && params['category'] != ""
-      @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
+      # currently searching by category of users skills is not working, need to figure out correct query
+      # @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
     end
     if params['industry'] && params['industry'] != ""
-      @users = @users.joins(:projects).joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
+      @users = @users.joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
     end
     if params['country'] && params['country'] != "" && params['country'] != nil
       @users = @users.basic_search(country_code: ISO3166::Country.find_country_by_name(params[:country]).alpha2)
