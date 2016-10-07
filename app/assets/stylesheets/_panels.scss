@@ -126,9 +126,9 @@
 }
 
 .panel--1__handle {
-  @include breakpoint($small-only) {
+  @include breakpoint($touch) {
     position: fixed;
-    left: 0px;
+    left: 52px;
     bottom: 0;
     width: 40px;
     height: 40px;
@@ -136,13 +136,17 @@
     z-index: 9999999999;
     padding: 7px;
   }
+
+  @include breakpoint($small-only) {
+     left: 0px;
+  }
 }
 
 // CREEPY CSS - MAKE SOMETHING BETTER ASAP
 .panel--1__handle:after {
-  @include breakpoint($small-only) { content: 'arrow_forward'; }
+  @include breakpoint($touch) { content: 'arrow_forward'; }
 }
 
 .panel--1.js-active .panel--1__handle:after {
-  @include breakpoint($small-only) { content: 'arrow_backward'; }
+  @include breakpoint($touch) { content: 'arrow_backward'; }
 }
