@@ -31,60 +31,60 @@ class OldUserSkills < OldDatabase
 	self.table_name = "user_skills"
 end
 
-# for user in OldUser.all
-# 	# create or update user	
-# 	puts "creating user for #{user.username}"
-# 	u = User.where(:username => user.username).first
-# 	u = User.new() unless u
-# 	u.attributes = {
-# 		:first_name => user.first_name,
-# 		:last_name => user.last_name,
-# 		:email => user.email,
-# 		:position => user.position,
-# 		:organization => user.organization,
-# 		:organization_type => user.organization_type,
-# 		:city => user.city,
-# 		:username => user.username,
-# 		:country_code => user.country,
-# 		:picture_path => "/networkofinnovators.org/static/pictures/#{user.id}/#{user.picture_id}",
-# 		:password => 'gasdgagasg235252352asdgsa',
-# 		:password_confirmation => 'gasdgagasg235252352asdgsa' 
-# 	}
-# 	u.skip_confirmation!
-# 	u.save!
+for user in OldUser.all
+	# create or update user	
+	puts "creating user for #{user.username}"
+	u = User.where(:username => user.username).first
+	u = User.new() unless u
+	u.attributes = {
+		:first_name => user.first_name,
+		:last_name => user.last_name,
+		:email => user.email,
+		:position => user.position,
+		:organization => user.organization,
+		:organization_type => user.organization_type,
+		:city => user.city,
+		:username => user.username,
+		:country_code => user.country,
+		:picture_path => "/networkofinnovators.org/static/pictures/#{user.id}/#{user.picture_id}",
+		:password => 'gasdgagasg235252352asdgsa',
+		:password_confirmation => 'gasdgagasg235252352asdgsa' 
+	}
+	u.skip_confirmation!
+	u.save!
 
-# 	# add events to user
-# 	conferences = OldConference.where(:user_id => user.id)	
-# 	for conference in conferences
-# 		puts "Adding event #{conference.conference} for #{user.username}"
-# 		if conference.conference == "iodc16"
-# 			e = Event.where(:conference_code => 'IODC')
-# 			u.events << e
-# 		elsif conference.conference == "odrs16"
-# 			e = Event.where(:conference_code => 'ODRS')
-# 			u.events << e
-# 		end
-# 	end
+	# add events to user
+	conferences = OldConference.where(:user_id => user.id)	
+	for conference in conferences
+		puts "Adding event #{conference.conference} for #{user.username}"
+		if conference.conference == "iodc16"
+			e = Event.where(:conference_code => 'IODC')
+			u.events << e
+		elsif conference.conference == "odrs16"
+			e = Event.where(:conference_code => 'ODRS')
+			u.events << e
+		end
+	end
 
-# 	# add industries to user
-# 	industries = OldUserExpertiseDomains.where(:user_id => user.id)
-# 	for industry in industries
-# 		name = industry.name.split(",").first
-# 		i = Industry.where(:name => name).first
-# 		i = Industry.new(:name => name) unless i
-# 		puts "Adding industry #{i.name} for #{user.username}"
-# 		u.industries << i
-# 	end
+	# add industries to user
+	industries = OldUserExpertiseDomains.where(:user_id => user.id)
+	for industry in industries
+		name = industry.name.split(",").first
+		i = Industry.where(:name => name).first
+		i = Industry.new(:name => name) unless i
+		puts "Adding industry #{i.name} for #{user.username}"
+		u.industries << i
+	end
 
-# 	# add user languages
-# 	languages = OldUserLanguages.where(:user_id => user.id)
-# 	for language in languages
-# 		lang = Language.where(:abbreviation => language.locale)
-# 		puts "Adding language #{language.locale} for #{user.username}"
-# 		u.languages << lang
-# 	end
+	# add user languages
+	languages = OldUserLanguages.where(:user_id => user.id)
+	for language in languages
+		lang = Language.where(:abbreviation => language.locale)
+		puts "Adding language #{language.locale} for #{user.username}"
+		u.languages << lang
+	end
 
-# end
+end
 
 # add user skills (god help us)
 y = YAML.load_file('db/questions.yaml')
