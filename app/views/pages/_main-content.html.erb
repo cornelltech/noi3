@@ -32,7 +32,7 @@
       <% end %>
       <div class="post-item__content">
         <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
-        <p class="post-item__author-name"><strong><%= topic['post_stream']['posts'].first['name'] %></strong> asked:</p>
+        <p class="post-item__author-name"><strong><%= topic['post_stream']['posts'].first['name'] %></strong></p>
         <% end %>
         <h3 class="post-item__title"><%= topic['title']%></h3>
         <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
