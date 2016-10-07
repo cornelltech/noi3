@@ -1,13 +1,11 @@
-
 <% if user == current_user %>
 <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons', title: 'Edit Profile' %>
-<% else %>
+<% elsif user != current_user %>
 <%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'Back to My Profile' %>
 <% end %>
 
 
-<div class="profile-panel__picture" style="background-image: url(<%= user.avatar.url %>);"> 
-  
+<div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);">
 </div>
 
 <hgroup class="profile-panel__titles">
@@ -18,7 +16,7 @@
 <section class="profile-panel__credentials">
   <div class="row">
     <div class="medium-6 small-12 column">
-      <p class="profile-panel__domains">Domains of Expertise:
+      <p class="profile-panel__domains">Fields of Work:
 
         <%= user.industries.map {| industry | industry.name }.join(', ') %>
 
@@ -27,9 +25,9 @@
     <div class="medium-6 small-12 column">
       <p class="profile-panel__location"><%= user.city %>, <%= user.country %></p>
       <ul class="profile-panel__lang">
-        <li class="">English</li>
-        <li class="">Spanish</li>
-        <li class="">French</li>
+      <% user.languages.each do |language| %>
+        <li class=""><%=language.name%></li>
+      <% end %>
       </ul>
     </div>
   </div>
@@ -63,7 +61,7 @@
     </li>
     <a href="#<%=e[:category]%>" >
       <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
-      
+
     </a>
     <% end %>
 
@@ -80,7 +78,7 @@
 </div>
 <!-- {# ENDIF #} -->
 <% end %>
+<div class="panel--1__handle material-icons"></div>
 
-  
-  
+
 

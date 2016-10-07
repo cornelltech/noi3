@@ -10,7 +10,7 @@
     <p>You can filter the conversation by selecting a category:
       <%= form_tag(root_path, :method => "get", id: "category-form") do %>
       <label class="select"> <!-- category-filters-mobile -->
-        <%= select_tag "category", options_for_select(@categories.map { |c| c != nil ? c['name'].titleize : "" }, @params['category']), { :include_blank => 'Choose a Category' } %>
+        <%= select_tag "category", options_for_select(@categories.map { |c| c != nil ? c['name'].titleize : "" }, @params['category']), { :include_blank => 'All' } %>
       </label>
       <% end %>
     </p>
@@ -24,7 +24,7 @@
   </ul> -->
   <ul class="main-content__container list">
     <% for topic in @topics %>
-    <% if topic %>
+    <% if topic && topic['category_id'] && @categories.select{|c| c['id'] == topic['category_id'] } && @categories.select{|c| c['id'] == topic['category_id'] }[0] && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Staff" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Lounge" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Site Feedback" %>
     <%# move me into a partial %>
     <li class="list__item post-item">
       <% if topic && topic['details'] && topic['details']['created_by'] && topic['details']['created_by']['avatar_template'] %>
@@ -38,9 +38,7 @@
         <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
         <p><%= truncate(strip_tags(topic['post_stream']['posts'].first['cooked']), length: 200, omission: '...') %></p>
         <% end %>
-        <% if topic['category_id'] && @categories.select{|c| c['id'] == topic['category_id'] } %>
         <p class="post-item__category"><%= @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] %></p>
-        <% end %>
         <div class="post-item__controls">
           <div class="controls">
             <% if topic && topic['posts_count'] %>

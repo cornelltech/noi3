@@ -70,6 +70,10 @@ $(document).ready(function () {
         }
     }); 
 
+    $('.panel--1__handle').click(function () {
+        $('.panel--1').toggleClass('js-active');
+    });
+
 
 
 
