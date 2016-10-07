@@ -64,22 +64,36 @@ button {
 }
 
 .app-wrapper {
-  min-height: calc(100vh - 60px);
-  @include breakpoint($medium) { display: flex; }
+   
+  
+  @include breakpoint($medium) { 
+    display: flex;
+    height: calc(100vh - 60px);
+  }
+}
+
+.panel {
+  @include breakpoint($medium) { 
+    // display: flex; 
+    height: calc(100vh - 60px);
+    overflow-y: scroll;
+  }
+
+  &--2 {background-color: lighten(black, 10);}
 }
 
 .main-content {
-  overflow-x: hidden;
+  overflow-y: scroll;
   flex: 1;
 
-  &__container {
-    // @include breakpoint($small-only) { height: calc(100vh - 157px); }
-    @include breakpoint($medium) { min-width: 650px; }
-    @include breakpoint($large) { min-width: 750px; }
+  // &__container {
+  //   // @include breakpoint($small-only) { height: calc(100vh - 157px); }
+  //   @include breakpoint($medium) { min-width: 650px; }
+  //   @include breakpoint($large) { min-width: 750px; }
 
-    display: block;
-    overflow-y: scroll;
-  }
+  //   display: block;
+  //   overflow-y: scroll;
+  // }
 }
 
 // Styleguide Updates

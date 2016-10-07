@@ -97,7 +97,6 @@
 
   &--1 {
     background-color: #222;
-    
     z-index: 50;
     @include breakpoint($large) { margin-left: 0; }
   }
@@ -115,6 +114,7 @@
   }
 
   &--4 {
+    z-index: 47;
     background-color: #333;
     @include breakpoint($large) { z-index: 47; }
   }
