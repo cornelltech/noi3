@@ -1,7 +1,9 @@
 <!-- <div class="project-panel panel panel--2"> -->
   <i class="project-panel__action-button js-close-panel material-icons">close</i>
   <h2 class="project-panel__content project-panel__heading">Projects</h2>
+  <% if user == current_user %>
   <p class="project-panel__content">Share your relevant projects so others can get a better idea of your applied experience.</p>
+  <% end %>
   <div class='projects-container'>
   <% user.projects.each do | project | %>
   <div class="project-panel__item">
@@ -27,7 +29,7 @@
     <%end%>
     </div>
     <!-- ADD INDUSTRY TAGS TO PROJECTS-->
-    
+
   </div>
   <% end %>
   <!-- </div> -->
