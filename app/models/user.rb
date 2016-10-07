@@ -78,7 +78,7 @@ class User < ApplicationRecord
       sso_secret: DISCOURSE_CONFIG[:sso_secret],
       name: "#{self.first_name} #{self.last_name}",
       username: "#{self.username}",
-      email: "#{self.email}"      
+      email: "#{self.email}")
   end
 
 end
