@@ -6,7 +6,7 @@
 <% end %>
 
 
-<div class="profile-panel__picture" style="background-image: url(<%= user.avatar.url %>);"> 
+<div class="profile-panel__picture" style="background-image: url(<% if user.avatar.url %><%= user.avatar.url %><% end %>);"> 
   
 </div>
 
@@ -80,7 +80,7 @@
 </div>
 <!-- {# ENDIF #} -->
 <% end %>
-
+<div class="panel--1__handle material-icons"></div>
   
   
 

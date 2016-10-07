@@ -72,7 +72,7 @@
   width: 100%;
   margin-left: -100%;
   position: absolute;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   @extend .u-transition;
   
 
@@ -123,4 +123,26 @@
     margin-left: 0;
     box-shadow: 2px 2px 6px rgba(black, .4);
   }
+}
+
+.panel--1__handle {
+  @include breakpoint($small-only) {
+    position: fixed;
+    left: 0px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(black, .8);
+    z-index: 9999999999;
+    padding: 7px;
+  }
+}
+
+// CREEPY CSS - MAKE SOMETHING BETTER ASAP
+.panel--1__handle:after {
+  @include breakpoint($small-only) { content: 'arrow_forward'; }
+}
+
+.panel--1.js-active .panel--1__handle:after {
+  @include breakpoint($small-only) { content: 'arrow_backward'; }
 }
