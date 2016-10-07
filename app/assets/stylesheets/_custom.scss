@@ -218,5 +218,14 @@ input[type='submit'] {
   }  
 }
 
-
+.edit-profile {
+  &__instructions {
+    font-size: .8rem;
+    line-height: 1.2;
+    margin: 0;
+    opacity: .5;
+    margin-bottom: 20px;
+    margin-top: -10px;
+  }
+}
 
