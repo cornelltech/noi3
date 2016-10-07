@@ -17,9 +17,17 @@ class UsersController < ApplicationController
       # projects = Project.basic_search(params['search_string'])
       # @users << projects.map { |project| project.user }
     end
-    if params['category'] && params['category'] != ""
+    if params['category'] && params['category'] != ""        
       # currently searching by category of users skills is not working, need to figure out correct query
       # @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
+      category = Category.where(name: params['category'].downcase).first
+      if category
+        skill_ids = Skill.where(category_id: category.id).pluck(:id)
+        user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
+        @users = User.find(user_ids)
+      else
+        @users = []
+      end
     end
     if params['industry'] && params['industry'] != ""
       @users = @users.joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
