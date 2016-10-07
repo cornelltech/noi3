@@ -34,33 +34,41 @@
     </div>
   </div>
 </section>
+<div class="profile-panel__events-button">
+  <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+  <div class="panel-nav js-open-panel-3">Events <i class="material-icons">arrow_forward</i></div>
+</div>
 
+<div class="profile-panel__projects-button">
+  <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+  <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
+</div>
 
-  <!-- {# IF EXPERTISE #} -->
-  <% if user.categories %>
-  <section class="profile-panel__expertise-panel">
-    <h5 class="profile-panel__expertise-panel-title">
-      <div class="panel-nav js-open-panel-4">Expertise <i class="material-icons">arrow_forward</i></div>
-    </h5>
-    <div class="profile-panel__content">
-      <ul class="category-tags category-tags--negative">
+<!-- {# IF EXPERTISE #} -->
+<% if user.categories %>
+<section class="profile-panel__expertise-panel">
+  <h5 class="profile-panel__expertise-panel-title">
+    <div class="panel-nav js-open-panel-4">Expertise <i class="material-icons">arrow_forward</i></div>
+  </h5>
+  <div class="profile-panel__content">
+    <ul class="category-tags category-tags--negative">
 
-        <% user.format_expertise.each do |e|  %>
-        <li class="category-tag">
-          <span class="category-tag__main"><%= e[:category].titleize %></span>
-          <% e[:skill_areas].each do |skill_area| %>
-          <span class="category-tag__sub"><%= skill_area.titleize %></span>
-          <% end %>
-        </li>
+      <% user.format_expertise.each do |e|  %>
+      <li class="category-tag">
+        <span class="category-tag__main"><%= e[:category].titleize %></span>
+        <% e[:skill_areas].each do |skill_area| %>
+        <span class="category-tag__sub"><%= skill_area.titleize %></span>
+        <% end %>
       </li>
-      <a href="#<%=e[:category]%>" >
-        <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
-        
-      </a>
-      <% end %>
+    </li>
+    <a href="#<%=e[:category]%>" >
+      <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
+      
+    </a>
+    <% end %>
 
-    </ul>
-  </div>
+  </ul>
+</div>
 </section>
 
 <!-- {# ELSE #} -->
@@ -73,14 +81,6 @@
 <!-- {# ENDIF #} -->
 <% end %>
 
-  <div class="profile-panel__events-button">
-    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
-    <div class="panel-nav js-open-panel-3">Events <i class="material-icons">arrow_forward</i></div>
-  </div>
   
-  <div class="profile-panel__projects-button">
-    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
-    <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
-  </div>
   
 
