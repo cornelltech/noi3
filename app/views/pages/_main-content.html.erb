@@ -15,52 +15,64 @@
 
   <div class="category-filters">
     <p>You can filter the conversation by selecting a category:
+      
       <%= form_tag(root_path, :method => "get", id: "category-form") do %>
-      <label class="select"> <!-- category-filters-mobile -->
-        <%= select_tag "category", options_for_select(@categories.map { |c| c != nil ? c['name'].titleize : "" }, @params['category']), { :include_blank => 'All' } %>
-      </label>
+        <label class="select">
+          <%= select_tag "category", options_for_select(@categories.map { |c| c != nil ? c['name'].titleize : "" }, @params['category']), { :include_blank => 'All' } %>
+        </label>
       <% end %>
+
     </p>
   </div>
 
-
-  <!-- <ul class="category-filters">
-    <% @categories.each do | category | %>
-    <li class="category-filters__item"><a href="<%= root_path(:category => category['slug']) %>"><%= category['name'] %></a></li>
-    <% end %>
-  </ul> -->
   <ul class="main-content__container list">
+    
     <% for topic in @topics %>
-    <% if topic && topic['category_id'] && @categories.select{|c| c['id'] == topic['category_id'] } && @categories.select{|c| c['id'] == topic['category_id'] }[0] && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Staff" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Lounge" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Site Feedback" %>
-    <%# move me into a partial %>
-    <li class="list__item post-item">
-      <% if topic && topic['details'] && topic['details']['created_by'] && topic['details']['created_by']['avatar_template'] %>
-      <%=image_tag("#{DISCOURSE_CONFIG[:url]}/#{topic['details']['created_by']['avatar_template'].gsub('{size}', '45')}", :alt => "", :class => "post-item__author-picture") %>
-      <% end %>
-      <div class="post-item__content">
-        <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
-        <p class="post-item__author-name"><strong><%= topic['post_stream']['posts'].first['name'] %></strong></p>
-        <% end %>
-        <h3 class="post-item__title"><%= topic['title']%></h3>
-        <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
-        <p><%= truncate(strip_tags(topic['post_stream']['posts'].first['cooked']), length: 200, omission: '...') %></p>
-        <% end %>
-        <p class="post-item__category"><%= @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] %></p>
-        <div class="post-item__controls">
-          <div class="controls">
-            <% if topic && topic['posts_count'] %>
-            <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}/#{topic['posts_count']}" %>' class="controls__icon-button"><i class="material-icons">reply</i></a>
-            <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__button"><%= topic['posts_count'] - 1 %> Answers</a>
-            <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__show-more-button">Show More</a>
+    
+      <% if topic && topic['category_id'] && @categories.select{|c| c['id'] == topic['category_id'] } && @categories.select{|c| c['id'] == topic['category_id'] }[0] && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Staff" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Lounge" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Site Feedback" %>
+        <%# move me into a partial %>
+        
+        <li class="list__item post-item">
+        
+          <% if topic && topic['details'] && topic['details']['created_by'] && topic['details']['created_by']['avatar_template'] %>
+          
+            <%=image_tag("#{DISCOURSE_CONFIG[:url]}/#{topic['details']['created_by']['avatar_template'].gsub('{size}', '45')}", :alt => "", :class => "post-item__author-picture") %>
+          
+          <% end %>
+          
+          <div class="post-item__content">
+          
+            <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
+              <p class="post-item__author-name"><strong><%= topic['post_stream']['posts'].first['name'] %></strong></p>
             <% end %>
+
+            <h3 class="post-item__title"><%= topic['title']%></h3>
+            
+            <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
+              <p><%= truncate(strip_tags(topic['post_stream']['posts'].first['cooked']), length: 200, omission: '...') %></p>
+            <% end %>
+            
+            <p class="post-item__category"><%= @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] %></p>
+            <div class="post-item__controls">
+              <div class="controls">
+
+                <% if topic && topic['posts_count'] %>
+                  <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}/#{topic['posts_count']}" %>' class="controls__icon-button"><i class="material-icons">reply</i></a>
+                  <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__button"><%= topic['posts_count'] - 1 %> Answers</a>
+                  <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__show-more-button">Show More</a>
+                <% end %>
+
+              </div>
+            </div>
+          
           </div>
-        </div>
-      </div>
-    </li>
-    <% end %>
-    <% end %>
+        </li>
+      <% end %> <!-- CLOSES IF topic && topic[category_id]... -->
+
+    <% end %> <!-- CLOSES FOR topic in @topics -->
+
   </ul>
-  <div class="signup-wall">
-    <p>You need to be signed in <br>to use this feature</p>
-  </div>
+  
+  <div class="signup-wall"><p>You need to be signed in <br>to use this feature</p></div>
+
 </div>

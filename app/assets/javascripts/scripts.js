@@ -71,7 +71,20 @@ $(document).ready(function () {
     }); 
 
     $('.panel--1__handle').click(function () {
-        $('.panel--1').toggleClass('js-active');
+      var panel = $('.panel--1');
+      var all_panels = $('.panel');
+      var handle = $('.panel--1__handle');
+
+      
+      if ( all_panels.hasClass('js-active') ) {
+        all_panels.removeClass('js-active');
+        handle.removeClass('js-active');
+      } else {
+        panel.addClass('js-active');
+        handle.addClass('js-active');
+      }
+      
+      
     });
 
 

@@ -57,35 +57,7 @@ button {
 [type='url'],
 [type='color'] { height: auto; }
 
-// Base Structure
-
-.top-bar {
-  height: 60px;
-}
-
-.app-wrapper {
-  min-height: calc(100vh - 60px);
-  @include breakpoint($medium) { display: flex; }
-}
-
-.main-content {
-  overflow-x: hidden;
-  flex: 1;
-
-  &__container {
-    // @include breakpoint($small-only) { height: calc(100vh - 157px); }
-    @include breakpoint($medium) { min-width: 650px; }
-    @include breakpoint($large) { min-width: 750px; }
-
-    display: block;
-    overflow-y: scroll;
-  }
-}
-
 // Styleguide Updates
-
-
-
 
 .form--negative {
   input[type="text"] {
