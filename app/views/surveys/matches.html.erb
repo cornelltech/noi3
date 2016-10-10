@@ -55,18 +55,16 @@
           <% end %>
           
           <ul class="person-item__tags category-tags person-item--no-flex">
-            
+          
             <% match.format_expertise.each do |e| %>
               <li class="person-item__tag category-tag">
                 <span class="category-tag__main"><%=e[:category].titleize%></span>
-                
-                <%e[:skill_areas].each do |skill_area|%>
-                  <span class="category-tag__sub"><%=skill_area.titleize%></span>
+                <% e[:skill_areas].each do |skill_area| %>
+                  <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
                 <% end %>
-
               </li>
             <%end%>
-
+            
           </ul>
 
           <div class="person-item__controls">

@@ -51,18 +51,16 @@
   <div class="profile-panel__content">
     <ul class="category-tags category-tags--negative">
 
-      <% user.format_expertise.each do |e|  %>
+    <% user.format_expertise.each do |e|  %>
       <li class="category-tag">
         <span class="category-tag__main"><%= e[:category].titleize %></span>
         <% e[:skill_areas].each do |skill_area| %>
-        <span class="category-tag__sub"><%= skill_area.titleize %></span>
+        <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
         <% end %>
-      </li>
-    </li>
-    <a href="#<%=e[:category]%>" >
-      <li class="category-tag__skills">View Skills (<%=e[:skills].length %>)</li>
-
-    </a>
+        </li>
+      <a href="#<%=e[:category]%>" >
+        <li class="category-tag__skills">View Skills (<%=e[:skill_count]%>)</li>
+      </a>
     <% end %>
 
   </ul>
