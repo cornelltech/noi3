@@ -6,8 +6,15 @@
 
 .category-tag {
   font-size: .8rem;
-  margin-bottom: 4px;
   list-style-type: none;
+
+  @include breakpoint($small-only) {
+    display: inline-block;
+  }
+  
+  @include breakpoint($medium) {
+    margin-bottom: 4px;  
+  }
 
   &__main,
   &__sub {
@@ -20,11 +27,20 @@
     color: white;
     font-weight: 600;
     margin-bottom: 4px;
+
+    @include breakpoint($small-only) {
+      margin-bottom: 1px;
+      margin-right: -2px;
+    }
+    
   }
 
   &__sub {
     background-color: rgba(black, .1);
     color: rgba(black, .5);
+    @include breakpoint($small-only) {
+      display: none;
+    }
   }
 
   &__skills {
