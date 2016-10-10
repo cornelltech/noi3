@@ -47,8 +47,6 @@ class UsersController < ApplicationController
         @users = []
       end
     end
-    # @expertise = User.first.format_expertise
-    # @main_expertise = User.first.format_main_expertise
 
   end
 
@@ -71,7 +69,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @expertise = @user.format_expertise
     @events = Event.all
     @projects = []
 
@@ -81,11 +78,7 @@ class UsersController < ApplicationController
       project_with_tags[:industries] = project.industries.map {| industry | industry.name }.sort.join(', ')
       @projects.push(project_with_tags)
     end
-
-    # respond_to do |format|
-    #   format.html
-    #   # format.json { render json: {:user => @user, :industries => @user.industries, :expertise => @user.format_expertise, :main_expertise => @user.format_main_expertise, :projects => @projects, :events => @user.events, :categories => @user.categories}}
-    # end
+    
   end
 
   def fetch_user
@@ -105,7 +98,6 @@ class UsersController < ApplicationController
 
   def fetch_learning_survey
     @user = current_user
-    @expertise = current_user.format_expertise
     @survey = Survey.find(params[:survey_id])
     @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
     respond_to do |format|
@@ -115,7 +107,6 @@ class UsersController < ApplicationController
 
   def fetch_teaching_survey
     @user = current_user
-    @expertise = current_user.format_expertise
     @survey = Survey.find(params[:survey_id])
     @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
     respond_to do |format|

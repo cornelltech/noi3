@@ -5,7 +5,7 @@
   <p class="project-panel__content">Share your relevant projects so others can get a better idea of your applied experience.</p>
   <% end %>
   <div class='projects-container'>
-  <% user.projects.each do | project | %>
+  <% user.projects.includes(:industries, :skill_areas).each do | project | %>
   <div class="project-panel__item">
     <h3 class="project-panel__title"><%= project.title %></h3>
     <a class="project-panel__url" href="<%= project.url %>" target="_blank"><%= project.url %></a>
