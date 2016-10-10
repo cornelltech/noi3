@@ -1,0 +1,112 @@
+// Base Structure
+
+.top-bar {
+  height: 60px;
+}
+
+.app-wrapper {
+  @include breakpoint($medium) { 
+    display: flex;
+    height: calc(100vh - 60px);
+  }
+}
+
+.main-content {
+  overflow-y: scroll;
+  flex: 1;
+}
+
+
+
+// Panel structure and behavior related styles
+
+.panel {
+  overflow-y: scroll;
+  margin-left: -100%;
+  max-width: 100%;
+  
+  @extend .u-transition;
+
+  @include breakpoint($touch) { 
+    position: fixed;
+    bottom: 0;
+    overflow-y: scroll;
+  }
+
+  @include breakpoint($medium-only) { 
+    width: 60%;
+    top: 60px;
+  }
+
+  @include breakpoint($small-only) { 
+    top: 0;
+    width: 100%;
+    z-index: 1000 !important; 
+  }
+
+  @include breakpoint($large) {
+    position: relative;
+    width: 400px;
+    margin-left: -400px;
+    height: calc(100vh - 60px);
+  }
+
+  &--1 {
+    background-color: #222;
+    z-index: 50;
+    @include breakpoint($large) { margin-left: 0; }
+  }
+
+  &--2 {
+    z-index: 49;
+    background-color: #292929;
+    @include breakpoint($large) { z-index: 49; }
+  }
+
+  &--3 {
+    z-index: 48;
+    background-color: #333;
+    @include breakpoint($large) { z-index: 48; }
+  }
+
+  &--4 {
+    z-index: 47;
+    background-color: #333;
+    @include breakpoint($large) { z-index: 47; }
+  }
+
+  &.js-active {
+    margin-left: 0;
+    box-shadow: 2px 2px 6px rgba(black, .4);
+
+    @include breakpoint($medium) {
+      left: 52px !important;
+      max-width: 65% !important;
+    }
+  }
+}
+
+.panel--1__handle {
+  position: fixed;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: rgba(black, .8);
+  z-index: 9999999999;
+  padding: 7px;
+  
+  &:after { content: 'arrow_forward'; }
+  
+  @extend .u-transition;
+
+  @include breakpoint($small-only) { left: 0; }
+  @include breakpoint($medium) { left: 52px; }
+  @include breakpoint($large) { display: none !important; }
+}
+
+.panel--1__handle.js-active {
+  @include breakpoint($medium) { left: calc(14px + 65%) !important; }
+
+  &:after { content: 'arrow_backward'; }
+}
