@@ -1,8 +1,8 @@
 <div class="question-panel panel panel--1">
   
-
   <h2 class="question-panel__heading question-panel__content">Ask a question</h2>
   <p class="question-panel__content">With Network of Innovators, you can get advice and answers to your questions from government and civic innovators worldwide. All you have to do is ask!</p>
+  
   <% if user_signed_in? %>    
     <%= form_tag add_topic_path, method: 'put', class: "form form--negative question-panel__content question-panel__form" do %>
       <%= text_field_tag "topic-title", nil, placeholder: "Ask your question" %>
@@ -14,7 +14,9 @@
       <%= button_tag "Post", type: 'submit', class: "button button--full button--main-color" %> 
 
     <% end %>
+  
   <% else %>
+  
     <%= link_to fetch_sign_up_path, :remote => true do %>
       <p class="question-panel__content"><button class="button button--full button--main-color" type="submit">Sign Up</button></p>
     <% end %>
@@ -22,14 +24,13 @@
     <%= render "devise/shared/links" %>
   </form>
 
-
   <% end %>
+
   <div class="question-panel__action question-panel__content js-panel-action js-active">
     <h4 class="question-panel__action__title js-open-action-panel">How it works</h4>
     <div class="question-panel__action__content ">
       <p>When you ask a question, it will post to the <a href="http://discuss.networkofinnovators.org" target="_blank">discussion forum</a> and be shown here in the activity feed where government and civic innovators worldwide will be able to see and help. A GovLab team member will also personally work on tracking down relevant people or information for you and will respond to your post.</p>
     </div>
   </div>
-<!--   {# <p><a class="js-open-panel-2"><i class="material-icons">arrow_forward</i></a></p>
-  <a class="js-close-panel-1"><i class="material-icons">arrow_back</i></a> #} -->
+
 </div>
