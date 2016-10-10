@@ -80,9 +80,11 @@
     box-shadow: 2px 2px 6px rgba(black, .4);
 
     @include breakpoint($medium) {
-      left: 52px !important;
+      left: 52px;
       max-width: 65% !important;
     }
+
+    @include breakpoint($large) { left: 0; }
   }
 }
 
