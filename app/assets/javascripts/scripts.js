@@ -25,7 +25,7 @@ $(document).ready(function () {
     });
 
     $('body').on('click', '.toast__close', function (e) {
-        $(this).parent().removeClass('js-active');
+        $('.toast').removeClass('js-active');
     });
 
     $('body').on('click', '.js-open-panel', function (e) {
