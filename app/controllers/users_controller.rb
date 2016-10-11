@@ -99,6 +99,7 @@ class UsersController < ApplicationController
   def fetch_learning_survey
     @user = current_user
     @survey = Survey.find(params[:survey_id])
+
     @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
     respond_to do |format|
       format.js
@@ -108,6 +109,7 @@ class UsersController < ApplicationController
   def fetch_teaching_survey
     @user = current_user
     @survey = Survey.find(params[:survey_id])
+    @user_skills_in_cat = @user.teachables.includes(:category).select {|item| item.skill.category == @survey.category }.pluck(:skill_id)
     @skill_areas = @survey.category.skill_areas.map {|sa| sa}.uniq!
     respond_to do |format|
       format.js

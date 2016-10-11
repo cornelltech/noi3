@@ -9,28 +9,33 @@ class TeachablesController < ApplicationController
     # skills selected in form
     selected_skill_ids = params[:skill_ids]
     # get category from form
-    puts "Selected Skills"
-    puts selected_skill_ids
-    category = Skill.find(selected_skill_ids.first).category 
+# byebug
+    category = Category.find(params[:teachable][:category_id]) 
     # find current skills from user
+   
     current_skills = user.teachables.pluck(:skill_id)
     # find current skills in this category
-    puts "Current Skills"
-    puts current_skills
+
     skills_in_cat = user.teachables.includes(:category).select {|item| item.skill.category == category }
     # get all the skills from the category
+    # byebug
     category_skills = category.skills
-
+puts "CURRENT SKILLS"
+p current_skills
     category_skills.each do | skill |
+      # byebug
       teachable = Teachable.where(user_id: user.id, skill_id: skill.id)
-        if selected_skill_ids.include?(skill.id.to_s)
+        if !selected_skill_ids.nil? && selected_skill_ids.include?(skill.id.to_s) 
           teachable.first_or_create
-        else
-          if teachable.exists?
+        elsif (!selected_skill_ids.nil? && teachable.exists?)
             Teachable.delete(teachable) 
-          end
+        elsif teachable.exists?
+          Teachable.delete(teachable) 
         end
+
       end
+puts "NEW SKILLS ARRAY"
+p user.teachables.pluck(:skill_id)
       if params[:teachable][:data_source]== 'user-form'
         respond_to do |format|
           @surveys = Survey.all
