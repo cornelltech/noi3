@@ -1,1 +1,1 @@
-$("#survey-container").html("<%= escape_javascript(render partial: 'surveys/teach_menu'  ) %>"); 
+$("#survey-container").html("<%= escape_javascript(render partial: 'surveys/teach_menu', locals: { survey: @survey, user_skills_in_cat:@user_skills_in_cat}  ) %>"); 
