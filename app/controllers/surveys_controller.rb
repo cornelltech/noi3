@@ -23,7 +23,6 @@ class SurveysController < ApplicationController
 
   def fetch_teaching_menu
     @surveys = Survey.all
-    @user_skills_in_cat = @user.teachables.includes(:category).select {|item| item.skill.category == @survey.category }.pluck(:skill_id)
   end
 
   def fetch_teaching
