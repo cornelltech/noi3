@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+
   <div class="profile-panel panel panel--1">
       <%= render 'users/profile', { user: current_user  }%>
   </div>
@@ -12,11 +13,10 @@
       <%= render 'users/expertise', { user: current_user }%>
   </div>
 
-
   <%= render 'match-me', { user: current_user }%>
-
   
 <% else %>
+
   <%= render 'devise/registrations/new' %>
   <div class="main-content signup-wall--active "> 
     <%= render 'match-me', { user: @users.first}%> <!-- TEMPORARY -->
@@ -24,4 +24,5 @@
       <p>You need to be signed in <br>to use this feature</p>
     </div>
   </div>
+
 <% end %>

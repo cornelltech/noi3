@@ -1,16 +1,12 @@
 
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $main-font;
-}
+h1, h2, h3, h4, h5, h6 { font-family: $main-font; }
 
 a {
   color: currentColor;
   text-decoration: none;
 
-  &:visited {
-    color: currentColor;
-  }
+  &:visited { color: currentColor; }
 }
 
 body {
@@ -78,9 +74,7 @@ button {
     background-color: rgba($white, .1) !important;
   }
 
-  .button:hover {
-    background-color: $accent-color;
-  }
+  .button:hover { background-color: $accent-color; }
 }
 
 .form--negative {
@@ -94,6 +88,7 @@ button {
   input[type='password'] {
     background-color: $white-10;
     @include placeholder { color: $white; }
+    
     &:focus {
         background-color: $white-20;
         @extend .u-transition;
@@ -125,9 +120,15 @@ input[type='submit'] {
 
   &--alpha {
     background-color: rgba(black, 0);
-    &:hover {
-      background-color: rgba(black, .2);
-    }
+    
+    &:hover { background-color: rgba(black, .2); }
+  }
+
+  &.button--negative {
+    background-color: rgba(white, .1);
+    color: white;
+    
+    &:hover { background-color: rgba(white, .3); }
   }
 
   &--small { padding: 6px 8px; }
@@ -142,50 +143,14 @@ input[type='submit'] {
   }
 }
 
-.select:before {
-  pointer-events: none;
-}
+.select:before { pointer-events: none; }
 
 .margin-bottom { margin-bottom: 10px; }
 .margin-top { margin-top: 10px; }
+.align-center { text-align: center; }
 
-.align-center {
-  text-align: center;
-}
+.panel .select { display: block; }
 
-
-.panel .select {
-  display: block;
-}
-
-.signup-wall { display: none; }
-
-.signup-wall--active {
-  position: relative;
-  overflow: hidden;
-
-  .signup-wall {
-    background-color: rgba(white, .9);
-    display: flex;
-    align-items: center;
-    position: absolute;
-    padding: 80px;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9;
-
-    p {
-      text-align: center;
-      width: 100%;
-      font-size: 1.6rem;
-      color: rgba(black, .3);
-      text-transform: uppercase;
-      font-weight: 400;
-    }
-  }  
-}
 
 .edit-profile {
   &__instructions {

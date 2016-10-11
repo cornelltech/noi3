@@ -17,93 +17,100 @@
 
 
 <div class="main-content match-me">
+
   <div class="main-content__container">
-    
-    <h2 class="match-me__title">Match Me</h2>
-    <h3 class="match-me__intro">Your matches are people who have experience in what you want to learn and have something to learn from you.</h3>
-    <div class="steps">
-      <span class="steps__item steps--done"></span>
-      <span class="steps__item steps--done"></span>
-      <span class="steps__item steps--done"></span>
-      <span class="steps__item steps--done steps--current"></span>
+    <div class="toast toast--yellow js-active">
+      <i class="material-icons toast__close">close</i>
+      <h4 class="toast__heading">Match Me</h4>
+      <p class="toast__text">Your matches are people who have experience in what you want to learn and have something to learn from you.</p>
     </div>
-    
+
     <% if @matches == [] %>
       <h2 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h2>
       <h3 class="match-me__intro">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h3>
     <% else %>
-      <h2 class="match-me__question"><%=@user.first_name%>, meet your matches!</h2>
-      <h2 class="match-me__intro">Go ahead! Ask them a question :) </h2>
-      <!-- <section class="active-filters">
-        <span class="filter-by">Filter by</span>
-        <span class="active-filters__item">Location</span>
-        <span class="active-filters__item">Field of Work</span>
-        <span class="active-filters__item">Language</span>
-      </section> -->
+      <hgroup class="match-me__intro">    
+        <h2><%=@user.first_name%>,</h2>
+        <h3>meet your matches!</h3>
+        <h4>Go ahead! Ask them a question :)</h4>
+        <p class="align-center"><a href="/matches" class="button button--negative">Match Me again</a></p>
+      </hgroup>
     <% end %>
-    <p class="align-center"><a href="/matches" class="button">Match Me again</a></p>
-      
-    
 
     <ul class="list">
+    
     <% @matches.each do | match |%>
+    
       <li class="list__item person-item">
         <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+    
         <div class="person-item__content">
-        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+          
+          <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
             <hgroup class="person-item__credentials person-item--no-flex">
               <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%></h2>
               <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
               <h4 class="person-item__org"><%= match.city%>, <%= match.country%></h4>
             </hgroup>
           <% end %>
+          
           <ul class="person-item__tags category-tags person-item--no-flex">
+            
             <% match.format_expertise.each do |e| %>
               <li class="person-item__tag category-tag">
                 <span class="category-tag__main"><%=e[:category].titleize%></span>
+                
                 <%e[:skill_areas].each do |skill_area|%>
-                <span class="category-tag__sub"><%=skill_area.titleize%></span>
+                  <span class="category-tag__sub"><%=skill_area.titleize%></span>
                 <% end %>
+
               </li>
             <%end%>
+
           </ul>
+
           <div class="person-item__controls">
-	        <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= match.username %>" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
+  	        <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= match.username %>" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
+            
             <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>  
               <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
             <% end %>
+
           </div>
-        </div>
+
+        </div> <!-- .person-item__content -->
+        
         <div class="person-item__content">
           <ul class="user-skill-list">
             <h6><%= match.first_name%> <%= match.last_name %> can advise you on <%= match.can_teach.count %> skills</h6>
 
             <% format_skills(match.can_teach).each do |skillset| %>
-              <h5><%=skillset[:category]%> <!-- <span class="user-skill-list__view-all">View All</span> --></h5>
+              <h5><%=skillset[:category]%></h5>
               <%skillset[:skills].each do |skill| %>
                 <li class="user-skill-list__item"><%=skill.capitalize%></li>
               <%end%>
             <% end %>
 
           </ul>
+
           <ul class="user-skill-list">
             <h6>You can advise <%= match.first_name %> on <%= match.can_learn.length%> skills</h6>
+
             <% format_skills(match.can_learn).each do |skillset| %>
-              <h5><%=skillset[:category]%> <!-- <span class="user-skill-list__view-all">View All</span> --></h5>
+              <h5><%=skillset[:category]%></h5>
               <%skillset[:skills].each do |skill| %>
                 <li class="user-skill-list__item"><%=skill.capitalize%></li>
               <%end%>
             <% end %>
-
           </ul>
-
-          
-        </div>
+        </div> <!-- .person-item__content -->
         
-      </li>
-      <% end %>
+      </li> <!-- .list__item person-item -->
+      
+    <% end %>
+    
     </ul>
   
 
-  </div> 
-</div>
+  </div> <!-- .main-content__container -->
+</div> <!-- .main-content.match-me -->

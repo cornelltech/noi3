@@ -1,10 +1,9 @@
 .questionnaire {
-  .list__item {
-    @include breakpoint($small-only) { padding: 0; } // ugly solution
-  }
 
   &__title {
-    color: rgba(black, .5);
+    color: $main-color;
+    background-color: rgba($main-color, .05);
+    border-top: 1px solid $main-color;
     padding: 10px 15px;
     font-size: 1.3rem;
     margin: 0;
@@ -15,9 +14,7 @@
       @include breakpoint($large) { margin-top: 0; }
     }
 
-    @include breakpoint($large) {
-      padding: 20px 60px 10px 130px;
-    }
+    @include breakpoint($large) { padding: 20px 60px 10px 130px; }
   }
 
   &__check-all {
@@ -30,10 +27,7 @@
     display: none !important;
   }
 
-  &__item {
-    padding: 0;
-    @include breakpoint($large) { padding: 0 40px; }
-  }
+  &__item { padding: 0; }
 
   &__item--submit {
     padding: 0 60px 0 120px;
@@ -47,36 +41,41 @@
         font-weight: 600;
       }
     }
-    
   }
 
-  &__item:nth-of-child(even) {
-    background-color: rgba(black, .03);
-  }
+  &__item:nth-of-child(even) { background-color: rgba(black, .03); }
 
 
-  &__item__checkbox {
-    display: none;
-  }
+  &__item__checkbox { display: none; }
 
   &__item__label {
     display: block;
-    width: calc(100% - 20px);
-    padding: 10px;
-    
-    
-    @include breakpoint($large) { 
-      font-weight: 600;
-      padding: 20px 20px 20px 80px;
+    width: 100%;
+    padding: 10px 40px;
+    @include breakpoint($small-only) { padding: 10px;}
+    margin: 0 !important;
+    position: relative;
+
+    &:hover {
+      background-color: rgba($green, .1);
+      &:before { 
+        opacity: .2;
+        background-color: $green;
+        color: white;
+        padding: 6px;
+        top: 14px;
+        left: 74px;
+        @extend .u-circle;
+      }
     }
     
-    position: relative;
+    @include breakpoint($large) { padding: 20px 20px 20px 124px; }
 
     &:before {
       @include breakpoint($large) { content: 'check'; }
       @extend .u-material-icons;
       position: absolute;
-      left: 30px;
+      left: 80px;
       top: 20px;
       color: $green;
       opacity: .2;
@@ -84,10 +83,18 @@
   }
 
   &__item__checkbox:checked ~ &__item__label {
-    background-color: rgba($green, .2);
-    color: $green;
+    background-color: rgba($green, .1);
+    color: darken($green, 15);
     
-    &:before { opacity: 1; }
+    &:before { 
+      opacity: 1; 
+      padding: 6px;
+      background-color: $green;
+      color: white;
+      top: 14px;
+      left: 74px;
+      @extend .u-circle;
+    }
   }
   
 }

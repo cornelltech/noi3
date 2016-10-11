@@ -1,13 +1,8 @@
-<div class="steps">
-  <span class="steps__item steps--done"></span>
-  <span class="steps__item steps--done"></span>
-  <span class="steps__item steps--done"></span>
-  <span class="steps__item steps--done steps--current"></span>
-</div>
-
-<h2 class="match-me__category-title"><%=survey.category.name%></h2>
-<h2 class="match-me__question">I have experience and can guide others on:</h2>
-<p class="match-me__intro"><em>Choose from the following skills</em></p>
+<hgroup class="match-me__intro">
+  <h3>I have experience and can guide others on</h3>
+  <h2><%=survey.category.name%></h2>
+  <h4>Choose from the following skills</h4>
+</hgroup>
 
 <%= form_for Teachable.new do |f| %>
       <ul class="list">
