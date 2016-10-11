@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_user_learning_menu
-    @surveys = Survey.all
+    @surveys = Survey.includes(:category).all
   end
 
   def fetch_user_teaching_menu
@@ -98,8 +98,8 @@ class UsersController < ApplicationController
 
   def fetch_learning_survey
     @user = current_user
-    @survey = Survey.find(params[:survey_id])
-    @user_skills_in_cat = @user.learnables.includes(:category).select {|item| item.skill.category == @survey.category }.pluck(:skill_id)
+    @survey = Survey.includes(:category).find(params[:survey_id])
+    @user_skills_in_cat = @user.learnables.includes(:skill,:category).select {|item| item.skill.category == @survey.category }.pluck(:skill_id)
     @skill_areas = @survey.category.skill_areas.includes(:skills).map {|sa| sa}.uniq!
     respond_to do |format|
       format.js

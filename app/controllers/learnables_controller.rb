@@ -8,7 +8,7 @@ class LearnablesController < ApplicationController
     # skills selected in form
     selected_skill_ids = params[:skill_ids]
     # get category from form
-    category = Category.find(params[:learnable][:category_id]) 
+    category = Category.includes(:skills).find(params[:learnable][:category_id]) 
     # find current skills from user
     current_skills = user.learnables.pluck(:skill_id)
     # find current skills in this category
@@ -17,7 +17,7 @@ class LearnablesController < ApplicationController
     category_skills = category.skills
     # loop through all category's skills, and if the skill is selected by the user, add it to their expertise. If the skill has not been selected, delete it. If the user has not selected any skills in the category, delete it.
     category_skills.each do | skill |
-      learnable = Learnable.where(user_id: user.id, skill_id: skill.id)
+      learnable = Learnable.includes(:skill).where(user_id: user.id, skill_id: skill.id)
         if !selected_skill_ids.nil? && selected_skill_ids.include?(skill.id.to_s) 
           learnable.first_or_create
         elsif (!selected_skill_ids.nil? && learnable.exists?)
@@ -28,7 +28,7 @@ class LearnablesController < ApplicationController
       end
 
         respond_to do |format|
-          @surveys = Survey.all
+          @surveys = Survey.includes(:category).all
           if params[:learnable][:data_source]== 'user-form'
             format.js {render '/users/fetch_user_learning_menu.js.erb' }
           else
