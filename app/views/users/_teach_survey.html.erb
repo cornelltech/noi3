@@ -12,7 +12,7 @@
       <h5 class="questionnaire__title"> <%= skill_area.name %> <span class="questionnaire__check-all button button--alpha button--small">Check All</span></h5>
       <% skill_area.skills.each do | skill | %>
         <li class="questionnaire__item list__item">
-          <input name="skill_ids[]" class="questionnaire__item__checkbox" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>">
+          <input name="skill_ids[]" class="questionnaire__item__checkbox" <% if @user_skills_in_cat.include?(skill.id)%>checked='checked'<% end %> type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>">
           <label class="questionnaire__item__label" for="checkbox-<%=skill.id%>" ><%= skill.description.capitalize %></label>
         </li>
       <% end %>
@@ -23,6 +23,7 @@
         <!-- {# <button class="button button--main-color" type=submit>Next</button>     #} -->
         <%= f.hidden_field :user_id, value: current_user.id %>
         <%= f.hidden_field :data_source, value: "user-form" %>
+        <%= f.hidden_field :category_id, value: survey.category.id %>
         <%= f.submit 'Save and Add More Skills', class: 'button button--main-color', id: 'survey-save' %>
       </li>
     </ul>
