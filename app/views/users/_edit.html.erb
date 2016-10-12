@@ -20,8 +20,9 @@
 
  <%= f.label 'Fields of Work' %><br>
  <%= select_tag 'user[industry_ids][]',
- options_from_collection_for_select(Industry.all, "id", "name", current_user.industries), { :multiple => true, :size =>10}
+ options_from_collection_for_select(Industry.all, "id", "name", @user_work_fields), { :multiple => true, :size =>10}
  %>
+
  <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
  <%= f.label 'Languages' %><br>
  <%= select_tag 'user[language_ids][]',
