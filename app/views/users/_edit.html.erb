@@ -16,7 +16,7 @@
 
  <%= f.text_field :city, placeholder: 'City', value: current_user.city %>
 
- <%= f.country_select :country_code, placeholder: 'Country' %>
+ <%= f.country_select :country_code, prompt: 'Country' %>
 
  <%= f.label 'Fields of Work' %><br>
  <%= select_tag 'user[industry_ids][]',
