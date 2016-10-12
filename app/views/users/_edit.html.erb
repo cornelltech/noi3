@@ -1,38 +1,41 @@
 <div class="main-content edit-profile">
- <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
+  <h2 class="signup-panel__heading signup-panel__content">Edit Profile</h2>
 
- <!-- NEED TO ADD CLASSES HERE 'form form--negative' -->
- <!-- NEED TO REPLACE EACH f.label by a :placeholder -->
+  <!-- NEED TO ADD CLASSES HERE 'form form--negative' -->
+  <!-- NEED TO REPLACE EACH f.label by a :placeholder -->
 
- <%= form_for(current_user, :html => {:multipart => true, :class => 'form form--negative'}) do |f| %>
- <%= f.file_field :avatar %>
- <%= f.text_field :username, placeholder: 'Username',value: current_user.username %>
- <%= f.text_field :first_name, placeholder: 'First Name',value: current_user.first_name %>
- <%= f.text_field :last_name, placeholder: 'Last Name', value: current_user.last_name %>
- <%= f.text_field :position, placeholder: 'Position', value: current_user.position %>
- <%= f.text_field :organization, placeholder: 'Organization', value: current_user.organization %>
- <%= f.label :organization_type %>
- <%= select_tag 'user[organization_type]', options_for_select([ "Organization Type", "Non Profit", "Government", "Private Sector", "Academia", "Other" ], current_user.organization_type) %>
+  <%= form_for(current_user, :html => {:multipart => true, :class => 'form form--negative'}) do |f| %>
+  <%= f.file_field :avatar %>
+  <%= f.text_field :username, placeholder: 'Username',value: current_user.username %>
+  <%= f.text_field :first_name, placeholder: 'First Name',value: current_user.first_name %>
+  <%= f.text_field :last_name, placeholder: 'Last Name', value: current_user.last_name %>
+  <%= f.text_field :position, placeholder: 'Position', value: current_user.position %>
+  <%= f.text_field :organization, placeholder: 'Organization', value: current_user.organization %>
+  <%= f.label :organization_type %>
+  <%= select_tag 'user[organization_type]', options_for_select([ "Organization Type", "Non Profit", "Government", "Private Sector", "Academia", "Other" ], current_user.organization_type) %>
 
- <%= f.text_field :city, placeholder: 'City', value: current_user.city %>
+  <%= f.text_field :city, placeholder: 'City', value: current_user.city %>
 
- <%= f.country_select :country_code %>
+  <%= f.country_select :country_code, prompt: 'Country' %>
 
- <%= f.label 'Fields of Work' %><br>
- <%= select_tag 'user[industry_ids][]',
- options_from_collection_for_select(Industry.all, "id", "name", current_user.industries), { :multiple => true, :size =>10}
- %>
- <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
- <%= f.label 'Languages' %><br>
- <%= select_tag 'user[language_ids][]',
- options_from_collection_for_select(Language.all,"id","name", current_user.languages), { :multiple => true, :size =>5}
- %>
- <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
+  <%= f.label 'Fields of Work' %><br>
+  <%= select_tag 'user[industry_ids][]',
+  options_from_collection_for_select(Industry.all, "id", "name", @user_work_fields), { :multiple => true, :size =>10}
+  %>
 
-<br>
+  <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
+  <%= f.label 'Languages' %><br>
+  <%= select_tag 'user[language_ids][]',
+  options_from_collection_for_select(Language.all,"id","name", @user_languages), { :multiple => true, :size =>5}
+  %>
 
- <%= link_to "Account Settings", fetch_edit_account_path, :remote => true, class: "button button--full button--main-color margin-bottom" %>
- <%= f.submit "Save", class: "button button--full button--main-color" %>
- <% end %>
+  <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
+
+  <br>
+
+  <%= f.submit "Save", class: "button button--full button--main-color margin-bottom" %>
+
+  <%= link_to "Account Settings", fetch_edit_account_path, :remote => true, class: "button button--full button--main-color " %>
+  <% end %>
 </div>
 
