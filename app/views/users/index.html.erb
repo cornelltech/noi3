@@ -100,14 +100,17 @@
       </div>
       <div class="person-item__content">
         <ul class="person-item__tags category-tags">
-          <% user.format_expertise.each do |e| %>
+        <% user.format_expertise.each do |e|  %>
           <li class="category-tag">
             <span class="category-tag__main"><%= e[:category].titleize %></span>
             <% e[:skill_areas].each do |skill_area| %>
-            <span class="category-tag__sub"><%= skill_area.titleize %></span>
+            <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
             <% end %>
           </li>
-          <% end %>
+          <a href="#<%#e[:category]%>" >
+            <li class="category-tag__skills">View Skills (<%=e[:skill_count]%>)</li>
+          </a>
+        <% end %>
         </ul>
         <div class="person-item__controls">
           <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>

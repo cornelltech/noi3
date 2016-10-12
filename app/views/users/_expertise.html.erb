@@ -19,14 +19,14 @@
 
 
   <div class="expertise-container">
-    <% user.format_main_expertise.each do | expertise | %>
+    <% user.format_expertise.each do | expertise | %>
     <div class="expertise-panel__item">
       <a name="<%=expertise[:category]%>"></a>
       <h3 class="expertise-panel__main-category"><%=expertise[:category]%></h3>
         <% expertise[:skill_areas].each do |sa| %>
           <section class="expertise-panel__question-group">
-            <h4 class="expertise-panel__sub-category"><%= sa[:area_name].titleize %> </h4>
-            <% sa[:area_skills].each do |skill| %>
+            <h4 class="expertise-panel__sub-category"><%= sa[:area_skill].titleize %> </h4>
+            <% sa[:skills].each do |skill| %>
             <p class="expertise-panel__question"><%= skill.capitalize if skill %></p>
             <% end %>
           </section>

@@ -35,38 +35,40 @@ class User < ApplicationRecord
   end
 
   
-  def format_expertise
+def format_expertise
     expertise = []
-    self.teachables.each do |skillset| 
-      expertise.push({category: skillset.skill.category.name, skill_areas:[], skills: []}).uniq!
+    self.teachables.includes(:skill,:skill_area,:category).each do |skillset| 
+      expertise.push({category: skillset.skill.category.name, skill_areas:skillset.skill.skill_area.name, skills: skillset.skill.description})
     end 
-    self.teachables.each do |skillset|
-      expertise.each do |e|
-        if skillset.skill.category.name == e[:category] 
-          e[:skill_areas] << skillset.skill.skill_area.name
-          e[:skills] << skillset.skill.description
-        end
-        e[:skill_areas].uniq!
+     
+    expertise = format_tree(expertise)
+
+    skills_array = []
+    expertise.each do |row|
+      hsh = {}
+      hsh[:category] = row[0]
+      hsh[:skill_areas]= []
+      hsh[:skill_count] = 0
+      row[1].each do |skill|
+        hsh[:skill_areas] << {area_skill: skill[0], skills: skill[1]}
+        # byebug
+        hsh[:skill_count] += skill[1].length
       end
+     skills_array << hsh
     end
-    expertise
+    skills_array
   end
 
-  def format_main_expertise
-    expertise = []
-    self.teachables.each do |skillset| 
-      expertise.push({category: skillset.skill.category.name, skill_areas:[], skills: []}).uniq!
-    end 
-    self.teachables.each do |skillset|
-      expertise.each do |e|
-        if skillset.skill.category.name == e[:category] 
-          e[:skill_areas] << {area_name: skillset.skill.skill_area.name, area_skills: [].push(skillset.skill.description)}
-          # e[:skill_area][:area_children] << skillset.skill.description
-        end
-        e[:skill_areas].uniq!
-      end
+  def format_tree(cats)
+    tree = cats.each_with_object({}) do | row, hsh | 
+      category = row[:category]
+      skill_area = row[:skill_areas]
+      skill = row[:skills]
+      hsh[category] ||= {}
+      hsh[category][skill_area] ||= []
+      hsh[category][skill_area] << skill
     end
-    expertise
+    tree
   end
 
   def create_discourse_user
