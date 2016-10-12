@@ -25,8 +25,9 @@
  <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
  <%= f.label 'Languages' %><br>
  <%= select_tag 'user[language_ids][]',
- options_from_collection_for_select(Language.all,"id","name", current_user.languages), { :multiple => true, :size =>5}
+ options_from_collection_for_select(Language.all,"id","name", @user_languages), { :multiple => true, :size =>5}
  %>
+
  <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
 
 <br>
