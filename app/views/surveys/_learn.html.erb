@@ -11,7 +11,6 @@
       <h5 class="questionnaire__title"> <%= skill_area.name %> <span class="questionnaire__check-all button button--alpha button--small">Check All</span></h5>
     
       <% skill_area.skills.each do | skill | %>
-      <%= @user_skills_in_cat %>
         <li class="questionnaire__item list__item">
           <input name="skill_ids[]" class="questionnaire__item__checkbox" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>" <% if @user_skills_in_cat.include?(skill.id) %>checked="checked"<%end%>>
           <label class="questionnaire__item__label" for="checkbox-<%=skill.id%>" ><%= skill.description.capitalize %></label>
