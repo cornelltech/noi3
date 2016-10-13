@@ -78,7 +78,7 @@ class UsersController < ApplicationController
       project_with_tags[:industries] = project.industries.map {| industry | industry.name }.sort.join(', ')
       @projects.push(project_with_tags)
     end
-    
+
   end
 
   def fetch_user
@@ -118,6 +118,7 @@ class UsersController < ApplicationController
 
   def add_event
     user = current_user
+    # byebug
     event_ids = params['event_ids']
     event_ids.each do | event_id |
       event = Event.find(event_id)
@@ -132,6 +133,7 @@ class UsersController < ApplicationController
 
   def remove_event
     user = current_user
+    # byebug
     event = Event.find(params["event_id"])
     user.events.delete(event)
     respond_to do |format|
