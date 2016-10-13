@@ -8,7 +8,6 @@
       <div class="event-panel__item list__item event-label">
       <!-- <a href="#" target="_blank"> -->
       <%= image_tag('events/' + event.logo_path, :alt => event.name, :class => 'event-logo__active ' + event.name.parameterize) %>
-      <!-- </a> -->
       </div>
       <%end%>
   <% else %>
@@ -16,7 +15,7 @@
       <p>Going to an event? We partner with event organizers from around the world. Click on one of the available events below to let others know what events you’re attending. You can also search for other Network of Innovators users who are also planning to attend.</p>
     </div>
 
-    <%= form_for(User.new, :url => { :action => "add_event", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' }, remote:true ) do |f| %>
+    <%= form_for(User.new, :url => { :action => "add_and_remove_events", :controller => "users" }, :html => { :method => "put", :class => 'form form--negative' }, remote:true ) do |f| %>
 
       <% Event.all.each do | event | %>
         <div class="event-panel__item list__item">
@@ -29,20 +28,11 @@
             <% else %>
               <%= f.submit "Submit", name: 'event_ids[]', value: event.id, :type => :image, :class => 'event-logo ' + event.name.parameterize, :src => image_path('events/' + event.logo_path) %>
             <% end %>
-
           </label>
         </div>
     <% end %>
   <% end %>
+<% end %>
 </div>
-
-
-
-
-
-
-
-
-<!-- <% end %> -->
 
 <!-- </div> -->

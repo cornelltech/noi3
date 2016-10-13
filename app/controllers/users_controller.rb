@@ -116,26 +116,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def add_event
+  def add_and_remove_events
     user = current_user
-    # byebug
     event_ids = params['event_ids']
     event_ids.each do | event_id |
       event = Event.find(event_id)
       if !user.events.include?(event)
         user.events << Event.find(event)
+      else
+        user.events.delete(event)
       end
     end
-    respond_to do |format|
-      format.js {render '/users/update_events.js.erb' }
-    end
-  end
-
-  def remove_event
-    user = current_user
-    # byebug
-    event = Event.find(params["event_id"])
-    user.events.delete(event)
     respond_to do |format|
       format.js {render '/users/update_events.js.erb' }
     end

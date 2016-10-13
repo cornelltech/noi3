@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
   resources :projects
 
-  put 'add_event' => 'users#add_event'
-  delete 'remove_event' => 'users#remove_event'
+  put 'add_and_remove_events' => 'users#add_and_remove_events'
+
 
   put 'add_topic' => 'pages#add_topic'
 
