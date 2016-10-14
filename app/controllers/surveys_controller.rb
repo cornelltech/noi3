@@ -47,7 +47,7 @@ class SurveysController < ApplicationController
     # don't go through all users. preselect users that have overlap already and go through those only
     user_ids = Teachable.includes(:skill).where(skill_id: user_learnables).map { |item| item.user_id }
     user_ids << Learnable.where(skill_id: user_teachables).map { |item| item.user_id }    
-    users = User.find(user_ids.flatten.uniq)
+    users = User.where(:id => user_ids.flatten.uniq)
 
     users.each do | user_match |
       user_match.can_teach  = user_match.teachables.pluck(:skill_id) & user_learnables
