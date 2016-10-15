@@ -1,6 +1,14 @@
 $(document).ready(function () {
-    $('body').on('change', '.category-filters select', function (e) {
-        $('#category-form').submit();
+
+    $('body').on('click', '.questionnaire__check-all', function (e) {
+        var $check = $( '#' + $(this).attr('data-check') );
+        var category = $(this).attr('data-category');
+        var state = $check.prop( 'checked' );
+        $check.prop( 'checked', !state );
+        $( '.' + category ).prop( 'checked', $check.prop( 'checked' ) );
+    });
+    $('body').on('change', '.questionnaire__all-box', function (e) {
+        $( '.' + $(this).attr('data-category') ).prop( 'checked', $(this).prop('checked') );
     });
 
     $('body').on('click', '#survey-save', function (e) {
@@ -68,14 +76,14 @@ $(document).ready(function () {
         if (!$('.panel--4').hasClass('js-active'))  {
             $('.panel--4').addClass('js-active');
         }
-    }); 
+    });
 
     $('.panel--1__handle').click(function () {
       var panel = $('.panel--1');
       var all_panels = $('.panel');
       var handle = $('.panel--1__handle');
 
-      
+
       if ( all_panels.hasClass('js-active') ) {
         all_panels.removeClass('js-active');
         handle.removeClass('js-active');
@@ -83,8 +91,8 @@ $(document).ready(function () {
         panel.addClass('js-active');
         handle.addClass('js-active');
       }
-      
-      
+
+
     });
 
 
