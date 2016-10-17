@@ -13,26 +13,26 @@ class UsersController < ApplicationController
 
     @users = User.all
     if params['search_string'] != ""
-      @users = @users.fuzzy_search(params['search_string'])
+      @users = @users.fuzzy_search(params['search_string']).paginate(:page => params[:page], :per_page => 5)
       # projects = Project.basic_search(params['search_string'])
       # @users << projects.map { |project| project.user }
     end
     if params['industry'] && params['industry'] != ""
-      @users = @users.joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] })
+      @users = @users.joins(:industries).distinct.basic_search(:industries => { :name => params[:industry] }).paginate(:page => params[:page], :per_page => 5)
     end
     if params['country'] && params['country'] != "" && params['country'] != nil
-      @users = @users.basic_search(country_code: ISO3166::Country.find_country_by_name(params[:country]).alpha2)
+      @users = @users.basic_search(country_code: ISO3166::Country.find_country_by_name(params[:country]).alpha2).paginate(:page => params[:page], :per_page => 5)
       # byebug
     end
     if params['language'] && params['language'] != ""
-      @users = @users.joins(:languages).distinct.basic_search(:languages => { :name => params[:language] })
+      @users = @users.joins(:languages).distinct.basic_search(:languages => { :name => params[:language] }).paginate(:page => params[:page], :per_page => 5)
       # byebug
     end
     if params['event'] && params['event'] != ""
       # puts 'DEBUG-------------'
       # puts params[:event]
       # puts @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] })
-      @users = @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] })
+      @users = @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] }).paginate(:page => params[:page], :per_page => 5)
       # byebug
     end
     if params['category'] && params['category'] != ""
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       if category
         skill_ids = Skill.where(category_id: category.id).pluck(:id)
         user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
-        @users = @users.where(id: user_ids)
+        @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
       else
         @users = []
       end

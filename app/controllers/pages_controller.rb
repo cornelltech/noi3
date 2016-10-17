@@ -25,7 +25,7 @@ class PagesController < ApplicationController
 	    	# then get each topic in that list in more detail
 	    	discourse_client.topic(topic['id'])
       # end
-    }
+    }.paginate(:page => params[:page], :per_page => 10)
   end
 
   def add_topic
