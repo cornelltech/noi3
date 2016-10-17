@@ -75,3 +75,5 @@ gem 'aws-sdk', '~> 2.3'
 
 gem 'rb-readline'
 
+gem 'will_paginate', '~> 3.1.0'
+
