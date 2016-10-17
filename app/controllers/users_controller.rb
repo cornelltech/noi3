@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     @params = params;
 
-    @users = User.all
+    @users = User.all.paginate(:page => params[:page], :per_page => 5)
     if params['search_string'] != ""
       @users = @users.fuzzy_search(params['search_string']).paginate(:page => params[:page], :per_page => 5)
       # projects = Project.basic_search(params['search_string'])
@@ -47,7 +47,6 @@ class UsersController < ApplicationController
         @users = []
       end
     end
-
   end
 
   def edit
