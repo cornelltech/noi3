@@ -7,11 +7,12 @@ class SessionsController < Devise::SessionsController
             yield resource if block_given?
             respond_with resource, location: after_sign_in_path_for(resource)
         else # error state
+            set_flash_message!(:notice, :error)
             respond_to do |format|
                 format.js {
-                    render :file => "/pages/fetch_sign_up.js.erb"
+                    render :file => "/pages/fetch_log_in.js.erb"
                 }
-                format.html { respond_with resource }
+                format.html { respond_with resource, location: "/users/sign_in" }
             end
         end
     end
