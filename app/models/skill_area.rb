@@ -3,7 +3,7 @@ class SkillArea < ApplicationRecord
     belongs_to :category
     has_and_belongs_to_many :projects
 
-    def full_name
-      "#{ self.category.name.titleize}: #{self.name.humanize}"
+    def display_name
+      self.name.titleize
     end
 end
