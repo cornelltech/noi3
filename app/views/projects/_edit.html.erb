@@ -11,14 +11,14 @@
 
   <%= f.label 'Fields of Work' %><br>
   <%= select_tag 'project[industry_ids][]',
-      options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries), { :multiple => true, :size =>5}
+      options_from_collection_for_select(Industry.all, "id", "name", @project.industries.pluck(:id)), { :multiple => true, :size =>5}
   %>
 
   <%= select_tag 'project[category_ids]',
       options_from_collection_for_select(Category.includes(:skill_areas).all,"id",:display_name, @project.categories.pluck(:id)),{ :include_blank => 'Select Category' }
   %>
   <%= select_tag 'project[skill_area_ids][]',
-      options_from_collection_for_select(@project.skill_areas,"id",:display_name,@project.skill_areas.pluck(:id)),{ :include_blank => 'Select a Subcategory' }
+      options_from_collection_for_select(@project.skill_areas,"id",:display_name, @project.skill_areas.pluck(:id)),{ :include_blank => 'Select a Subcategory' }
   %>
   <%= f.hidden_field :project_id, value: @project.id %>
   <%= f.submit "Update" %>
