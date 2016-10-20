@@ -1,6 +1,8 @@
 <div class="main-content match-me">
   <div class="main-content__container">
-      <h2 class="match-me__question">I want to learn about:</h2>
+    <hgroup class="match-me__intro">
+      <h3>I want to learn about</h3>
+    </hgroup>
       <ul class="category-buttons">
         <% @surveys.each do | survey | %>
         <%= link_to survey.category.name, fetch_learning_survey_path(:survey_id => survey.id), class: 'category-buttons__item', :remote => true %>
