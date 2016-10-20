@@ -65,18 +65,20 @@
 
   </ul>
 </div>
+  <!-- {# ELSE #} -->
+
+  <!-- {# ENDIF #} -->
 </section>
 
-<!-- {# ELSE #} -->
-<% else %>
-<div class="profile-panel__add-item">
-  <i class="big-icon material-icons">add</i>
-  <h4>Add Expertise</h4>
-  <%= link_to 'Add Expertise', fetch_teaching_menu_path, class: 'button button--main-color', :remote => true %>
-</div>
-<!-- {# ENDIF #} -->
 <% end %>
-
+<% if user == current_user %>
+  <%= link_to (url_for(fetch_user_teaching_menu_path)), :remote => true do %>
+    <div class="profile-panel__add-item">
+      <i class="big-icon material-icons">add</i>
+      <h4>Add Expertise</h4>
+    </div>
+  <% end %>
+<% end %>
 
 
 
