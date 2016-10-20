@@ -33,7 +33,7 @@
     <section class="filter-section">
       <%= form_tag(users_path, :method => "get", id: "search-form") do %>
       <div class="search find-innovator" action="">
-        <%= text_field_tag "search_string", @params['search_string'], placeholder: "Search", :class => "search__field" %>
+        <%= text_field_tag "search_string", @params['search_string'], placeholder: "Keyword Search", :class => "search__field" %>
         <%= submit_tag "search", :name => nil %>
       </div>
       <p><em class="highlighted-or">OR</em> Find someone with experience in

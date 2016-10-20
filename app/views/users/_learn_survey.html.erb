@@ -1,9 +1,11 @@
 <div class="main-content match-me">
   <div class="main-content__container">
-
-    <h2 class="match-me__category-title"><%=survey.category.name%></h2>
-    <h2 class="match-me__question">I want to learn about:</h2>
-    <p class="match-me__intro"><em>Choose from the following skills</em></p>
+    
+    <hgroup class="match-me__intro">
+      <h3>I want to learn about</h3>
+      <h2><%=survey.category.name%></h2>
+      <h4>Choose from the following skills</h4>
+    </hgroup>
 
     <%= form_for Learnable.new, remote: true do |f| %>
     <ul class="list">
