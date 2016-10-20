@@ -16,12 +16,15 @@
 </head>
 
 <body>
+
   <a name="top"></a>
- 
+
   <%= render 'layouts/top-bar' %>
 
+  - <%= @page_id %> page_id
+
   <main class="app-wrapper">
-    <%= render 'layouts/main-menu' %>    
+    <%= render 'layouts/main-menu' %>
 
     <!-- PANEL 1 -->
     <div class="panel--1__handle material-icons"></div>
@@ -29,7 +32,7 @@
     <!-- PANEL 3 -->
     <!-- PANEL 4 -->
     <!-- MAIN CONTENT -->
-  
+
     <%= yield %>
 
       </main>

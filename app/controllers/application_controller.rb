@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   # DEVISE HELPERS for forms
   helper_method :resource_name, :resource, :devise_mapping
 
+  @page_id = 'test1234'
+
   def resource_name
     :user
   end
@@ -23,7 +25,7 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path
     end
-  end  
-    
+  end
+
 
 end
