@@ -47,6 +47,9 @@ Rails.application.routes.draw do
   get 'fetch_learning_survey' => 'users#fetch_learning_survey', as: 'fetch_learning_survey'
   get 'fetch_teaching_survey' => 'users#fetch_teaching_survey', as: 'fetch_teaching_survey'
 
+  # projects ajax for categories/subcategories
+  get 'update_subcategory_dropdown' => 'projects#update_subcategory_dropdown', as: 'update_subcategory_dropdown'
+
   get '/sign_up_success' => 'pages#sign_up_success', as: 'sign_up_success'
 
   get '/welcome' => 'welcome#index', as: 'welcome'

@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new
+    # byebug
     @project.assign_attributes(project_params)
     if @project.save
         flash[:notice] = "Project saved"
@@ -39,6 +40,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update_subcategory_dropdown
+    category = Category.find(params[:category_id])
+    @skill_areas = SkillArea.where(category_id: category.id)
+    respond_to do |format|
+      format.js {render '/projects/update_subcategory_dropdown.js.erb'}
+    end
+  end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
@@ -55,7 +64,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :url, :user_id, language_ids:[], industry_ids: [], skill_area_ids: [])
+    params.require(:project).permit(:title, :description, :url, :user_id, category_ids:[], language_ids:[], industry_ids: [], skill_area_ids: [])
   end
 
 
