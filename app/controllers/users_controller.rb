@@ -36,6 +36,11 @@ class UsersController < ApplicationController
       @users = @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] }).paginate(:page => params[:page], :per_page => 5)
       # byebug
     end
+    if params['skill_area'] && params['skill_area'] != "" && params['category'] == ""
+      # byebug
+      skill_area = SkillArea.where(name: params['skill_area'].downcase).first
+      @users = User.joins(:skill_areas).where('name = ?',skill_area.name).paginate(:page => params[:page], :per_page => 5)
+    end
     if params['category'] && params['category'] != ""
       # currently searching by category of users skills is not working, need to figure out correct query
       # @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
