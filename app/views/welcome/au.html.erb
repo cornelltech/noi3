@@ -17,9 +17,22 @@
   <link rel="stylesheet" type="text/css" href="static/styleguide.min.css">
   <link rel="stylesheet" type="text/css" href="static/landingpage.min.css">
   <style>
-    @media (max-width: 39.9375em) {
-      .b-sg-landing-page .b-landing-section .b-main-logo > img {  max-width: 91% !important; }
+  @media (max-width: 39.9375em) {
+    .b-sg-landing-page .b-landing-section .b-main-logo > img {  max-width: 91% !important; }
+  }
+  @media (min-width: 600px) {
+    .top-logo-au-container {
+      text-align: left;
     }
+  }
+  @media (max-width: 600px) {
+    .top-logo-au-container {
+      text-align: center;
+    }
+    .top-logo-au {
+      width: 100px;
+    }
+  }
 </style>
 </head>
 <body id="" class="b-sg-landing-page">
@@ -33,7 +46,11 @@
 
     <div class="b-above-header m-blue">
       <div class="row">
-        <div class="medium-4 medium-offset-8 column" style="text-align: right">
+        <div class="medium-8 column top-logo-au-container">
+          <img src="static/img/Better-Together-Logo-white.png" alt="Better Together" class="top-logo-au" style="margin: 20px; max-width: 200px;">
+          <img src="static/img/YourSAY-white.png" alt="YourSAY" class="top-logo-au" style="margin: 20px; max-width: 200px;">
+        </div>
+        <div class="medium-4 column" style="text-align: right">
           <a href="users/sign_up" class="b-button m-naked">Sign up</a>
           <a href="users/sign_in" class="b-button m-naked">Log in</a>
         </div>
@@ -195,21 +212,17 @@
   <footer class="b-footer m-purple">
     <div class="row">
       <div class="medium-2 column medium-offset-5">
-        <img src="static/img/govlab-logo-white.png" alt="Built by The GovLab" class="e-partner-logo m-govlab"/>
+        <!-- <img src="static/img/govlab-logo-white.png" alt="Built by The GovLab" class="e-partner-logo m-govlab"/> -->
       </div>
     </div>
     <div class="row">
       <div class="column large-12">
-        <p>In collaboration with innovation teams from governments of</p>
-        <div class="b-flags">
-          <a href="#" class="e-flag m-argentina"></a>
-          <a href="#" class="e-flag m-chile"></a>
-          <a href="#" class="e-flag m-uk"></a>
-          <a href="#" class="e-flag m-mexico"></a>
-          <a href="#" class="e-flag m-south-australia"></a>
-          <a href="#" class="e-flag m-spain"></a>
-          <a href="#" class="e-flag m-us"></a>
-        </div>
+        <p></p>
+        <img src="static/img/govlab-logo-white.png" alt="Built by The GovLab" style="margin: 50px; max-width: 200px;" class="e-partner-logo m-govlab"/>
+        <p>In collaboration with</p>
+        <img src="static/img/SA-logo-white.png" alt="South Australia" class="e-partner-logo" style="margin: 50px; max-width: 200px;"/>
+        <img src="static/img/GOSA-logo-white.png" alt="Government of South Australia" class="e-partner-logo" style="margin: 50px; max-width: 200px;"/>
+        <p></p>
       </div>
     </div>
     <div class="row">
@@ -223,19 +236,18 @@
     <div class="row">
       <div class="large-10 large-centered columns">
         <a class="e-cc-badge" rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
-        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> <br> <a href="#">Copyright Infringement Information</a>.
+        This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
       </div>
     </div>
-  </div>
 
-  <div id="overlay"></div>
+    <div id="overlay"></div>
 
-  <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> -->
-  <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-  <script>
-  $(function() {
-    var $overlay = $('#overlay');
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> -->
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script>
+    $(function() {
+      var $overlay = $('#overlay');
 
     // Modal Logic
     $overlay.click(function() {
