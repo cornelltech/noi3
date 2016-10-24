@@ -5,11 +5,14 @@ class UsersController < ApplicationController
     # discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
     @categories = Category.all
+    @skill_areas = SkillArea.pluck(:name).uniq!
     @industries = Industry.all
     @languages = Language.all
     @events = Event.all
 
     @params = params;
+  
+    @active_filters = get_active_filters(params)
 
     @users = User.all.paginate(:page => params[:page], :per_page => 5)
     if params['search_string'] != ""
@@ -35,14 +38,23 @@ class UsersController < ApplicationController
       @users = @users.joins(:events).distinct.basic_search(:events => { :name => params[:event] }).paginate(:page => params[:page], :per_page => 5)
       # byebug
     end
+    if params['skill_area'] && params['skill_area'] != "" && params['category'] == ""
+      # byebug
+      skill_area = SkillArea.where(name: params['skill_area'].downcase).first
+      @users = @users.joins(:skill_areas).where('name = ?',skill_area.name).paginate(:page => params[:page], :per_page => 5)
+    end
     if params['category'] && params['category'] != ""
       # currently searching by category of users skills is not working, need to figure out correct query
       # @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
       category = Category.where(name: params['category'].downcase).first
-      if category
-        skill_ids = Skill.where(category_id: category.id).pluck(:id)
-        user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
-        @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
+      skill_area = SkillArea.where(name: params['skill_area'].downcase,category_id: category.id).first
+      if category && skill_area 
+        @users = @users.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
+      elsif category
+        # skill_ids = Skill.where(category_id: category.id).pluck(:id)
+        # user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
+        # @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
+        @users = @users.joins(:categories).where('category_id=?',category.id).paginate(:page => params[:page], :per_page => 5)
       else
         @users = []
       end
@@ -129,6 +141,19 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js {render '/users/update_events.js.erb' }
     end
+  end
+
+
+  def get_active_filters(params)
+    active_filters = {}
+    active_filters[:search_string] = params[:search_string]
+    active_filters[:category] = params[:category]
+    active_filters[:skill_area] = params[:skill_area]
+    active_filters[:industry] = params[:industry]
+    active_filters[:country] = params[:country]
+    active_filters[:language] = params[:language]
+    active_filters[:event] = params[:event]
+    active_filters.delete_if { |key, value| value.blank? }
   end
 
   private

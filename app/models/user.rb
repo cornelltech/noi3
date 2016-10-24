@@ -10,9 +10,12 @@ class User < ApplicationRecord
 
   has_many :projects
   has_and_belongs_to_many :events
-  has_and_belongs_to_many :categories #todo: unlink from user
+  has_and_belongs_to_many :categories
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :languages
+
+  has_many :categories, through: :teachables
+  has_many :skill_areas, through: :teachables
 
   has_many :teachables
   has_many :learnables

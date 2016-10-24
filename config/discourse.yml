@@ -20,8 +20,8 @@ staging:
 #   sso_redirect_url: "http://discourse.noilocal.com/session/sso_login"
 
 production:
-  url: "http://discuss.networkofinnovators.org"
+  url: "https://discuss.networkofinnovators.org"
   api_key: "c9aecdc5869fe8140b45220758f61af1bae7054f5c6c631a1cd4a776f00912df"
   api_username: "david"
   sso_secret: "UW1XPxyM37UMDlnbOB09pz24v5UoOyWp"
-  sso_redirect_url: "http://discuss.networkofinnovators.org/session/sso_login"
+  sso_redirect_url: "https://discuss.networkofinnovators.org/session/sso_login"

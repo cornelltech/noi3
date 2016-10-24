@@ -32,16 +32,27 @@
   <article class="main-content__container">
     <section class="filter-section">
       <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+
       <div class="search find-innovator" action="">
         <%= text_field_tag "search_string", @params['search_string'], placeholder: "Keyword Search", :class => "search__field" %>
         <%= submit_tag "search", :name => nil %>
       </div>
-      <p><em class="highlighted-or">OR</em> Find someone with experience in
-        <span class="select select--inline select-innovation-area">
-          <%= select_tag "category",
-          options_for_select(@categories.map { |cat| cat['name'].titleize.humanize }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
-        </span>
-
+      <p><em class="highlighted-or">OR</em> Find someone with experience in: </p>
+      
+      <div class="row">
+        <div class="large-6 small-12 columns">
+          <div class="select select--inline">
+            <%= select_tag "category",
+            options_for_select(@categories.map { |cat| cat.display_name }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
+          </div>
+        </div>
+        <div class="large-6 small-12 columns">
+          <div class="select select--inline ">
+            <%= select_tag "skill_area",
+            options_for_select(@skill_areas.map { |skill_area| skill_area.titleize.humanize }, @params['skill_area']), { :include_blank => 'Pick a Skill Area' } %>
+          </div>
+        </div>
+      </div>
         <fieldset class="extra-filters-fieldset">
           <p><a href="#" class="button" id="more-filters">More Filters <i class="material-icons collapsed-que">add</i></a> <a href="#" class="button" id="reset-filters">Reset All</a></p>
           <div class="extra-filters">
@@ -69,59 +80,55 @@
     </section> -->
   </section>
 
-  <ul class="list">
-    <% @users.each do | user | %>
-    <% if !user.id.nil? %>
-    <li class="list__item person-item">
-      <%# image_tag('users/' + user.picture_path, :alt => "User", :class => "person-item__picture") %>
-      <!-- PLACEHOLDER IMAGE -->
-<!--       <% if user.avatar? %>
-      <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-      <% elsif user.picture_path && user.picture_path? && user.picture_path != "" %>
-      <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
-      <% else %>
-      <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-      <% end %> -->
-      <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-      <div class="person-item__content">
-        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
-        <hgroup class="person-item__credentials" data-user="<%=user.id%>">
-          <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
+  <% if @users == [] && !@active_filters.empty? %>
+    <%= render partial: 'no_results', locals: {active_filters: @active_filters} %>
+  <% else %>
 
-          <h3 class="person-item__job"><%= user.position %></h3>
-          <h4 class="person-item__org"><%= user.organization%></h4>
-        </hgroup>
-        <% end %>
-        <div class="person-item__controls">
-          <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= user.username %>" class="controls__icon-button">
-            <i class="person-item__pm material-icons">mail_outline</i>
-          </a>
-        </div>
-      </div>
-      <div class="person-item__content">
-        <ul class="person-item__tags category-tags">
-        <% user.format_expertise.each do |e|  %>
-          <li class="category-tag">
-            <span class="category-tag__main"><%= e[:category].titleize %></span>
-            <% e[:skill_areas].each do |skill_area| %>
-            <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
-            <% end %>
+    <ul class="list">
+      <% @users.each do | user | %>
+        <% if !user.id.nil? %>
+          <li class="list__item person-item">
+            <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+            <div class="person-item__content">
+              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
+              <hgroup class="person-item__credentials" data-user="<%=user.id%>">
+                <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
+
+                <h3 class="person-item__job"><%= user.position %></h3>
+                <h4 class="person-item__org"><%= user.organization%></h4>
+              </hgroup>
+              <% end %>
+              <div class="person-item__controls">
+                <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= user.username %>" class="controls__icon-button">
+                  <i class="person-item__pm material-icons">mail_outline</i>
+                </a>
+              </div>
+            </div>
+
+            <div class="person-item__content">
+              <ul class="person-item__tags category-tags">
+              <% user.format_expertise.each do |e|  %>
+                <li class="category-tag">
+                  <span class="category-tag__main"><%= e[:category].titleize %></span>
+                  <% e[:skill_areas].each do |skill_area| %>
+                  <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
+                  <% end %>
+                </li>
+                <a href="#<%#e[:category]%>" >
+                  <li class="category-tag__skills">View Skills (<%=e[:skill_count]%>)</li>
+                </a>
+              <% end %>
+              </ul>
+              <div class="person-item__controls">
+                <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
+              </div>
+            </div>
           </li>
-          <a href="#<%#e[:category]%>" >
-            <li class="category-tag__skills">View Skills (<%=e[:skill_count]%>)</li>
-          </a>
         <% end %>
-        </ul>
-        <div class="person-item__controls">
-          <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
-        </div>
-      </div>
-
-    </li>
-    <% end %>
-    <% end %>
-  </ul>
-  <%= will_paginate @users %>
+      <% end %>
+    </ul>
+    <%= will_paginate @users %>
+  <% end %>
 </article>
 
 </div>
