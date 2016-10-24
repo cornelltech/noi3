@@ -32,21 +32,27 @@
   <article class="main-content__container">
     <section class="filter-section">
       <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+
       <div class="search find-innovator" action="">
         <%= text_field_tag "search_string", @params['search_string'], placeholder: "Keyword Search", :class => "search__field" %>
         <%= submit_tag "search", :name => nil %>
       </div>
-      <p><em class="highlighted-or">OR</em> Find someone with experience in
-        <span class="select select--inline select-innovation-area">
-          <%= select_tag "category",
-          options_for_select(@categories.map { |cat| cat.display_name }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
-        </span>
-
-        <span class="select select--inline select-innovation-area">
-          <%= select_tag "skill_area",
-          options_for_select(@skill_areas.map { |skill_area| skill_area.titleize.humanize }, @params['skill_area']), { :include_blank => 'Pick a Skill Area' } %>
-        </span>
-
+      <p><em class="highlighted-or">OR</em> Find someone with experience in: </p>
+      
+      <div class="row">
+        <div class="large-6 small-12 columns">
+          <div class="select select--inline">
+            <%= select_tag "category",
+            options_for_select(@categories.map { |cat| cat.display_name }, @params['category']), { :include_blank => 'Pick an Innovation Area' } %>
+          </div>
+        </div>
+        <div class="large-6 small-12 columns">
+          <div class="select select--inline ">
+            <%= select_tag "skill_area",
+            options_for_select(@skill_areas.map { |skill_area| skill_area.titleize.humanize }, @params['skill_area']), { :include_blank => 'Pick a Skill Area' } %>
+          </div>
+        </div>
+      </div>
         <fieldset class="extra-filters-fieldset">
           <p><a href="#" class="button" id="more-filters">More Filters <i class="material-icons collapsed-que">add</i></a> <a href="#" class="button" id="reset-filters">Reset All</a></p>
           <div class="extra-filters">
