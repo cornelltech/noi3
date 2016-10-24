@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     if params['skill_area'] && params['skill_area'] != "" && params['category'] == ""
       # byebug
       skill_area = SkillArea.where(name: params['skill_area'].downcase).first
-      @users = User.joins(:skill_areas).where('name = ?',skill_area.name).paginate(:page => params[:page], :per_page => 5)
+      @users = @users.joins(:skill_areas).where('name = ?',skill_area.name).paginate(:page => params[:page], :per_page => 5)
     end
     if params['category'] && params['category'] != ""
       # currently searching by category of users skills is not working, need to figure out correct query
@@ -49,12 +49,12 @@ class UsersController < ApplicationController
       category = Category.where(name: params['category'].downcase).first
       skill_area = SkillArea.where(name: params['skill_area'].downcase,category_id: category.id).first
       if category && skill_area 
-        @users = User.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
+        @users = @users.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
       elsif category
         # skill_ids = Skill.where(category_id: category.id).pluck(:id)
         # user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
         # @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
-        @users = User.joins(:categories).where('category_id=?',category.id).paginate(:page => params[:page], :per_page => 5)
+        @users = @users.joins(:categories).where('category_id=?',category.id).paginate(:page => params[:page], :per_page => 5)
       else
         @users = []
       end
