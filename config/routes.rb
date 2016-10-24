@@ -53,5 +53,5 @@ Rails.application.routes.draw do
   get '/sign_up_success' => 'pages#sign_up_success', as: 'sign_up_success'
 
   get '/welcome' => 'welcome#index', as: 'welcome'
-  get '/au' => 'welcome#au', as: 'welcome-australia'
+  get '/southaustralia' => 'welcome#southaustralia', as: 'welcome-southaustralia'
 end
