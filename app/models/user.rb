@@ -36,10 +36,6 @@ class User < ApplicationRecord
       ''
     end
   end
-
-  def location
-    [self.city, self.country].delete_if(&:empty?).join(", ")
-  end
   
   def format_expertise
     expertise = []
