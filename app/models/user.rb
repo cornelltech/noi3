@@ -37,8 +37,11 @@ class User < ApplicationRecord
     end
   end
 
+  def location
+    [self.city, self.country].delete_if(&:empty?).join(", ")
+  end
   
-def format_expertise
+  def format_expertise
     expertise = []
     self.teachables.includes(:skill,:skill_area,:category).each do |skillset| 
       expertise.push({category: skillset.skill.category.name, skill_areas:skillset.skill.skill_area.name, skills: skillset.skill.description})

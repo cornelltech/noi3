@@ -23,7 +23,7 @@
       </p>
     </div>
     <div class="medium-6 small-12 column">
-      <p class="profile-panel__location"><%= user.city %>, <%= user.country %></p>
+      <p class="profile-panel__location"><%= user.location %></p>
       <ul class="profile-panel__lang">
       <% user.languages.uniq.each do |language| %>
         <li class=""><%=language.name%></li>
