@@ -107,7 +107,16 @@
 // }
 
 
-
+.no-results {
+  &__container {
+    color: darken($accent-color, 3);
+    padding: 0 5%;
+  } 
+  &__filters {
+    color: black;
+  }
+  
+}
 
 
 
