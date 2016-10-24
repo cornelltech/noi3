@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @events = Event.all
 
     @params = params;
+  
+    @active_filters = get_active_filters(params)
 
     @users = User.all.paginate(:page => params[:page], :per_page => 5)
     if params['search_string'] != ""
@@ -139,6 +141,19 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js {render '/users/update_events.js.erb' }
     end
+  end
+
+
+  def get_active_filters(params)
+    active_filters = {}
+    active_filters[:search_string] = params[:search_string]
+    active_filters[:category] = params[:category]
+    active_filters[:skill_area] = params[:skill_area]
+    active_filters[:industry] = params[:industry]
+    active_filters[:country] = params[:country]
+    active_filters[:language] = params[:language]
+    active_filters[:event] = params[:event]
+    active_filters.delete_if { |key, value| value.blank? }
   end
 
   private

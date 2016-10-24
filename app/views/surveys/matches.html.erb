@@ -107,7 +107,9 @@
     <% end %>
     
     </ul>
-    <%= will_paginate @matches %>
+    <% if @matches != []%>
+      <%= will_paginate @matches %>
+    <% end %>
   
 
   </div> <!-- .main-content__container -->

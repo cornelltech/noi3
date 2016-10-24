@@ -1,0 +1,15 @@
+<div class="no-results__container">
+
+  <h4 class="no-results__header">Sorry, we couldn't find any innovators matching:</h4>
+
+ 
+    <ul class="no-results__filters">
+    <% active_filters.each do |filter_key, filter_value| %>
+      <li><%= filter_key.to_s.titleize %>: <%= filter_value.titleize %></li>
+    <% end %>
+    </ul>
+
+
+  <p class="no-results__helper-text">Try removing some of the filters, or use our <%=link_to 'Match Me', surveys_path %> feature to find innovators that can teach you the skills you want to learn, as well as those who could benefit from your experience and guidance.</p>
+
+</div>
