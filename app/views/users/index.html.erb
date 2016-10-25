@@ -80,6 +80,13 @@
     </section> -->
   </section>
 
+<!-- SORT Controls-->
+<div class="row small-up-1 medium-up-3">
+  <div class="button column">Last Name A-Z <i class="material-icons">keyboard_arrow_down</i></div>
+  <div class="button column">Title <i class="material-icons">keyboard_arrow_down</i></div>
+  <div class="button column">Organization <i class="material-icons">keyboard_arrow_down</i></div>
+</div>
+
   <% if @users == [] && !@active_filters.empty? %>
     <%= render partial: 'no_results', locals: {active_filters: @active_filters} %>
   <% else %>
