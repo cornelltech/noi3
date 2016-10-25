@@ -10,9 +10,12 @@ class User < ApplicationRecord
 
   has_many :projects
   has_and_belongs_to_many :events
-  has_and_belongs_to_many :categories #todo: unlink from user
+  has_and_belongs_to_many :categories
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :languages
+
+  has_many :categories, through: :teachables
+  has_many :skill_areas, through: :teachables
 
   has_many :teachables
   has_many :learnables
@@ -33,9 +36,8 @@ class User < ApplicationRecord
       ''
     end
   end
-
   
-def format_expertise
+  def format_expertise
     expertise = []
     self.teachables.includes(:skill,:skill_area,:category).each do |skillset| 
       expertise.push({category: skillset.skill.category.name, skill_areas:skillset.skill.skill_area.name, skills: skillset.skill.description})

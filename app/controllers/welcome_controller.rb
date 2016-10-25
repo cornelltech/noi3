@@ -5,4 +5,8 @@ class WelcomeController < ActionController::Base
       render layout: false
   end
 
+  def southaustralia
+      render layout: false
+  end
+
 end

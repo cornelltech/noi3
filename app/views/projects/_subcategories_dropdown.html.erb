@@ -1,0 +1,1 @@
+<label for="" class="select"><%= select_tag 'project[skill_area_ids][]', options_from_collection_for_select(skill_areas.all,"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select a Subcategory' } %></label>

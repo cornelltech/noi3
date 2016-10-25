@@ -5,9 +5,10 @@
       <h3 class="project-panel__title"><%= f.text_field :title, placeholder: 'Title' %></h3>
       <%= f.text_field :url, placeholder: 'URL' %>
       <%= f.text_area :description, placeholder: 'Description', size: '60x12' %>
-      <%= f.label 'Fields of Work' %>
-      <label for="" class="select"><%= select_tag 'project[industry_ids][]', options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries) %></label>
-      <label for="" class="select"><%= select_tag 'project[skill_area_ids][]', options_from_collection_for_select(SkillArea.includes(:category).all,"id",:full_name, Project.new.skill_areas) %></label>
+      <label for="" class="select"><%= select_tag 'project[industry_ids][]', options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries), { :include_blank => 'Select Field of Work' } %></label>
+      <label for="" class="select"><%= select_tag 'project[category_ids]', options_from_collection_for_select(Category.includes(:skill_areas).all,"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select Category' } %></label>
+
+      <label for="" class="select"><%= select_tag 'project[skill_area_ids][]', options_from_collection_for_select(SkillArea.includes(:category).all,"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select Subcategory' } %></label>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "Add project" %>

@@ -15,6 +15,7 @@
 //= require foundation
 //= require users
 //= require sessions
+//= require dropdowns
 //= require_tree .
 //= require toastr
 

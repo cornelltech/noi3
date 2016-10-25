@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :surveys, :path => 'match-me'
   resources :teachables
   resources :learnables
+  get '/' => 'welcome#southaustralia', as: 'welcome-southaustralia', constraints: { subdomain: 'southaustralia' }
+  
   root 'pages#index'
   get "/matches" => 'surveys#get_matches'
 
@@ -47,7 +49,11 @@ Rails.application.routes.draw do
   get 'fetch_learning_survey' => 'users#fetch_learning_survey', as: 'fetch_learning_survey'
   get 'fetch_teaching_survey' => 'users#fetch_teaching_survey', as: 'fetch_teaching_survey'
 
+  # projects ajax for categories/subcategories
+  get 'update_subcategory_dropdown' => 'projects#update_subcategory_dropdown', as: 'update_subcategory_dropdown'
+
   get '/sign_up_success' => 'pages#sign_up_success', as: 'sign_up_success'
 
-  get '/welcome' => 'welcome#index', as: 'welcome'
+  get '/welcome' => 'welcome#index', as: 'welcome'  
+
 end
