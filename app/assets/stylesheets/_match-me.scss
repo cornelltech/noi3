@@ -27,5 +27,21 @@
     }
   }
 
+  &__question {
+    padding-left: 10px;
+  }
+
+
+  &--search-innovators {
+    padding-left: 10px;
+    // color: white;
+  }
+
+  &__search-link {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
 }
