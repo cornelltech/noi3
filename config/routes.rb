@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :surveys, :path => 'match-me'
   resources :teachables
   resources :learnables
+  get '/' => 'welcome#southaustralia', as: 'welcome-southaustralia', constraints: { subdomain: 'southaustralia' }
+  
   root 'pages#index'
   get "/matches" => 'surveys#get_matches'
 
@@ -52,6 +54,6 @@ Rails.application.routes.draw do
 
   get '/sign_up_success' => 'pages#sign_up_success', as: 'sign_up_success'
 
-  get '/welcome' => 'welcome#index', as: 'welcome'
-  get '/southaustralia' => 'welcome#southaustralia', as: 'welcome-southaustralia'
+  get '/welcome' => 'welcome#index', as: 'welcome'  
+
 end
