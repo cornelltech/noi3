@@ -26,8 +26,8 @@
     </div>
 
     <% if @matches == [] %>
-      <h2 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h2>
-      <h3 class="match-me__intro match-me--search-innovators">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h3>
+      <h3 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h3>
+      <h4 class="match-me__intro match-me--search-innovators">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h4>
     <% else %>
       <hgroup class="match-me__intro">
         <h2><%=@user.first_name%>,</h2>
