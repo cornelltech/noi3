@@ -26,10 +26,10 @@
     </div>
 
     <% if @matches == [] %>
-      <h2 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h2>
-      <h3 class="match-me__intro">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h3>
+      <h3 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h3>
+      <h4 class="match-me__intro match-me--search-innovators">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h4>
     <% else %>
-      <hgroup class="match-me__intro">    
+      <hgroup class="match-me__intro">
         <h2><%=@user.first_name%>,</h2>
         <h3>meet your matches!</h3>
         <h4>Go ahead! Ask them a question :)</h4>
@@ -39,12 +39,12 @@
 
     <ul class="list">
     <% @matches.each do | match |%>
-    
+
       <li class="list__item person-item">
         <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-    
+
         <div class="person-item__content">
-          
+
           <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
             <hgroup class="person-item__credentials person-item--no-flex">
               <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%></h2>
@@ -52,9 +52,9 @@
               <h4 class="person-item__org"><%= match.city%>, <%= match.country%></h4>
             </hgroup>
           <% end %>
-          
+
           <ul class="person-item__tags category-tags person-item--no-flex">
-          
+
             <% match.format_expertise.each do |e| %>
               <li class="person-item__tag category-tag">
                 <span class="category-tag__main"><%=e[:category].titleize%></span>
@@ -63,20 +63,20 @@
                 <% end %>
               </li>
             <%end%>
-            
+
           </ul>
 
           <div class="person-item__controls">
   	        <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= match.username %>" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a>
-            
-            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>  
+
+            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
               <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
             <% end %>
 
           </div>
 
         </div> <!-- .person-item__content -->
-        
+
         <div class="person-item__content">
           <ul class="user-skill-list">
             <h6><%= match.first_name%> <%= match.last_name %> can advise you on <%= match.can_teach.count %> skills</h6>
@@ -101,16 +101,16 @@
             <% end %>
           </ul>
         </div> <!-- .person-item__content -->
-        
+
       </li> <!-- .list__item person-item -->
-      
+
     <% end %>
-    
+
     </ul>
     <% if @matches != []%>
       <%= will_paginate @matches %>
     <% end %>
-  
+
 
   </div> <!-- .main-content__container -->
 </div> <!-- .main-content.match-me -->

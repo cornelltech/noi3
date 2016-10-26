@@ -1,4 +1,6 @@
 .match-me {
+  background-color: $main-color;
+
   &__intro {
     background-color: darken($accent-color, 3);
     @include breakpoint($medium) {background-color: $accent-color;}
@@ -12,7 +14,7 @@
     }
 
     h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 100;
     }
 
@@ -27,5 +29,31 @@
     }
   }
 
+  &__question {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    width: 100%;
+    background-color: white;
+    margin: 0 auto;
+    padding-left: 20px;
+    font-size: 1.4em;
+  }
+
+
+  &--search-innovators {
+    margin: 0 auto;
+    padding-left: 20px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  &__search-link {
+    text-decoration: underline;
+    font-style: italic;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
 }
