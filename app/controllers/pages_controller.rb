@@ -62,6 +62,17 @@ class PagesController < ApplicationController
   def fetch_edit_account
   end
 
+  def delete_account_success
+    if resource_name
+    #   respond_to do |format|
+    #       format.js {
+    #           render :file => "/pages/fetch_delete_account_success.js.erb"
+    #       }
+          # format.html { respond_with resource, location: '/delete_account_success'  }
+    #   end
+    end
+  end
+
   def fetch_edit_user
     @user_work_fields = current_user.industries.pluck(:id)
     @user_languages = current_user.languages.pluck(:id)
