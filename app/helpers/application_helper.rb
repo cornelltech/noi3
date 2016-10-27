@@ -25,28 +25,31 @@ module ApplicationHelper
 		''
 	end
 
-  def sortable(column, title=nil)
+
+  def sortable(column, title = nil)
+    # uses users#sort_column and users#sort_direction to determine column and direction
     title ||= column.titleize
-    # byebug
     css_class = column == sort_column ? "current #{sort_direction}" : nil
-    # byebug
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-    byebug
-    # link_to title, users_path(params.merge!({:sort => column, :direction => direction})), {:class => css_class}
-    link_to title, params.merge!({:sort => column, :direction => direction, :only_path => true}), {:class => css_class}
-    # link_to title, users_path(@params.merge!(:sort => column, :direction => direction, :only_path => true)), {:class => css_class}
+    sort_params = search_params
+    sort_params[:sort] = column
+    sort_params[:direction]= direction
+    link_to title, sort_params, {:class => css_class}
   end
 
-  # def sortable(column, title=nil)
-  #   title ||= column.titleize
-  #   # byebug
-  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
-  #   # byebug
-  #   direction = sort_direction == "asc" ? "desc" : "asc"
-  #   # byebug
-  #   # link_to title, users_path(params.merge!({:sort => column, :direction => direction})), {:class => css_class}
-  #   link_to title, params.merge!({:sort => column, :direction => direction, :only_path => true}), {:class => css_class}
-  #   # link_to title, users_path(@params.merge!(:sort => column, :direction => direction, :only_path => true)), {:class => css_class}
-  # end
+
+  private
+
+
+  def search_params
+    # save search params and add sort and direction
+    sort_params = {:utf8 => '✓'}
+    permitted_params = [:search_string,:category,:skill_area,:industry,:country,:language, :event]
+    permitted_params.each do |val|
+      sort_params[val] = params[val]
+    end 
+    sort_params
+  end
+
 
 end

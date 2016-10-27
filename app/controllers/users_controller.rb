@@ -15,12 +15,12 @@ class UsersController < ApplicationController
 
     @active_filters = get_active_filters(params)
 
-    # SORTING
+    # Sort all users before applying filters
     if params[:sort] && params[:direction]
       sort_query = params[:sort] + " " + params[:direction] 
      @users = User.order(sort_query)
     else
-      # default sorting
+      # default sort by created_at
       @users = User.all
     end
 
@@ -178,7 +178,7 @@ class UsersController < ApplicationController
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    ["asc","desc"].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end
