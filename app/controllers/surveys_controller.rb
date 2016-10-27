@@ -38,15 +38,16 @@ class SurveysController < ApplicationController
   def get_matches
     # users = User.all
     @user = current_user
+    @no_matches = false
 
-    # Temporary matching solution. 
+    # Temporary matching solution.
     user_teachables = @user.teachables.pluck(:skill_id)
     user_learnables = @user.learnables.pluck(:skill_id)
     @matches = []
 
     # don't go through all users. preselect users that have overlap already and go through those only
     user_ids = Teachable.includes(:skill).where(skill_id: user_learnables).map { |item| item.user_id }
-    user_ids << Learnable.where(skill_id: user_teachables).map { |item| item.user_id }    
+    user_ids << Learnable.where(skill_id: user_teachables).map { |item| item.user_id }
     users = User.where(:id => user_ids.flatten.uniq)
 
     users.each do | user_match |
@@ -55,14 +56,21 @@ class SurveysController < ApplicationController
       if ((user_match.can_teach.count + user_match.can_learn.count) > 0) && (current_user.id != user_match.id)
         @matches << user_match
       end
+
+
     end
 
     @matches = @matches.sort_by {|match| match.can_teach.count + match.can_learn.count }.reverse!.paginate(:page => params[:page], :per_page => 5)
+
+    if @matches.empty?
+      @no_matches = true
+    end
+
     render 'matches'
   end
 
   def temp_profile_setup
-    
+
   end
 
 end
