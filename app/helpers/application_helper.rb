@@ -25,4 +25,28 @@ module ApplicationHelper
 		''
 	end
 
+  def sortable(column, title=nil)
+    title ||= column.titleize
+    # byebug
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    # byebug
+    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    byebug
+    # link_to title, users_path(params.merge!({:sort => column, :direction => direction})), {:class => css_class}
+    link_to title, params.merge!({:sort => column, :direction => direction, :only_path => true}), {:class => css_class}
+    # link_to title, users_path(@params.merge!(:sort => column, :direction => direction, :only_path => true)), {:class => css_class}
+  end
+
+  # def sortable(column, title=nil)
+  #   title ||= column.titleize
+  #   # byebug
+  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
+  #   # byebug
+  #   direction = sort_direction == "asc" ? "desc" : "asc"
+  #   # byebug
+  #   # link_to title, users_path(params.merge!({:sort => column, :direction => direction})), {:class => css_class}
+  #   link_to title, params.merge!({:sort => column, :direction => direction, :only_path => true}), {:class => css_class}
+  #   # link_to title, users_path(@params.merge!(:sort => column, :direction => direction, :only_path => true)), {:class => css_class}
+  # end
+
 end

@@ -105,7 +105,24 @@
 //         background-color: rgba($black, .15);
 //     }
 // }
-
+.sortable {
+  > .asc {
+    color:red;
+    &:after {
+      @extend .u-material-icons;
+      content: 'keyboard_arrow_down';
+      vertical-align: -7px;
+    }
+  }
+  > .desc {
+    color: green;
+    &:after {
+      @extend .u-material-icons;
+      content: 'keyboard_arrow_up';
+      vertical-align: -7px;
+    }
+  }
+}
 
 .no-results {
   &__container {
@@ -123,7 +140,6 @@
       font-weight: 700;
     }
   }
-  
 }
 
 
