@@ -72,21 +72,23 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
 
-    def destroy
-      if resource_name
-        respond_to do |format|
-            format.js {
-                render :file => "/pages/fetch_delete_account_success.js.erb"
-            }
-            format.html { respond_with resource, location: '/delete_account_success'  }
-        end
+    def delete_user
+      byebug
+
+      # if resource_name
+        # respond_to do |format|
+        #     format.js {
+        #         render :file => "/pages/fetch_delete_account_success.js.erb"
+        #     }
+        #     format.html { respond_with resource, location: '/delete_account_success'  }
+        # end
         # respond_to do |format|
         #     format.html { redirect_to root_path}
         #     format.js {
         #         render :file => "/pages/fetch_delete_account_success.js.erb"
         #     }
         # end
-      end
+      # end
     end
 
 
