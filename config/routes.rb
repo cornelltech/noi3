@@ -57,5 +57,5 @@ Rails.application.routes.draw do
   get '/welcome' => 'welcome#index', as: 'welcome'
 
   get '/delete_account_success' => 'pages#delete_account_success', as: 'delete_account_success'
-
+  
 end

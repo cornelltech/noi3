@@ -72,8 +72,16 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
 
-    def delete_user
-      byebug
+    def destroy
+      resource.destroy
+      redirect_to delete_account_success_path
+
+      # respond_to do |format|
+      #     # format.html { redirect_to 'root_path' }
+      #     format.html {
+      #         render :file => "/registrations/destroy.html.erb"
+      #     }
+      # end
 
       # if resource_name
         # respond_to do |format|
