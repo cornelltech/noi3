@@ -62,6 +62,9 @@ class PagesController < ApplicationController
   def fetch_edit_account
   end
 
+  def delete_account_success
+  end
+
   def fetch_edit_user
     @user_work_fields = current_user.industries.pluck(:id)
     @user_languages = current_user.languages.pluck(:id)

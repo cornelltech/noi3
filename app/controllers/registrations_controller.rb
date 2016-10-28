@@ -72,6 +72,11 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
 
+    def destroy
+      resource.destroy
+      redirect_to delete_account_success_path
+    end
+
 
 
     private
