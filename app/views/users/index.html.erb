@@ -70,6 +70,14 @@
             </label>
           </div>
         </fieldset>
+<!--         <%= hidden_field_tag :direction, @params[:direction] %>
+        <%= hidden_field_tag :sort, @params[:sort] %> -->
+        <!-- SORT Controls-->
+        <div class="row small-up-1 medium-up-3">
+          <div class="sortable column"><%= sortable("last_name") %></div>
+          <div class="sortable column"><%= sortable("position") %></div>
+          <div class="sortable column"><%= sortable("organization") %></div>
+        </div>
       </form>
       <% end %>
     <!-- <section class="active-filters">
@@ -79,6 +87,7 @@
       <span class="active-filters__item">Language</span>
     </section> -->
   </section>
+
 
   <% if @users == [] && !@active_filters.empty? %>
     <%= render partial: 'no_results', locals: {active_filters: @active_filters} %>
