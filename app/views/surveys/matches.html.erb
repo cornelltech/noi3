@@ -42,7 +42,7 @@
     <% @matches.each do | match |%>
 
       <li class="list__item person-item">
-        <% if match.identities %>
+        <% if !match.identities.blank? %>
           <%= image_tag(match.picture_path, :alt => "User", :class => "person-item__picture") %>
         <% else %>
           <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>

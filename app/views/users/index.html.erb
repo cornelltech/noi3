@@ -97,7 +97,7 @@
       <% @users.each do | user | %>
         <% if !user.id.nil? %>
           <li class="list__item person-item">
-            <% if user.identities %>
+            <% if !user.identities.blank? %>
               <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
             <% else %>
               <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
