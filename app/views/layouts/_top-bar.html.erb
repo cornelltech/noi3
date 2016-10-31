@@ -6,22 +6,31 @@
 
       <%= submit_tag "search", :name => nil, :class => "js-search-submit" %>
     <% end %>
-    
+
 
     <!-- ========================================
     ============ HEADER FOR LOGGED IN ===========
     ==========================================-->
     <% if user_signed_in? %>
-    
+
       <div class="top-bar__user-menu user-menu">
         <!-- use "user-menu__item--highlighted" class when we have notifications for the user -->
         <!-- <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span> -->
         <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
         <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
-          <div class="img" style="background-image: url(<%= current_user.avatar.url %>);"></div>
+
+          <% user_avatar = nil %>
+          <% if current_user.avatar.url != "avatars/nopic-avatar1.jpg" %>
+            <% user_avatar = current_user.avatar.url %>
+          <% else %>
+            <% user_avatar = '/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg' %>
+          <% end %>
+
+          <div class="img" style="background-image: url(<%= user_avatar %>);"></div>
 
           <ul class="user-menu__dropdown">
             <li><%= link_to "Logout", destroy_user_session_path %></li>
+            <li><%= link_to "Edit Profile", destroy_user_session_path %></li>
           </ul>
         </div>
       </div>
