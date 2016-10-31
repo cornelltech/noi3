@@ -19,6 +19,7 @@
         <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
         <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
 
+
           <% user_avatar = nil %>
 
           <% if current_user.avatar.url != "avatars/nopic-avatar1.jpg" %>
@@ -28,6 +29,12 @@
           <% end %>
 
           <div class="img" style="background-image: url(<%= user_avatar %>);"></div>
+
+          <% if current_user.identities %>
+            <div class="img" style="background-image: url(<%= current_user.picture_path %>);"></div>
+          <% else %>
+            <div class="img" style="background-image: url(<%= current_user.avatar.url %>);"></div>
+          <% end %>
 
           <ul class="user-menu__dropdown">
             <li><%= link_to "Logout", destroy_user_session_path, class: 'bottom-border' %></li>
