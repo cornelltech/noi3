@@ -76,9 +76,7 @@ class RegistrationsController < Devise::RegistrationsController
       resource.destroy
       redirect_to delete_account_success_path
     end
-
-
-
+    
     private
 
     def sign_up_params
