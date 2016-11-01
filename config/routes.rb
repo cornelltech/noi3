@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { registrations: 'registrations', sessions: 'sessions' }
   resources :users, :path => 'search'
+  resources :users, :path => 'profile', :as => 'profile'
   resources :surveys, :path => 'match-me'
   resources :teachables
   resources :learnables
   get '/' => 'welcome#southaustralia', as: 'welcome-southaustralia', constraints: { subdomain: 'southaustralia' }
-  
+
   root 'pages#index'
   get "/matches" => 'surveys#get_matches'
 
@@ -54,6 +55,8 @@ Rails.application.routes.draw do
 
   get '/sign_up_success' => 'pages#sign_up_success', as: 'sign_up_success'
 
-  get '/welcome' => 'welcome#index', as: 'welcome'  
+  get '/welcome' => 'welcome#index', as: 'welcome'
+
+  get '/delete_account_success' => 'pages#delete_account_success', as: 'delete_account_success'
 
 end

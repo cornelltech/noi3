@@ -3,17 +3,21 @@
   <a href="<%= root_path %>" class="main-menu__item <%= current_class?('/') %>" title="Ask a Question">
     <i class="material-icons">chat</i>
   </a>
-  
-  <a href="<%= users_path %>" class="main-menu__item <%= current_class?('/search') %>" title="Find Innovators">
+
+  <a href="<%= users_path %>" class="search main-menu__item <%= current_class?('/search') %>" title="Find Innovators" id="search">
     <i class="material-icons">search</i>
   </a>
-  
+
   <a href="<%= DISCOURSE_CONFIG[:url] %>" class="main-menu__item" title="Discuss">
     <i class="material-icons">forum</i>
   </a>
-  
+
   <a href="/match-me" class="main-menu__item <%= current_class?('/matches') %><%= current_class?('/match-me') %>" title="Match Me">
     <i class="material-icons">people</i>
+  </a>
+
+  <a href="/profile" class="user_profile main-menu__item <%= current_class?('/profile') %>" title="View Profile" id="user_profile">
+    <i class="material-icons">account_box</i>
   </a>
 
 </nav>

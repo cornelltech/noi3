@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  helper_method :sort_column, :sort_direction
 
   def index
     # discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
@@ -11,10 +12,19 @@ class UsersController < ApplicationController
     @events = Event.all
 
     @params = params;
-  
+
     @active_filters = get_active_filters(params)
 
-    @users = User.all.paginate(:page => params[:page], :per_page => 5)
+    # Sort all users before applying filters
+    if params[:sort] && params[:direction]
+      sort_query = params[:sort] + " " + params[:direction] 
+     @users = User.order(sort_query)
+    else
+      # default sort by created_at
+      @users = User.all
+    end
+
+    @users = @users.paginate(:page => params[:page], :per_page => 5)
     if params['search_string'] != ""
       @users = @users.fuzzy_search(params['search_string']).paginate(:page => params[:page], :per_page => 5)
       # projects = Project.basic_search(params['search_string'])
@@ -55,6 +65,7 @@ class UsersController < ApplicationController
         # user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
         # @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
         @users = @users.joins(:categories).where('category_id=?',category.id).paginate(:page => params[:page], :per_page => 5)
+        
       else
         @users = []
       end
@@ -159,7 +170,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:avatar,:username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :industry_ids => [], :language_ids => [], :event_ids => [])
+    params.require(:user).permit(:avatar, :username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :industry_ids => [], :language_ids => [], :event_ids => [])
+  end
+
+  def sort_column
+    @users.column_names.include?(params[:sort]) ? params[:sort] : ""
+  end
+
+  def sort_direction
+    ["asc","desc"].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 end

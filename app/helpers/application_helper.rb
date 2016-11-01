@@ -25,4 +25,31 @@ module ApplicationHelper
 		''
 	end
 
+
+  def sortable(column, title = nil)
+    # uses users#sort_column and users#sort_direction to determine column and direction
+    title ||= column.titleize
+    css_class = column == sort_column ? "current #{sort_direction}" : nil
+    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    sort_params = search_params
+    sort_params[:sort] = column
+    sort_params[:direction]= direction
+    link_to title, sort_params, {:class => css_class}
+  end
+
+
+  private
+
+
+  def search_params
+    # save search params and add sort and direction
+    sort_params = {:utf8 => '✓'}
+    permitted_params = [:search_string,:category,:skill_area,:industry,:country,:language, :event]
+    permitted_params.each do |val|
+      sort_params[val] = params[val]
+    end 
+    sort_params
+  end
+
+
 end
