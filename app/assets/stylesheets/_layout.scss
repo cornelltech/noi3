@@ -5,7 +5,7 @@
 }
 
 .app-wrapper {
-  @include breakpoint($medium) { 
+  @include breakpoint($medium) {
     display: flex;
     height: calc(100vh - 60px);
   }
@@ -24,24 +24,24 @@
   overflow-y: scroll;
   margin-left: -100%;
   max-width: 100%;
-  
+
   @extend .u-transition;
 
-  @include breakpoint($touch) { 
+  @include breakpoint($touch) {
     position: fixed;
     bottom: 0;
     overflow-y: scroll;
   }
 
-  @include breakpoint($medium-only) { 
+  @include breakpoint($medium-only) {
     width: 60%;
     top: 60px;
   }
 
-  @include breakpoint($small-only) { 
+  @include breakpoint($small-only) {
     top: 0;
     width: 100%;
-    z-index: 1000 !important; 
+    z-index: 1000 !important;
   }
 
   @include breakpoint($large) {
@@ -97,9 +97,9 @@
   background-color: rgba(black, .8);
   z-index: 9999999999;
   padding: 7px;
-  
+
   &:after { content: 'arrow_forward'; }
-  
+
   @extend .u-transition;
 
   @include breakpoint($small-only) { left: 0; }
@@ -112,3 +112,9 @@
 
   &:after { content: 'arrow_backward'; }
 }
+
+// .bottom-border {
+//   padding-bottom: 11px;
+//   border-bottom: 2px solid $accent-color;
+//   border-bottom-length: 15px;
+// }
