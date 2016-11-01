@@ -16,7 +16,7 @@
     <i class="material-icons">people</i>
   </a>
 
-  <a href="<%= users_path %>" class="user_profile main-menu__item <%= current_class?('/search') %>" title="View Profile" id="user_profile">
+  <a href="/profile" class="user_profile main-menu__item <%= current_class?('/profile') %>" title="View Profile" id="user_profile">
     <i class="material-icons">account_box</i>
   </a>
 
@@ -27,29 +27,29 @@
 
   $(document).ready(function () {
 
-    $('a#user_profile').click(function(e){
-      console.log("user_profile clicked")
-      e.preventDefault();
-      userProfileClicked();
-    });
+    // $('a#user_profile').click(function(e){
+    //   console.log("user_profile clicked")
+    //   e.preventDefault();
+    //   userProfileClicked();
+    // });
 
-    $('a#search').click(function(e){
-      console.log("search clicked")
-      e.preventDefault();
-      searchClicked();
-    });
+    // $('a#search').click(function(e){
+    //   console.log("search clicked")
+    //   e.preventDefault();
+    //   searchClicked();
+    // });
 
-    var userProfileClicked = function() {
-     console.log("inside userProfileClicked")
-     $(location).attr('href', '/search')
-     $('a#search').removeClass("--active");
-    };
+    // var userProfileClicked = function() {
+    //  console.log("inside userProfileClicked")
+    //  $(location).attr('href', '/search')
+    //  $('a#search').removeClass("--active");
+    // };
 
-    var searchClicked = function() {
-     console.log("inside searchClicked")
-     $(location).attr('href', '/search')
-     $('a#user_profile').removeClass("-active");
-    };
+    // var searchClicked = function() {
+    //  console.log("inside searchClicked")
+    //  $(location).attr('href', '/search')
+    //  $('a#user_profile').removeClass("-active");
+    // };
 
   });
 
