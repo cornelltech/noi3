@@ -1,7 +1,7 @@
 /* Main Menu */
 .main-menu {
   &__item {
-    
+
   }
 }
 
@@ -16,8 +16,8 @@
     padding: 15px 15px 10px;
     color: rgba($white, .6);
     position: relative;
-    @include breakpoint($small-only) { 
-      flex: 1; 
+    @include breakpoint($small-only) {
+      flex: 1;
       text-align: center;
     }
     @include breakpoint($medium) { display: block; }
@@ -26,7 +26,7 @@
       color: rgba($white, .6);
     }
 
-  
+
     &:after {
       max-width: 0;
       @extend .u-transition;
@@ -44,7 +44,7 @@
       white-space: nowrap;
       @include breakpoint($small-only) { display: none; }
 
-    }    
+    }
 
     &:hover:after {
       @extend .u-transition;
@@ -52,14 +52,14 @@
       padding: 12px 15px 10px;
     }
 
-    &:hover { 
-      background-color: rgba(black, .1); 
+    &:hover {
+      background-color: rgba(black, .1);
       color: white;
     }
 
     &--active,
-    &--active:hover { 
-      background-color: $accent-color; 
+    &--active:hover {
+      background-color: $accent-color;
       color: $white;
     }
   }

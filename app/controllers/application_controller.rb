@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path
     end
-  end  
-    
+  end
 
 end
