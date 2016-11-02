@@ -1,30 +1,30 @@
 $(document).ready(function() {
-  var cookies = document.cookie;
-  cookies += "matchMeToast=false";
-  cookies += "mainToast=false";
-  // console.log(cookies);
+
+  function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";";
+  };
 
   $(".match-me-toast i").click(function() {
-    cookies += "matchMeToast=true";
-    // console.log(cookies)
+    setCookie("matchesBanner", "true")
   });
 
   $(".main-toast i").click(function() {
-    cookies += "mainToast=true";
-    // console.log(cookies)
+    setCookie("mainBanner", "true")
   });
 
   function checkForMatchesToast() {
-    if ( cookies.indexOf("matchMeToast=true") ) {
+    var mainMatchesBanner = getCookie("matchesBanner")
+
+    if ( mainMatchesBanner === "true" ) {
       $(".match-me-toast").css("display", "none");
-      // console.log("match cookie exists")
     }
   };
 
   function checkForMainToast() {
-    if ( cookies.indexOf("mainToast=true") ) {
+    var mainToastBanner = getCookie("mainBanner");
+
+    if ( mainToastBanner === "true")  {
       $(".main-toast").css("display", "none");
-      // console.log("main cookie exists")
     }
   };
 
