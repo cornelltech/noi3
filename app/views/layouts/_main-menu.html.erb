@@ -16,8 +16,10 @@
     <i class="material-icons">people</i>
   </a>
 
+<% if current_user %>
   <a href="/profile" class="main-menu__item <%= current_class?('/profile') %>" title="View Profile">
     <i class="material-icons">account_box</i>
   </a>
+<% end %>
 
 </nav>

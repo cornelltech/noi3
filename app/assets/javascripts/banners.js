@@ -1,28 +1,31 @@
 $(document).ready(function() {
-
-  var x = document.cookie;
-  console.log(x);
+  var cookies = document.cookie;
+  cookies += "matchMeToast=false";
+  cookies += "mainToast=false";
+  // console.log(cookies);
 
   $(".match-me-toast i").click(function() {
-    document.cookie = "matchMeToast=true";
-    console.log(x);
-  })
+    cookies += "matchMeToast=true";
+    // console.log(cookies)
+  });
 
   $(".main-toast i").click(function() {
-    document.cookie = "mainToast=true";
-    console.log(x);
-  })
+    cookies += "mainToast=true";
+    // console.log(cookies)
+  });
 
-  var checkForMatchesToast = function() {
-    if ( document.cookie.indexOf("matchMeToast=true") ) {
+  function checkForMatchesToast() {
+    if ( cookies.indexOf("matchMeToast=true") ) {
       $(".match-me-toast").css("display", "none");
-    };
+      // console.log("match cookie exists")
+    }
   };
 
-  var checkForMainToast = function() {
-    if ( document.cookie.indexOf("mainToast=true") ) {
+  function checkForMainToast() {
+    if ( cookies.indexOf("mainToast=true") ) {
       $(".main-toast").css("display", "none");
-    };
+      // console.log("main cookie exists")
+    }
   };
 
   function getCookie(cname) {
@@ -42,16 +45,12 @@ $(document).ready(function() {
 
   function checkForUser() {
     var username = getCookie("username");
-    console.log(username)
 
-    if ( username == "guest" ) {
-      console.log("you are guest")
-    } else {
-      console.log("you are NOT a guest")
+    if ( username !== "guest" ) {
       checkForMainToast();
       checkForMatchesToast();
     }
-  }
+  };
 
   checkForUser();
 
