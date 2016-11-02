@@ -3,18 +3,30 @@ $(document).ready(function() {
   var x = document.cookie;
   console.log(x);
 
-  $(".toast i").click(function() {
+
+  $(".match-me-toast i").click(function() {
     document.cookie = "matchMeToast=true";
     console.log(x);
   })
 
-  var checkForToast = function() {
+  $(".main-toast i").click(function() {
+    document.cookie = "mainToast=true";
+    console.log(x);
+  })
+
+  var checkForMatchesToast = function() {
     if ( document.cookie.indexOf("matchMeToast=true") ) {
-      $(".toast").css("display", "none");
-      console.log("has matchMeToast!!")
+      $(".match-me-toast").css("display", "none");
     };
   };
 
-  checkForToast();
+  var checkForMainToast = function() {
+    if ( document.cookie.indexOf("mainToast=true") ) {
+      $(".main-toast").css("display", "none");
+    };
+  };
+
+  checkForMainToast();
+  checkForMatchesToast();
 
 });
