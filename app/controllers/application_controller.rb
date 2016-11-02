@@ -3,9 +3,15 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
 
   # DEVISE HELPERS for forms
-  helper_method :resource_name, :resource, :devise_mapping
+  helper_method :resource_name, :resource, :devise_mapping, :page_flags, :set_page_flags
 
-  @page_id = 'test1234'
+  def page_flags
+    @page_flags
+  end
+
+  def set_page_flags(flags)
+    @page_flags ||= flags
+  end
 
   def resource_name
     :user
