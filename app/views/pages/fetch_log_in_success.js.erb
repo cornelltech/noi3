@@ -1,0 +1,5 @@
+ $(".panel--1").html("<%= escape_javascript(render partial: '/pages/login_success') %>");
+ setTimeout(function() {
+    $(".panel--1").html("<%= escape_javascript(render partial: '/pages/panel-1') %>");
+}, 2000);
+// location = '/search';
