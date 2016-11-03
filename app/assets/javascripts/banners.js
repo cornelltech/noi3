@@ -5,7 +5,7 @@ $(document).ready(function() {
   };
 
   $(".match-me-toast i").click(function() {
-    setCookie("matcheBanner", "true")
+    setCookie("mainMatchesBanner", "true")
   });
 
   $(".main-toast i").click(function() {
@@ -25,7 +25,7 @@ $(document).ready(function() {
   };
 
   function checkForMatchesPageToast() {
-    var matchesBanner = getCookie("matchesBanner")
+    var matchesBanner = getCookie("matchesPageBanner")
 
     if ( matchesBanner === "true" ) {
       $(".matches-toast").css("display", "none");
