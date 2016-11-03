@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  var cookies = document.cookie;
-  console.log(cookies);
 
   function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";";
@@ -16,7 +14,6 @@ $(document).ready(function() {
 
   $(".matches-toast i").click(function() {
     setCookie("matchesPageBanner", "true")
-    console.log("cookies should be updated")
   });
 
   function checkForMatchesToast() {
