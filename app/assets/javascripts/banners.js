@@ -1,22 +1,37 @@
 $(document).ready(function() {
+  var cookies = document.cookie;
+  console.log(cookies);
 
   function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";";
   };
 
   $(".match-me-toast i").click(function() {
-    setCookie("matchesBanner", "true")
+    setCookie("matcheBanner", "true")
   });
 
   $(".main-toast i").click(function() {
     setCookie("mainBanner", "true")
   });
 
+  $(".matches-toast i").click(function() {
+    setCookie("matchesPageBanner", "true")
+    console.log("cookies should be updated")
+  });
+
   function checkForMatchesToast() {
-    var mainMatchesBanner = getCookie("matchesBanner")
+    var mainMatchesBanner = getCookie("mainMatchesBanner")
 
     if ( mainMatchesBanner === "true" ) {
       $(".match-me-toast").css("display", "none");
+    }
+  };
+
+  function checkForMatchesPageToast() {
+    var matchesBanner = getCookie("matchesBanner")
+
+    if ( matchesBanner === "true" ) {
+      $(".matches-toast").css("display", "none");
     }
   };
 
@@ -49,6 +64,7 @@ $(document).ready(function() {
     if ( username !== "guest" ) {
       checkForMainToast();
       checkForMatchesToast();
+      checkForMatchesPageToast();
     }
   };
 
