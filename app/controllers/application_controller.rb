@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_user
   # before_action :authenticate_user!
 
   # DEVISE HELPERS for forms
@@ -31,6 +32,12 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path
     end
+  end
+
+  private
+
+  def set_user
+    cookies[:username] = current_user || 'guest'
   end
 
 end

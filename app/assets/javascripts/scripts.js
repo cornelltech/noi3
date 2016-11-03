@@ -75,6 +75,8 @@ $(document).ready(function () {
     $('body').on("click", '.category-tag__skills', function(e) {
         if (!$('.panel--4').hasClass('js-active'))  {
             $('.panel--4').addClass('js-active');
+            $('.panel--3').removeClass('js-active');
+            $('.panel--2').removeClass('js-active');
         }
     });
 
