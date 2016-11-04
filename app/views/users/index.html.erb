@@ -97,7 +97,11 @@
       <% @users.each do | user | %>
         <% if !user.id.nil? %>
           <li class="list__item person-item">
-            <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+            <% if !user.identities.blank? %>
+              <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
+            <% else %>
+              <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+            <% end %>
             <div class="person-item__content">
               <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
               <hgroup class="person-item__credentials" data-user="<%=user.id%>">

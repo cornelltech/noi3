@@ -79,15 +79,36 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.assign_attributes(user_params)
-    if @user.save
-      # redirect_to :action => :index
-      redirect_to session.delete(:return_to)
-    else
-      flash[:alert] = @user.errors.full_messages
-      render :edit
-    end
-  end
+     # authorize! :update, @user
+     respond_to do |format|
+       if @user.update(user_params)
+         sign_in(@user == current_user ? @user : current_user)
+         format.html { redirect_to session.delete(:return_to), notice: 'Your profile was successfully updated.' }
+         format.json { head :no_content }
+       else
+         format.html { render action: 'edit' }
+         format.json { render json: @user.errors, status: :unprocessable_entity }
+       end
+     end
+   end
+
+
+   # GET/PATCH /users/:id/finish_signup
+   def finish_signup
+    @user = User.find(params[:id])
+     # authorize! :update, @user 
+     if request.patch? && params[:user] && params[:user][:username]
+       if @user.update(user_params)
+         @user.skip_reconfirmation!
+         sign_in(@user)
+         redirect_to root_path
+       else
+         @show_errors = true
+       end
+     end
+   end
+
+
 
   def show
     @user = User.find(params[:id])

@@ -52,6 +52,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'

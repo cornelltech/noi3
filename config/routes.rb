@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
   resources :users, :path => 'search'
   resources :users, :path => 'profile', :as => 'profile'
   resources :surveys, :path => 'match-me'
@@ -58,5 +58,7 @@ Rails.application.routes.draw do
   get '/welcome' => 'welcome#index', as: 'welcome'
 
   get '/delete_account_success' => 'pages#delete_account_success', as: 'delete_account_success'
+
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 end

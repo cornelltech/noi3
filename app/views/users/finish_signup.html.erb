@@ -1,0 +1,25 @@
+<div class="login-wrapper">
+  <div class="login-form">
+    <h4 class="login-title">Choose a Username</h4>
+
+    <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
+      <% if @show_errors && current_user.errors.any? %>
+        <div id="error_explanation">
+          <% current_user.errors.full_messages.each do |msg| %>
+            <%= msg %><br>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <div class="field">
+          <%= f.label :username %>
+          <%= f.text_field :username, :autofocus => true, placeholder: 'Enter a username' %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "Log in", class: "button button--full button--main-color" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

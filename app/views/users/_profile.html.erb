@@ -4,9 +4,14 @@
 <%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'Back to My Profile' %>
 <% end %>
 
-
-<div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);">
-</div>
+<% if user.identities %>
+  <div class="profile-panel__picture" style="background-image: url(<%= image_path user.picture_path %>);">
+  </div>
+<% else %>
+  <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+  <div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);">
+  </div>
+<% end %>
 
 <hgroup class="profile-panel__titles">
   <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
