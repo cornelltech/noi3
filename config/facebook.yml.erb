@@ -5,3 +5,7 @@ development:
 staging:
   app_id: <%= ENV["FACEBOOK_DEV_APP_ID"] %>
   secret: <%= ENV["FACEBOOK_DEV_APP_SECRET"] %>
+
+production:
+  app_id: <%= ENV["FACEBOOK_APP_ID"] %>
+  secret: <%= ENV["FACEBOOK_APP_SECRET"] %>
