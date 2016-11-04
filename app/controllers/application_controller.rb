@@ -24,26 +24,22 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path
     end
-<<<<<<< 2db83205001703e13b383d6765a57d778d156d7a
   end
 
   private
 
   def set_user
     cookies[:username] = current_user || 'guest'
-=======
   end  
     
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
-
     # Redirect to the 'finish_signup' page if the user
     # email hasn't been verified yet
     if current_user && !current_user.username
       redirect_to finish_signup_path(current_user)
     end
->>>>>>> Add working oauth and post signup username
   end
 
 end
