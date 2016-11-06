@@ -42,11 +42,18 @@
     <% @matches.each do | match |%>
 
       <li class="list__item person-item">
-        <% if !match.identities.blank? %>
+        <% if match.picture_path && match.avatar.url == "avatars/nopic-avatar1.jpg" %>
           <%= image_tag(match.picture_path, :alt => "User", :class => "person-item__picture") %>
         <% else %>
-          <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-        <% end %>
+          <% user_avatar = nil %>
+          <% if match.avatar.url != "avatars/nopic-avatar1.jpg" %>
+            <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+          <% else %>
+            <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
+            <%= image_tag(user_avatar(:thumb), :alt => "User", :class => "person-item__picture") %>
+          <% end %>
+        <% end %>  
+
 
         <div class="person-item__content">
 
