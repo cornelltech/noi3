@@ -110,19 +110,6 @@
               <% end %>
             <% end %>  
 
-
-
-
-
-
-
-
-
-            <% if !user.identities.blank? %>
-              <%# image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
-            <% else %>
-              <%# image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-            <% end %>
             <div class="person-item__content">
               <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
               <hgroup class="person-item__credentials" data-user="<%=user.id%>">
@@ -139,6 +126,7 @@
               </div>
             </div>
 
+           <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
             <div class="person-item__content">
               <ul class="person-item__tags category-tags">
               <% user.format_expertise.each do |e|  %>
@@ -148,14 +136,20 @@
                   <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
                   <% end %>
                 </li>
-                <a href="#<%#e[:category]%>" >
-                  <li class="category-tag__skills">View Skills (<%=e[:skill_count]%>)</li>
-                </a>
+                    <li class="category-tag__skills panel-nav js-open-panel-4"">View Skills (<%=e[:skill_count]%>)</li>
               <% end %>
               </ul>
+
+              <% end %>
+
+
+              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
               <div class="person-item__controls">
-                <a href="#" class="person-item__projects controls__button"><%=user.projects.count %> Projects</a>
-              </div>
+                <span class="person-item__projects  controls__button js-open-panel-2"><%= user.projects.count%> Projects</span>
+                </div>
+              <% end %>
+
+
             </div>
           </li>
         <% end %>
