@@ -19,11 +19,8 @@
         <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
         <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
 
-
-         
-
-          <% if current_user.picture_path && current_user.avatar.url == "avatars/nopic-avatar1.jpg" %>
-            <div class="img" style="background-image: url(<%= current_user.picture_path %>);"></div>
+          <% if current_user.picture_path != "" && current_user.avatar.url == "avatars/nopic-avatar1.jpg" %>
+              <div class="img" style="background-image: url(<%= current_user.picture_path %>);"></div>
           <% else %>
             <% user_avatar = nil %>
 
@@ -32,7 +29,7 @@
             <% else %>
               <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
             <% end %>
-
+            
             <div class="img" style="background-image: url(<%= user_avatar %>);"></div>
           <% end %>
 
