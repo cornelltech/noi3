@@ -22,10 +22,8 @@
 
          
 
-          <% if !current_user.identities.blank? %>
-
+          <% if current_user.picture_path && current_user.avatar.url == "avatars/nopic-avatar1.jpg" %>
             <div class="img" style="background-image: url(<%= current_user.picture_path %>);"></div>
-
           <% else %>
             <% user_avatar = nil %>
 
