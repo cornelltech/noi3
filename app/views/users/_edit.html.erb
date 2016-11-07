@@ -20,7 +20,7 @@
 
   <%= f.label 'Fields of Work' %><br>
   <%= select_tag 'user[industry_ids][]',
-  options_from_collection_for_select(Industry.all, "id", "name", @user_work_fields), { :multiple => true, :size =>10}
+  options_from_collection_for_select(Industry.all.sort_by { |h| h[:name]}, "id", "name", @user_work_fields), { :multiple => true, :size =>10}
   %>
 
   <p class="edit-profile__instructions">To select multiple items, hold down the CTRL key (or the Command key on Macs).</p>
@@ -38,4 +38,3 @@
   <%= link_to "Account Settings", fetch_edit_account_path, :remote => true, class: "button button--full button--main-color " %>
   <% end %>
 </div>
-
