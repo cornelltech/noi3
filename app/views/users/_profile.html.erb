@@ -15,7 +15,7 @@
       <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
       <div class="profile-panel__picture" style="background-image: url(<%= image_path user_avatar %>);"></div>
     <% end %>
-  <% end %>  
+  <% end %>
 
 
 
@@ -30,14 +30,14 @@
     <div class="medium-6 small-12 column">
       <p class="profile-panel__domains">Fields of Work:
 
-        <%= user.industries.uniq.map {| industry | industry.name }.join(', ') %>
+        <%= user.industries.uniq.map {| industry | industry.name }.sort.join(', ') %>
 
       </p>
     </div>
     <div class="medium-6 small-12 column">
       <p class="profile-panel__location"><%= user.city %>, <%= user.country %></p>
       <ul class="profile-panel__lang">
-      <% user.languages.uniq.each do |language| %>
+      <% user.languages.sort.uniq.each do |language| %>
         <li class=""><%=language.name%></li>
       <% end %>
       </ul>
@@ -91,6 +91,3 @@
     </div>
   <% end %>
 <% end %>
-
-
-
