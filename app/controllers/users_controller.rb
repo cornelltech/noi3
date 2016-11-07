@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     # Sort all users before applying filters
     if params[:sort] && params[:direction]
-      sort_query = params[:sort] + " " + params[:direction] 
+      sort_query = params[:sort] + " " + params[:direction]
      @users = User.order(sort_query)
     else
       # default sort by created_at
@@ -58,14 +58,14 @@ class UsersController < ApplicationController
       # @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
       category = Category.where(name: params['category'].downcase).first
       skill_area = SkillArea.where(name: params['skill_area'].downcase,category_id: category.id).first
-      if category && skill_area 
+      if category && skill_area
         @users = @users.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
       elsif category
         # skill_ids = Skill.where(category_id: category.id).pluck(:id)
         # user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
         # @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
         @users = @users.joins(:categories).where('category_id=?',category.id).paginate(:page => params[:page], :per_page => 5)
-        
+
       else
         @users = []
       end
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
    # GET/PATCH /users/:id/finish_signup
    def finish_signup
     @user = User.find(params[:id])
-     # authorize! :update, @user 
+     # authorize! :update, @user
      if request.patch? && params[:user] && params[:user][:username]
        if @user.update(user_params)
          @user.skip_reconfirmation!
@@ -114,6 +114,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = Event.all
     @projects = []
+    @notifications = []
+    @notification_count = "hello"
 
     @user.projects.each do | project |
       project_with_tags = {project: project,tags:'', industries:''}
