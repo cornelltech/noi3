@@ -34,7 +34,7 @@ class User < ApplicationRecord
     # to prevent the identity being locked with accidentally created accounts.
     # Note that this may leave zombie accounts (with no associated identity) which
     # can be cleaned up at a later date.
-    # byebug
+
     user = signed_in_resource ? signed_in_resource : identity.user
 
     # Create the user if needed
@@ -74,10 +74,6 @@ class User < ApplicationRecord
       identity.save!
     end
     user
-  end
-
-  def email_verified?
-    self.email
   end
 
   def country
