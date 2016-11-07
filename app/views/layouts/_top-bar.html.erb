@@ -14,6 +14,25 @@
     <% if user_signed_in? %>
 
       <div class="top-bar__user-menu user-menu">
+        <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
+
+          <% if !@notifications.empty? %>
+
+            <i class="material-icons notification-icon">mail</i>
+
+            <ul class="user-menu__dropdown">
+              <% if @notifications.length <= 1 %>
+                <li><%= link_to "#{@notifications.length} Discourse Notification", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
+              <% else %>
+                <li><%= link_to "#{@notifications.length} Discourse Notifications", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
+              <% end %>
+            </ul>
+
+          <% end %>
+        </div>
+      </div>
+
+      <div class="top-bar__user-menu user-menu">
         <!-- use "user-menu__item--highlighted" class when we have notifications for the user -->
         <!-- <span class="user-menu__item user-menu__item--messages user-menu__item--highlighted"><i class="material-icons">chat</i></span> -->
         <!-- <span class="user-menu__item user-menu__item--notifications"><i class="material-icons">notifications_none</i></span> -->
@@ -29,7 +48,7 @@
             <% else %>
               <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
             <% end %>
-            
+
             <div class="img" style="background-image: url(<%= user_avatar %>);"></div>
           <% end %>
 
