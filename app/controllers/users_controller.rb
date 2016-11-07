@@ -114,8 +114,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = Event.all
     @projects = []
-    @notifications = []
-    @notification_count = "hello"
 
     @user.projects.each do | project |
       project_with_tags = {project: project,tags:'', industries:''}
@@ -123,7 +121,6 @@ class UsersController < ApplicationController
       project_with_tags[:industries] = project.industries.map {| industry | industry.name }.sort.join(', ')
       @projects.push(project_with_tags)
     end
-
   end
 
   def fetch_user

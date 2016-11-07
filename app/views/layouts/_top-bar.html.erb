@@ -14,23 +14,23 @@
     <% if user_signed_in? %>
 
       <div class="top-bar__user-menu user-menu">
-       <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
+        <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
 
-         <% if !@notifications.empty? %>
+          <% if !@notifications.empty? %>
 
-           <i class="material-icons notification-icon">mail</i>
+            <i class="material-icons notification-icon">mail</i>
 
-           <ul class="user-menu__dropdown">
-             <% if @notifications.length <= 1 %>
-               <li><%= link_to "#{@notifications.length} Discourse Notification", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
-             <% else %>
-               <li><%= link_to "#{@notifications.length} Discourse Notifications", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
-             <% end %>
-           </ul>
+            <ul class="user-menu__dropdown">
+              <% if @notifications.length <= 1 %>
+                <li><%= link_to "#{@notifications.length} Discourse Notification", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
+              <% else %>
+                <li><%= link_to "#{@notifications.length} Discourse Notifications", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
+              <% end %>
+            </ul>
 
-         <% end %>
+          <% end %>
 
-       </div>
+        </div>
 
       <div class="top-bar__user-menu user-menu">
         <!-- use "user-menu__item--highlighted" class when we have notifications for the user -->
