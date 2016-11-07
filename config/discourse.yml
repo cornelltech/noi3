@@ -1,14 +1,14 @@
 development:
   url: "http://discourse-dev.networkofinnovators.org"
   api_key: "1aab33514000d1660d4d183d5df90a566a84e553a7aef7046a47bc007a88e37f"
-  api_username: "david"
+  api_username: "adminuname"
   sso_secret: "hamburger1"
   sso_redirect_url: "http://discourse-dev.networkofinnovators.org/session/sso_login"
 
 staging:
   url: "http://discourse-dev.networkofinnovators.org"
   api_key: "1aab33514000d1660d4d183d5df90a566a84e553a7aef7046a47bc007a88e37f"
-  api_username: "david"
+  api_username: "adminuname"
   sso_secret: "hamburger1"
   sso_redirect_url: "http://discourse-dev.networkofinnovators.org/session/sso_login"
   
