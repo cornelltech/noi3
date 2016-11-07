@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     @user = current_user
     @notifications = []
 
-    if @user
+    if @user.username
       notifications_json = HTTParty.get("https://discuss.networkofinnovators.org/notifications.json?username=" + @user.username)
 
       if notifications_json["notifications"]

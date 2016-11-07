@@ -34,24 +34,22 @@ class User < ApplicationRecord
     # to prevent the identity being locked with accidentally created accounts.
     # Note that this may leave zombie accounts (with no associated identity) which
     # can be cleaned up at a later date.
+    # byebug
     user = signed_in_resource ? signed_in_resource : identity.user
 
     # Create the user if needed
     if user.nil?
 
       # Get the existing user by email if the provider gives us a verified email.
-      # If no verified email was provided we assign a temporary email and ask the
-      # user to verify it on the next step via UsersController.finish_signup
-      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-      email = auth.info.email if email_is_verified
+      # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+# how to verify emails for different providers
+      email = auth.info.email 
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
           name: auth.extra.raw_info.name,
-          first_name: auth.extra.raw_info.name,
-          #username: auth.info.nickname || auth.uid,
           email: email ? email : auth.info.email,
           password: Devise.friendly_token[0,20],
           first_name: auth.info.name,   # assuming the user model has a name
@@ -62,6 +60,8 @@ class User < ApplicationRecord
           user.email = auth.info.email
           user.position = auth.info.headline.split(" at ")[0]
           user.organization = auth.info.headline.split(" at ")[1]
+        elsif auth.provider =='facebook'
+          user.first_name =  auth.extra.raw_info.name
         end
         user.skip_confirmation!
         user.save!
@@ -77,8 +77,7 @@ class User < ApplicationRecord
   end
 
   def email_verified?
-    false
-    # self.email
+    self.email
   end
 
   def country
