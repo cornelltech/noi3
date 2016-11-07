@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
+  include HTTParty
   protect_from_forgery with: :exception
   before_action :set_user, :set_notifications
+
   # before_action :authenticate_user!
 
   # DEVISE HELPERS for forms
@@ -34,18 +36,18 @@ class ApplicationController < ActionController::Base
 
   def set_notifications
     @user = current_user
-    @notifications = [1]
-    @count = @notifications.length
+    @notifications = []
 
-    # parsed_json = JSON("https://discuss.networkofinnovators.org/notifications.json?username=")
+    notifications_json = HTTParty.get("https://discuss.networkofinnovators.org/notifications.json?username=" + @user.username)
 
-    # ActiveSupport::JSON.decode("https://discuss.networkofinnovators.org/notifications.json?username=" )
+    if notifications_json["notifications"]
+      notifications_json["notifications"].each do |notification|
+        if notification["read"] = true
+          @notifications << 1
+        end
+      end
+    end
 
-    # parsed_json["notifications"].each do |notification|
-    #   if notification["read"] = true
-    #     @notifications << 1
-    #   end
-    # end
   end
 
   def ensure_signup_complete
