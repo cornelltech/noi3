@@ -38,15 +38,18 @@ class ApplicationController < ActionController::Base
     @user = current_user
     @notifications = []
 
-    notifications_json = HTTParty.get("https://discuss.networkofinnovators.org/notifications.json?username=" + @user.username)
+    if @user
+      notifications_json = HTTParty.get("https://discuss.networkofinnovators.org/notifications.json?username=" + @user.username)
 
-    if notifications_json["notifications"]
-      notifications_json["notifications"].each do |notification|
-        if notification["read"] = true
-          @notifications << 1
+      if notifications_json["notifications"]
+        notifications_json["notifications"].each do |notification|
+          if notification["read"] = true
+            @notifications << 1
+          end
         end
       end
     end
+
 
   end
 
