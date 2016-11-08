@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def set_notifications
     @user = current_user
-    @notifications = [1]
+    @notifications = []
     @host = nil
 
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
