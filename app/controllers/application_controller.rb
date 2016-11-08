@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def set_notifications
     @user = current_user
-    @notifications = []
+    @notifications = [1]
     @host = nil
 
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 
       if notifications_json["notifications"]
         notifications_json["notifications"].each do |notification|
-          if notification["read"] = false
+          if notification["read"] == false
             @notifications << 1
           end
         end
