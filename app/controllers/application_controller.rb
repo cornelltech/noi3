@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     if @user && @user.username
       notifications_json = HTTParty.get(discourse_client.host + "/notifications.json?username=" + @user.username + "&api_key=" + discourse_client.api_key + "&api_username=" + @user.username)
 
-      @host = discourse_client.host
+      @host = discourse_client.host + "/users/" + @user.username + "/notifications"
 
       if notifications_json["notifications"]
         notifications_json["notifications"].each do |notification|
