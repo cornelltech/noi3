@@ -21,11 +21,7 @@
             <i class="material-icons notification-icon">mail</i>
 
             <ul class="user-menu__dropdown">
-              <% if @notifications.length <= 1 %>
-                <li><%= link_to "#{@notifications.length} Discourse Notification", @host, class: 'bottom-border' %></li>
-              <% else %>
-                <li><%= link_to "#{@notifications.length} Discourse Notifications", @host, class: 'bottom-border' %></li>
-              <% end %>
+              <li><%= link_to "You Have Unread Messages", @host, class: 'bottom-border' %></li>
             </ul>
 
           <% end %>
