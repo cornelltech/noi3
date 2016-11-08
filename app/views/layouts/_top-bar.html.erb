@@ -22,9 +22,9 @@
 
             <ul class="user-menu__dropdown">
               <% if @notifications.length <= 1 %>
-                <li><%= link_to "#{@notifications.length} Discourse Notification", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
+                <li><%= link_to "#{@notifications.length} Discourse Notification", @host, class: 'bottom-border' %></li>
               <% else %>
-                <li><%= link_to "#{@notifications.length} Discourse Notifications", "https://discuss.networkofinnovators.org/", class: 'bottom-border' %></li>
+                <li><%= link_to "#{@notifications.length} Discourse Notifications", @host, class: 'bottom-border' %></li>
               <% end %>
             </ul>
 
