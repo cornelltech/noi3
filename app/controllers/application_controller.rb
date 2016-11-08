@@ -37,13 +37,16 @@ class ApplicationController < ActionController::Base
   def set_notifications
     @user = current_user
     @notifications = []
+    @host = nil
 
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
-
+# byebug
     if @user && @user.username
       notifications_json = HTTParty.get(discourse_client.host + "/notifications.json?username=" + discourse_client.api_username + "&api_key=" + discourse_client.api_key + "&api_username=" + discourse_client.api_username)
+
+      @host = discourse_client.host
 
       if notifications_json["notifications"]
         notifications_json["notifications"].each do |notification|
@@ -53,8 +56,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-
-
   end
 
   def ensure_signup_complete
