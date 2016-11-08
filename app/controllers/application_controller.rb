@@ -38,8 +38,12 @@ class ApplicationController < ActionController::Base
     @user = current_user
     @notifications = []
 
+    discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+    discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
+
     if @user && @user.username
-      notifications_json = HTTParty.get("https://discuss.networkofinnovators.org/notifications.json?username=" + @user.username)
+      notifications_json = HTTParty.get(discourse_client.host + "/notifications.json?username=" + discourse_client.api_username + "&api_key=" + discourse_client.api_key + "&api_username=" + discourse_client.api_username)
 
       if notifications_json["notifications"]
         notifications_json["notifications"].each do |notification|
