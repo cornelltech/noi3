@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030171008) do
+ActiveRecord::Schema.define(version: 20161110172012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161030171008) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2016-11-04 14:34:48'
+    t.datetime "date",            default: '2016-11-08 20:38:31'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "url",             default: ""
@@ -197,6 +197,7 @@ ActiveRecord::Schema.define(version: 20161030171008) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
   add_foreign_key "identities", "users"
