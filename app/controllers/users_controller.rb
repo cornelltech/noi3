@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     if params['skill_area'] && params['skill_area'] != "" && params['category'] == ""
       # byebug
       skill_area = SkillArea.where(name: params['skill_area'].downcase).first
-      @users = @users.joins(:skill_areas).where('name = ?',skill_area.name).paginate(:page => params[:page], :per_page => 5)
+      @users = @users.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
     end
     if params['category'] && params['category'] != ""
       # currently searching by category of users skills is not working, need to figure out correct query
