@@ -20,10 +20,4 @@
     <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br /> 
   <% end -%>
 
-  <%- if devise_mapping.omniauthable? %>
-    <%- Devise.omniauth_providers.each do |provider| %>
-      <%= link_to image_tag("logos/#{provider}.png") + "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"button button-oauth #{provider}" %><br /> 
-
-    <% end -%>
-  <% end -%>
 </div>
