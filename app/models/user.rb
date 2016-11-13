@@ -36,9 +36,7 @@ class User < ApplicationRecord
     # to prevent the identity being locked with accidentally created accounts.
     # Note that this may leave zombie accounts (with no associated identity) which
     # can be cleaned up at a later date.
-
     user = signed_in_resource ? signed_in_resource : identity.user
-
     # Create the user if needed
     if user.nil?
 
@@ -47,6 +45,7 @@ class User < ApplicationRecord
 # how to verify emails for different providers
       email = auth.info.email 
       user = User.where(:email => email).first if email
+      # byebug
 
       # Create the user if it's a new registration
       if user.nil?
@@ -65,9 +64,11 @@ class User < ApplicationRecord
         elsif auth.provider =='facebook'
           user.first_name =  auth.extra.raw_info.name
         end
-        user.skip_confirmation!
-        user.save!
+
+      #   user.skip_confirmation!
+      #   user.save!
       end
+      return user = nil
     end
 
     # Associate the identity with the user if needed
