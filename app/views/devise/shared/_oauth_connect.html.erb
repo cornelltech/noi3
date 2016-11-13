@@ -1,0 +1,15 @@
+<div class="form__extra-links">
+
+
+  <%- if devise_mapping.omniauthable? %>
+    <%- Devise.omniauth_providers.each do |provider| %>
+      <% if current_user.identities.pluck(:provider).include?(provider.to_s) %>
+
+          <%= link_to image_tag("logos/#{provider}.png") + "Disconnect #{OmniAuth::Utils.camelize(provider)}", delete_oauth_provider_path(provider), class:"button button--full button-oauth-connect #{provider}" %><br /> 
+        <% else %>
+          <%= link_to image_tag("logos/#{provider}.png") + "Connect #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:"button button--full button-oauth-connect #{provider}" %><br /> 
+      <% end %>
+    <% end -%>
+  <% end -%>
+
+</div>
