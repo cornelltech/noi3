@@ -11,11 +11,9 @@
     <%= f.submit "Send reset instructions", class: 'button button--full button--main-color' %>
     <% end %>
 
-    <div class="login-links">
-      <a href="/users/sign_up">Sign Up</a><br>
-      <a href="/users/sign_in">Login</a>
 
+  <div class="login-links">
+    <%= render 'devise/shared/full_links' %>
   </div>
-    <%= render "devise/shared/links" %>
 </div>
 </div>

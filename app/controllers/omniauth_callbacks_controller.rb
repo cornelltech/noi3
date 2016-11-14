@@ -4,7 +4,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       def #{provider}
         @user = User.find_for_oauth(env["omniauth.auth"], current_user)
         if @user.nil?
-          set_flash_message :notice, "No account found. Please register."
+          set_flash_message(:notice, :unlinked_oauth)
           redirect_to new_user_registration_url
         elsif @user.persisted?
           sign_in_and_redirect @user, event: :authentication
