@@ -24,7 +24,10 @@
     font-weight: 300;
     vertical-align: baseline;
     @include breakpoint($small-only) { margin-top: -4px; }
-    display: none !important;
+    // display: none !important;
+  }
+
+  &__all-box {
   }
 
   &__item { padding: 0; }
@@ -32,9 +35,9 @@
   &__item--submit {
     padding: 0 60px 0 120px;
     text-align: right;
-    
+
     > .button {
-      @include breakpoint($small-only) { 
+      @include breakpoint($small-only) {
         width: calc(100% - 20px);
         margin: 15px 10px 0;
         text-align: center;
@@ -58,7 +61,7 @@
 
     &:hover {
       background-color: rgba($green, .1);
-      &:before { 
+      &:before {
         opacity: .2;
         background-color: $green;
         color: white;
@@ -68,7 +71,7 @@
         @extend .u-circle;
       }
     }
-    
+
     @include breakpoint($large) { padding: 20px 20px 20px 124px; }
 
     &:before {
@@ -85,9 +88,9 @@
   &__item__checkbox:checked ~ &__item__label {
     background-color: rgba($green, .1);
     color: darken($green, 15);
-    
-    &:before { 
-      opacity: 1; 
+
+    &:before {
+      opacity: 1;
       padding: 6px;
       background-color: $green;
       color: white;
@@ -96,5 +99,5 @@
       @extend .u-circle;
     }
   }
-  
+
 }

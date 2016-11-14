@@ -16,6 +16,14 @@
 </div>
 </form> -->
 
+<div id="error_explanation" class="devise-errors">
+  <ul class="error-messages">
+    <%- flash.each do |name, msg| -%>
+    <%= content_tag :li, msg, id: "flash_#{name}" %>
+    <%- end -%>
+  </ul>
+</div>
+
 <!-- Rails helper form -->
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class='form form--negative signup-panel__content signup-panel__form'>

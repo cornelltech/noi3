@@ -1,32 +1,42 @@
-<div class="login-wrapper">
-  <div class="login-form">
-    <h4 class="login-title">Log in</h4>
+  <% set_page_flags('devise') %>
+  <div class="login-wrapper">
+    <div class="login-form">
+      <h4 class="login-title">Log in</h4>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
-    </div>
+      <div id="error_explanation" class="devise-errors">
+        <ul class="error-messages">
+          <%- flash.each do |name, msg| -%>
+          <%= content_tag :li, msg, id: "flash_#{name}" %>
+          <%- end -%>
+        </ul>
+      </div>
 
-    <div class="field">
-      <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
-    </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+      </div>
 
-    <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <div class="checkbox checkbox--white">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+      </div>
+
+
+      <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <div class="checkbox checkbox--white">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "button button--full button--main-color" %>
+      </div>
+      <% end %>
+      <%= render "devise/shared/oauth_signin" %>
+      <div class="login-links">
+        <%= render 'devise/shared/full_links' %>
       </div>
     </div>
-    <% end -%>
-
-    <div class="actions">
-      <%= f.submit "Log in", class: "button button--full button--main-color" %>
-    </div>
-    <% end %>
-    <%= render "devise/shared/oauth_signin" %>
-    <div class="login-links">
-      <%= render 'devise/shared/full_links' %>
-    </div>
   </div>
-</div>

@@ -59,6 +59,7 @@
     <!-- ========================================
     ============ HEADER FOR LOGGED OUT ==========
     ==========================================-->
+    <% if page_flags != "devise" %>
     <div class="top-bar__user-menu user-menu user-menu--desktop">
       <%= link_to "Sign up", fetch_sign_up_path, :remote => true, class: 'button' %><%= link_to "Login", fetch_log_in_path, :remote => true, class: 'button' %>
     </div>
@@ -66,6 +67,7 @@
     <div class="top-bar__user-menu user-menu user-menu--mobile">
       <a href="users/sign_in" class="button">Log in</a>
     </div>
+    <% end %>
 
   <% end %>
 

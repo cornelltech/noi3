@@ -1,6 +1,14 @@
 $(document).ready(function () {
-    $('body').on('change', '.category-filters select', function (e) {
-        $('#category-form').submit();
+
+    $('body').on('click', '.questionnaire__check-all', function (e) {
+        var $check = $( '#' + $(this).attr('data-check') );
+        var category = $(this).attr('data-category');
+        var state = $check.prop( 'checked' );
+        $check.prop( 'checked', !state );
+        $( '.' + category ).prop( 'checked', $check.prop( 'checked' ) );
+    });
+    $('body').on('change', '.questionnaire__all-box', function (e) {
+        $( '.' + $(this).attr('data-category') ).prop( 'checked', $(this).prop('checked') );
     });
 
     $('body').on('click', '#survey-save', function (e) {
