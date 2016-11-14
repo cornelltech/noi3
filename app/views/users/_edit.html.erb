@@ -4,7 +4,9 @@
   <!-- NEED TO ADD CLASSES HERE 'form form--negative' -->
   <!-- NEED TO REPLACE EACH f.label by a :placeholder -->
 
-  <%= form_for(current_user, :html => {:multipart => true, :class => 'form form--negative'}) do |f| %>
+  <%= form_for(current_user, remote: true, :html => {:multipart => true, :class => 'form form--negative'}) do |f| %>
+
+  
   <%= f.file_field :avatar %>
   <%= f.text_field :username, placeholder: 'Username',value: current_user.username %>
   <%= f.text_field :first_name, placeholder: 'First Name',value: current_user.first_name %>

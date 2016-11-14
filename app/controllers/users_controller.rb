@@ -84,14 +84,13 @@ class UsersController < ApplicationController
        if @user.update(user_params)
          sign_in(@user == current_user ? @user : current_user)
          format.html { redirect_to session.delete(:return_to), notice: 'Your profile was successfully updated.' }
-         format.json { head :no_content }
+         format.js { render :file => "/users/fetch_update_success.js.erb" }
        else
          format.html { render action: 'edit' }
-         format.json { render json: @user.errors, status: :unprocessable_entity }
+         format.js { render :file => "/users/fetch_update.js.erb" }
        end
      end
    end
-
 
    # GET/PATCH /users/:id/finish_signup
    def finish_signup

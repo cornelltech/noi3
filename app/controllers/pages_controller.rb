@@ -7,7 +7,6 @@ class PagesController < ApplicationController
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
 
-    flash[:notice] = "Welcome to NOI"
     category = params['category']
     # @categories = Category.all
     # get categories from discourse API
@@ -68,7 +67,7 @@ class PagesController < ApplicationController
   def fetch_edit_user
     @user_work_fields = current_user.industries.pluck(:id)
     @user_languages = current_user.languages.pluck(:id)
-    session[:return_to] ||= request.referer
+    # session[:return_to] ||= request.referer
   end
 
 end
