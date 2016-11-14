@@ -24,7 +24,7 @@
       <%= f.submit "Log in", class: "button button--full button--main-color" %>
     </div>
     <% end %>
-
+    <%= render "devise/shared/oauth_signin" %>
     <div class="login-links">
       <%= render 'devise/shared/full_links' %>
     </div>
