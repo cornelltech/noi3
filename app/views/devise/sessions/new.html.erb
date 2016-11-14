@@ -20,13 +20,23 @@
         <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
       </div>
 
-    <div class="actions">
-      <%= f.submit "Log in", class: "button button--full button--main-color" %>
-    </div>
-    <% end %>
-    <%= render "devise/shared/oauth_signin" %>
-    <div class="login-links">
-      <%= render 'devise/shared/full_links' %>
+
+      <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <div class="checkbox checkbox--white">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "button button--full button--main-color" %>
+      </div>
+      <% end %>
+      <%= render "devise/shared/oauth_signin" %>
+      <div class="login-links">
+        <%= render 'devise/shared/full_links' %>
+      </div>
     </div>
   </div>
-</div>
