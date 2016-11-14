@@ -4,7 +4,11 @@
     <h4>Sign up</h4>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
     <%= devise_error_messages! %>
+    <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
 
     <div class="field">
       <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
@@ -39,7 +43,8 @@
     <% end %>
 
     <div class="login-links">
-      <a href="/users/sign_in">Login</a>
+      <%= render 'devise/shared/full_links' %>
     </div>
+
   </div>
 </div>

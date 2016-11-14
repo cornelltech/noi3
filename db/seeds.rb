@@ -61,10 +61,6 @@ end
     )
 end
 
-3.times do
-  User.all.each {|user| user.categories << Category.find(rand(1..8)) }
-end
-
 Event.create(conference_code: "IODC", name: "IODC 2016", logo_path: "logo-iodc-web.png")
 Event.create(conference_code: "ODRS", name: "Open Data Research Symposium ", logo_path: "2016-odrs.png")
 

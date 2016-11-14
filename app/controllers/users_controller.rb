@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
     # Sort all users before applying filters
     if params[:sort] && params[:direction]
-      sort_query = params[:sort] + " " + params[:direction] 
+      sort_query = params[:sort] + " " + params[:direction]
      @users = User.order(sort_query)
     else
       # default sort by created_at
@@ -51,21 +51,21 @@ class UsersController < ApplicationController
     if params['skill_area'] && params['skill_area'] != "" && params['category'] == ""
       # byebug
       skill_area = SkillArea.where(name: params['skill_area'].downcase).first
-      @users = @users.joins(:skill_areas).where('name = ?',skill_area.name).paginate(:page => params[:page], :per_page => 5)
+      @users = @users.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
     end
     if params['category'] && params['category'] != ""
       # currently searching by category of users skills is not working, need to figure out correct query
       # @users = @users.joins(:projects).joins(:categories).distinct.basic_search(:categories => { :name => params[:category] })
       category = Category.where(name: params['category'].downcase).first
       skill_area = SkillArea.where(name: params['skill_area'].downcase,category_id: category.id).first
-      if category && skill_area 
+      if category && skill_area
         @users = @users.joins(:skill_areas).where('skill_area_id=?',skill_area.id).paginate(:page => params[:page], :per_page => 5)
       elsif category
         # skill_ids = Skill.where(category_id: category.id).pluck(:id)
         # user_ids = Teachable.where(skill_id: skill_ids).pluck(:user_id).uniq
         # @users = @users.where(id: user_ids).paginate(:page => params[:page], :per_page => 5)
         @users = @users.joins(:categories).where('category_id=?',category.id).paginate(:page => params[:page], :per_page => 5)
-        
+
       else
         @users = []
       end
@@ -79,15 +79,41 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.assign_attributes(user_params)
-    if @user.save
-      # redirect_to :action => :index
-      redirect_to session.delete(:return_to)
-    else
-      flash[:alert] = @user.errors.full_messages
-      render :edit
-    end
-  end
+     # authorize! :update, @user
+     respond_to do |format|
+       if @user.update(user_params)
+         sign_in(@user == current_user ? @user : current_user)
+         format.html { redirect_to session.delete(:return_to), notice: 'Your profile was successfully updated.' }
+         format.json { head :no_content }
+       else
+         format.html { render action: 'edit' }
+         format.json { render json: @user.errors, status: :unprocessable_entity }
+       end
+     end
+   end
+
+
+   # GET/PATCH /users/:id/finish_signup
+   def finish_signup
+    @user = User.find(params[:id])
+     # authorize! :update, @user
+     if request.patch? && params[:user] && params[:user][:username]
+       if @user.update(user_params)
+         @user.skip_reconfirmation!
+         sign_in(@user)
+         redirect_to root_path
+       else
+         @show_errors = true
+       end
+     end
+   end
+
+   def delete_oauth_provider
+    provider = params[:format]
+    current_user.identities.where(provider: provider).first.delete
+    redirect_to root_path
+   end
+
 
   def show
     @user = User.find(params[:id])
@@ -100,7 +126,6 @@ class UsersController < ApplicationController
       project_with_tags[:industries] = project.industries.map {| industry | industry.name }.sort.join(', ')
       @projects.push(project_with_tags)
     end
-
   end
 
   def fetch_user
