@@ -86,8 +86,11 @@ class UsersController < ApplicationController
          format.html { redirect_to session.delete(:return_to), notice: 'Your profile was successfully updated.' }
          format.js { render :file => "/users/fetch_update_success.js.erb" }
        else
-         format.html { render action: 'edit' }
-         format.js { render :file => "/users/fetch_update.js.erb" }
+        flash[:errors] = @user.errors.full_messages
+        format.html { render action: 'edit' }
+        format.js { 
+          render :file => "/users/fetch_update.js.erb" 
+        }
        end
      end
    end
