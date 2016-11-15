@@ -84,11 +84,12 @@ class UsersController < ApplicationController
      respond_to do |format|
        if @user.update(user_params)
          format.html { 
-          redirect_to users_path, notice: "Your profile has been updated."
+          flash[:notice] = "Your profile has been updated."
+          redirect_to users_path
           }
          format.js { render :file => "/users/fetch_update_success.js.erb" }
        else
-        flash.now[:errors] = @user.errors.full_messages
+        flash.now[:errors] = @user.errors.full_messages.to_sentence
         format.html { render action: 'edit' }
         format.js { 
           render :file => "/users/fetch_update.js.erb" 

@@ -1,0 +1,7 @@
+<div id="error_explanation" class="devise-errors">
+  <ul class="error-messages">
+    <%- flash.each do |name, msg| -%>
+    <%= content_tag :li, msg, id: "flash_#{name}" %>
+    <%- end -%>
+  </ul>
+</div>
