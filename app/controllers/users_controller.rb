@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  protect_from_forgery
   helper_method :sort_column, :sort_direction
 
   def index
@@ -82,8 +83,9 @@ class UsersController < ApplicationController
      # authorize! :update, @user
      respond_to do |format|
        if @user.update(user_params)
-         sign_in(@user == current_user ? @user : current_user)
-         format.html { redirect_to session.delete(:return_to), notice: 'Your profile was successfully updated.' }
+         format.html { 
+          redirect_to users_path, notice: "Your profile has been updated."
+          }
          format.js { render :file => "/users/fetch_update_success.js.erb" }
        else
         flash.now[:errors] = @user.errors.full_messages
