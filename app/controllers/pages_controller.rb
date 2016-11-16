@@ -35,17 +35,56 @@ class PagesController < ApplicationController
 
       discourse_client.create_topic(
         category: params['topic-category'],
-        skip_validations: true,
+        skip_validations: false,
         auto_track: false,
         title: params['topic-title'],
         raw: params['topic-text']
         )
-      redirect_to root_path, notice: "Successfully created topic"
+
+
+      respond_to do |format|
+        flash[:alert] = "Successfully created topic."
+        format.html { 
+          redirect_to root_path
+        }
+        format.js { 
+          render js: "window.location = '#{root_path}'"
+        }
+      end
     rescue Exception => e
-      puts e.message
-      flash[:alert] = "Error creating topic"
-      render root_path
+      respond_to do |format|
+        asked_question = {category: params['topic-category'],title: params['topic-title'],raw: params['topic-text']}
+
+        flash.now[:alert] = "Error creating topic."
+        if e.message != ""
+          flash.now[:errors] = parse_discourse_errors(e.message)
+        end
+
+        flash.now[:alert] << get_discourse_errors(asked_question)
+
+        format.html { 
+          redirect_to root_path
+        }
+        format.js { 
+          render :file => "/pages/fetch_topic_errors.js.erb" 
+        }
+      end
     end
+  end
+
+
+
+  def parse_discourse_errors(message)
+    message_split = message.split('=>')
+    discourse_errors = message_split[2].delete("}").delete('[').delete(']').delete('\"')
+    discourse_errors.gsub("Title", "Question") 
+  end
+
+  def get_discourse_errors(content)
+    errors = ""
+    content[:title] == "" ? errors << "Question cannot be blank. " : ""
+    content[:raw] == "" ? errors += "Question detail cannot be blank. " : ""
+    errors.to_s
   end
 
   # render devise views in panel

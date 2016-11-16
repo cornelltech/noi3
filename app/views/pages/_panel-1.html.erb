@@ -2,9 +2,12 @@
 
   <h2 class="question-panel__heading question-panel__content">Ask a question</h2>
   <p class="question-panel__content">With Network of Innovators, you can get advice and answers to your questions from government and civic innovators worldwide. All you have to do is ask!</p>
+  <div class="error-messages">
+    <%= render 'layouts/message_handler' %>
+  </div>
 
   <% if user_signed_in? %>
-  <%= form_tag add_topic_path, method: 'put', class: "form form--negative question-panel__content question-panel__form" do %>
+  <%= form_tag add_topic_path, method: 'put', remote: true, class: "form form--negative question-panel__content question-panel__form" do %>
   <%= text_field_tag "topic-title", nil, placeholder: "Ask your question" %>
   <%= text_area_tag "topic-text", nil, placeholder: "Provide more details about your question" %>
   <div class="select select--negative">
