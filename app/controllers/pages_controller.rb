@@ -35,17 +35,26 @@ class PagesController < ApplicationController
 
       discourse_client.create_topic(
         category: params['topic-category'],
-        skip_validations: true,
+        skip_validations: false,
         auto_track: false,
         title: params['topic-title'],
         raw: params['topic-text']
         )
       redirect_to root_path, notice: "Successfully created topic"
     rescue Exception => e
-      puts e.message
-      flash[:alert] = "Error creating topic"
-      render root_path
+      flash[:alert] = "Error creating topic."
+      if e.message != ""
+        flash[:errors] = parse_discourse_errors(e.message)
+      end
+      redirect_to root_path
     end
+  end
+
+  def parse_discourse_errors(message)
+    message_split = message.split('=>')
+    discourse_errors = message_split[2].delete("}").delete('[').delete(']').delete('\"')
+    discourse_errors
+   
   end
 
   # render devise views in panel
