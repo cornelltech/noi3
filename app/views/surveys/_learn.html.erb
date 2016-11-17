@@ -8,11 +8,11 @@
   <ul class="list">
 
   <% @skill_areas.each do |skill_area| %>
-      <h5 class="questionnaire__title"> <%= skill_area.name %> <input name="check-all" type="checkbox" class="questionnaire__check-all button button--alpha button--small" value="Check All" checked="false"></h5>
+      <h5 class="questionnaire__title"> <%= skill_area.name %> <label class="questionnaire__check-all button button--alpha button--small"><input name="check-all" class="questionnaire__check-all-control" data-skill-target="skill-area-<%=skill_area.id%>" type="checkbox" value="Check All">Check All</label></h5>
 
       <% skill_area.skills.each do | skill | %>
         <li class="questionnaire__item list__item">
-          <input name="skill_ids[]" class="questionnaire__item__checkbox" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>" <% if @user_skills_in_cat.include?(skill.id) %>checked="checked"<%end%>>
+          <input name="skill_ids[]" class="questionnaire__item__checkbox skill-area-<%=skill.skill_area.id%>" type="checkbox" id="checkbox-<%=skill.id%>" value="<%=skill.id%>" <% if @user_skills_in_cat.include?(skill.id) %>checked="checked"<%end%>>
           <label class="questionnaire__item__label" for="checkbox-<%=skill.id%>" ><%= skill.description.capitalize %></label>
         </li>
       <% end %>
