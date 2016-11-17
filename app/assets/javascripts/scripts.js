@@ -1,15 +1,22 @@
 $(document).ready(function () {
 
-    $('body').on('click', '.questionnaire__check-all', function (e) {
-        var $check = $( '#' + $(this).attr('data-check') );
-        var category = $(this).attr('data-category');
-        var state = $check.prop( 'checked' );
-        $check.prop( 'checked', !state );
-        $( '.' + category ).prop( 'checked', $check.prop( 'checked' ) );
+
+    $('body').on("click", ".questionnaire__check-all-control", function(e) {
+        var skillAreaTarget = $(this).attr("data-skill-target");
+        var checkboxes = $("." + skillAreaTarget);
+        var checkedCheckboxes = $("." + skillAreaTarget + ":checked");
+        if (checkboxes.length == checkedCheckboxes.length) {
+            $(this).prop('checked', false);
+        } else {
+            $(this).prop('checked', true);
+        }
+    }); 
+
+    $('body').on('change', '.questionnaire__check-all-control', function (e) {
+        var skillAreaTarget = $(this).attr("data-skill-target");
+        $("." + skillAreaTarget).prop('checked', $(this).prop("checked"));
     });
-    $('body').on('change', '.questionnaire__all-box', function (e) {
-        $( '.' + $(this).attr('data-category') ).prop( 'checked', $(this).prop('checked') );
-    });
+
 
     $('body').on('click', '#survey-save', function (e) {
         $(window).scrollTop(0);
