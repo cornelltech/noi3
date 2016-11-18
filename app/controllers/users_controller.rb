@@ -197,6 +197,9 @@ class UsersController < ApplicationController
     active_filters.delete_if { |key, value| value.blank? }
   end
 
+  def connect
+  end
+
   private
 
   def user_params
