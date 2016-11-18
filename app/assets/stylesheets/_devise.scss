@@ -79,7 +79,7 @@
     }
 }
 
-.devise-errors, .flash-errors {
+.devise-errors, .flash-errors   {
     margin: 0 40px;
     .error-title {
         font-size: 16px;
@@ -95,8 +95,12 @@
         li {
             margin: 15px 0;
         }
+        #flash_notice {
+            color: $green;
+        }
     }
 }
+
 
 .button-oauth {
     text-align: center;
