@@ -90,6 +90,15 @@ class User < ApplicationRecord
       ''
     end
   end
+
+  def location
+    combined_location = [self.city, self.country]
+    if combined_location.reject(&:empty?).length == 2
+      combined_location.join(", ")
+    else
+      combined_location.join("")
+    end
+  end
   
   def format_expertise
     expertise = []
