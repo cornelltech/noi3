@@ -37,6 +37,9 @@ module ApplicationHelper
     link_to title, sort_params, {:class => css_class}
   end
 
+  def new_sign_up
+    session[:new_user]
+  end
 
   private
 
@@ -50,6 +53,7 @@ module ApplicationHelper
     end 
     sort_params
   end
+
 
 
 end

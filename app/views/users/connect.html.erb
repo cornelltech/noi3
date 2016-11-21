@@ -3,13 +3,12 @@
   <div class="login-form">
     <h4 class="login-title">Connect your Account</h4>
       <%= render 'layouts/message_handler' %>
-      <p>Connect your account to the following social media providers for easier access to your Network of Innovators account.</p>
+      <p>Connect to the following social media providers for easier access to your Network of Innovators account. You can add or disconnect a provider at any time by editing your profile.</p>
 
 
       <%= render "devise/shared/oauth_connect" %>
 
       <%=link_to "Go to Network of Innovators", root_path, class: "button button--full button--main-color" %>
-      <p> You can add a provider at any time by editing your profile.</p>
 
   </div>
 </div>
