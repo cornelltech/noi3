@@ -36,4 +36,12 @@ $(function(){
               "showMethod": "fadeIn",
               "hideMethod": "fadeOut"
           };
+  $( document ).ajaxComplete(function() {
+      $('html').scrollTop(0);
+      $('.panel').scrollTop(0);
+      if ($('.match-me').length > 0) {
+        $('.main-content').scrollTop(0)
+      }
+  });
+
 });
