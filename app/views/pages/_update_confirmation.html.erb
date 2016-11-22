@@ -1,7 +1,7 @@
 <div class="signup-panel signup-panel--success">
 
   <div class="big-icon material-icons">check</div>
-  <p>Your account has been successfully updated.</p>
+  <p>Please check your email to confirm your changes.</p>
 
   <%= link_to "Back to My Profile", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'button button--full button--main-color'%>
   
