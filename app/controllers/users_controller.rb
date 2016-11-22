@@ -84,7 +84,7 @@ class UsersController < ApplicationController
      respond_to do |format|
        if @user.update(user_params)
          format.html { 
-          flash[:notice] = "Your profile has been updated."
+          flash.now[:notice] = "Your profile has been updated."
           redirect_to users_path
           }
          format.js { render :file => "/users/fetch_update_success.js.erb" }
