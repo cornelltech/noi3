@@ -43,7 +43,7 @@ class PagesController < ApplicationController
 
 
       respond_to do |format|
-        flash[:alert] = "Successfully created topic."
+        flash.now[:alert] = "Successfully created topic."
         format.html { 
           redirect_to root_path
         }

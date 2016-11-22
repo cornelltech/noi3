@@ -16,13 +16,12 @@ class ProjectsController < ApplicationController
     # byebug
     @project.assign_attributes(project_params)
     if @project.save
-        flash[:notice] = "Project saved"
+        flash.now[:notice] = "Project Saved"
       respond_to do |format|
         format.js {render '/projects/update_projects.js.erb' }
       end
-      flash[:alert] = "Project Saved"
     else
-      flash[:alert] = @project.errors.full_messages
+      flash.now[:alert] = @project.errors.full_messages
     end
   end
 
@@ -30,12 +29,12 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.assign_attributes(project_params)
     if @project.save
-      flash[:alert] = "Project Updated"
+      flash.now[:notice] = "Project Updated"
       respond_to do |format|
         format.js {render '/projects/update_projects.js.erb' }
       end
     else
-      flash[:alert] = @project.errors.full_messages
+      flash.now[:alert] = @project.errors.full_messages
       render :edit
     end
   end
@@ -51,7 +50,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    flash[:alert] = "Project Deleted"
+    flash.now[:notice] = "Project Deleted"
     respond_to do |format|
       format.js {render '/projects/update_projects.js.erb' }
     end
