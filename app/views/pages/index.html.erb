@@ -2,15 +2,17 @@
 <%= render 'panel-1' %>
 
 <% if user_signed_in? %>
-  <div class="project-panel panel panel--3">
-    <%= render 'users/events', { user: current_user  }%>
-  </div>
   <div class="project-panel panel panel--2">
     <%= render 'users/projects', { user: current_user  }%>
   </div>
+  <div class="event-panel panel panel--3">
+    <%= render 'users/events', { user: current_user }%>
+  </div>
+
   <div class="expertise-panel panel panel--4">
     <%= render 'users/expertise', { user: current_user  }%>
   </div>
+
 <% end %>
 
 
