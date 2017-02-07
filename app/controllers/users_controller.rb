@@ -134,6 +134,7 @@ class UsersController < ApplicationController
   end
 
   def fetch_user
+    @path = params[:path]
     @selected = User.find(params[:user_id])
     respond_to do | format |
       format.js

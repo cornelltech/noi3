@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get 'fetch_forgot_password' => 'pages#fetch_forgot_password', as: 'fetch_forgot_password'
   get 'fetch_edit_account' => 'pages#fetch_edit_account', as: 'fetch_edit_account'
   get 'fetch_edit_user' => 'pages#fetch_edit_user', as: 'fetch_edit_user'
+  get 'fetch_create_post' => 'pages#fetch_create_post', as: 'fetch_create_post'
   get 'fetch_edit_project' => 'projects#fetch_edit_project', as: 'fetch_edit_project'
 
   # user ajax views for expertise panels

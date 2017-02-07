@@ -1,3 +1,11 @@
-$(".main-content__container").html("<%= escape_javascript(render partial: 'users/teaching_menu'  ) %>");
-$('.profile-panel').html("<%= escape_javascript(render partial: 'users/profile', locals: { user: current_user } ) %>");
-$('.expertise-panel').html("<%= escape_javascript(render partial: 'users/expertise', locals: { user: current_user } ) %>");  
+if (window.location.pathname == "/") {
+  $('#primary-content').hide();
+  $("#secondary-content").show().html("<%= escape_javascript(render partial: 'users/teaching_menu'  ) %>");
+  $('.expertise-panel').html("<%= escape_javascript(render partial: 'users/expertise', locals: { user: current_user } ) %>");  
+} else {
+  $(".main-content__container").html("<%= escape_javascript(render partial: 'users/teaching_menu'  ) %>");
+  $('.profile-panel').html("<%= escape_javascript(render partial: 'users/profile', locals: { user: current_user } ) %>");
+  $('.expertise-panel').html("<%= escape_javascript(render partial: 'users/expertise', locals: { user: current_user } ) %>");  
+}
+
+

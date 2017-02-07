@@ -130,6 +130,10 @@ class PagesController < ApplicationController
   end
 
   # render devise views in panel
+
+  def fetch_create_post
+  end
+
   def fetch_sign_up
   end
 
