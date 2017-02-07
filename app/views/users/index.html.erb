@@ -38,7 +38,7 @@
         <%= submit_tag "search", :name => nil %>
       </div>
       <p><em class="highlighted-or">OR</em> Find someone with experience in: </p>
-      
+
       <div class="row">
         <div class="large-6 small-12 columns">
           <div class="select select--inline">
@@ -97,33 +97,30 @@
       <% @users.each do | user | %>
         <% if !user.id.nil? %>
           <li class="list__item person-item">
-
-            <% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
-              <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
-            <% else %>
-              <% user_avatar = nil %>
-              <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
-                <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+             <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
+              <% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
+                <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
               <% else %>
-                <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
-                <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %>
-              <% end %>
-            <% end %>  
+                <% user_avatar = nil %>
+                <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
+                  <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+                <% else %>
+                  <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
+                  <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %>
+                <% end %>
+              <%end%>
+            <% end %>
 
             <div class="person-item__content">
               <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
               <hgroup class="person-item__credentials" data-user="<%=user.id%>">
-                <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %></h2>
-
+                <h2 class="person-item__name"><%= user.first_name %> <%= user.last_name %><a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= user.username %>" class="controls__icon-button">
+                  <i class="person-item__pm material-icons">mail_outline</i>
+                </a></h2>
                 <h3 class="person-item__job"><%= user.position %></h3>
                 <h4 class="person-item__org"><%= user.organization%></h4>
               </hgroup>
               <% end %>
-              <div class="person-item__controls">
-                <a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= user.username %>" class="controls__icon-button">
-                  <i class="person-item__pm material-icons">mail_outline</i>
-                </a>
-              </div>
             </div>
 
            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>

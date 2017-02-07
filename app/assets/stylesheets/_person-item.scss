@@ -5,7 +5,7 @@
   &__picture {
     float: left;
     @extend .u-circle;
-    
+
     width: 40px;
     height: 40px;
 
@@ -17,24 +17,24 @@
 
   &__content {
     @include breakpoint($small-only) {padding-left: 60px;}
-    @include breakpoint($large) { 
+    @include breakpoint($large) {
       flex: 1;
-      display: flex; 
+      display: flex;
       flex-direction: column;
       padding-left: 40px;
       align-items: flex-start;
     }
   }
 
-  &__credentials { 
+  &__credentials {
     @include breakpoint($large) { flex: 1; }
   }
-  
+
   &__credentials,
   &__tags,
-  &__controls { 
-   @include breakpoint($medium) { padding-left: 140px; } 
-   @include breakpoint($large) { padding-left: 0; } 
+  &__controls {
+   @include breakpoint($medium) { padding-left: 140px; }
+   @include breakpoint($large) { padding-left: 0; }
   }
 
   &__name {
@@ -61,7 +61,7 @@
   }
 
   &__tag {
-    
+
   }
 
   &__projects {
@@ -76,6 +76,8 @@
 
   &__pm {
     color: $accent-color;
+    padding: 5px;
+    margin-top: -5px;
   }
 
   &--no-flex {
