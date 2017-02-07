@@ -27,9 +27,11 @@
     margin: 0;
   }
 
-
-  
-
+  .project-notice {
+    padding-left: 40px;
+    color: green;
+    font-size: 14px;
+  }
 
   &__add-item {
     @extend .u-base-panel__content;

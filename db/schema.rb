@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110172012) do
+ActiveRecord::Schema.define(version: 20170207195936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161110172012) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2017-02-07 15:45:48'
+    t.datetime "date",            default: '2016-11-08 20:38:31'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "url",             default: ""
@@ -108,12 +108,16 @@ ActiveRecord::Schema.define(version: 20161110172012) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",       default: ""
-    t.string   "description", default: ""
+    t.string   "title",                 default: ""
+    t.string   "description",           default: ""
     t.string   "url"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "user_id"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "projects_skill_areas", id: false, force: :cascade do |t|

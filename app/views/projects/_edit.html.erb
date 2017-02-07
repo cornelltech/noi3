@@ -1,21 +1,26 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Project</h2>
 
-<%= form_for(@project, remote:true, :html => {:class => 'form form--negative'}) do |f| %>
+<%= form_for(@project, remote:true, multipart:true, authenticity_token:true, :html => {:class => 'form form--negative'}) do |f| %>
   <%= f.label :title%>
   <%= f.text_field :title, value: @project.title %>
   <%= f.label :url %>
   <%= f.text_field :url, placeholder: 'URL', value: @project.url %>
+  Attachment:
+  <% if @project.document_file_name != nil %>
+    <%= link_to @project.document_file_name, @project.document.url, class:"project-panel__url", target:"_blank" %>
+  <% end %>
+  <%= f.file_field :document%>
   <%= f.label :description %>
   <%= f.text_area :description, value: @project.description, size: '60x12' %>
 
   <%= f.label 'Fields of Work' %><br>
   <%= select_tag 'project[industry_ids][]',
-      options_from_collection_for_select(Industry.all, "id", "name", @project.industries.pluck(:id)), { :multiple => true, :size =>5}
+      options_from_collection_for_select(Industry.all.sort_by {|i| i.name}, "id", "name", @project.industries.pluck(:id)), { :multiple => true, :size =>5}
   %>
 
   <%= select_tag 'project[category_ids]',
-      options_from_collection_for_select(Category.includes(:skill_areas).all,"id",:display_name, @project.categories.pluck(:id)),{ :include_blank => 'Select Category' }
+      options_from_collection_for_select(Category.includes(:skill_areas).all.sort_by {|cat| cat.display_name},"id",:display_name, @project.categories.pluck(:id)),{ :include_blank => 'Select Category' }
   %>
   <%= select_tag 'project[skill_area_ids][]',
       options_from_collection_for_select(@project.skill_areas,"id",:display_name, @project.skill_areas.pluck(:id)),{ :include_blank => 'Select Subcategory' }
