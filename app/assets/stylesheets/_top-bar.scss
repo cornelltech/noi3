@@ -41,8 +41,25 @@
     @extend .u-transition;
     @include breakpoint(1015px) { padding: 10px 75px; }
   }
+
 }
 
+.select-search {
+  height: 100%;
+  color: white;
+  &:before, &:after {
+    color: white;
+  }
+  &-search {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+
+.select-search-options {
+  color: white !important;
+}
 
 .search--negative .search-trigger { background-color: rgba($white, .1) !important; }
 

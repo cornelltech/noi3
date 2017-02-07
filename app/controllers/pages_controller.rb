@@ -8,24 +8,45 @@ class PagesController < ApplicationController
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
 
     category = params['category']
-    # @categories = Category.all
-    # get categories from discourse API
-    @categories = discourse_client.categories.select{ |c| c['name'] != 'Staff' && c['name'] != 'Lounge' && c['name'] != 'Site Feedback' }
+    @categories = discourse_client.categories.select{ |c| c['name'] != 'Staff' && c['name'] != 'Lounge' && c['name'] != 'Site Feedback' }.sort_by {|c|c["name"]}
     topics = []
     # get list of latest topics from discourse API
     unless category.nil? || category == ""
-
-      topics = discourse_client.category_latest_topics(:category_slug => category.parameterize)
+      # topics = discourse_client.category_latest_topics(:category_slug => category.parameterize)
+      @users = User.all
     else
-      topics = discourse_client.latest_topics
+      topics = discourse_client.get("posts")['body']["latest_posts"]
+      usernames = topics.pluck("username").uniq!
+      @users = User.where(username: usernames)
     end
-    @topics = topics.map{ |topic|
-      # if topic.category['name'] != 'Staff' && topic.category['name'] != 'Lounge' && topic.category['name'] != 'Site Feedback'
-	    	# then get each topic in that list in more detail
-	    	discourse_client.topic(topic['id'])
-      # end
-    }.paginate(:page => params[:page], :per_page => 10)
-  end
+
+    if params["post-search"] != "" && !params["post-search"].nil? 
+      post_search_string = params["post-search"].split(' ').join('+')
+      filtered_posts = discourse_client.get("search/?q=#{post_search_string}")['body']['posts']
+      @topics = filtered_posts.map{ |topic|
+        discourse_topic = discourse_client.topic(topic['topic_id'])
+        user = @users.find {|u| u.username == topic["username"]}
+        discourse_topic['ext_user_id'] = user.id if !user.nil?
+        discourse_topic
+        }.paginate(:page => params[:page], :per_page => 10)
+    elsif params["category"] != "" && !params["category"].nil? 
+      category = params['category'].gsub("Other Topics","Uncategorized")
+      category_posts = discourse_client.get("c/#{category.parameterize}")['body']['topic_list']['topics']
+      @topics = category_posts.map{ |topic|
+        discourse_topic = discourse_client.topic(topic['id'])
+        user = @users.find {|u| u.username == topic["last_poster_username"]}
+        discourse_topic['ext_user_id'] = user.id if !user.nil?
+        discourse_topic
+        }.paginate(:page => params[:page], :per_page => 10)
+    else
+      @topics = topics.map { |topic|
+        user = @users.find {|u| u.username == topic["username"]}
+        topic['ext_user_id'] = user.id if !user.nil?
+        topic
+        }.paginate(:page => params[:page], :per_page => 10)
+      end
+    end
+
 
   def add_topic
     begin
@@ -72,8 +93,6 @@ class PagesController < ApplicationController
     end
   end
 
-
-
   def parse_discourse_errors(message)
     message_split = message.split('=>')
     discourse_errors = message_split[2].delete("}").delete('[').delete(']').delete('\"')
@@ -85,6 +104,29 @@ class PagesController < ApplicationController
     content[:title] == "" ? errors << "Question cannot be blank. " : ""
     content[:raw] == "" ? errors += "Question detail cannot be blank. " : ""
     errors.to_s
+  end
+
+  def reply_to
+    begin
+      discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
+      discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
+      discourse_client.api_username = current_user.username
+
+      puts "reply_to post #{params['topic_id']}/#{params['reply_to_post_number']}, category #{params['category']}: #{params['reply']}"
+      discourse_client.post( "posts/", { category: params['category'], topic_id: params['topic_id'], reply_to_post_number: params['reply_to_post_number'], raw: params['reply'] } )
+
+      respond_to do |format|
+        format.js { render inline: "location.reload();" }
+      end
+    rescue Exception => e
+      respond_to do |format|
+        flash.now[:reply_error] = "Error creating post."
+        if e.message != ""
+          flash.now[:reply_error] = parse_discourse_errors(e.message)
+        end
+        format.js
+      end
+    end
   end
 
   # render devise views in panel

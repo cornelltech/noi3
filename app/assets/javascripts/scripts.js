@@ -1,5 +1,31 @@
 $(document).ready(function () {
 
+    $('.reply-to-post').click(function(e) {
+        e.preventDefault();
+        var target = $(this).attr('data-target');
+        $(target).toggleClass('js-active');
+    });
+
+    // Submit category filter
+    $('body').on('change', '#category-form select', function (e) {
+        $('#category-form').submit();
+    });
+
+    // Search top bar dropdown, default to posts
+      $("#top-search-form-users").hide();
+
+      $('body').on('change', '.select-search-options', function() {
+          var activeSearch = $(this).val();
+          if (activeSearch == "search-people") {
+              $('#top-search-form-users').show();
+              $('#top-search-form-posts').hide();
+              $('.select-search-options option[value=search-people]').prop('selected', true);
+          } else {
+              $('#top-search-form-posts').show();
+              $('#top-search-form-users').hide();
+              $('.select-search-options option[value=search-posts]').prop('selected', true);
+          }
+      });
 
     $('body').on("click", ".questionnaire__check-all-control", function(e) {
         var skillAreaTarget = $(this).attr("data-skill-target");
