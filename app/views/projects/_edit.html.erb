@@ -1,7 +1,7 @@
 <div class="main-content edit-profile">
  <h2 class="signup-panel__heading signup-panel__content">Edit Project</h2>
 
-<%= form_for(@project, remote:true, :html => {:class => 'form form--negative'}) do |f| %>
+<%= form_for(@project, remote:true, multipart:true, authenticity_token:true, :html => {:class => 'form form--negative'}) do |f| %>
   <%= f.label :title%>
   <%= f.text_field :title, value: @project.title %>
   <%= f.label :url %>

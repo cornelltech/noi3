@@ -10,7 +10,7 @@
   <% end %>
 
   <div class="project-panel__item">
-    <%= form_for Project.new, :html => {:class => 'form form--negative'}, remote:true do |f| %>
+    <%= form_for Project.new, :html => {multipart: true, :class => 'form form--negative'}, remote:true, authenticity_token: true do |f| %>
       <h3 class="project-panel__title"><%= f.text_field :title, placeholder: 'Title' %></h3>
       <%= f.text_field :url, placeholder: 'URL' %>
       <%= f.file_field :document %>
