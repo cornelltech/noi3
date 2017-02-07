@@ -46,12 +46,11 @@
 
           <% if !@notifications.empty? %>
 
-            <i class="material-icons notification-icon">mail</i>
+            <%= link_to "mail", @host, class: "material-icons notification-icon" %>
+            <span class="mail-status unread"></span>
 
-            <ul class="user-menu__dropdown">
-              <li><%= link_to "You Have Unread Messages", @host, class: 'bottom-border' %></li>
-            </ul>
-
+            <% else %>
+              <%= link_to "mail", @host, class: "material-icons notification-icon" %>
           <% end %>
         </div>
       </div>
