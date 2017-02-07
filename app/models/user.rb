@@ -1,6 +1,13 @@
 class User < ApplicationRecord
 
   validates_uniqueness_of :username
+  # username validations matching discourse
+  validates :username, format: {without: /[^\w.-]/, message: "cannot contain spaces and must use alphanumeric characters and underscores only"}
+  validates :username, format: {without: /[-_.]{2,}/, message: "cannot have two consecutive special characters"}
+  validates :username, length: {minimum: 3, message: "must have at least 3 characters"}
+  validates :username, length: {maximum: 15, message: "cannot be longer than 15 characters"}
+  validates :username, format: {without: /\.(js|json|css|htm|html|xml|jpg|jpeg|png|gif|bmp|ico|tif|tiff|woff)\z/i, message: "cannot end with a confusing extension"}
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
