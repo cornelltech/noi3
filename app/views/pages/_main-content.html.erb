@@ -13,16 +13,15 @@
     </p>
   </div>
 
-  <div class="category-filters">
-    <p>You can filter the conversation by selecting a category:
-
-      <%= form_tag(root_path, :method => "get", id: "category-form") do %>
-        <label class="select">
-          <%= select_tag "category", options_for_select(@categories.map { |c| c != nil ? c['name'].titleize : "" }, @params['category']), { :include_blank => 'All' } %>
-        </label>
-      <% end %>
-
-    </p>
+  <div class="category-filters row ">
+    <p>You can filter the conversation by selecting a topic: </p>
+        <%= form_tag(root_path, :method => "get", id: "category-form") do %>
+          <label class="select">
+            <%= select_tag "category", options_for_select(@categories.map { |c| c != nil ? c['name'].titleize : "" }, @params['category']), { :include_blank => 'All' } %>
+          </label>
+        <% end %>
+      </p>
+      <%=link_to "Reset Search", root_path, class:"button button-reset-filters" %>
   </div>
 
   <%= render 'discourse_posts'%>

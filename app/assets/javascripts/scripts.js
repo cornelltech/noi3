@@ -6,6 +6,11 @@ $(document).ready(function () {
         $(target).toggleClass('js-active');
     });
 
+    // Submit category filter
+    $('body').on('change', '#category-form select', function (e) {
+        $('#category-form').submit();
+    });
+
     // Search top bar dropdown, default to posts
       $("#top-search-form-users").hide();
 

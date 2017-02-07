@@ -93,8 +93,6 @@ class PagesController < ApplicationController
     end
   end
 
-
-
   def parse_discourse_errors(message)
     message_split = message.split('=>')
     discourse_errors = message_split[2].delete("}").delete('[').delete(']').delete('\"')
