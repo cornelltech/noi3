@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    $('.reply-to-post').click(function(e) {
+        e.preventDefault();
+        var target = $(this).attr('data-target');
+        $(target).toggleClass('js-active');
+    });
+
+
 
     $('body').on("click", ".questionnaire__check-all-control", function(e) {
         var skillAreaTarget = $(this).attr("data-skill-target");

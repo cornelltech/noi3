@@ -1,0 +1,106 @@
+<ul class="main-content__container list">
+
+<% for topic in @topics %>
+
+  <% if topic && @categories.select{|c| c['id'] == topic['category_id'] } && @categories.select{|c| c['id'] == topic['category_id'] }[0] && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Staff" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Lounge" && @categories.select{|c| c['id'] == topic['category_id'] }[0]['name'] != "Site Feedback" %>
+
+    <li class="list__item post-item">
+    <% if topic %>
+      <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => topic['ext_user_id'], path: root_path})), :remote => true do %>
+        <% if topic["post_stream"] && topic["post_stream"]["posts"] %>
+          <%= image_tag("#{DISCOURSE_CONFIG[:url]}/#{topic["post_stream"]["posts"].first['avatar_template'].gsub('{size}', '45')}", :alt => "", :class => "post-item__author-picture") %>
+        <% elsif topic && topic['avatar_template'] %>
+          <%= image_tag("#{DISCOURSE_CONFIG[:url]}/#{topic['avatar_template'].gsub('{size}', '45')}", :alt => "", :class => "post-item__author-picture") %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+      <div class="post-item__content">
+
+        <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
+        <!-- post_search view -->
+          <p class="post-item__author-name">
+            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => topic['ext_user_id'], path: root_path})), :style => "text-decoration: none;", :remote => true do %>
+            <strong><%= topic['post_stream']['posts'].first['name'] %></strong>
+            <% end %>
+          </p>
+          <span class="post-item__time">Posted <%= time_ago_in_words(DateTime.parse(topic["created_at"])) %> ago</span>
+        <% elsif topic %>
+        <!-- index view -->
+          <p class="post-item__author-name"><%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => topic['ext_user_id'], path: root_path})), :style => "text-decoration: none;", :remote => true do %>
+            <strong><%= topic['name'] %></strong>
+            <% end %>
+          </p>
+          <span class="post-item__time">Posted <%= time_ago_in_words(DateTime.parse(topic["created_at"])) %> ago</span>
+        <% end %>
+
+        <% if topic["post_stream"]%>
+          <div></div>
+           <h3 class="post-item__title"><%= unslug topic['post_stream']['posts'].first['topic_slug'] %></h3>
+          <div></div>
+        <% else %>
+          <div></div>
+          <% unless topic['post_number'] == 1 %><span class="post-item__reply-to">In reply to</span><% end %><h3 class="post-item__title"><%= unslug topic['topic_slug'] %></h3>
+          <div></div>
+        <% end %>
+
+        <% if topic && topic['post_stream'] && topic['post_stream']['posts'] %>
+          <p><%= truncate(strip_tags(topic['post_stream']['posts'].first['cooked']), length: 500, omission: '...') %></p>
+        <% elsif topic %>
+          <p><%= truncate(strip_tags(topic['cooked']), length: 500, omission: '...') %></p>
+        <% end %>
+
+        <a class="post-item__category" href='<%="#{DISCOURSE_CONFIG[:url]}/c/"%><%=@categories.select{|c| c['id'] == topic['category_id'] }[0]['name'].parameterize.gsub('other-topics','uncategorized') %>'><%= @categories.select{|c| c['id'] == topic['category_id'] }[0]['name']%></a>
+
+        <div class="post-item__controls">
+          <div class="controls">
+
+            <% if topic && topic['posts_count'] %>
+            <!-- post_search view -->
+            <!-- REPLY FORM -->
+              <a href='#' class="controls__icon-button reply-to-post" data-target='#<%= "reply-to-#{topic['id']}-#{topic['post_number']}" %>'><i class="material-icons">reply</i> <span style="vertical-align: middle;">Reply</span></a>
+              <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__button"><%= topic['posts_count'] - 1 %> Answers</a>
+              <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['slug']}/#{topic['id']}" %>' class="button button--small button--alpha controls__show-more-button">Show More</a>
+
+              <%= form_tag(reply_to_path, :method => "post", id: "reply-to-#{topic['id']}-#{topic["post_number"]}", class: "reply-form", remote: true) do %>
+                <%= text_area_tag "reply", nil, placeholder: "Write a response here" %>
+                <%= submit_tag "Post" %>
+                <%= hidden_field_tag 'category', topic['category_id'] %>
+                <%= hidden_field_tag 'topic_id', topic['id'] %>
+                <%= hidden_field_tag 'reply_to_post_number', topic['post_number'] %>
+                <label class="reply-confirmation"></label>
+              <% end %>
+            <!-- END REPLY FORM -->
+            <% elsif topic  %>
+            <!-- index view -->
+            <!-- REPLY FORM -->
+              <a href='#' class="controls__icon-button reply-to-post" data-target='#<%= "reply-to-#{topic['topic_id']}-#{topic['post_number']}" %>'><i class="material-icons">reply</i> <span style="vertical-align: middle;">Reply<% if topic['post_number'] == 1 %> to this topic<% end %></span></a>
+              <% if topic['reply_count'] > 0 %>
+              <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['topic_slug']}/#{topic['topic_id']}" %>' class="button button--small button--alpha controls__button"><%= topic['reply_count'] %> Replies</a>
+              <% end %>
+              <a href='<%= "#{DISCOURSE_CONFIG[:url]}/t/#{topic['topic_slug']}/#{topic['topic_id']}/#{topic["post_number"]}" %>' class="button button--small button--alpha controls__show-more-button">Show More</a>
+
+              <%= form_tag(reply_to_path, :method => "post", id: "reply-to-#{topic['topic_id']}-#{topic['post_number']}", class: "reply-form", remote: true) do %>
+                <%= text_area_tag "reply", nil, placeholder: "Write a response here" %>
+                <%= submit_tag "Post" %>
+                <%= hidden_field_tag 'category', topic['category_id'] %>
+                <%= hidden_field_tag 'topic_id', topic['topic_id'] %>
+                <%= hidden_field_tag 'reply_to_post_number', topic['post_number'] %>
+                <label class="reply-confirmation"></label>
+              <% end %>
+            <!-- END REPLY FORM -->
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+    </li>
+  <% end %> <!-- CLOSES IF topic && topic[category_id]... -->
+
+<% end %> <!-- CLOSES FOR topic in @topics -->
+
+</ul>
+
+<%= will_paginate @topics %>
+

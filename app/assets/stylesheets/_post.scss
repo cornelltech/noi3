@@ -44,6 +44,23 @@
     opacity: 0.5;
     text-transform: uppercase;
   }
+
+  &__time {
+    color: rgba(black, .6);
+    font-size: 11px;
+    text-transform: uppercase;
+    float: right;
+    @include breakpoint($small-only) {
+      float: none;
+    }
+  }
+
+  &__reply-to {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+    padding: 10px 10px 10px 0;
+  }
 }
 
 

@@ -1,6 +1,12 @@
 module ApplicationHelper
 
-
+  def unslug(title)
+    if title 
+      unslugged_title = title.gsub("-"," ").capitalize
+    end
+    unslugged_title
+  end
+  
   def format_skills(skills_array)
     # Skills formatting in the /matches
     # Formatting an array of can_teach and can_learn skills from the current user and each user in the DB. Similar formatting in user#format_expertise
