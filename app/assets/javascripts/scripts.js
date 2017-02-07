@@ -36,7 +36,7 @@ $(document).ready(function () {
         } else {
             $(this).prop('checked', true);
         }
-    }); 
+    });
 
     $('body').on('change', '.questionnaire__check-all-control', function (e) {
         var skillAreaTarget = $(this).attr("data-skill-target");
@@ -97,7 +97,7 @@ $(document).ready(function () {
         $('.js-panel-action').toggleClass('js-active');
     });
 
-    $('.js-open-this').click(function () {
+    $('.js-open-this').hover(function () {
         $(this).toggleClass('js-active');
     });
 
