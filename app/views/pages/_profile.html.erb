@@ -51,8 +51,11 @@
   </div>
   <!-- Profile panel -->
   <div class="profile-panel__projects-button">
-    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
-    <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
+    <%if user.projects.count > 0 %>
+      <div class="panel-nav js-open-panel-2">Projects (<%=user.projects.count%>) <i class="material-icons">arrow_forward</i></div>
+    <% else %>
+      <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
+    <% end %>
   </div>
 
   <!-- Expertise Panel -->

@@ -4,23 +4,37 @@
   <% if user == current_user %>
   <p class="project-panel__content">Share your relevant projects so others can get a better idea of your applied experience.</p>
   <% end %>
+
+  <% if user == current_user && current_user.projects == []%>
+    <p class="project-panel__content">Share your relevant projects so others can get a better idea of your applied experience.</p>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div class="project-notice"><%= flash[:notice] %></div>
+  <% end %>
+
   <div class='projects-container'>
   <% user.projects.includes(:industries, :skill_areas).each do | project | %>
   <div class="project-panel__item">
     <h3 class="project-panel__title"><%= project.title %></h3>
     <a class="project-panel__url" href="<%= project.url %>" target="_blank"><%= project.url %></a>
-    <ul class="project-panel__tags category-tags category-tags--negative">
-    <span class="industry-tag category-tag">Fields of Work: <%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
-    <!-- ADD CATEGORY TAGS TO PROJECTS -->
-      <%project.format_categories.each do |cat|%>
-      <li class="person-item__tag category-tag">
-        <span class="category-tag__main"><%= cat[:category].titleize %></span>
-        <% cat[:skill_areas].each do |sa| %>
-          <span class="category-tag__sub"><%= sa.titleize %></span>
+    <% if project.document_file_name != nil %>
+      <p>Attachment: <%= link_to project.document_file_name, project.document.url, class:"project-panel__url", target:"_blank" %></p>
+    <% end %>
+    <% if !project.industries.empty? && !project.categories.empty? %>
+      <ul class="project-panel__tags category-tags category-tags--negative">
+      <span class="industry-tag category-tag">Justice Topics: <%= project.industries.map {| industry | industry.name }.sort.join(', ') %></span>
+      <!-- ADD CATEGORY TAGS TO PROJECTS -->
+        <%project.format_categories.each do |cat|%>
+        <li class="person-item__tag category-tag">
+          <span class="category-tag__main"><%= cat[:category].titleize %></span>
+          <% cat[:skill_areas].each do |sa| %>
+            <span class="category-tag__sub"><%= sa.titleize %></span>
+          <% end %>
+        </li>
         <% end %>
-      </li>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
     <p><%= project.description %></p>
     <div>
     <% if current_user.id == user.id %>
@@ -39,3 +53,7 @@
   <% end %>
 
 </div>
+
+<script type="text/javascript">
+  $('.project-notice').delay(1000).fadeOut(2000);
+</script>

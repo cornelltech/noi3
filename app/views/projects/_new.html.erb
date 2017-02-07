@@ -1,14 +1,24 @@
 <div class="panel__content">
   <h2 class="project-panel__content project-panel__heading">New Project</h2>
+
+  <% if flash[:title_alert] %>
+    <div class="project-notice"><%= flash[:title_alert] %></div>
+  <% end %>
+
+  <% if flash[:description_alert] %>
+    <div class="project-notice"><%= flash[:description_alert] %></div>
+  <% end %>
+
   <div class="project-panel__item">
     <%= form_for Project.new, :html => {:class => 'form form--negative'}, remote:true do |f| %>
       <h3 class="project-panel__title"><%= f.text_field :title, placeholder: 'Title' %></h3>
       <%= f.text_field :url, placeholder: 'URL' %>
+      <%= f.file_field :document %>
       <%= f.text_area :description, placeholder: 'Description', size: '60x12' %>
-      <label for="" class="select"><%= select_tag 'project[industry_ids][]', options_from_collection_for_select(Industry.all, "id", "name", Project.new.industries), { :include_blank => 'Select Field of Work' } %></label>
-      <label for="" class="select"><%= select_tag 'project[category_ids]', options_from_collection_for_select(Category.includes(:skill_areas).all,"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select Category' } %></label>
+      <label for="" class="select"><%= select_tag 'project[industry_ids][]', options_from_collection_for_select(Industry.all.sort_by {|i| i.name}, "id", "name", Project.new.industries), { :include_blank => 'Select Field of Work' } %></label>
+      <label for="" class="select"><%= select_tag 'project[category_ids]', options_from_collection_for_select(Category.includes(:skill_areas).all.sort_by {|cat| cat.display_name},"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select Category' } %></label>
 
-      <label for="" class="select"><%= select_tag 'project[skill_area_ids][]', options_from_collection_for_select(SkillArea.includes(:category).all,"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select Subcategory' } %></label>
+      <label for="" class="select"><%= select_tag 'project[skill_area_ids][]', options_from_collection_for_select(SkillArea.includes(:category).all.sort_by {|sa| sa.display_name},"id",:display_name, Project.new.skill_areas),{ :include_blank => 'Select Subcategory' } %></label>
       
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.submit "Add project" %>
