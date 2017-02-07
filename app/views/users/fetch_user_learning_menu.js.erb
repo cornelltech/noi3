@@ -1,1 +1,6 @@
-$(".main-content__container").html("<%= escape_javascript(render partial: 'users/learning_menu'  ) %>"); 
+if (window.location.pathname == "/") {
+  $('#primary-content').hide();
+  $("#secondary-content").show().html("<%= escape_javascript(render partial: 'users/learning_menu'  ) %>"); 
+} else {
+  $(".main-content__container").html("<%= escape_javascript(render partial: 'users/learning_menu'  ) %>"); 
+}

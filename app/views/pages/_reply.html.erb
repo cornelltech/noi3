@@ -1,0 +1,11 @@
+<div class="reply-messages">
+    <% if !flash[:reply_error] %>
+    <span class="success">
+        Reply Posted!
+    </span>
+    <% else %>
+    <span class="error">
+        <%= flash[:reply_error] %>
+    </span>
+    <% end %>
+</div>

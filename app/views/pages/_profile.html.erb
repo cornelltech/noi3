@@ -1,0 +1,98 @@
+<% if user %>
+  <!-- Link back to ask a question -->
+  <%= link_to "arrow_back", (url_for({:controller => "pages", :action => "fetch_create_post"})), :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'Back to Ask a Question' %>
+
+  <!-- Get user avatar -->
+  <% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
+    <div class="profile-panel__picture" style="background-image: url(<%= image_path user.picture_path %>);"></div>
+  <% else %>
+    <% user_avatar = nil %>
+    <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
+      <div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);"></div>
+    <% else %>
+      <% user_avatar = "avatars/nopic-avatar1.jpg" %>
+      <div class="profile-panel__picture" style="background-image: url(<%= image_path user_avatar %>);"></div>
+    <% end %>
+  <% end %>
+
+  <!-- Link to edit profile -->
+  <% if user == current_user %>
+    <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__edit-image material-icons', id: 'edit-image', title: 'Add/Edit Image' %>
+  <% end%>
+
+  <!-- Profile Details -->
+  <hgroup class="profile-panel__titles">
+    <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
+    <h3 class="profile-panel__job"><%= user.position %></h3>
+    <h4 class="profile-panel__org"><%= user.organization %></h4>
+  </hgroup>
+
+  <section class="profile-panel__credentials">
+    <div class="row">
+      <div class="medium-6 small-12 column">
+        <p class="profile-panel__domains">Fields of Work:
+          <%= user.industries.uniq.map {| industry | industry.name }.sort.join(', ') %>
+        </p>
+      </div>
+      <div class="medium-6 small-12 column">
+        <p class="profile-panel__location"><%= user.location %></p>
+        <ul class="profile-panel__lang">
+        <% user.languages.sort.uniq.each do |language| %>
+          <li class=""><%=language.name%></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events panel -->
+  <div class="profile-panel__events-button">
+    <div class="panel-nav js-open-panel-3">Events <i class="material-icons">arrow_forward</i></div>
+  </div>
+  <!-- Profile panel -->
+  <div class="profile-panel__projects-button">
+    <!-- {# == This <a> tag is for prototype navigation purposes only. It should not make it to the final app == #} -->
+    <div class="panel-nav js-open-panel-2">Projects <i class="material-icons">arrow_forward</i></div>
+  </div>
+
+  <!-- Expertise Panel -->
+  <!-- {# IF EXPERTISE #} -->
+  <% if user.categories %>
+  <section class="profile-panel__expertise-panel">
+    <h5 class="profile-panel__expertise-panel-title">
+      <div class="panel-nav js-open-panel-4">Expertise <i class="material-icons">arrow_forward</i></div>
+    </h5>
+    <div class="profile-panel__content">
+      <ul class="category-tags category-tags--negative">
+
+      <% user.format_expertise.each do |e|  %>
+        <li class="category-tag">
+          <span class="category-tag__main"><%= e[:category].titleize %></span>
+          <% e[:skill_areas].each do |skill_area| %>
+          <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
+          <% end %>
+          </li>
+        <a href="#<%=e[:category]%>" >
+          <li class="category-tag__skills">View Skills (<%=e[:skill_count]%>)</li>
+        </a>
+      <% end %>
+
+    </ul>
+  </div>
+    <!-- {# ELSE #} -->
+    <!-- {# ENDIF #} -->
+  </section>
+
+  <% end %>
+  <!-- Link to add Expertise Big Button -->
+  <% if user == current_user %>
+    <%= link_to (url_for(fetch_user_teaching_menu_path)), :remote => true do %>
+      <div class="profile-panel__add-item">
+        <i class="big-icon material-icons">add</i>
+        <h4>Add Expertise</h4>
+      </div>
+    <% end %>
+  <% end %>
+
+
+<% end %> 

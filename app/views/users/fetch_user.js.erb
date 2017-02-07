@@ -1,4 +1,16 @@
-$('.profile-panel').html("<%= escape_javascript(render partial: 'profile', locals: { user: @selected } ) %>"); 
-$('.project-panel').html("<%= escape_javascript(render partial: 'projects', locals: { user: @selected } ) %>"); 
-$('.event-panel').html("<%= escape_javascript(render partial: 'events', locals: { user: @selected } ) %>"); 
-$('.expertise-panel').html("<%= escape_javascript(render partial: 'expertise', locals: { user: @selected } ) %>"); 
+$('.profile-panel').html("<%= escape_javascript(render partial: 'profile', locals: { user: @selected } ) %>");
+$('.project-panel').html("<%= escape_javascript(render partial: 'projects', locals: { user: @selected } ) %>");
+$('.event-panel').html("<%= escape_javascript(render partial: 'events', locals: { user: @selected } ) %>");
+$('.expertise-panel').html("<%= escape_javascript(render partial: 'expertise', locals: { user: @selected } ) %>");
+
+$('.question-panel').replaceWith("<div class='profile-panel question-panel-profile panel panel--1'><%= escape_javascript(
+    if @path == '/'
+      render partial: 'pages/profile', locals: { user: @selected } if @path == '/'
+    end
+    ) %></div>");
+
+$('.question-panel-profile').replaceWith("<div class='profile-panel question-panel-profile panel panel--1'><%= escape_javascript(
+    if @path == '/'
+      render partial: 'pages/profile', locals: { user: @selected } if @path == '/'
+    end
+    ) %></div>");

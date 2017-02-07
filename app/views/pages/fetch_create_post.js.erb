@@ -1,0 +1,3 @@
+$('.profile-panel').replaceWith("<div class='question-panel panel panel--1'><%= escape_javascript(render partial: 'pages/panel-1', locals: { user: @selected } ) %></div>");
+$('#primary-content').show();
+$('#secondary-content').hide();
