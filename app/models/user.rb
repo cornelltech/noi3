@@ -13,7 +13,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 # paperclip
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "avatars/nopic-avatar1.jpg"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/network-of-innovators/users/avatars/nopic-avatar1.jpg"
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
