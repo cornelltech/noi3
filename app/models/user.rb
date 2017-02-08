@@ -33,7 +33,7 @@ class User < ApplicationRecord
   attr_accessor :can_teach
   attr_accessor :can_learn
   
-  after_create :create_discourse_user if Rails.env.production?
+  after_create :sync_discourse_user if Rails.env.production?
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
@@ -143,7 +143,7 @@ class User < ApplicationRecord
     tree
   end
 
-  def create_discourse_user
+  def sync_discourse_user
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
