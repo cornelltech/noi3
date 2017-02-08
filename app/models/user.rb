@@ -147,17 +147,19 @@ class User < ApplicationRecord
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
-    avatar_path = self.picture_path 
-    if self.avatar.path
-      avatar_path = self.avatar.path
+    avatar_url = self.picture_path 
+    if self.avatar.url
+      avatar_url = self.avatar.url
     end
     discourse_client.sync_sso(
       sso_secret: DISCOURSE_CONFIG[:sso_secret],
       name: "#{self.first_name} #{self.last_name}",
       username: "#{self.username}",
       email: "#{self.email}",
-      external_avatar_url: "#{avatar_path}",
-      external_id: "#{self.email}"
+      external_avatar_url: "#{avatar_url}",
+      avatar_url: "#{avatar_url}",
+      external_id: "#{self.email}",
+      avatar_force_update: true
     )
   end
 
