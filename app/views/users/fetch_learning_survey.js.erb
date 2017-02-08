@@ -1,2 +1,5 @@
-$(".main-content__container").html("<%= escape_javascript(render partial: 'learn_survey', locals: { survey: @survey }) %>"); 
-
+if (window.location.pathname == "/") {
+  $("#secondary-content").html("<%= escape_javascript(render partial: 'learn_survey', locals: { survey: @survey }) %>"); 
+} else {
+  $(".main-content__container").html("<%= escape_javascript(render partial: 'learn_survey', locals: { survey: @survey }) %>"); 
+}
