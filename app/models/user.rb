@@ -164,10 +164,7 @@ class User < ApplicationRecord
   end
 
   def after_confirmation
-    puts "========TEST========"
-    puts "========TEST========"
-    puts "========TEST========"
-    ForwardMailer.forward_contact.deliver
+    ForwardMailer.forward_contact(self).deliver
   end
 
 end
