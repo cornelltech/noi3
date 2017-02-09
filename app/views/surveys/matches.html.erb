@@ -61,7 +61,11 @@
           <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
             <hgroup class="person-item__credentials person-item--no-flex">
               <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%><a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= match.username %>" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a></h2>
-              <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
+              <% if match.position == "" || match.organization == "" %>
+                <h3 class="person-item__job"><%= match.position%> <%= match.organization %></h3>
+              <% else %>
+                <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
+              <% end %>
               <h4 class="person-item__org"><%= match.location %></h4>
             </hgroup>
           <% end %>
