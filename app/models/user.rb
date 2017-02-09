@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   attr_accessor :can_teach
   attr_accessor :can_learn
-  
+
   after_create :sync_discourse_user if Rails.env.production?
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
@@ -50,7 +50,7 @@ class User < ApplicationRecord
       # Get the existing user by email if the provider gives us a verified email.
       # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
 # how to verify emails for different providers
-      email = auth.info.email 
+      email = auth.info.email
       user = User.where(:email => email).first if email
       # byebug
 
@@ -91,9 +91,9 @@ class User < ApplicationRecord
     if self.country_code
       country = ISO3166::Country[country_code]
     end
-    if country 
+    if country
       country.translations[I18n.locale.to_s] || country.name
-    else 
+    else
       ''
     end
   end
@@ -106,13 +106,13 @@ class User < ApplicationRecord
       combined_location.join("")
     end
   end
-  
+
   def format_expertise
     expertise = []
-    self.teachables.includes(:skill,:skill_area,:category).each do |skillset| 
+    self.teachables.includes(:skill,:skill_area,:category).each do |skillset|
       expertise.push({category: skillset.skill.category.name, skill_areas:skillset.skill.skill_area.name, skills: skillset.skill.description})
-    end 
-     
+    end
+
     expertise = format_tree(expertise)
 
     skills_array = []
@@ -132,7 +132,7 @@ class User < ApplicationRecord
   end
 
   def format_tree(cats)
-    tree = cats.each_with_object({}) do | row, hsh | 
+    tree = cats.each_with_object({}) do | row, hsh |
       category = row[:category]
       skill_area = row[:skill_areas]
       skill = row[:skills]
@@ -147,7 +147,7 @@ class User < ApplicationRecord
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
     discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
-    avatar_url = self.picture_path 
+    avatar_url = self.picture_path
     if self.avatar.url
       avatar_url = self.avatar.url
     end
@@ -163,5 +163,8 @@ class User < ApplicationRecord
     )
   end
 
-end
+  def after_confirmation
+    ForwardMailer.forward_contact(self).deliver
+  end
 
+end
