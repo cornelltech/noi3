@@ -97,9 +97,23 @@
 
             <% format_skills(match.can_teach).each do |skillset| %>
               <h5><%=skillset[:category]%></h5>
-              <%skillset[:skills].each do |skill| %>
-                <li class="user-skill-list__item"><%=skill.capitalize%></li>
-              <%end%>
+              <% if skillset[:skills].count > 5 %>
+                <% skillset[:skills].first(5).each do |skill| %>
+                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                <% end %>
+                <div id="<%=skillset[:category].parameterize%> view-more">
+                  <p>View more...</p>
+                </div>
+                <div id="view-less">
+                  <% skillset[:skills][5..-1].each do |skill| %>
+                    <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                  <% end %>
+                </div>
+              <% else %>
+                <% skillset[:skills].each do |skill| %>
+                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                <% end %>
+              <% end %>
             <% end %>
 
           </ul>
