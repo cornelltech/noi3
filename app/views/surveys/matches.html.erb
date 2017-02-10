@@ -82,12 +82,27 @@
             <%end%>
 
           </ul>
+          <% if match.projects.count > 1 %>
+            <div class="person-item__controls">
+              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+                <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
+              <% end %>
+            </div>
+          <% elsif match.projects.count == 1 %>
+            <div class="person-item__controls">
+              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+                <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Project</span>
+              <% end %>
+            </div>
+          <% elsif match.projects.count == 0 %>
 
-          <div class="person-item__controls">
-            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
-              <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
-            <% end %>
-          </div>
+          <% else %>
+            <div class="person-item__controls">
+              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+                <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
+              <% end %>
+            </div>
+          <% end %>
 
         </div> <!-- .person-item__content -->
 
@@ -97,17 +112,18 @@
 
             <% format_skills(match.can_teach).each do |skillset| %>
               <h5><%=skillset[:category]%></h5>
-              <% if skillset[:skills].count > 5 %>
-                <% skillset[:skills].first(5).each do |skill| %>
+              <% if skillset[:skills].count > 4 %>
+                <% skillset[:skills].first(4).each do |skill| %>
                   <li class="user-skill-list__item"><%=skill.capitalize%></li>
                 <% end %>
-                <div id="<%=skillset[:category].parameterize%> view-more">
-                  <p>View more...</p>
+                <div id="<%=skillset[:category].parameterize%>">
+                  <p id="view-more" class="user-skill-list--view">View more...</p>
                 </div>
-                <div id="view-less">
-                  <% skillset[:skills][5..-1].each do |skill| %>
+                <div class="view-less" id="all-skills">
+                  <% skillset[:skills][4..-1].each do |skill| %>
                     <li class="user-skill-list__item"><%=skill.capitalize%></li>
                   <% end %>
+                  <p id="view-less" class="user-skill-list--view">View less...</p>
                 </div>
               <% else %>
                 <% skillset[:skills].each do |skill| %>
@@ -123,9 +139,24 @@
 
             <% format_skills(match.can_learn).each do |skillset| %>
               <h5><%=skillset[:category]%></h5>
-              <%skillset[:skills].each do |skill| %>
-                <li class="user-skill-list__item"><%=skill.capitalize%></li>
-              <%end%>
+              <% if skillset[:skills].count > 4 %>
+                <%skillset[:skills].first(4).each do |skill| %>
+                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                <%end%>
+                <div>
+                  <p id="advise-view-more" class="user-skill-list--view">View more...</p>
+                </div>
+                <div class="advise-view-less" id="advise-all-skills">
+                  <% skillset[:skills][4..-1].each do |skill| %>
+                    <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                  <% end %>
+                  <p id="advise-view-less" class="user-skill-list--view">View less...</p>
+                </div>
+              <% else %>
+                <%skillset[:skills].each do |skill| %>
+                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                <%end%>
+              <% end %>
             <% end %>
           </ul>
         </div> <!-- .person-item__content -->
