@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var categories = ["#open-data", "#data-science", "#prizes", "#citizen-science", "#advise-open-data", "#advise-data-science", "#advise-prizes", "#advise-citizen-science"]
+  var categories = ["#open-data", "#data-science", "#prizes", "#citizen-science", "#community-engagement", "#lab-design", "#crowdsourcing", "#rcts", "#advise-rcts", "#advise-crowdsourcing", "#advise-lab-design", "#advise-open-data", "#advise-data-science", "#advise-prizes", "#advise-citizen-science", "#advise-community-engagement"]
 
   categories.forEach(function(category) {
     $(category).click(function() {
