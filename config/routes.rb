@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks', confirmations: 'confirmations' }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks', confirmations: 'confirmations', sessions: 'sessions' }
   resources :users, :path => 'search'
   resources :users, :path => 'profile', :as => 'profile'
   resources :surveys, :path => 'match-me'
