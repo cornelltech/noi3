@@ -1,21 +1,8 @@
 $(document).ready(function() {
 
-  // $("#view-more").click(function() {
-  //   $(this).hide();
-  //   $("#all-skills").toggleClass("view-less");
-  // })
-  //
-  // $("#view-less").click(function() {
-  //   $("#all-skills").toggleClass("view-less");
-  //   $("#view-more").show();
-  // })
+  var categories = ["#open-data", "#data-science", "#prizes", "#citizen-science", "#advise-open-data", "#advise-data-science", "#advise-prizes", "#advise-citizen-science"]
 
-
-  // Advise
-
-  var adviseCategories = ["#advise-open-data", "#advise-data-science", "#advise-prizes"]
-
-  adviseCategories.forEach(function(category) {
+  categories.forEach(function(category) {
     $(category).click(function() {
       $(this).data('clicked', true);
       var show = false;
@@ -36,5 +23,4 @@ $(document).ready(function() {
       };
     })
   })
-
 });
