@@ -60,11 +60,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'noi3.heroku.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              ENV['NOI_MAILER_ADDRESS'],
     port:                 587,
-    domain:               'govlab.org',
-    user_name:            'noi@thegovlab.org',
-    password:             'balvog2015',
+    domain:               ENV['NOI_MAILER_DOMAIN'],
+    user_name:            ENV['NOI_MAILER_EMAIL'],
+    password:             ENV['NOI_MAILER_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true  }
 
