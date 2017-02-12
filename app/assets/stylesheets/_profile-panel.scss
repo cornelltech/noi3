@@ -8,17 +8,44 @@
 
   &__picture {
     @extend .u-circle;
-    margin: 30px auto 20px;
+    margin: 30px auto 10px;
     display: block;
     width: 100px;
     height: 100px;
     background-size: cover;
     background-position: center;
-    background-image: url("http://www.networkofinnovators.org/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg");
+    background-image: url("../images/avatars/nopic-avatar1.jpg");
+    // background-image: url("http://www.networkofinnovators.org/assets/avatars/nopic-avatar1.jpg");
   }
 
   &__titles {
+    a {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
 
+  }
+
+  #edit-image {
+    color: $gray;
+    // font-size: 1.3rem;
+  }
+
+  &__edit-image {
+    &:before {
+      content: attr(title);
+      color: $gray;
+      font-family: $main-font;
+      font-size: .8rem;
+      text-transform: uppercase;
+      padding: 5px;
+      vertical-align: 7px;
+      margin-right: 4px;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
   }
 
   &__name {
@@ -103,6 +130,10 @@
     background-color: rgba($white, .05);
   }
 
+  &__projects-button {
+    background-color: rgba($white, .05);
+  }
+  
   &__action__content { @extend .u-base-panel__action__content; }
 
   &__error {}
@@ -116,8 +147,8 @@
     @extend .u-base-panel__content;
     text-align: center;
     // background-color: rgba(white, .05);
-    padding-top: 60px;
-    padding-bottom: 60px;
+    // padding-top: 60px;
+    // padding-bottom: 60px;
     cursor: pointer;
 
     .big-icon {

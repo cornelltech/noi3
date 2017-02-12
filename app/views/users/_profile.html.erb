@@ -1,30 +1,38 @@
 <% if user == current_user %>
-<%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__action-button material-icons', title: 'Edit Profile' %>
+<%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'Edit Profile' %>
 <% elsif user != current_user %>
 <%= link_to "arrow_back", (url_for({:controller => "users", :action => "fetch_user", :user_id => current_user.id})), :remote => true, class: 'profile-panel__back profile-panel__action-button material-icons', title: 'My Profile' %>
 <% end %>
 
-  <% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
-    <div class="profile-panel__picture" style="background-image: url(<%= image_path user.picture_path %>);">
-  </div>
+<% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
+  <div class="profile-panel__picture" style="background-image: url(<%= image_path user.picture_path %>);">
+</div>
+<% else %>
+  <% user_avatar = nil %>
+  <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
+    <div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);"></div>
   <% else %>
-    <% user_avatar = nil %>
-    <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
-      <div class="profile-panel__picture" style="background-image: url(<%= image_path user.avatar.url %>);"></div>
-    <% else %>
-      <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
-      <div class="profile-panel__picture" style="background-image: url(<%= image_path user_avatar %>);"></div>
-    <% end %>
+    <% user_avatar = "avatars/nopic-avatar1.jpg" %>
+    <div class="profile-panel__picture" style="background-image: url(<%= image_path user_avatar %>);"></div>
   <% end %>
+<% end %>
 
-
-
+<% if user == current_user %>
+  <%= link_to "edit", fetch_edit_user_path, :remote => true, class: 'profile-panel__edit-image material-icons', id: 'edit-image', title: 'Add/Edit Image' %>
+<% end %>
 
 <hgroup class="profile-panel__titles">
-  <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
-  <h3 class="profile-panel__job"><%= user.position %></h3>
-  <h4 class="profile-panel__org"><%= user.organization %></h4>
+  <% if user == current_user %>
+    <h2 class="profile-panel__name"><%= link_to "#{user.first_name} #{user.last_name}", fetch_edit_user_path, :remote => true, class: 'profile-panel__titles--link' %></h2>
+    <h3 class="profile-panel__job"><%= link_to "#{user.position}", fetch_edit_user_path, :remote => true, class: 'profile-panel__titles--link' %></h3>
+    <h4 class="profile-panel__org"><%= link_to "#{user.organization}", fetch_edit_user_path, :remote => true, class: 'profile-panel__titles--link' %></h4>
+  <% else %>
+    <h2 class="profile-panel__name"><%= user.first_name %> <%= user.last_name %></h2>
+    <h3 class="profile-panel__job"><%= user.position %></h3>
+    <h4 class="profile-panel__org"><%= user.organization %></h4>
+  <% end %>
 </hgroup>
+
 <section class="profile-panel__credentials">
   <div class="row">
     <div class="medium-6 small-12 column">
@@ -36,11 +44,13 @@
     </div>
     <div class="medium-6 small-12 column">
       <p class="profile-panel__location"><%= user.location %></p>
-      <ul class="profile-panel__lang">
-      <% user.languages.sort.uniq.each do |language| %>
-        <li class=""><%=language.name%></li>
+      <% if user.languages.count > 0 %>
+        <ul class="profile-panel__lang">
+        <% user.languages.sort.uniq.each do |language| %>
+          <li class=""><%=language.name%></li>
+        <% end %>
+        </ul>
       <% end %>
-      </ul>
     </div>
   </div>
 </section>
