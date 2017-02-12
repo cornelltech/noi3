@@ -14,9 +14,20 @@ class UsersController < ApplicationController
     @active_filters = get_active_filters(params)
 
     # Sort all users before applying filters
+    # sanitize params
+    order_mappings = {
+      'last_name asc'   => 'last_name ASC',
+      'last_name desc'  => 'last_name DESC',
+      'position asc'   => 'position ASC',
+      'position desc'  => 'position DESC',
+      'organization asc'   => 'organization ASC',
+      'organization desc'  => 'organization DESC'
+    }
+
     if params[:sort] && params[:direction]
       sort_query = params[:sort] + " " + params[:direction]
-     @users = User.order(sort_query)
+      sort_order = order_mappings["sort_query"]
+     @users = User.order(sort_order)
     else
       # default sort by created_at
       @users = User.all
@@ -186,7 +197,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:avatar, :username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :industry_ids => [], :language_ids => [], :event_ids => [])
+    params.require(:user).permit(:avatar, :username, :picture_path, :first_name, :last_name, :position, :organization, :organization_type, :country_code, :city, :language, :sort, :direction, :industry_ids => [], :language_ids => [], :event_ids => [])
   end
 
   def sort_column
