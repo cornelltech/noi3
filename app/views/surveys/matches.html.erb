@@ -43,16 +43,19 @@
       <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
         <li class="list__item person-item">
           <% if match.picture_path != "" && match.avatar.url == "avatars/nopic-avatar1.jpg" %>
-            <%= image_tag(match.picture_path, :alt => "User", :class => "person-item__picture") %>
+            <!-- <%= image_tag(match.picture_path, :alt => "User", :class => "person-item__picture") %> -->
+            <div class="person-item__picture" style="background-image: url(<%= match.picture_path %>)"></div>
           <% else %>
             <% user_avatar = nil %>
             <% if match.avatar.url != "avatars/nopic-avatar1.jpg" %>
-              <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
+              <!-- <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %> -->
+              <div class="person-item__picture" style="background-image: url(<%= match.avatar.url(:original) %>)"></div>
             <% else %>
-              <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
-              <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %>
+              <% user_avatar = "avatars/nopic-avatar1.jpg" %>
+              <!-- <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %> -->
+              <div class="person-item__picture" style="background-image: url(<%= user_avatar %>)"></div>
             <% end %>
-          <% end %>
+          <%end%>
         <% end %>
 
 
