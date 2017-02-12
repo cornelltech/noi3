@@ -93,23 +93,26 @@
     <%= render partial: 'no_results', locals: {active_filters: @active_filters} %>
   <% else %>
 
-    <ul class="list">
-      <% @users.each do | user | %>
-        <% if !user.id.nil? %>
-          <li class="list__item person-item">
-             <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
-              <% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
-                <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %>
-              <% else %>
-                <% user_avatar = nil %>
-                <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
-                  <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %>
-                <% else %>
-                  <% user_avatar = "/assets/avatars/nopic-avatar1-8d8a5abc4c5f961d8a028e95ed3c9d9216a92465feef27a98b31a64d0c186cde.jpg" %>
-                  <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %>
-                <% end %>
-              <%end%>
+  <ul class="list">
+    <% @users.each do | user | %>
+    <li class="list__item person-item">
+      <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
+      <% if !user.id.nil? %>
+          <% if user.picture_path != "" && user.avatar.url == "avatars/nopic-avatar1.jpg" %>
+            <!-- <%= image_tag(user.picture_path, :alt => "User", :class => "person-item__picture") %> -->
+            <div class="person-item__picture" style="background-image: url(<%= user.picture_path %>)"></div>
+          <% else %>
+            <% user_avatar = nil %>
+            <% if user.avatar.url != "avatars/nopic-avatar1.jpg" %>
+              <!-- <%= image_tag(user.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %> -->
+              <div class="person-item__picture" style="background-image: url(<%= user.avatar.url(:original) %>)"></div>
+            <% else %>
+              <% user_avatar = "avatars/nopic-avatar1.jpg" %>
+              <!-- <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %> -->
+              <div class="person-item__picture" style="background-image: url(<%= user_avatar %>)"></div>
             <% end %>
+          <%end%>
+        <% end %>
 
             <div class="person-item__content">
               <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => user.id})), :remote => true do %>
