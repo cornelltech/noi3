@@ -99,12 +99,6 @@
             </div>
           <% elsif match.projects.count == 0 %>
 
-          <% else %>
-            <div class="person-item__controls">
-              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
-                <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
-              <% end %>
-            </div>
           <% end %>
 
         </div> <!-- .person-item__content -->
@@ -130,11 +124,7 @@
                     <p id="view-less" class="user-skill-list--view">View less...</p>
                   </div>
                 </div>
-              <% elsif skillset[:skills].count == 4 %>
-                <% skillset[:skills].each do |skill| %>
-                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
-                <% end %>
-              <% else %>
+              <% elsif skillset[:skills].count <= 4 %>
                 <% skillset[:skills].each do |skill| %>
                   <li class="user-skill-list__item"><%=skill.capitalize%></li>
                 <% end %>
@@ -163,11 +153,7 @@
                     <p id="view-less" class="user-skill-list--view">View less...</p>
                   </div>
                 </div>
-              <% elsif skillset[:skills].count == 4 %>
-                <% skillset[:skills].each do |skill| %>
-                  <li class="user-skill-list__item"><%=skill%></li>
-                <% end %>
-              <% else %>
+              <% elsif skillset[:skills].count <= 4 %>
                 <% skillset[:skills].each do |skill| %>
                   <li class="user-skill-list__item"><%=skill%></li>
                 <% end %>
