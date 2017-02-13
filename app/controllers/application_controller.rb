@@ -44,24 +44,16 @@ class ApplicationController < ActionController::Base
 
   def set_notifications
     @user = current_user
-    @notifications = []
+    @notifications = false
     @host = nil
-
     discourse_client = DiscourseApi::Client.new(DISCOURSE_CONFIG[:url])
     discourse_client.api_key = DISCOURSE_CONFIG[:api_key]
-    # discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
-
+    discourse_client.api_username = DISCOURSE_CONFIG[:api_username]
     if @user && @user.username
-      notifications_json = HTTParty.get(discourse_client.host + "/notifications.json?username=" + @user.username + "&api_key=" + discourse_client.api_key + "&api_username=" + @user.username)
-
+      notifications_json = discourse_client.get("notifications?username=#{@user.username}")
       @host = discourse_client.host + "/users/" + @user.username + "/notifications"
-
-      if notifications_json["notifications"]
-        notifications_json["notifications"].each do |notification|
-          if notification["read"] == false
-            @notifications << 1
-          end
-        end
+      if notifications_json["body"]["notifications"]
+        @notifications = notifications_json["body"]["notifications"].map {|n| n["read"]}.include?(false)
       end
     end
   end
