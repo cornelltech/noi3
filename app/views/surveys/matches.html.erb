@@ -120,14 +120,14 @@
                   <li class="user-skill-list__item"><%=skill.capitalize%></li>
                 <%end%>
 
-                <div id="advise-<%=skillset[:category].parameterize%>">
-                  <p id="advise-view-more" class="user-skill-list--view">View more...</p>
+                <div id="<%=skillset[:category].parameterize%>">
+                  <p id="view-more" class="user-skill-list--view">View more...</p>
 
-                  <div id="advise-less-<%=skillset[:category].parameterize%>" class="advise-view-less advise-all-skills">
+                  <div id="less-<%=skillset[:category].parameterize%>" class="view-less all-skills">
                     <% skillset[:skills][4..-1].each do |skill| %>
                       <li class="user-skill-list__item"><%=skill.capitalize%></li>
                     <% end %>
-                    <p id="advise-view-less" class="user-skill-list--view">View less...</p>
+                    <p id="view-less" class="user-skill-list--view">View less...</p>
                   </div>
                 </div>
               <% elsif skillset[:skills].count == 4 %>
@@ -153,14 +153,14 @@
                   <li class="user-skill-list__item"><%=skill.capitalize%></li>
                 <%end%>
 
-                <div id="advise-<%=skillset[:category].parameterize%>">
-                  <p id="advise-view-more" class="user-skill-list--view">View more...</p>
+                <div id="<%=skillset[:category].parameterize%>">
+                  <p id="view-more" class="user-skill-list--view">View more...</p>
 
-                  <div id="advise-less-<%=skillset[:category].parameterize%>" class="advise-view-less advise-all-skills">
+                  <div id="less-<%=skillset[:category].parameterize%>" class="view-less all-skills">
                     <% skillset[:skills][4..-1].each do |skill| %>
                       <li class="user-skill-list__item"><%=skill.capitalize%></li>
                     <% end %>
-                    <p id="advise-view-less" class="user-skill-list--view">View less...</p>
+                    <p id="view-less" class="user-skill-list--view">View less...</p>
                   </div>
                 </div>
               <% elsif skillset[:skills].count == 4 %>
