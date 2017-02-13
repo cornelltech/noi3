@@ -1,7 +1,23 @@
 <div class="login-wrapper">
-  <div class="login-form">
-    <p>Welcome <%= @email %>!</p>
-    <p>You can confirm your account email through the link below:</p>
-    <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <div class="login-form" style="font-family: Verdana;">
+    <% if @resource.first_name == "" %>
+      <% greeting = @email %>
+    <% else %>
+      <% greeting = @resource.first_name %>
+    <% end %>
+
+    <b><p style="color: #000;">Hi <%= greeting %>,</p></b>
+
+    <p style="color: #000;">To complete your sign up to Data Justice Network, please confirm your email: </p>
+    <br>
+
+    <%= link_to 'CONFIRM EMAIL', confirmation_url(@resource, confirmation_token: @token), {:style=>'text-decoration: none; color: #fff;background-color:#ff9600; padding: 20px 40px 20px; font-size:16px; border-radius: 10px;'} %>
+
+    <br><br>
+    <p style="color: #000;">Or copy this link and paste in your web browser:</p>
+
+    <p><%= link_to "http://networkofinnovators.org/users/confirmation?confirmation_token=#{@token}", confirmation_url(@resource, confirmation_token: @token) %></p>
+
+    <p style="color: #000;">Thanks!<br>Network of Innovators Team</p>
   </div>
 </div>
