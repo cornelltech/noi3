@@ -8,16 +8,16 @@ $(document).ready(function() {
       var show = false;
 
       if($(this).data('clicked')) {
-        $(this).find("#advise-view-more").toggleClass("advise-view-less");
-        $(this).find(".advise-all-skills").toggleClass("advise-view-less");
+        $(this).find("#view-more").toggleClass("view-less");
+        $(this).find(".all-skills").toggleClass("view-less");
 
-        var allSkills = $(this).find("#advise-all-skills");
+        var allSkills = $(this).find("#all-skills");
 
         if (allSkills.data('clicked')) {
           var show = true
-          $(this).find("#advise-view-more").toggleClass("advise-view-less");
+          $(this).find("#view-more").toggleClass("view-less");
           if(show) {
-            $(this).find("#advise-view-more").toggleClass("advise-view-less")
+            $(this).find("#view-more").toggleClass("view-less")
           }
         }
       };
