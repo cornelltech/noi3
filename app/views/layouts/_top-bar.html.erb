@@ -44,7 +44,7 @@
       <div class="top-bar__user-menu user-menu">
         <div class="user-menu__item user-menu__item--settings js-open-this js-open-panel">
 
-          <% if !@notifications.empty? %>
+          <% if @notifications %>
 
             <%= link_to "mail", @host, class: "material-icons notification-icon" %>
             <span class="mail-status unread"></span>
