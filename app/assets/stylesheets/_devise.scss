@@ -65,6 +65,7 @@
         &--main-color {
             background-color: #008ab3;
             color: $white;
+            text-align: center;
         }
     }
 
@@ -141,6 +142,32 @@
         max-width: auto;
         height: 2em;
     }
+}
+
+#omniauth-login__form, #omniauth-signup__form {
+  display: none;
+}
+
+
+.omniauth-login__button, .omniauth-signup__button {
+  text-align: center;
+  text-transform: none;
+  padding: 10px 15px;
+  width: 48%;
+  height: 50px;
+  margin: 0 0 0 4px;
+  opacity: 1 !important;
+  font-weight: 300;
+  font-size: 1rem;
+  background-color: $main-color;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  &:hover { background-color: $accent-color; }
+
+  &.active {
+    background-color: $accent-color;
+  }
 }
 
 .form__extra-links {

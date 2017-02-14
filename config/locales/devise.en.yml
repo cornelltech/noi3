@@ -28,7 +28,7 @@ en:
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
-      unlinked_oauth: "We couldn't find a Network of Innovators account linked to that provider. Please sign in and connect or register below."
+      unlinked_oauth: "We couldn't find a Network of Innovators account linked to that provider. Please sign up and connect your account, or login and connect by editing your profile."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
