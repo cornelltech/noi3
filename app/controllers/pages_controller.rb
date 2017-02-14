@@ -30,7 +30,7 @@ class PagesController < ApplicationController
         discourse_topic
         }.paginate(:page => params[:page], :per_page => 10)
     elsif params["category"] != "" && !params["category"].nil? 
-      category = params['category'].gsub("Other Topics","Uncategorized")
+      category = params['category'].gsub("General","Uncategorized")
       category_posts = discourse_client.get("c/#{category.parameterize}")['body']['topic_list']['topics']
       @topics = category_posts.map{ |topic|
         discourse_topic = discourse_client.topic(topic['id'])
