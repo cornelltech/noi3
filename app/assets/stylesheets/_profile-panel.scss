@@ -131,9 +131,9 @@
   }
 
   &__projects-button {
-    background-color: rgba($white, .05);
+    // background-color: rgba($white, .05);
   }
-  
+
   &__action__content { @extend .u-base-panel__action__content; }
 
   &__error {}
