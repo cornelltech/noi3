@@ -1,5 +1,28 @@
 $(document).ready(function () {
 
+    // oauth controls display
+    // #omniauth-login__form
+    // #omniauth-login__button
+
+    // #omniauth-signup__form
+    // #omniauth-
+
+    $('body').on("click", ".omniauth-login__button", function() {
+        $("#omniauth-login__form").show();
+        $("#omniauth-signup__form").hide();
+        $(this).addClass("active");
+        $(".omniauth-signup__button").removeClass("active")
+    });
+
+    $('body').on("click", ".omniauth-signup__button", function() {
+        $("#omniauth-signup__form").show();
+        $("#omniauth-login__form").hide();
+        $(this).addClass("active");
+        $(".omniauth-login__button").removeClass("active")
+    });
+
+
+
     $('.reply-to-post').click(function(e) {
         e.preventDefault();
         var target = $(this).attr('data-target');
