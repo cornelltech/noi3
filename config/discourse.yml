@@ -5,6 +5,13 @@ development:
   sso_secret: "hamburger1"
   sso_redirect_url: "https://discourse-dev.networkofinnovators.org/session/sso_login"
 
+test:
+  url: "https://example.com"
+  api_key: "secret"
+  api_username: "secret"
+  sso_secret: "secret"
+  sso_redirect_url: "secret"
+
 staging:
   url: "https://discourse-dev.networkofinnovators.org"
   api_key: "1aab33514000d1660d4d183d5df90a566a84e553a7aef7046a47bc007a88e37f"

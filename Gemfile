@@ -34,6 +34,17 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
+
+group :test do 
+  gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
+  gem 'selenium-webdriver'
+  gem 'webmock'  
+  gem 'vcr'  
 end
 
 group :development do
@@ -64,7 +75,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 
-gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'cancan' # or cancancan
@@ -85,7 +95,7 @@ gem 'textacular', github: 'GovLab/textacular'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3'
 
-gem 'rb-readline'
+# gem 'rb-readline'
 
 gem 'will_paginate', '~> 3.1.0'
 gem 'httparty'
