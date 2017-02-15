@@ -207,17 +207,30 @@ input[type='submit'] {
   background-color: #222;
   color: #fff;
 
-  padding: 0 40px;
+  padding: 0 40px 40px 40px;
 
   h1, h2, h3, h4, h5 {
     text-transform: uppercase;
+  }
+  a {
+    color: $main-color;
+    &.tos {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    &:hover {
+      color: $accent-color;
+    }
   }
   h1 {
     font-size: 40px;
     i {
       font-size: 40px;
-      // vertical-align: middle;
       transform: translateY(5px);
+    }
+    &.about-h1 {
+      margin-bottom: 0;
     }
   }
   h2 {
