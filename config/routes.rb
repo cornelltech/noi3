@@ -66,6 +66,8 @@ Rails.application.routes.draw do
 
   get '/connect' => 'users#connect'
 
+  get '/about' => 'pages#about', as: 'about'
+
   post 'reply_to' => 'pages#reply_to', as: 'reply_to'
 
 end

@@ -1,0 +1,473 @@
+<!-- ASK A QUESTION -->
+<%= render 'panel-1' %>
+
+<% if user_signed_in? %>
+<div class="project-panel panel panel--2">
+  <%= render 'users/projects', { user: current_user  }%>
+</div>
+<div class="event-panel panel panel--3">
+  <%= render 'users/events', { user: current_user }%>
+</div>
+
+<div class="expertise-panel panel panel--4">
+  <%= render 'users/expertise', { user: current_user  }%>
+</div>
+
+<% end %>
+
+<div class="main-content" id="secondary-content"></div>
+<div class="main-content about-page" id="primary-content"> <!-- signup-wall--active -->
+  <h1><i class="material-icons">help_outline</i> About</h1>
+
+  <h2>What is Network of Innovators?</h2>
+
+  <p>
+    Network of Innovators (NoI) is an expert network designed and developed by The GovLab in collaboration with governance innovation leaders across eight countries. It makes searchable the know-how of government innovators on topics integral to governing more effectively and legitimately, such as open data, citizen engagement and prize-backed challenges. By answering questions about your governance innovation skills and experiences, you can be matched to those with complementary knowledge to enable mutual support and learning.
+  </p>
+
+  <h2>Who is NoI designed for?</h2>
+
+  <p>
+    NoI is an expert network for government and civic innovators worldwide who want to find and collaborate with others who can help them better solve public problems.
+  </p>
+
+  <h2>What problem does NoI aim to solve?</h2>
+
+  <p>
+    In large institutions, there is no good way to target opportunities for collaboration. Professionals working in a variety of contexts - from regulatory agencies to social innovation labs - have a hard time identifying who among their colleagues and peers has the experience and expertise to better solve problems. There are a number of factors feeding into this reality:
+  </p>
+
+  <p>
+    <ul>
+      <li>Titles and credentials don’t capture real world know-how.</li>
+      <li>Government projects or public-private partnerships are typically branded as institutional achievements.</li>
+      <li>There is a lack of well developed taxonomies of  skills for new domain areas of government, like open data or prize-backed challenges.</li>
+    </ul>
+  </p>
+
+  <h2>What is the goal of NoI?</h2>
+
+  <p>
+    NoI aims to organize and develop the taxonomy of innovation practices. Through ongoing engagement with governance innovation practitioners from around the world, we are continuing to refine NoI with a focus on capturing the most impactful and desirable innovation skills for public servants today.
+  </p>
+
+  <h2>About The GovLab</h2>
+
+  <p>
+    The GovLab is an action research institute at New York University. Our goal is to strengthen the ability of institutions, governments and people to work more openly, collaboratively, and legitimately to solve public problems. We believe that increased use of data, new ways to leverage the skills and expertise of individuals, combined with advances in science and technology can transform governance. We approach each challenge in an interdisciplinary and collaborative way, irrespective of the problem, sector or geography.
+  </p>
+
+  <h1>TERMS OF SERVICE</h1>
+
+  <h2>1. Introduction</h2>
+  <p>
+    Network of Innovators (NoI) is an online platform for building expert networks.
+  </p>
+
+  <h2>1.1. Purpose</h2>
+  <p>
+    The mission of Network of Innovators is to connect users with each other to share knowledge and expertise. The service is designed to promote collaboration by enabling users to find others who are working on similar problems, and allowing them to exchange ideas and answers.
+  </p>
+
+  <h2>1.2. Agreement</h2>
+  <p>
+    By using Network of Innovators you are entering into a legal agreement and you agree to all the terms and conditions set forth in this Terms of Service, including our Privacy Policy covering the collection, usage, sharing, and storage of your personal information.
+  </p>
+
+  <p>
+    By clicking “Sign Up”, registering, accessing or otherwise using Network of Innovators, either in your individual capacity or on behalf of a company, you are entering into a legally binding agreement that includes this Terms of Service and the Privacy Policy, as may be amended by the GovLab from time to time. If you do not agree to this Agreement, do NOT click "Sign Up" (or similar) and do not access or otherwise use any of our services. This agreement applies to both registered and unregistered users of Network of Innovators.
+  </p>
+
+  <h2>2. Obligations</h2>
+
+  <h2>2.1 Service Eligibility</h2>
+
+  <p>
+    To use Network of Innovators, you agree that you will (1) only have one Network of Innovators account; (2) your NoI account must be in your real name; and (3) you have not been restricted by GovLab from using NoI.
+  </p>
+
+  <h2>2.2 Membership Requirements</h2>
+
+  <p>
+    You agree that you will try to choose a strong and secure password and you will keep your password a secret. You are responsible for anything that happens through your account unless you close it or report misuse.
+  </p>
+
+  <h2>2.3 Notices and Service Messages</h2>
+
+  <p>
+    You agree that GovLab may use our websites, apps, and email to provide you with important notices. If the contact information you provide upon registration isn't up to date, you may miss out on notices.
+  </p>
+
+  <p>
+    You agree that we may provide notices to you in the following ways: (1) a banner notice on the Service, or (2) an email sent to an address you provided, or (3) through other means including mobile number, telephone, or mail. You agree to keep your contact information up to date.
+  </p>
+
+  <h2>2.4 Messages and Sharing</h2>
+
+  <p>
+    You understand that, when sharing information on Network of Innovators, others can see, copy, and use the information you have shared. The NoI service allows messaging and sharing of information in many ways, such as through your public profile and the activity page. Where we have made or when we make settings available, we will honor the choices you make about who can see content or information.
+  </p>
+
+  <p>
+    We are not obligated to publish any information or content on our Service and can remove it in our sole discretion, with or without notice.
+  </p>
+
+  <h2>3. Rights and Limits</h2>
+
+  <h2>3.1 Your License to GovLab</h2>
+
+  <p>
+    All content, feedback, and personal information you provide on NoI is owned by you, but you grant GovLab a non-exclusive license to use it. You agree that you will only provide information and content that you have the right to share, and that your NoI profile will contain accurate and truthful information.
+  </p>
+
+  <p>
+    While you own all content and information that you submit or post to NoI, you grant GovLab the following non-exclusive license:
+  </p>
+
+  <p>
+    A worldwide, transferable, and sublicensable right to use, copy, modify, distribute, publish, and process, information and content that you provide through NoI, without any further consent, notice, and/or compensation to you or others.
+  </p>
+
+  <h2>3.2 License Limitations</h2>
+
+  <p>
+    You agree to only provide content or information if that does not violate the law nor anyone's rights (e.g., without violating any intellectual property rights or breaching a contract).
+  </p>
+
+  <p>
+    You can end this license for specific content by deleting such content from the Services, or generally by closing your account, except (a) to the extent you shared it with others as part of the Service and they copied or stored it and (b) for the reasonable time it takes to remove from backup and other systems.
+  </p>
+
+  <p>
+    If GovLab wants to give others the right to publish your posts beyond NoI, we will get your express consent. However, other users of NoI may access and share your content and information, consistent with your settings and acceptance of this Terms of Service.
+  </p>
+
+  <p>
+    GovLab may edit and make formatting changes to your content (such as translating it, modifying the size, layout or file type or removing metadata), but we will not modify the meaning of your expression. Because you own your content and information and we only have non-exclusive rights to it, you may choose to make it available to others, including under the terms of a Creative Commons license. GovLab may be required by law to remove certain information or content in certain countries.
+  </p>
+
+  <p>
+    You agree that GovLab may access, store and use any information that you provide in accordance with the terms of the Privacy Policy and your privacy settings.
+  </p>
+
+  <p>
+    By submitting suggestions or other feedback to GovLab regarding NoI, you agree that GovLab can use and share such feedback for any purpose without compensation to you.
+  </p>
+
+  <h2>3.3 Service Availability</h2>
+
+  <p>
+    GovLab may change or discontinue Network of Innovators at any time and does not promise to store or maintain access to any information or content you've posted.
+  </p>
+
+  <p>
+    GovLab may change, suspend or end any functionality of NoI, or change and modify prices prospectively in our discretion. To the extent allowed under law, these changes may be effective upon notice provided to you.
+  </p>
+
+  <p>
+    Network of Innovators is not a storage service. You agree that GovLab has no obligation to store, maintain or provide you a copy of any content or information that you or others provide, except to the extent required by applicable law or as noted in our Privacy Policy.
+  </p>
+
+  <h2>3.3. Other Content, Sites and apps</h2>
+
+  <p>
+    When you see or use others' content and information posted on Network of Innovators, you do so at your own risk. Third parties may offer their own products and services through NoiI and GovLab does not accept responsibility for those third-party activities.
+  </p>
+
+  <p>
+    By using the Services, you may encounter content or information that might be inaccurate, incomplete, delayed, misleading, illegal, offensive or otherwise harmful. GovLab generally does not review content provided by our users. You agree that GovLab is not responsible for third parties' (including other users') content or information or for any damages as a result of your use of or reliance on it.
+  </p>
+
+  <p>
+    You are responsible for deciding if you want to access or use third party apps or sites that link from our Services. If you allow a third party app or site to authenticate you or connect with your NoI account, that app or site may be able to access information on NoI related to you and your connections. Third party apps and sites have their own legal terms and privacy policies, and you may be giving others permission to use your information in ways GovLab would not. Therefor, except to the limited extent it may be required by applicable law, GovLab is not responsible for these other sites and apps. You use such third-party services at your own risk.
+  </p>
+
+  <h2>3.4 Limits</h2>
+
+  <p>
+    GovLab reserves the right to limit how users connect and interact on Network of Innovators.
+  </p>
+
+  <p>
+    GovLab reserves the right to limit your use of NoI, including the number of your connections and your ability to contact other users. GovLab reserves the right to restrict, suspend, or terminate your account if GovLab believes that you may be in breach of these Terms of Service or law or are otherwise misusing the Services.
+  </p>
+
+  <p>
+    GovLab reserves all of its intellectual property rights in NoI. For example, "Network of Innovators", "NoI", and other GovLab trademarks, service marks, graphics, and logos used in connection with GovLab and Network of Innovators are trademarks or registered trademarks of GovLab. Other trademarks and logos used in connection with Network of Innovators may be the trademarks of their respective owners.
+  </p>
+
+  <h2>4. Disclaimer and Limit of Liability</h2>
+
+  <h2>4.1 No Warranty</h2>
+
+  <p>
+    TO THE EXTENT ALLOWED UNDER LAW, GOVLAB, AND THOSE THAT GOVLAB WORKS WITH TO PROVIDE NETWORK OF INNOVATORS, A) DISCLAIM ALL IMPLIED WARRANTIES AND REPRESENTATIONS (E.G. WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY OF DATA, AND NONINFRINGEMENT); (B) DO NOT GUARANTEE THAT THE SERVICES WILL FUNCTION WITHOUT INTERRUPTION OR ERRORS, AND (C) PROVIDE THE SERVICE (INCLUDING CONTENT AND INFORMATION) ON AN “AS IS” AND “AS AVAILABLE” BASIS. SOME LAWS DO NOT ALLOW CERTAIN DISCLAIMERS, SO SOME OR ALL OF THESE DISCLAIMERS MAY NOT APPLY TO YOU.
+  </p>
+
+  <h2>4.2. Exclusion of Liability</h2>
+
+  <p>
+    TO THE EXTENT PERMITTED UNDER LAW (AND UNLESS GOVLAB HAS ENTERED INTO A SEPARATE WRITTEN AGREEMENT THAT SUPERSEDES THIS AGREEMENT), GOVLAB (AND THOSE THAT GOVLAB WORKS WITH TO PROVIDE NETWORK OF INNOVATORS) SHALL NOT BE LIABLE TO YOU OR OTHERS FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA, OPPORTUNITIES, REPUTATION, PROFITS OR REVENUES, RELATED TO THE SERVICES (E.G. OFFENSIVE OR DEFAMATORY STATEMENTS, DOWN TIME OR LOSS, USE OR CHANGES TO YOUR INFORMATION OR CONTENT).
+  </p>
+
+  <h2>5. Termination</h2>
+
+  <p>
+    GovLab or you may terminate this Agreement at any time with notice to the other. Upon termination, you lose the right to access or use the Services. The following shall survive termination:
+    Our rights to use and disclose your feedback;
+    Members' and/or Visitors' rights to further re-share content and information you shared through the Service to the extent copied or re-shared prior to termination;
+    Sections 4, 6 and 7 of this Agreement;
+    Any amounts owed by either party prior to termination remain owed after termination.
+  </p>
+
+  <h2>6. Dispute Resolution</h2>
+
+  <p>
+    In the unlikely event we end up in a legal dispute, it will take place in New York courts, applying New York law.
+
+  </p>
+  <p>
+    You agree that the laws of the State of New York, U.S.A., excluding its conflict of laws rules, shall exclusively govern any dispute relating to this Agreement and/or the Services. We both agree that all of these claims can only be litigated in the federal or state courts of New York County, New York, USA, and we each agree to personal jurisdiction in those courts.
+  </p>
+
+  <h2>7. General Terms</h2>
+
+  <p>
+    If a court with authority over this Agreement finds any part of it not enforceable, you and GovLab agree that the court should modify the terms to make that part enforceable while still achieving its intent. If the court cannot do that, you and GovLab agree to ask the court to remove that unenforceable part and still enforce the rest of this Agreement. To the extent allowed by law, the English version of this Agreement is binding and other translations are for convenience only. This Agreement (including additional terms that may be provided by us when you engage with new features of Network of Innovators) is the only agreement between us regarding use of NoI and supersedes all prior agreements for the NoI.
+  </p>
+
+  <p>
+    If GovLab does not act to enforce a breach of this Agreement, that does not mean that GovLab has waived its right to enforce this Agreement. You may not assign or transfer this Agreement (or your membership or use of NoI) to anyone without our consent. However, you agree that GovLab may assign this Agreement to its affiliates or a party that buys it without your consent. There are no third party beneficiaries to this Agreement.
+  </p>
+
+  <p>
+    GovLab reserves the right to change the terms of this Terms of Service and will provide you notice if we do and we agree that changes cannot be retroactive. If you don't agree to these changes, you must stop using Network of Innovators.
+  </p>
+
+  <p>
+    You agree that the only way to provide us legal notice is at the addresses provided in Section 10.
+  </p>
+
+  <h2>8. Code of Conduct</h2>
+
+  <h2>8.1 You agree that you will:</h2>
+
+  <p>
+    Comply with all applicable laws, including, without limitation, privacy laws, intellectual property laws, anti-spam laws, export control laws, tax laws, and regulatory requirements;
+  </p>
+
+  <p>
+    Provide accurate information to us and keep it updated;
+  </p>
+
+  <p>
+    Use your real name on your profile;
+  </p>
+
+  <p>
+    Use the Services in a professional manner.
+  </p>
+
+  <h2>8.2. You agree that you will not:</h2>
+
+  <p>
+    Act dishonestly or unprofessionally, including by posting inappropriate, inaccurate, or objectionable content;
+  </p>
+
+  <p>
+    Add content that is not intended for, or inaccurate for, a designated field (e.g. submitting a telephone number in the “title” or any other field, or including telephone numbers, email addresses, street addresses or any personally identifiable information for which there is not a field provided by LinkedIn);
+  </p>
+
+  <p>
+    Use an image that is not your likeness or a head-shot photo for your profile;
+  </p>
+
+  <p>
+    Create a false identity on LinkedIn;
+  </p>
+
+  <p>
+    Misrepresent your current or previous positions and qualifications;
+  </p>
+
+  <p>
+    Misrepresent your affiliations with a person or entity, past or present;
+  </p>
+
+  <p>
+    Misrepresent your identity, including but not limited to the use of a pseudonym;
+  </p>
+
+  <p>
+    Create a Member profile for anyone other than yourself (a real person);
+  </p>
+
+  <p>
+    Invite people you do not know to join your network;
+  </p>
+
+  <p>
+    Use or attempt to use another's account;
+  </p>
+
+  <p>
+    Harass, abuse or harm another person;
+  </p>
+
+  <p>
+    Send spam or other unwelcomed communications to others;
+  </p>
+
+  <p>
+    Scrape or copy profiles and information of others through any means (including crawlers, browser plugins and add-ons, and any other technology or manual work);
+  </p>
+
+  <p>
+    Act in an unlawful, libelous, abusive, obscene, discriminatory or otherwise objectionable manner;
+  </p>
+
+  <p>
+    Disclose information that you do not have the right to disclose (such as confidential information of others (including your employer));
+  </p>
+
+  <p>
+    Violate intellectual property rights of others, including patents, trademarks, trade secrets, copyrights or other proprietary rights;
+  </p>
+
+  <p>
+    Violate the intellectual property or other rights of LinkedIn, including, without limitation, using the word “LinkedIn” or our logos in any business name, email, or URL except as provided in the Brand Guidelines;
+  </p>
+
+  <p>
+    Use LinkedIn invitations to send messages to people who don't know you or who are unlikely to recognize you as a known contact;
+  </p>
+
+  <p>
+    Post any unsolicited or unauthorized advertising, “junk mail,” “spam,” “chain letters,” “pyramid schemes,” or any other form of solicitation unauthorized by LinkedIn;
+  </p>
+
+  <p>
+    Send messages to distribution lists, newsgroup aliases, or group aliases;
+  </p>
+
+  <p>
+    Post anything that contains software viruses, worms, or any other harmful code;
+  </p>
+
+  <p>
+    Manipulate identifiers in order to disguise the origin of any message or post transmitted through the Services;
+  </p>
+
+  <p>
+    Create profiles or provide content that promotes escort services or prostitution.
+  </p>
+
+  <p>
+    Creating or operate a pyramid scheme, fraud or other similar practice;
+  </p>
+
+  <p>
+    Copy or use the information, content or data of others available on the Services (except as expressly authorized);
+  </p>
+
+  <p>
+    Copy or use the information, content or data on LinkedIn in connection with a competitive service (as determined by LinkedIn);
+  </p>
+
+  <p>
+    Copy, modify or create derivative works of LinkedIn, the Services or any related technology (except as expressly authorized by LinkedIn);
+  </p>
+
+  <p>
+    Reverse engineer, decompile, disassemble, decipher or otherwise attempt to derive the source code for the Services or any related technology, or any part thereof;
+  </p>
+
+  <p>
+    Imply or state that you are affiliated with or endorsed by LinkedIn without our express consent (e.g., representing yourself as an accredited LinkedIn trainer);
+  </p>
+
+  <p>
+    Rent, lease, loan, trade, sell/re-sell access to the Services or related any information or data;
+  </p>
+
+  <p>
+    Sell, sponsor, or otherwise monetize a LinkedIn Group or any other feature of the Services, without LinkedIn's consent;
+  </p>
+
+  <p>
+    Deep-link to our Services for any purpose other than to promote your profile or a Group on LinkedIn (as set forth in the Brand Guidelines), without LinkedIn's consent;
+  </p>
+
+  <p>
+    Remove any copyright, trademark or other proprietary rights notices contained in or on our Service;
+  </p>
+
+  <p>
+    Remove, cover or obscure any advertisement included on the Services;
+  </p>
+
+  <p>
+    Collect, use, copy, or transfer any information obtained from LinkedIn without the consent of LinkedIn;
+  </p>
+
+  <p>
+    Share or disclose information of others without their express consent;
+  </p>
+
+  <p>
+    Use manual or automated software, devices, scripts robots, other means or processes to access, “scrape,” “crawl” or “spider” the Services or any related data or information;
+  </p>
+
+  <p>
+    Use bots or other automated methods to access the Services, add or download contacts, send or redirect messages;
+  </p>
+
+  <p>
+    Monitor the Services' availability, performance or functionality for any competitive purpose;
+  </p>
+
+  <p>
+    Engage in “framing,” “mirroring,” or otherwise simulating the appearance or function of the Services;
+  </p>
+
+  <p>
+    Access the Services except through the interfaces expressly provided by LinkedIn, such as its mobile applications, linkedin.com and slideshare.net;
+  </p>
+
+  <p>
+    Override any security feature of the Services;
+  </p>
+
+  <p>
+    Interfere with the operation of, or place an unreasonable load on, the Services (e.g., spam, denial of service attack, viruses, gaming algorithms); and/or
+  </p>
+
+  <p>
+    Violate SlideShare's Community Guidelines or, if you're a commercial user of SlideShare, the SlideShare Commercial Terms of Service.
+  </p>
+
+  <h2>9. Complaints Regarding Content</h2>
+
+  <p>
+    We respect the intellectual property rights of others. We require that information posted by Members be accurate and not in violation of the intellectual property rights or other rights of third parties. We provide a policy and process for complaints concerning content posted by our Members.
+  </p>
+
+  <h2>10. How To Contact Us</h2>
+  <p>
+    If you want to send us notices or service of process, please contact us:<br>
+    ONLINE at: www.thegovlab.org<br>
+  </p>
+
+  <p>
+    OR BY MAIL at:<br>
+    The GovLab<br>
+    Attn: Agreement Matters (Legal)<br>
+    2 Metrotech Center, 9th Floor<br>
+    Brooklyn, NY, 11201<br>
+    USA<br>
+  </p>
+
+
+  <div class="signup-wall"><p>You need to be signed in <br>to use this feature</p></div>
+
+</div>

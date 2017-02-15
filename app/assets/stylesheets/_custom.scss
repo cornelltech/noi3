@@ -88,16 +88,16 @@ button {
   input[type='password'] {
     background-color: $white-10;
     @include placeholder { color: $white; }
-    
+
     &:focus {
-        background-color: $white-20;
-        @extend .u-transition;
+      background-color: $white-20;
+      @extend .u-transition;
     }
   }
 }
 
 
-input[type='submit'] { 
+input[type='submit'] {
   background-color: $main-color;
   color: white;
 
@@ -120,14 +120,14 @@ input[type='submit'] {
 
   &--alpha {
     background-color: rgba(black, 0);
-    
+
     &:hover { background-color: rgba(black, .2); }
   }
 
   &.button--negative {
     background-color: rgba(white, .1);
     color: white;
-    
+
     &:hover { background-color: rgba(white, .3); }
   }
 
@@ -200,4 +200,28 @@ input[type='submit'] {
   }
 
   transition: all 0.5s ease;
+}
+
+
+.about-page {
+  background-color: #222;
+  color: #fff;
+
+  padding: 0 40px;
+
+  h1, h2, h3, h4, h5 {
+    text-transform: uppercase;
+  }
+  h1 {
+    font-size: 40px;
+    i {
+      font-size: 40px;
+      // vertical-align: middle;
+      transform: translateY(5px);
+    }
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
 }

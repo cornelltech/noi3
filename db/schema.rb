@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170207195936) do
     t.string   "conference_code", default: ""
     t.string   "name",            default: ""
     t.string   "logo_path",       default: ""
-    t.datetime "date",            default: '2017-02-07 21:25:44'
+    t.datetime "date",            default: '2016-10-17 16:53:49'
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "url",             default: ""
