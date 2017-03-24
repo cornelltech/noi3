@@ -39,136 +39,140 @@
     <% end %>
 
     <ul class="list">
-    <% @matches.each do | match |%>
-      <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
-        <li class="list__item person-item">
-          <% if match.picture_path != "" && match.avatar.url == "avatars/nopic-avatar1.jpg" %>
-            <!-- <%= image_tag(match.picture_path, :alt => "User", :class => "person-item__picture") %> -->
-            <div class="person-item__picture" style="background-image: url(<%= match.picture_path %>)"></div>
-          <% else %>
-            <% user_avatar = nil %>
-            <% if match.avatar.url != "avatars/nopic-avatar1.jpg" %>
-              <!-- <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %> -->
-              <div class="person-item__picture" style="background-image: url(<%= match.avatar.url(:original) %>)"></div>
+      <% unless @matches.nil? %>
+      <% @matches.each do | match |%>
+        <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+          <li class="list__item person-item">
+            <% if match.picture_path != "" && match.avatar.url == "avatars/nopic-avatar1.jpg" %>
+              <!-- <%= image_tag(match.picture_path, :alt => "User", :class => "person-item__picture") %> -->
+              <div class="person-item__picture" style="background-image: url(<%= match.picture_path %>)"></div>
             <% else %>
-              <% user_avatar = "avatars/nopic-avatar1.jpg" %>
-              <!-- <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %> -->
-              <div class="person-item__picture" style="background-image: url(<%= user_avatar %>)"></div>
-            <% end %>
-          <%end%>
-        <% end %>
-
-
-        <div class="person-item__content">
-
-          <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
-            <hgroup class="person-item__credentials person-item--no-flex">
-              <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%><a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= match.username %>" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a></h2>
-              <% if match.position == "" || match.organization == "" %>
-                <h3 class="person-item__job"><%= match.position%> <%= match.organization %></h3>
+              <% user_avatar = nil %>
+              <% if match.avatar.url != "avatars/nopic-avatar1.jpg" %>
+                <!-- <%= image_tag(match.avatar.url(:thumb), :alt => "User", :class => "person-item__picture") %> -->
+                <div class="person-item__picture" style="background-image: url(<%= match.avatar.url(:original) %>)"></div>
               <% else %>
-                <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
+                <% user_avatar = "avatars/nopic-avatar1.jpg" %>
+                <!-- <%= image_tag(user_avatar, :alt => "User", :class => "person-item__picture") %> -->
+                <div class="person-item__picture" style="background-image: url(<%= user_avatar %>)"></div>
               <% end %>
-              <h4 class="person-item__org"><%= match.location %></h4>
-            </hgroup>
-          <% end %>
-
-          <ul class="person-item__tags category-tags person-item--no-flex">
-
-            <% match.format_expertise.each do |e| %>
-              <li class="person-item__tag category-tag">
-                <span class="category-tag__main"><%=e[:category].titleize%></span>
-                <% e[:skill_areas].each do |skill_area| %>
-                  <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
-                <% end %>
-              </li>
             <%end%>
-
-          </ul>
-          <% if match.projects.count > 1 %>
-            <div class="person-item__controls">
-              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
-                <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
-              <% end %>
-            </div>
-          <% elsif match.projects.count == 1 %>
-            <div class="person-item__controls">
-              <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
-                <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Project</span>
-              <% end %>
-            </div>
-          <% elsif match.projects.count == 0 %>
-
           <% end %>
 
-        </div> <!-- .person-item__content -->
 
-        <div class="person-item__content">
-          <ul class="user-skill-list">
-            <h6><%= match.first_name%> <%= match.last_name %> can advise you on <%= match.can_teach.count %> skills</h6>
+          <div class="person-item__content">
 
-            <% format_skills(match.can_teach).each do |skillset| %>
-              <h5><%=skillset[:category]%></h5>
-              <% if skillset[:skills].count > 4 %>
-                <%skillset[:skills].first(4).each do |skill| %>
-                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
-                <%end%>
+            <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+              <hgroup class="person-item__credentials person-item--no-flex">
+                <h2 class="person-item__name"><%= match.first_name %> <%= match.last_name%><a href="<%= DISCOURSE_CONFIG[:url] %>/new-message?username=<%= match.username %>" class="controls__icon-button"><i class="person-item__pm material-icons">mail_outline</i></a></h2>
+                <% if match.position == "" || match.organization == "" %>
+                  <h3 class="person-item__job"><%= match.position%> <%= match.organization %></h3>
+                <% else %>
+                  <h3 class="person-item__job"><%= match.position%> | <%= match.organization %></h3>
+                <% end %>
+                <h4 class="person-item__org"><%= match.location %></h4>
+              </hgroup>
+            <% end %>
 
-                <div class="<%=skillset[:category].parameterize%>">
-                  <p id="view-more" class="user-skill-list--view">View more...</p>
+            <ul class="person-item__tags category-tags person-item--no-flex">
 
-                  <div id="less-<%=skillset[:category].parameterize%>" class="view-less all-skills">
-                    <% skillset[:skills][4..-1].each do |skill| %>
-                      <li class="user-skill-list__item"><%=skill.capitalize%></li>
-                    <% end %>
-                    <p id="view-less" class="user-skill-list--view">View less...</p>
+              <% match.format_expertise.each do |e| %>
+                <li class="person-item__tag category-tag">
+                  <span class="category-tag__main"><%=e[:category].titleize%></span>
+                  <% e[:skill_areas].each do |skill_area| %>
+                    <span class="category-tag__sub"><%= skill_area[:area_skill].titleize %></span>
+                  <% end %>
+                </li>
+              <%end%>
+
+            </ul>
+            <% if match.projects.count > 1 %>
+              <div class="person-item__controls">
+                <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+                  <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Projects</span>
+                <% end %>
+              </div>
+            <% elsif match.projects.count == 1 %>
+              <div class="person-item__controls">
+                <%= link_to (url_for({:controller => "users", :action => "fetch_user", :user_id => match.id})), :remote => true do %>
+                  <span class="person-item__projects controls__button js-open-panel-2"><%= match.projects.count%> Project</span>
+                <% end %>
+              </div>
+            <% elsif match.projects.count == 0 %>
+
+            <% end %>
+
+          </div> <!-- .person-item__content -->
+
+          <div class="person-item__content">
+            <ul class="user-skill-list">
+              <h6><%= match.first_name%> <%= match.last_name %> can advise you on <%= match.can_teach.count %> skills</h6>
+
+              <% format_skills(match.can_teach).each do |skillset| %>
+                <h5><%=skillset[:category]%></h5>
+                <% if skillset[:skills].count > 4 %>
+                  <%skillset[:skills].first(4).each do |skill| %>
+                    <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                  <%end%>
+
+                  <div class="<%=skillset[:category].parameterize%>">
+                    <p id="view-more" class="user-skill-list--view">View more...</p>
+
+                    <div id="less-<%=skillset[:category].parameterize%>" class="view-less all-skills">
+                      <% skillset[:skills][4..-1].each do |skill| %>
+                        <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                      <% end %>
+                      <p id="view-less" class="user-skill-list--view">View less...</p>
+                    </div>
                   </div>
-                </div>
-              <% elsif skillset[:skills].count <= 4 %>
-                <% skillset[:skills].each do |skill| %>
-                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                <% elsif skillset[:skills].count <= 4 %>
+                  <% skillset[:skills].each do |skill| %>
+                    <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-          </ul>
+            </ul>
 
-          <ul class="user-skill-list">
-            <h6>You can advise <%= match.first_name %> on <%= match.can_learn.length%> skills</h6>
+            <ul class="user-skill-list">
+              <h6>You can advise <%= match.first_name %> on <%= match.can_learn.length%> skills</h6>
 
-            <% format_skills(match.can_learn).each do |skillset| %>
-              <h5><%=skillset[:category]%></h5>
+              <% format_skills(match.can_learn).each do |skillset| %>
+                <h5><%=skillset[:category]%></h5>
 
-              <% if skillset[:skills].count > 4 %>
-                <%skillset[:skills].first(4).each do |skill| %>
-                  <li class="user-skill-list__item"><%=skill.capitalize%></li>
-                <%end%>
+                <% if skillset[:skills].count > 4 %>
+                  <%skillset[:skills].first(4).each do |skill| %>
+                    <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                  <%end%>
 
-                <div class="advise-<%=skillset[:category].parameterize%>">
-                  <p id="view-more" class="user-skill-list--view">View more...</p>
+                  <div class="advise-<%=skillset[:category].parameterize%>">
+                    <p id="view-more" class="user-skill-list--view">View more...</p>
 
-                  <div id="less-<%=skillset[:category].parameterize%>" class="view-less all-skills">
-                    <% skillset[:skills][4..-1].each do |skill| %>
-                      <li class="user-skill-list__item"><%=skill.capitalize%></li>
-                    <% end %>
-                    <p id="view-less" class="user-skill-list--view">View less...</p>
+                    <div id="less-<%=skillset[:category].parameterize%>" class="view-less all-skills">
+                      <% skillset[:skills][4..-1].each do |skill| %>
+                        <li class="user-skill-list__item"><%=skill.capitalize%></li>
+                      <% end %>
+                      <p id="view-less" class="user-skill-list--view">View less...</p>
+                    </div>
                   </div>
-                </div>
-              <% elsif skillset[:skills].count <= 4 %>
-                <% skillset[:skills].each do |skill| %>
-                  <li class="user-skill-list__item"><%=skill%></li>
+                <% elsif skillset[:skills].count <= 4 %>
+                  <% skillset[:skills].each do |skill| %>
+                    <li class="user-skill-list__item"><%=skill%></li>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-          </ul>
-        </div> <!-- .person-item__content -->
+            </ul>
+          </div> <!-- .person-item__content -->
 
-      </li> <!-- .list__item person-item -->
+        </li> <!-- .list__item person-item -->
 
+      <% end %>
     <% end %>
 
     </ul>
-    <% if @matches != []%>
-      <%= will_paginate @matches %>
+    <% unless @matches.nil? %>
+      <% if @matches != []%>
+        <%= will_paginate @matches %>
+      <% end %>
     <% end %>
 
 
