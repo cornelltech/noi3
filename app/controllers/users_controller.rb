@@ -106,11 +106,11 @@ class UsersController < ApplicationController
      end
    end
 
-   def delete_oauth_provider
-    provider = params[:format]
-    current_user.identities.where(provider: provider).first.delete
-    redirect_to root_path
-   end
+   # def delete_oauth_provider
+   #  provider = params[:format]
+   #  current_user.identities.where(provider: provider).first.delete
+   #  redirect_to root_path
+   # end
 
 
   def show
