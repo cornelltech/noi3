@@ -60,11 +60,11 @@ Rails.application.routes.draw do
 
   get '/delete_account_success' => 'pages#delete_account_success', as: 'delete_account_success'
 
-  get 'delete_oauth_provider' => "users#delete_oauth_provider", as: 'delete_oauth_provider'
+  # get 'delete_oauth_provider' => "users#delete_oauth_provider", as: 'delete_oauth_provider'
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  get '/connect' => 'users#connect'
+  # get '/connect' => 'users#connect'
 
   get '/about' => 'pages#about', as: 'about'
 

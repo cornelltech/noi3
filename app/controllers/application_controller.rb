@@ -68,12 +68,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # for oauth
   def after_sign_in_path_for(resource)
-    if resource.sign_in_count < 2
-      '/connect'
-    else
+    # if resource.sign_in_count < 2
+    #   '/connect'
+    # else
       request.env['omniauth.origin'] || stored_location_for(resource) || root_path
-    end
+    # end
   end
 
 end
