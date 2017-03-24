@@ -62,8 +62,10 @@ class SurveysController < ApplicationController
 
     @matches = @matches.sort_by {|match| match.can_teach.count + match.can_learn.count }.reverse!.paginate(:page => params[:page], :per_page => 5)
 
-    if @matches.empty?
-      @no_matches = true
+    if !@matches.nil?
+      if @matches.empty?
+        @no_matches = true
+      end
     end
 
     render 'matches'
