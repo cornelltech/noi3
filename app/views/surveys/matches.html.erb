@@ -25,7 +25,7 @@
       <p class="toast__text">Your matches are people who have experience in what you want to learn and have something to learn from you.</p>
     </div>
 
-    <% if @matches == [] || @matches.nil? %>
+    <% if  @matches.nil? || @matches == [] %>
       <h3 class="match-me__question"> <%=@user.first_name%>, we haven’t found any matches for you at this time.</h3>
       <h4 class="match-me__intro match-me--search-innovators">Why don’t you <a class='match-me__search-link' href='/search'>search for innovators</a> instead?</h4>
       </body>
