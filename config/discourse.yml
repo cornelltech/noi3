@@ -22,6 +22,6 @@ staging:
 production:
   url: "https://discuss.networkofinnovators.org"
   api_key: "c9aecdc5869fe8140b45220758f61af1bae7054f5c6c631a1cd4a776f00912df"
-  api_username: "david"
+  api_username: "davidnaffis1"
   sso_secret: "UW1XPxyM37UMDlnbOB09pz24v5UoOyWp"
   sso_redirect_url: "https://discuss.networkofinnovators.org/session/sso_login"
