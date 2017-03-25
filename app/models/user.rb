@@ -101,10 +101,11 @@ class User < ApplicationRecord
   def location
     combined_location = [self.city, self.country]
     if combined_location.reject(&:empty?).length == 2
-      combined_location.join(", ")
+      combined_location = combined_location.join(", ")
     else
-      combined_location.join("")
+      combined_location = combined_location.join("")
     end
+    combined_location ? combined_location : ""
   end
 
   def format_expertise
