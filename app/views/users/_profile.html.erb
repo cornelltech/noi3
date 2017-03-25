@@ -43,7 +43,7 @@
       </p>
     </div>
     <div class="medium-6 small-12 column">
-      <p class="profile-panel__location"><%= user.location %></p>
+      <p class="profile-panel__location"><%#= user.location %></p>
       <% if user.languages.count > 0 %>
         <ul class="profile-panel__lang">
         <% user.languages.sort.uniq.each do |language| %>
